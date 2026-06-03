@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title data-json="ticketsPageTitle">Purchase Tickets | Madison Chinese Dance Academy</title>
+	<meta name="description" content="Purchase tickets for Madison Chinese Dance Academy performances." data-json="ticketsMetaDescription" data-json-attr="content" />
+	<link rel="stylesheet" href="../style.css" />
+	<script defer src="../app.js"></script>
+</head>
+<body data-content-file="tickets">
+	<a class="skip-link" href="#main">Skip to main content</a>
+
+	<div data-site-header></div>
+
+	<main id="main" tabindex="-1" class="site-main">
+		<section class="page-hero" aria-labelledby="tickets-heading">
+			<div class="container">
+				<h1 id="tickets-heading" data-json="ticketsHeroHeading">Purchase Tickets</h1>
+				<p data-json="ticketsSupportText">Ticket information for upcoming performances will be posted here.</p>
+			</div>
+		</section>
+
+		<section class="section tickets-section" aria-labelledby="tickets-info">
+			<div class="container">
+				<h2 id="tickets-info" data-json="ticketsInfoHeading">Splendid China — 2026 Tickets</h2>
+				<p data-json="ticketsDetailsText">
+					Join us for Splendid China 2026 — an evening of traditional and contemporary Chinese dance presented by community performers. Tickets support production costs, venue rental, and scholarships for student participants.
+				</p>
+				<p data-json="ticketsDetailsFollowup">
+					Seats are limited. Please purchase tickets in advance through our secure ticketing partner. If you have accessibility needs or questions about group sales, email us at ahuan98-dance@yahoo.com.
+				</p>
+				<div class="payment-options">
+					<p class="section-note" data-json="ticketsFormNote">Use the secure embedded ticketing form below.</p>
+					<a class="btn btn-primary ticket-cta" href="https://www.zeffy.com/en-US/ticketing/splendid-china--2026" target="_blank" rel="noopener noreferrer" role="button" data-json="ticketsOpenText" data-json-href="ticketsOpenHref">Open in Zeffy</a>
+				</div>
+
+				<div class="ticket-embed">
+					<div data-zeffy-embed data-form-url="/embed/ticketing/splendid-china--2026"></div>
+					<div data-zeffy-embed-fallback>
+						<div class="zeffy-fallback-frame">
+							<iframe title="Ticketing form powered by Zeffy" src="https://www.zeffy.com/embed/ticketing/splendid-china--2026" allowpaymentrequest allowTransparency="true"></iframe>
+						</div>
+					</div>
+					<script
+						src="https://www.zeffy.com/embed/v2/zeffy-embed.js"
+						onerror="document.querySelectorAll('[data-zeffy-embed-fallback]').forEach(function(el){el.style.display='block';});">
+					</script>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<div data-site-footer></div>
+</body>
+</html>
