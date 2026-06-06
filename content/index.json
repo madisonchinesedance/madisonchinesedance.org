@@ -1,75 +1,115 @@
 {
-  "pageTitle": "Madison Chinese Dance Academy",
+  "pageTitle": "Madison Chinese Dance Academy | Home",
   "metaDescription": "Madison Chinese Dance Academy - community classes, performances, and outreach. Purchase tickets or support our community.",
-  "heading": "Madison Chinese Dance Academy",
-  "body": "We dance to integrate Eastern and Western arts and cultures for a more harmonious world.",
-  "heroActions": [
+  "blocks": [
     {
-      "label": "Purchase Tickets",
-      "route": "tickets",
-      "style": "primary"
+      "type": "hero",
+      "variant": "home",
+      "blocks": [
+        {
+          "type": "heading1",
+          "id": "hero-title",
+          "text": "Madison Chinese Dance Academy"
+        },
+        {
+          "type": "body",
+          "text": "We dance to integrate Eastern and Western arts and cultures for a more harmonious world."
+        },
+        {
+          "type": "cards",
+          "columns": 3,
+          "headingTag": "h2",
+          "headingSize": "var(--heading-1-font-size)",
+          "items": [
+            {
+              "heading": "1987",
+              "body": "Founded as a nonprofit danceacademy over 30 years ago."
+            },
+            {
+              "heading": "Splendid China",
+              "body": "Annual showcase at the Robert E. Parilla Performing Arts Center - where community artistry meets the stage."
+            },
+            {
+              "heading": "Ages 3 to 18+",
+              "body": "Classes for beginner dancers through advanced students and beyond."
+            }
+          ]
+        }
+      ]
     },
     {
-      "label": "Explore Classes",
-      "route": "dance-classes",
-      "style": "secondary"
-    }
-  ],
-  "stats": [
-    {
-      "value": "1987",
-      "label": "Founded as a nonprofit academy"
+      "type": "section",
+      "variant": "home-intro",
+      "blocks": [
+        {
+          "type": "heading2",
+          "id": "home-intro-heading",
+          "text": "A community academy for Chinese dance and culture"
+        },
+        {
+          "type": "body",
+          "text": "Madison Chinese Dance Academy gives students a place to train, perform, and grow through Chinese dance traditions and ballet technique. Our programs connect both families and audiences through classes, outreach, and the annual Splendid China performance."
+        },
+        {
+          "type": "cards",
+          "columns": 3,
+          "items": [
+            {
+              "heading": "Classes",
+              "body": "Beginner through advanced dance instruction for students of all ages.",
+              "route": "beginner-dancers",
+              "label": "Start with beginner dancers"
+            },
+            {
+              "heading": "Splendid China",
+              "body": "Our annual concert brings traditional and contemporary Chinese dance to the stage.",
+              "route": "splendid-china-2026",
+              "label": "See Splendid China 2026"
+            },
+            {
+              "heading": "Gallery",
+              "body": "Browse moments from performances, community programs, and academy events.",
+              "route": "gallery",
+              "label": "Open gallery"
+            }
+          ]
+        }
+      ]
     },
     {
-      "value": "20+",
-      "label": "Annual performances and workshops"
-    },
-    {
-      "value": "All ages",
-      "label": "Classes for beginner through advanced students"
-    }
-  ],
-  "introHeading": "A community academy for Chinese dance, ballet, and cultural exchange",
-  "introBody": "Madison Chinese Dance Academy gives students a place to train, perform, and grow through Chinese dance traditions and ballet technique. Our programs connect families, artists, and audiences through classes, outreach, and the annual Splendid China performance.",
-  "featureCards": [
-    {
-      "heading": "Classes",
-      "body": "Beginner through advanced dance instruction for students of all ages.",
-      "route": "dance-classes",
-      "label": "View classes"
-    },
-    {
-      "heading": "Splendid China",
-      "body": "Our annual concert brings traditional and contemporary Chinese dance to the stage.",
-      "route": "splendid-china-2026",
-      "label": "See the 2026 show"
-    },
-    {
-      "heading": "Gallery",
-      "body": "Browse moments from performances, community programs, and academy events.",
-      "route": "gallery",
-      "label": "Open gallery"
-    }
-  ],
-  "pathwaysHeading": "What would you like to do next?",
-  "pathways": [
-    {
-      "heading": "Attend a performance",
-      "body": "Get details for Splendid China 2026 and purchase tickets online.",
-      "route": "tickets",
-      "label": "Buy tickets"
-    },
-    {
-      "heading": "Support the academy",
-      "body": "Help fund classes, costumes, rehearsal space, and community outreach.",
-      "route": "donate",
-      "label": "Donate"
-    },
-    {
-      "heading": "Get in touch",
-      "body": "Ask about classes, performances, donations, or community programs.",
-      "route": "contact",
-      "label": "Contact us"
+      "type": "section",
+      "variant": "home-pathways",
+      "blocks": [
+        {
+          "type": "heading2",
+          "id": "home-pathways-heading",
+          "text": "Get Involved"
+        },
+        {
+          "type": "cards",
+          "columns": 3,
+          "items": [
+            {
+              "heading": "Attend a performance",
+              "body": "Get details for Splendid China 2026 and purchase tickets online.",
+              "route": "tickets",
+              "label": "Purchase tickets"
+            },
+            {
+              "heading": "Support the academy",
+              "body": "Help fund classes, costumes, rehearsal space, and community outreach.",
+              "route": "donate",
+              "label": "Donate"
+            },
+            {
+              "heading": "Get in touch",
+              "body": "Ask about classes, performances, donations, or community programs.",
+              "route": "contact",
+              "label": "Contact us"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

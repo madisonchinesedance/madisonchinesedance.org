@@ -25,10 +25,20 @@
       "page": "community/services.html",
       "content": "community/services.json"
     },
-    "dance-classes": {
-      "href": "pages/programs/dance-classes.html",
-      "page": "programs/dance-classes.html",
-      "content": "programs/dance-classes.json"
+    "beginner-dancers": {
+      "href": "pages/programs/beginner-dancers.html",
+      "page": "programs/beginner-dancers.html",
+      "content": "programs/beginner-dancers.json"
+    },
+    "intermediate-dancers": {
+      "href": "pages/programs/intermediate-dancers.html",
+      "page": "programs/intermediate-dancers.html",
+      "content": "programs/intermediate-dancers.json"
+    },
+    "advanced-dancers": {
+      "href": "pages/programs/advanced-dancers.html",
+      "page": "programs/advanced-dancers.html",
+      "content": "programs/advanced-dancers.json"
     },
     "gallery": {
       "href": "pages/gallery.html",
@@ -79,6 +89,41 @@
       "href": "pages/splendid-china/splendid-china-2020.html",
       "page": "splendid-china/splendid-china-2020.html",
       "content": "splendid-china/splendid-china-2020.json"
+    },
+    "join-us": {
+      "href": "pages/get-involved/join-us.html",
+      "page": "get-involved/join-us.html",
+      "content": "get-involved/join-us.json"
+    },
+    "book-a-performance": {
+      "href": "pages/get-involved/book-a-performance.html",
+      "page": "get-involved/book-a-performance.html",
+      "content": "get-involved/book-a-performance.json"
+    },
+    "meet-the-faculty": {
+      "href": "pages/about/meet-the-faculty.html",
+      "page": "about/meet-the-faculty.html",
+      "content": "about/meet-the-faculty.json"
+    },
+    "success-stories": {
+      "href": "pages/about/success-stories.html",
+      "page": "about/success-stories.html",
+      "content": "about/success-stories.json"
+    },
+    "faq": {
+      "href": "pages/faq.html",
+      "page": "faq.html",
+      "content": "faq.json"
+    },
+    "see-a-performance": {
+      "href": "pages/get-involved/see-a-performance.html",
+      "page": "get-involved/see-a-performance.html",
+      "content": "get-involved/see-a-performance.json"
+    },
+    "support-our-cause": {
+      "href": "pages/get-involved/support-our-cause.html",
+      "page": "get-involved/support-our-cause.html",
+      "content": "get-involved/support-our-cause.json"
     }
   }
 }

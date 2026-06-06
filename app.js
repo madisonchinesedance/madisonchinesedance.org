@@ -135,12 +135,42 @@ function applyJsonContent(content, routes) {
 	});
 }
 
+function renderRichTextValue(value) {
+	const text = String(value || '').replace(/\/n/g, '\n').trim();
+	if (!text) return '';
+
+	return text
+		.split(/\n{2,}/)
+		.map((paragraph) => paragraph.trim())
+		.filter(Boolean)
+		.map((paragraph) => paragraph
+			.split('\n')
+			.map((line) => sanitizeInlineHtml(line))
+			.join('<br>'))
+		.map((block) => `<p>${block}</p>`)
+		.join('');
+}
+
+function blockId(block, fallback) {
+	return block.id ? escapeHtml(block.id) : fallback;
+}
+
+function findBlock(blocks = [], type) {
+	for (const block of blocks) {
+		if (block?.type === type) return block;
+		const nested = Array.isArray(block?.blocks) ? findBlock(block.blocks, type) : null;
+		if (nested) return nested;
+	}
+	return null;
+}
+
 function resolveNavEntry(entry, routes) {
 	if (entry.route) {
 		const route = routes[entry.route];
 		if (!route) return null;
 
 		return {
+			routeId: entry.route,
 			href: route.href,
 			page: route.page,
 			label: entry.label || entry.route
@@ -157,7 +187,7 @@ function resolveNavEntry(entry, routes) {
 	return null;
 }
 
-function buildHeader(header = {}, routes = {}) {
+function buildHeader(header = {}, routes = {}, announcementsConfig = {}) {
 	const logoRoute = header.logo?.route ? routes[header.logo.route] : routes.home;
 	const logo = {
 		text: header.logo?.text || 'Madison Chinese Dance Academy',
@@ -166,6 +196,7 @@ function buildHeader(header = {}, routes = {}) {
 		href: logoRoute?.href || 'index.html',
 		page: logoRoute?.page || 'index.html'
 	};
+	const highlights = announcementsConfig.highlights || {};
 
 	return {
 		logo,
@@ -173,11 +204,40 @@ function buildHeader(header = {}, routes = {}) {
 		menuToggleOpenLabel: header.menuToggleOpenLabel || 'Open navigation',
 		menuToggleCloseLabel: header.menuToggleCloseLabel || 'Close navigation',
 		navItems: (header.nav || []).map((entry) => resolveNavEntry(entry, routes)).filter(Boolean),
+		highlights: {
+			enabled: highlights.enabled !== false,
+			style: highlights.style || 'pulse',
+			color: highlights.color || 'peach',
+			navRoutes: highlights.navRoutes || [],
+			actionRoutes: highlights.actionRoutes || []
+		},
+		announcements: (announcementsConfig.announcements || []).map((announcement) => {
+			if (announcement.enabled === false) return null;
+
+			return {
+				id: announcement.id || announcement.label || announcement.body || 'announcement',
+				label: announcement.label || '',
+				body: announcement.body || '',
+				actions: (announcement.actions || []).map((action) => {
+					const link = resolveContentLink(action, routes);
+					if (!link) return null;
+
+					return {
+						routeId: action.route || null,
+						href: link.href,
+						label: link.label,
+						style: action.style === 'secondary' ? 'secondary' : 'primary',
+						ariaLabel: action.ariaLabel || link.label
+					};
+				}).filter(Boolean)
+			};
+		}).filter(Boolean),
 		actions: (header.actions || []).map((action) => {
 			const route = routes[action.route];
 			if (!route) return null;
 
 			return {
+				routeId: action.route,
 				href: route.href,
 				page: route.page,
 				label: action.label || action.route,
@@ -230,9 +290,16 @@ function getPageRouteId(site, pageId) {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
+	const ANNOUNCEMENT_DISMISS_KEY = 'mcda-announcement-dismissed';
+	const navigationEntry = performance.getEntriesByType?.('navigation')?.[0];
+	if (navigationEntry?.type === 'reload') {
+		sessionStorage.removeItem(ANNOUNCEMENT_DISMISS_KEY);
+	}
+
 	const currentPage = getPageId();
 	const site = await loadJson(`${CONTENT_ROOT}site.json`);
 	const headerConfig = await loadJson(`${CONTENT_ROOT}header.json`);
+	const announcementsConfig = await loadJson(`${CONTENT_ROOT}announcements.json`);
 	const footerConfig = await loadJson(`${CONTENT_ROOT}footer.json`);
 	const pageRouteId = document.body.getAttribute('data-route')
 		|| getPageRouteId(site, currentPage);
@@ -243,21 +310,36 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 	const routes = site.routes || {};
 	const content = { ...pageContent };
-	const header = buildHeader(headerConfig, routes);
+	const header = buildHeader(headerConfig, routes, announcementsConfig);
 
 	function resolveHref(href = '') {
 		return resolveLink(href, routes);
+	}
+
+	function isAnnouncementDismissed() {
+		return sessionStorage.getItem(ANNOUNCEMENT_DISMISS_KEY) === 'true';
 	}
 
 	function isActivePage(item) {
 		return item.page && currentPage === item.page;
 	}
 
+	function highlightClass(type, routeId) {
+		if (!header.highlights?.enabled || !routeId) return '';
+		const targetRoutes = type === 'action'
+			? header.highlights.actionRoutes
+			: header.highlights.navRoutes;
+
+		if (!targetRoutes.includes(routeId)) return '';
+		return ` is-announcement-highlight is-announcement-highlight-${escapeHtml(header.highlights.color)} is-announcement-highlight-${escapeHtml(header.highlights.style)}`;
+	}
+
 	function navLink(item) {
 		const isActive = isActivePage(item);
 		const activeClass = isActive ? ' active' : '';
+		const importantClass = highlightClass('nav', item.routeId);
 		const currentAttr = isActive ? ' aria-current="page"' : '';
-		return `<li class="nav-item"><a href="${resolveHref(item.href)}" class="nav-link${activeClass}"${currentAttr}>${escapeHtml(item.label)}</a></li>`;
+		return `<li class="nav-item"><a href="${resolveHref(item.href)}" class="nav-link${activeClass}${importantClass}"${currentAttr}>${escapeHtml(item.label)}</a></li>`;
 	}
 
 	function navMenu(item, index) {
@@ -265,11 +347,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 		const isActive = item.items.some(isActivePage);
 		const activeClass = isActive ? ' active' : '';
+		const importantClass = item.items.some((child) => highlightClass('nav', child.routeId)) ? highlightClass('nav', item.items.find((child) => highlightClass('nav', child.routeId))?.routeId) : '';
 		const menuId = `nav-menu-${index}`;
 
 		return `
 			<li class="nav-item nav-item-dropdown">
-				<button class="nav-link nav-menu-toggle${activeClass}" type="button" aria-expanded="false" aria-controls="${menuId}">
+				<button class="nav-link nav-menu-toggle${activeClass}${importantClass}" type="button" aria-expanded="false" aria-controls="${menuId}">
 					${escapeHtml(item.label)}
 					<svg class="nav-caret" width="14" height="14" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
 						<path d="M5.5 7.5 10 12l4.5-4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -288,8 +371,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 		const style = action.style === 'secondary' ? 'secondary' : 'primary';
 		const label = action.label || '';
 		const ariaLabel = action.ariaLabel || label;
+		const importantClass = highlightClass('action', action.routeId);
 
-		return `<a href="${resolveHref(action.href)}" class="btn btn-${style} header-cta" role="button" aria-label="${escapeHtml(ariaLabel)}"${currentAttr}>${escapeHtml(label)}</a>`;
+		return `<a href="${resolveHref(action.href)}" class="btn btn-${style} header-cta${importantClass}" role="button" aria-label="${escapeHtml(ariaLabel)}"${currentAttr}>${escapeHtml(label)}</a>`;
 	}
 
 	function contentAction(action) {
@@ -297,63 +381,235 @@ document.addEventListener('DOMContentLoaded', async () => {
 		if (!link) return '';
 
 		const style = action.style === 'secondary' ? 'secondary' : 'primary';
-		return `<a href="${resolveHref(link.href)}" class="btn btn-${style}">${escapeHtml(link.label)}</a>`;
+		const targetAttr = action.newTab ? ' target="_blank" rel="noopener noreferrer"' : '';
+		const className = action.className ? ` ${escapeHtml(action.className)}` : '';
+		const ariaLabel = action.ariaLabel ? ` aria-label="${escapeHtml(action.ariaLabel)}"` : '';
+		return `<a href="${resolveHref(link.href)}" class="btn btn-${style}${className}" role="button"${targetAttr}${ariaLabel}>${escapeHtml(link.label)}</a>`;
+	}
+
+	function renderHeadingBlock(block = {}, level = 2, context = {}) {
+		const safeLevel = Math.min(Math.max(Number(block.level || level), 1), 6);
+		const text = block.text || block.heading || '';
+		if (!text) return '';
+
+		const id = blockId(block, '');
+		const idAttr = id ? ` id="${id}"` : '';
+		const classes = [
+			block.className,
+			context.variant === 'home-hero' && safeLevel === 1 ? 'hero-title' : ''
+		].filter(Boolean).map(escapeHtml).join(' ');
+		const classAttr = classes ? ` class="${classes}"` : '';
+
+		return `<h${safeLevel}${idAttr}${classAttr}>${escapeHtml(text)}</h${safeLevel}>`;
+	}
+
+	function renderBodyBlock(block = {}, context = {}) {
+		const text = block.text || block.body || '';
+		const body = renderRichTextValue(text);
+		const actions = Array.isArray(block.actions) && block.actions.length
+			? `<div class="component-actions">${block.actions.map(contentAction).join('')}</div>`
+			: '';
+		const classes = [
+			'component-body',
+			context.variant === 'home-hero' ? 'hero-tagline' : '',
+			block.className
+		].filter(Boolean).map(escapeHtml).join(' ');
+
+		return body || actions ? `<div class="${classes}">${body}${actions}</div>` : '';
+	}
+
+	function renderCardsBlock(block = {}) {
+		const cards = Array.isArray(block.items) ? block.items : (Array.isArray(block.cards) ? block.cards : []);
+		if (!cards.length) return '';
+
+		const columns = Math.max(1, Math.min(Number(block.columns || cards.length || 1), 4));
+		const variant = block.variant ? ` component-card-grid-${escapeHtml(block.variant)}` : '';
+		const cardClass = block.variant ? ` component-card-${escapeHtml(block.variant)}` : '';
+		const blockHeadingTag = /^h[1-6]$/.test(block.headingTag || '') ? block.headingTag : 'h3';
+		const cssSizePattern = /^(?:var\(--[a-z0-9-]+\)|clamp\([^;{}]+\)|min\([^;{}]+\)|max\([^;{}]+\)|calc\([^;{}]+\)|[\d.]+(?:rem|em|px|%|vw|vh))$/i;
+
+		return `
+			<div class="component-card-grid${variant}" style="--card-columns:${columns}">
+				${cards.map((card, index) => {
+					const link = resolveContentLink(card, routes);
+					const href = link?.href ? resolveHref(link.href) : '';
+					const label = link?.label || '';
+					const tag = href && href !== '#' ? 'a' : 'article';
+					const hrefAttr = tag === 'a' ? ` href="${href}"` : '';
+					const heading = card.heading || card.value || '';
+					const body = card.body || card.label || '';
+					const headingTag = /^h[1-6]$/.test(card.headingTag || '') ? card.headingTag : blockHeadingTag;
+					const headingSize = String(card.headingSize || block.headingSize || '').trim();
+					const headingSizeStyle = cssSizePattern.test(headingSize) ? ` --card-heading-font-size:${headingSize};` : '';
+
+					return `
+						<${tag} class="component-card${cardClass}" style="--item-index:${index};${headingSizeStyle}"${hrefAttr}>
+							${heading ? `<${headingTag} class="component-card-heading">${escapeHtml(heading)}</${headingTag}>` : ''}
+							${body ? `<p>${escapeHtml(body)}</p>` : ''}
+							${tag === 'a' && label ? `<span class="component-card-link">${escapeHtml(label)}</span>` : ''}
+						</${tag}>
+					`;
+				}).join('')}
+			</div>
+		`;
+	}
+
+	function renderGalleryBlock() {
+		return `
+			<div class="gallery-container">
+				<div class="gallery-wrapper" data-gallery-carousel></div>
+				<div class="gallery-controls" aria-label="Gallery controls">
+					<button class="prev" type="button" aria-label="Previous image">&#10094;</button>
+					<button class="next" type="button" aria-label="Next image">&#10095;</button>
+				</div>
+			</div>
+			<div class="gallery-grid" data-gallery-grid aria-label="Gallery image thumbnails"></div>
+		`;
+	}
+
+	function renderZeffyEmbedBlock(block = {}) {
+		const formUrl = block.formUrl || '';
+		const iframeSrc = block.iframeSrc || (formUrl ? `https://www.zeffy.com${formUrl}` : '');
+		if (!formUrl && !iframeSrc) return '';
+
+		return `
+			<div class="ticket-embed">
+				${formUrl ? `<div data-zeffy-embed data-form-url="${escapeHtml(formUrl)}"></div>` : ''}
+				<div data-zeffy-embed-fallback>
+					<div class="zeffy-fallback-frame">
+						<iframe title="${escapeHtml(block.iframeTitle || 'Embedded form powered by Zeffy')}" src="${escapeHtml(iframeSrc)}" allowpaymentrequest allowTransparency="true"></iframe>
+					</div>
+				</div>
+			</div>
+		`;
+	}
+
+	function renderBlock(block = {}, context = {}) {
+		const builders = {
+			heading1: () => renderHeadingBlock(block, 1, context),
+			heading2: () => renderHeadingBlock(block, 2, context),
+			body: () => renderBodyBlock(block, context),
+			blocks: () => renderCardsBlock(block),
+			cards: () => renderCardsBlock(block),
+			gallery: () => renderGalleryBlock(block),
+			zeffyEmbed: () => renderZeffyEmbedBlock(block),
+			section: () => renderSectionBlock(block),
+			hero: () => renderHeroBlock(block)
+		};
+
+		const builder = builders[block.type];
+		return builder ? builder() : '';
+	}
+
+	function renderBlocks(blocks = [], context = {}) {
+		return blocks.map((block) => renderBlock(block, context)).join('');
+	}
+
+	function renderHeroBlock(block = {}) {
+		const isHomeHero = block.variant === 'home';
+		const sectionClass = isHomeHero ? 'hero' : 'page-hero';
+		const containerClass = isHomeHero ? 'container hero-inner' : 'container page-block-container';
+		const headingBlock = block.blocks?.find((item) => item.type === 'heading1');
+		const labelledBy = headingBlock?.id ? ` aria-labelledby="${escapeHtml(headingBlock.id)}"` : '';
+		const role = isHomeHero ? ' role="region"' : '';
+
+		return `
+			<section class="${sectionClass}"${role}${labelledBy}>
+				<div class="${containerClass}">
+					${renderBlocks(block.blocks || [], { variant: isHomeHero ? 'home-hero' : 'page-hero' })}
+				</div>
+			</section>
+		`;
+	}
+
+	function renderSectionBlock(block = {}) {
+		const classes = [
+			'section',
+			'page-section',
+			block.variant === 'home-intro' || block.variant === 'home-pathways' ? 'home-section' : '',
+			block.variant === 'home-intro' ? 'home-intro' : '',
+			block.variant ? `page-section-${block.variant}` : '',
+			block.className
+		]
+			.filter(Boolean)
+			.map(escapeHtml)
+			.join(' ');
+		const headingBlock = block.blocks?.find((item) => item.type === 'heading2' || item.type === 'heading1');
+		const labelledBy = headingBlock?.id ? ` aria-labelledby="${escapeHtml(headingBlock.id)}"` : '';
+
+		return `
+			<section class="${classes}"${labelledBy}>
+				<div class="container">
+					${renderBlocks(block.blocks || [], { variant: block.variant || '' })}
+				</div>
+			</section>
+		`;
+	}
+
+	function renderPageBlocks() {
+		const mount = $('[data-page-blocks]') || $('.site-main');
+		if (!mount) return;
+
+		const blocks = Array.isArray(content.blocks) ? content.blocks : [];
+		if (!blocks.length) return;
+		mount.innerHTML = renderBlocks(blocks);
+	}
+
+	function loadZeffyEmbedScript() {
+		if (!$('[data-zeffy-embed]')) return;
+		if ($('script[data-zeffy-embed-script]')) return;
+
+		const script = document.createElement('script');
+		script.src = 'https://www.zeffy.com/embed/v2/zeffy-embed.js';
+		script.defer = true;
+		script.setAttribute('data-zeffy-embed-script', '');
+		script.onerror = () => {
+			$$('[data-zeffy-embed-fallback]').forEach((element) => {
+				element.style.display = 'block';
+			});
+		};
+		document.body.appendChild(script);
+	}
+
+	function createStarField(className, count = 120, yMax = 100) {
+		const stars = Array.from({ length: count }, () => {
+			const size = (Math.random() * 2.2 + 1).toFixed(2);
+			const opacity = (Math.random() * 0.45 + 0.45).toFixed(2);
+			const x = (Math.random() * 100).toFixed(2);
+			const y = (Math.random() * yMax).toFixed(2);
+			const duration = (Math.random() * 2.8 + 2.2).toFixed(2);
+			const delay = (Math.random() * -5).toFixed(2);
+			const drift = (Math.random() * 14 - 7).toFixed(2);
+
+			return `<span class="site-star" style="--star-x:${x}%; --star-y:${y}%; --star-size:${size}px; --star-opacity:${opacity}; --star-duration:${duration}s; --star-delay:${delay}s; --star-drift:${drift}px;"></span>`;
+		}).join('');
+
+		return `<div class="${className}" aria-hidden="true">${stars}</div>`;
+	}
+
+	function renderPageStars() {
+		if (document.body.classList.contains('home-page')) return;
+
+		const main = $('.site-main');
+		if (!main) return;
+
+		main.querySelector('.page-star-field')?.remove();
+		main.insertAdjacentHTML('afterbegin', createStarField('page-star-field', 150));
 	}
 
 	function renderHomePage() {
+		const hero = $('.home-page .hero');
+		if (hero) {
+			hero.querySelector('.home-star-field')?.remove();
+			hero.insertAdjacentHTML('afterbegin', createStarField('home-star-field', 120, 72));
+		}
+
 		const actionMount = $('[data-home-hero-actions]');
 		if (actionMount) {
 			const actions = Array.isArray(content.heroActions) ? content.heroActions : [];
 			actionMount.innerHTML = actions.map(contentAction).join('');
 		}
 
-		const statsMount = $('[data-home-stats]');
-		if (statsMount) {
-			const stats = Array.isArray(content.stats) ? content.stats : [];
-			statsMount.innerHTML = stats.map((stat) => `
-				<div class="home-stat">
-					<strong>${escapeHtml(stat.value || '')}</strong>
-					<span>${escapeHtml(stat.label || '')}</span>
-				</div>
-			`).join('');
-		}
-
-		const featureMount = $('[data-home-feature-cards]');
-		if (featureMount) {
-			const cards = Array.isArray(content.featureCards) ? content.featureCards : [];
-			featureMount.innerHTML = cards.map((card, index) => {
-				const link = resolveContentLink(card, routes);
-				const href = link ? resolveHref(link.href) : '#';
-				const label = link?.label || 'Learn more';
-
-				return `
-					<a class="home-feature-card" href="${href}" style="--item-index:${index}">
-						<span class="home-card-kicker">${String(index + 1).padStart(2, '0')}</span>
-						<h3>${escapeHtml(card.heading || '')}</h3>
-						<p>${escapeHtml(card.body || '')}</p>
-						<span class="home-card-link">${escapeHtml(label)}</span>
-					</a>
-				`;
-			}).join('');
-		}
-
-		const pathwaysMount = $('[data-home-pathways]');
-		if (pathwaysMount) {
-			const pathways = Array.isArray(content.pathways) ? content.pathways : [];
-			pathwaysMount.innerHTML = pathways.map((pathway, index) => {
-				const link = resolveContentLink(pathway, routes);
-				const href = link ? resolveHref(link.href) : '#';
-				const label = link?.label || 'Learn more';
-
-				return `
-					<a class="home-pathway" href="${href}" style="--item-index:${index}">
-						<h3>${escapeHtml(pathway.heading || '')}</h3>
-						<p>${escapeHtml(pathway.body || '')}</p>
-						<span>${escapeHtml(label)}</span>
-					</a>
-				`;
-			}).join('');
-		}
 	}
 
 	function renderHeader() {
@@ -366,9 +622,32 @@ document.addEventListener('DOMContentLoaded', async () => {
 		const logoAriaLabel = logo.ariaLabel || `${logoText} home`;
 		const menuOpenLabel = header.menuToggleOpenLabel || 'Open navigation';
 		const actionButtons = header.actions.map(headerAction).join('');
+		const hasVisibleAnnouncements = !isAnnouncementDismissed() && header.announcements.length > 0;
+		const announcementMarkup = !hasVisibleAnnouncements ? '' : header.announcements.map((announcement) => {
+			const actions = announcement.actions.map((action) => `
+				<a class="announcement-link announcement-link-${escapeHtml(action.style)}" href="${resolveHref(action.href)}" aria-label="${escapeHtml(action.ariaLabel)}">
+					${escapeHtml(action.label)}
+				</a>
+			`).join('');
+
+			return `
+				<section class="site-announcement" data-announcement-id="${escapeHtml(announcement.id)}" aria-label="${escapeHtml(announcement.label || 'Site announcement')}">
+					<div class="container announcement-inner">
+						<div class="announcement-copy">
+							${announcement.label ? `<span class="announcement-label">${escapeHtml(announcement.label)}</span>` : ''}
+							${announcement.body ? `<span class="announcement-body">${escapeHtml(announcement.body)}</span>` : ''}
+						</div>
+						${actions ? `<div class="announcement-actions">${actions}</div>` : ''}
+						<button class="announcement-dismiss" type="button" aria-label="Dismiss announcement">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+				</section>
+			`;
+		}).join('');
 
 		mount.outerHTML = `
-			<header class="site-header" role="banner">
+			<header class="site-header${hasVisibleAnnouncements ? ' has-visible-announcement' : ''}" role="banner">
 				<div class="container header-inner">
 					<div class="header-left">
 						<a href="${resolveHref(logo.href || 'index.html')}" class="logo" aria-label="${escapeHtml(logoAriaLabel)}">
@@ -400,6 +679,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 						${actionButtons}
 					</div>
 				</div>
+				${announcementMarkup}
 			</header>
 		`;
 	}
@@ -437,6 +717,15 @@ document.addEventListener('DOMContentLoaded', async () => {
 			`;
 		}).join('');
 
+		const operations = Array.isArray(footerConfig.operations) ? footerConfig.operations : [];
+		const operationsMarkup = operations.map((op) => {
+			if (!op.href) {
+				return `<span>${escapeHtml(op.label)}</span>`;
+			}
+			const href = op.href.startsWith('mailto:') || op.href.startsWith('tel:') ? op.href : resolveHref(op.href);
+			return `<a href="${escapeHtml(href)}">${escapeHtml(op.label)}</a>`;
+		}).join('<br>');
+
 		mount.outerHTML = `
 			<footer class="site-footer" role="contentinfo">
 				<div class="container footer-inner">
@@ -446,6 +735,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 						</a>
 						<p class="footer-brand-name">${escapeHtml(brandText)}</p>
 						<p class="footer-mission">${escapeHtml(mission)}</p>
+						${operationsMarkup ? `<div class="footer-operations">${operationsMarkup}</div>` : ''}
 					</section>
 
 					<nav class="footer-directory" aria-label="Footer navigation">
@@ -460,14 +750,26 @@ document.addEventListener('DOMContentLoaded', async () => {
 	}
 
 	applyJsonContent(content, routes);
+	renderPageBlocks();
 	renderHomePage();
+	loadZeffyEmbedScript();
+	renderPageStars();
 	renderHeader();
 	renderFooter();
 
 	// Elements
+	const announcementDismiss = $('.announcement-dismiss');
 	const navToggle = $('#nav-toggle');
 	const primaryNav = $('#primary-navigation');
 	const dropdownToggles = $$('.nav-menu-toggle');
+
+	if (announcementDismiss) {
+		announcementDismiss.addEventListener('click', () => {
+			sessionStorage.setItem(ANNOUNCEMENT_DISMISS_KEY, 'true');
+			announcementDismiss.closest('.site-announcement')?.remove();
+			$('.site-header')?.classList.remove('has-visible-announcement');
+		});
+	}
 
 	function closeDropdowns(exceptToggle = null) {
 		dropdownToggles.forEach((toggle) => {
@@ -537,7 +839,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 		const lightboxClose = $('.gallery-lightbox-close');
 		const prevButton = galleryContainer.querySelector('.prev');
 		const nextButton = galleryContainer.querySelector('.next');
-		const galleryGroups = Array.isArray(content.galleryGroups) ? content.galleryGroups : [];
+		const galleryBlock = findBlock(content.blocks || [], 'gallery') || {};
+		const galleryGroups = Array.isArray(galleryBlock.groups)
+			? galleryBlock.groups
+			: (Array.isArray(content.galleryGroups) ? content.galleryGroups : []);
 		const groupedImages = galleryGroups.flatMap((group) => {
 			const events = Array.isArray(group.events) ? group.events : [];
 			return events.flatMap((event) => {
@@ -551,7 +856,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 		});
 		const galleryImages = groupedImages.length > 0
 			? groupedImages
-			: (Array.isArray(content.galleryImages) ? content.galleryImages : []);
+			: (Array.isArray(galleryBlock.images)
+				? galleryBlock.images
+				: (Array.isArray(content.galleryImages) ? content.galleryImages : []));
 
 		if (galleryImages.length > 0) {
 			galleryWrapper.innerHTML = galleryImages.map((image, index) => `
@@ -701,4 +1008,182 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 		startAutoScroll();
 	}
+
+	// Chatbot functionality
+	const chatbot = $('#chatbot');
+	const chatbotToggle = $('#chatbot-toggle');
+	const chatbotPanel = $('#chatbot-panel');
+	const chatbotMinimize = $('#chatbot-minimize');
+	const chatbotForm = $('#chatbot-form');
+	const chatbotInput = $('#chatbot-input');
+	const chatbotMessages = $('#chatbot-messages');
+	const chatbotSend = $('#chatbot-send');
+
+	if (chatbot && chatbotToggle && chatbotPanel) {
+		function toggleChatbot() {
+			const isOpen = chatbotToggle.getAttribute('aria-expanded') === 'true';
+			chatbotToggle.setAttribute('aria-expanded', String(!isOpen));
+			chatbotPanel.hidden = isOpen;
+			if (!isOpen) {
+				chatbotInput.focus();
+			}
+		}
+
+		chatbotToggle.addEventListener('click', toggleChatbot);
+
+		if (chatbotMinimize) {
+			chatbotMinimize.addEventListener('click', toggleChatbot);
+		}
+
+		// Close chatbot on Escape key
+		document.addEventListener('keydown', (e) => {
+			if (e.key === 'Escape' && chatbotToggle.getAttribute('aria-expanded') === 'true') {
+				toggleChatbot();
+				chatbotToggle.focus();
+			}
+		});
+
+		// Close chatbot when clicking outside
+		document.addEventListener('click', (e) => {
+			if (chatbotToggle.getAttribute('aria-expanded') === 'true' &&
+				!chatbot.contains(e.target)) {
+				toggleChatbot();
+			}
+		});
+
+		function addMessage(text, isUser = false) {
+			const messageDiv = document.createElement('div');
+			messageDiv.className = `chatbot-message ${isUser ? 'user' : 'bot'}`;
+
+			const avatarDiv = document.createElement('div');
+			avatarDiv.className = 'chatbot-message-avatar';
+			avatarDiv.setAttribute('aria-hidden', 'true');
+			avatarDiv.innerHTML = isUser
+				? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>'
+				: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>';
+
+			const contentDiv = document.createElement('div');
+			contentDiv.className = 'chatbot-message-content';
+			const p = document.createElement('p');
+			p.textContent = text;
+			contentDiv.appendChild(p);
+
+			messageDiv.appendChild(avatarDiv);
+			messageDiv.appendChild(contentDiv);
+
+			chatbotMessages.appendChild(messageDiv);
+			chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+		}
+
+		function showTypingIndicator() {
+			const typingDiv = document.createElement('div');
+			typingDiv.className = 'chatbot-message bot chatbot-typing';
+			typingDiv.innerHTML = `
+				<div class="chatbot-message-avatar" aria-hidden="true">
+					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<circle cx="12" cy="12" r="10"></circle>
+						<path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+						<line x1="12" y1="17" x2="12.01" y2="17"></line>
+					</svg>
+				</div>
+				<div class="chatbot-message-content">
+					<div class="chatbot-typing-dots">
+						<span></span><span></span><span></span>
+					</div>
+				</div>
+			`;
+			chatbotMessages.appendChild(typingDiv);
+			chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+			return typingDiv;
+		}
+
+		function removeTypingIndicator(typingDiv) {
+			typingDiv.remove();
+		}
+
+		// Cloudflare Worker endpoint (deploy your worker and update this URL)
+		// The worker will call Cloudflare Workers AI with your API key stored securely
+		const CHATBOT_API_ENDPOINT = 'https://mcda-ai-bot.joshuacheng-dev.workers.dev/'; // UPDATE THIS
+
+		async function sendMessage(message) {
+			// Add user message
+			addMessage(message, true);
+			chatbotInput.value = '';
+			chatbotSend.disabled = true;
+
+			// Show typing indicator
+			const typingIndicator = showTypingIndicator();
+
+			try {
+				const response = await fetch(CHATBOT_API_ENDPOINT, {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify({ message })
+				});
+
+				if (!response.ok) {
+					throw new Error(`HTTP error! status: ${response.status}`);
+				}
+
+				const data = await response.json();
+				const botResponse = data.response || 'Sorry, I could not process your request.';
+
+				removeTypingIndicator(typingIndicator);
+				addMessage(botResponse, false);
+			} catch (error) {
+				removeTypingIndicator(typingIndicator);
+				addMessage('Sorry, there was an error processing your request. Please try again.', false);
+				console.error('Chatbot error:', error);
+			} finally {
+				chatbotSend.disabled = false;
+				chatbotInput.focus();
+			}
+		}
+
+		if (chatbotForm) {
+			chatbotForm.addEventListener('submit', (e) => {
+				e.preventDefault();
+				const message = chatbotInput.value.trim();
+				if (message) {
+					sendMessage(message);
+				}
+			});
+		}
+	}
 });
+
+/* -------------------------------------------------
+   CSS for typing indicator (injected via JS to keep
+   all chatbot styles together, but you can move this
+   to style.css if preferred)
+   ------------------------------------------------- */
+const chatbotStyles = `
+<style>
+.chatbot-typing .chatbot-message-content {
+	background: linear-gradient(180deg, var(--color-violet), var(--color-deep-navy));
+	border: 1px solid var(--edge-contrast);
+	border-radius: 16px;
+	border-bottom-left-radius: 4px;
+	padding: 12px 16px;
+}
+.chatbot-typing-dots {
+	display: flex;
+	gap: 4px;
+}
+.chatbot-typing-dots span {
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: var(--light-text-color);
+	opacity: 0.5;
+	animation: chatbot-typing-bounce 1.4s ease-in-out infinite both;
+}
+.chatbot-typing-dots span:nth-child(1) { animation-delay: -0.32s; }
+.chatbot-typing-dots span:nth-child(2) { animation-delay: -0.16s; }
+@keyframes chatbot-typing-bounce {
+	0%, 80%, 100% { transform: scale(0); opacity: 0.5; }
+	40% { transform: scale(1); opacity: 1; }
+}
+</style>
+`;
+document.head.insertAdjacentHTML('beforeend', chatbotStyles);

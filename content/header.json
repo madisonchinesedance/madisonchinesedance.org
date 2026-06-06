@@ -10,10 +10,14 @@
   "menuToggleCloseLabel": "Close navigation",
   "nav": [
     { "route": "home", "label": "Home" },
+    { "route": "gallery", "label": "Gallery" },
+    { "route": "faq", "label": "FAQ" },
     {
       "label": "About Us",
       "items": [
         { "route": "about", "label": "About Us" },
+        { "route": "meet-the-faculty", "label": "Meet the Faculty" },
+        { "route": "success-stories", "label": "Success Stories" },
         { "route": "contact", "label": "Contact" }
       ]
     },
@@ -27,10 +31,20 @@
     {
       "label": "Programs",
       "items": [
-        { "route": "dance-classes", "label": "Dance Classes" }
+        { "route": "beginner-dancers", "label": "Beginner Dancers" },
+        { "route": "intermediate-dancers", "label": "Intermediate Dancers" },
+        { "route": "advanced-dancers", "label": "Advanced Dancers" }
       ]
     },
-    { "route": "gallery", "label": "Gallery" },
+    {
+      "label": "Get Involved",
+      "items": [
+        { "route": "join-us", "label": "Dance With Us" },
+        { "route": "book-a-performance", "label": "Bring Us to Your Event" },
+        { "route": "see-a-performance", "label": "See A Performance" },
+        { "route": "support-our-cause", "label": "Support Our Cause" }
+      ]
+    },
     {
       "label": "Splendid China",
       "items": [
