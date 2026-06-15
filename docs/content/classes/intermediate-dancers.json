@@ -1,0 +1,25 @@
+{
+  "pageTitle": "Intermediate Dancers | Madison Chinese Dance Academy",
+  "metaDescription": "Class information for intermediate Madison Chinese Dance Academy students.",
+  "sections": [
+    {
+      "columns": 1,
+      "items": [
+        {
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Intermediate Dancers",
+              "id": "intermediate-dancers-heading",
+              "fontSize": "heading-1"
+            },
+            {
+              "type": "body",
+              "text": "This placeholder page will be updated with class information later. Check back soon!"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

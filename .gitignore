@@ -1,1 +1,10 @@
 ai-instructions.md
+images
+scripts/.env
+scripts/r2-config.json
+__pycache__/
+issues.md
+cloudflare-r2-import
+.vscode/
+node_modules/
+_site/

@@ -1,99 +1,66 @@
-# Madison Chinese Dance Academy — Website
+# Madison Chinese Dance Academy Website
 
-This repository contains a small, responsive static website for the Madison Chinese Dance Academy. It's authored with plain HTML, CSS, and a tiny JavaScript helper for navigation.
+Static site for [madisonchinesedance.org](https://madisonchinesedance.org), built with [Eleventy](https://www.11ty.dev/) and editable through [Pages CMS](https://pagescms.org).
 
-## Editing site text
+## Quick start (developers)
 
-Most visible site text is controlled by JSON files in `content/`. To update copy, open the matching file and edit the text value:
-
-- `content/site.json` — routes (page URLs, content files), header navigation, and footer. **Update this when moving or renaming pages** so links stay in sync across the site.
-- `content/index.json` — homepage hero text.
-- `content/about/about.json` — About page title, description, heading, and body.
-- `content/programs/dance-classes.json` — Dance Classes page copy.
-- `content/community/events.json` and `content/community/services.json` — Community pages.
-- `content/splendid-china/splendid-china-YYYY.json` — Splendid China archive page text for each year.
-- `content/tickets.json` — Tickets page text and Zeffy ticket link.
-- `content/donate.json` — Donate page text and Zeffy donation link.
-- `content/about/contact.json` — Contact page text.
-- `content/gallery.json` — Gallery page text and image list (also updated by the gallery scanner).
-
-### Internal links in JSON
-
-Reference another site page with a route id instead of a file path:
-
-```json
-"splendidTicketsHref": "@tickets"
+```bash
+npm install
+npm run build      # outputs to _site/
+npm run serve      # local preview with live reload
 ```
 
-Route ids are defined under `routes` in `content/site.json` (for example `home`, `gallery`, `tickets`, `splendid-china-2026`).
+## Editing content (volunteers)
 
-### Line breaks and emphasis in JSON
+1. Go to [pagescms.org](https://pagescms.org) and sign in with GitHub
+2. Open this repository
+3. Edit pages, announcements, navigation, or gallery images
+4. Save — GitHub Actions rebuilds and deploys the site automatically
 
-In page body fields (paragraphs, divs, buttons, and similar), you can format copy directly in JSON:
-
-- `\n` — line break within the same paragraph
-- `\n\n` — start a new paragraph (on `<div>` blocks, each becomes a `<p>`)
-- `<b>`, `<strong>`, `<i>`, `<em>`, `<br>` — bold, italic, or manual line breaks
-
-Example:
-
-```json
-"classesBody": "We offer classes for <b>all ages</b>.\n\nSchedule details will be posted here."
-```
-
-Titles, headings (`<h1>`–`<h6>`), and meta descriptions stay plain text only. Use `data-json-plain` on an element if you need to force plain text on a specific field.
-
-After changing a JSON file, save it and refresh the page. For local preview, serve the folder over HTTP, because browsers may block JSON loading from a plain `file://` tab.
+No command line or JSON editing required.
 
 ## Project structure
 
-- `index.html` — site home (hero + header/footer). Keep at repo root for Pages.
-- `pages/` — secondary pages. Each page uses root-absolute `/style.css` and `/app.js` so assets work regardless of folder depth.
-- `content/` — editable JSON files used as a lightweight CMS.
-- `images/` — image assets for the site. Gallery images currently live directly in `images/gallery/`.
-- `scripts/scan-images.py` — scans `images/gallery/` and updates `content/gallery.json`.
-- `style.css` — global styles and CSS custom properties (theme variables).
-- `app.js` — loads `site.json` and page content, renders shared header/footer, and handles the mobile nav toggle.
-
-## Moving or adding a page
-
-1. Add or update the HTML file under `pages/` (or root for the homepage).
-2. Add the page's content JSON under `content/`.
-3. Add a route entry in `content/site.json` (`href`, `page`, `content`).
-4. Wire the page into `header.nav` or `header.actions` in `site.json` if it should appear in the menu.
-5. Set `data-route="<route-id>"` on the page's `<body>` tag.
-
-You do not need to update paths in every JSON file if links use `@route-id` references.
-
-## Updating gallery images
-
-Add images directly under the gallery folder, for example:
-
-`images/gallery/my-photo.jpg`
-
-Then run:
-
-```sh
-python scripts/scan-images.py
+```
+src/
+  _data/              # Site settings (nav, footer, homepage, gallery, announcements)
+  _includes/          # HTML layouts and partials
+  assets/             # CSS, JavaScript, uploads
+  content/pages/      # Markdown pages
+  splendid-china/     # Annual performance archive (collection)
+  index.md            # Homepage entry
+scripts/
+  migrate-content.py  # One-time JSON → Markdown migration (legacy)
+  generate-ai-context.py
+  scan-images.py      # Sync performance images from Cloudflare R2
+.github/workflows/
+  deploy.yml          # Build + deploy to GitHub Pages
+.pages.yml            # Pages CMS configuration
 ```
 
-The scanner updates `content/gallery.json`, and the Gallery page renders the images in filename order.
+## Deployment
 
-## Customizing styles
+The site deploys via **GitHub Actions** on push to `main` (and the feature branch during development).
 
-- Edit `style.css` variables at the top (`:root`) to adjust the theme and layout:
-	- `--base-font-size` — root font size (px)
-	- `--body-font-size` and `--body-font-color` — paragraph text size and color
-	- `--nav-link-font-size` — header tab text size
-	- `--heading-1-font-size` and `--heading-1-font-weight` — page/hero heading sizing
-	- `--content-width` — maximum measure used for centered content blocks
+**One-time setup after merge:**
+1. GitHub → Settings → Pages → Source: **GitHub Actions**
+2. Install the [Pages CMS GitHub App](https://github.com/marketplace/pages-cms) on the org repo
+3. Invite editor accounts at pagescms.org
 
-## Notes & tips
+## Images (Cloudflare R2)
 
-- The homepage hero uses the same page-hero styles so typography and alignment stay consistent across pages.
-- Pages load assets from the site root (`/style.css`, `/app.js`, `/content/...`), which matches the custom domain deployment at `madisonchinesedance.org`.
+Performance photos live on R2 (`cdn.madisonchinesedance.org`). To sync from R2:
 
-## Contact
+```bash
+python scripts/scan-images.py sync
+```
 
-- Website Developer and Maintainer: joshuacheng.dev@gmail.com
-- Organizational Contact: ahuan98-dance@yahoo.com
+Homepage runner workflow is unchanged — see `scripts/scan-images.py --help`.
+
+## Chatbot
+
+The MCDA Assistant uses a Cloudflare Worker (`mcda-ai-bot`). After content changes, CI runs `generate-ai-context.py` to refresh `ai-context.md` for the worker.
+
+## Legacy
+
+The previous JSON + `docs/app.js` system is retired. Old content remains in git history under `docs/content/` until removed from this branch.
