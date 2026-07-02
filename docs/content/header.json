@@ -25,16 +25,20 @@
       "label": "Classes",
       "items": [
         {
-          "route": "advanced-dancers",
-          "label": "Advanced Dancers"
+          "route": "dance-with-us",
+          "label": "Dance with Us"
         },
-        {
+                {
           "route": "beginner-dancers",
           "label": "Beginner Dancers"
         },
         {
           "route": "intermediate-dancers",
           "label": "Intermediate Dancers"
+        },
+        {
+          "route": "advanced-dancers",
+          "label": "Advanced Dancers"
         }
       ]
     },
@@ -57,10 +61,6 @@
         {
           "route": "book-a-performance",
           "label": "Book a Performance"
-        },
-        {
-          "route": "dance-with-us",
-          "label": "Dance with Us"
         },
         {
           "route": "see-a-performance",
