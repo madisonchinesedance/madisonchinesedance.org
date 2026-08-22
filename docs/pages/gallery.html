@@ -3,18 +3,1393 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width,initial-scale=1" />
-	<title data-json="pageTitle">Gallery | Madison Chinese Dance Academy</title>
-	<meta name="description" content="Image gallery of the Madison Chinese Dance Academy." data-json="metaDescription" data-json-attr="content" />
+	<title>Gallery | Madison Chinese Dance Academy</title>
+	<meta name="description" content="Image gallery of the Madison Chinese Dance Academy." />
 	<link rel="stylesheet" href="/style.css" />
 	<script defer src="/app.js"></script>
 </head>
 <body data-route="gallery">
 	<a class="skip-link" href="#main">Skip to main content</a>
 
-	<div data-site-header></div>
+	<header class="site-header" role="banner">
+	<div class="container header-inner">
+		<div class="header-left">
+			<a href="/index.html" class="logo" aria-label="Madison Chinese Dance Academy home">
+				<span class="logo-icon" aria-hidden="true">
+					<svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+										<circle cx="16" cy="16" r="14.5" stroke="currentColor" stroke-width="1.5"/>
+										<text x="16" y="14" text-anchor="middle" fill="currentColor" font-size="9" font-weight="800" font-family="inherit" letter-spacing="0.5">MC</text>
+										<text x="16" y="24" text-anchor="middle" fill="currentColor" font-size="9" font-weight="800" font-family="inherit" letter-spacing="0.5">DA</text>
+									</svg>
+				</span>
+				<span class="logo-full-text">Madison Chinese Dance Academy</span>
+				<span class="logo-short-text">MCDA</span>
+			</a>
+		</div>
+		<nav id="primary-navigation" class="primary-nav" aria-label="Primary navigation">
+			<ul class="nav-list">
+<li class="nav-item"><a href="/index.html" class="nav-link">Home</a></li><li class="nav-item"><a href="/pages/gallery.html" class="nav-link active" aria-current="page">Gallery</a></li><li class="nav-item"><a href="/pages/programs.html" class="nav-link">Programs</a></li><li class="nav-item nav-item-dropdown">
+	<button class="nav-link nav-menu-toggle" type="button" aria-expanded="false" aria-controls="nav-menu-3">
+		Classes
+		<svg class="nav-caret" width="14" height="14" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+											<path d="M5.5 7.5 10 12l4.5-4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+										</svg>
+	</button>
+	<ul id="nav-menu-3" class="nav-dropdown" aria-label="Classes submenu">
+		<li class="nav-item"><a href="/pages/get-involved/dance-with-us.html" class="nav-link">Dance with Us</a></li><li class="nav-item"><a href="/pages/classes/beginner-dancers.html" class="nav-link">Beginner Dancers</a></li><li class="nav-item"><a href="/pages/classes/intermediate-dancers.html" class="nav-link">Intermediate Dancers</a></li><li class="nav-item"><a href="/pages/classes/advanced-dancers.html" class="nav-link">Advanced Dancers</a></li>
+	</ul>
+</li><li class="nav-item nav-item-dropdown">
+	<button class="nav-link nav-menu-toggle" type="button" aria-expanded="false" aria-controls="nav-menu-4">
+		Events
+		<svg class="nav-caret" width="14" height="14" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+											<path d="M5.5 7.5 10 12l4.5-4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+										</svg>
+	</button>
+	<ul id="nav-menu-4" class="nav-dropdown" aria-label="Events submenu">
+		<li class="nav-item"><a href="/pages/events/events.html" class="nav-link">Events</a></li><li class="nav-item"><a href="/pages/events/services.html" class="nav-link">Services</a></li>
+	</ul>
+</li><li class="nav-item nav-item-dropdown">
+	<button class="nav-link nav-menu-toggle" type="button" aria-expanded="false" aria-controls="nav-menu-5">
+		Get Involved
+		<svg class="nav-caret" width="14" height="14" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+											<path d="M5.5 7.5 10 12l4.5-4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+										</svg>
+	</button>
+	<ul id="nav-menu-5" class="nav-dropdown" aria-label="Get Involved submenu">
+		<li class="nav-item"><a href="/pages/get-involved/book-a-performance.html" class="nav-link">Book a Performance</a></li><li class="nav-item"><a href="/pages/get-involved/see-a-performance.html" class="nav-link">See A Performance</a></li><li class="nav-item"><a href="/pages/get-involved/support-our-cause.html" class="nav-link">Support Our Cause</a></li>
+	</ul>
+</li><li class="nav-item nav-item-dropdown">
+	<button class="nav-link nav-menu-toggle" type="button" aria-expanded="false" aria-controls="nav-menu-6">
+		Splendid China
+		<svg class="nav-caret" width="14" height="14" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+											<path d="M5.5 7.5 10 12l4.5-4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+										</svg>
+	</button>
+	<ul id="nav-menu-6" class="nav-dropdown" aria-label="Splendid China submenu">
+		<li class="nav-item"><a href="/pages/splendid-china/splendid-china-2026.html" class="nav-link">Splendid China 2026</a></li><li class="nav-item"><a href="/pages/splendid-china/splendid-china-2025.html" class="nav-link">Splendid China 2025</a></li><li class="nav-item"><a href="/pages/splendid-china/splendid-china-2024.html" class="nav-link">Splendid China 2024</a></li><li class="nav-item"><a href="/pages/splendid-china/splendid-china-2023.html" class="nav-link">Splendid China 2023</a></li><li class="nav-item"><a href="/pages/splendid-china/splendid-china-2022.html" class="nav-link">Splendid China 2022</a></li><li class="nav-item"><a href="/pages/splendid-china/splendid-china-2019.html" class="nav-link">Splendid China 2019</a></li><li class="nav-item"><a href="/pages/splendid-china/splendid-china-2018.html" class="nav-link">Splendid China 2018</a></li><li class="nav-item"><a href="/pages/splendid-china/splendid-china-2017.html" class="nav-link">Splendid China 2017</a></li><li class="nav-item"><a href="/pages/splendid-china/splendid-china-2016.html" class="nav-link">Splendid China 2016</a></li><li class="nav-item"><a href="/pages/splendid-china/splendid-china-2015.html" class="nav-link">Splendid China 2015</a></li><li class="nav-item"><a href="/pages/splendid-china/splendid-china-2014.html" class="nav-link">Splendid China 2014</a></li><li class="nav-item"><a href="/pages/splendid-china/splendid-china-2013.html" class="nav-link">Splendid China 2013</a></li><li class="nav-item"><a href="/pages/splendid-china/splendid-china-2012.html" class="nav-link">Splendid China 2012</a></li><li class="nav-item"><a href="/pages/splendid-china/splendid-china-2011.html" class="nav-link">Splendid China 2011</a></li><li class="nav-item"><a href="/pages/splendid-china/splendid-china-2010.html" class="nav-link">Splendid China 2010</a></li><li class="nav-item"><a href="/pages/splendid-china/splendid-china-2009.html" class="nav-link">Splendid China 2009</a></li><li class="nav-item"><a href="/pages/splendid-china/splendid-china-2008.html" class="nav-link">Splendid China 2008</a></li>
+	</ul>
+</li>
+				<li class="nav-cta-list">
+					<a href="/pages/tickets.html" class="btn btn-primary header-cta" role="button" aria-label="Purchase Tickets">Purchase Tickets</a><a href="/pages/donate.html" class="btn btn-primary header-cta" role="button" aria-label="Donate">Donate</a>
+				</li>
+			</ul>
+		</nav>
+		<div class="header-controls">
+			<button id="nav-toggle" class="nav-toggle" aria-controls="primary-navigation" aria-expanded="false" aria-label="Open navigation">
+				<svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+					<rect width="24" height="2" y="3" rx="1"></rect>
+					<rect width="24" height="2" y="11" rx="1"></rect>
+					<rect width="24" height="2" y="19" rx="1"></rect>
+				</svg>
+			</button>
+		</div>
+		<div class="header-ctas">
+			<a href="/pages/tickets.html" class="btn btn-primary header-cta" role="button" aria-label="Purchase Tickets">Purchase Tickets</a><a href="/pages/donate.html" class="btn btn-primary header-cta" role="button" aria-label="Donate">Donate</a>
+		</div>
+	</div>
 
-	<main id="main" tabindex="-1" class="site-main" data-page-blocks></main>
+</header>
 
-	<div data-site-footer></div>
+	<main id="main" tabindex="-1" class="site-main">
+<section class="section page-section" aria-labelledby="gallery-heading">
+	<div class="container">
+		<div class="section-grid" style="--section-columns:1">
+<article class="section-item" style="--item-index:0;">
+<h1 id="gallery-heading" style="font-size:var(--heading-1-font-size)">Gallery</h1>
+</article>
+		</div>
+	</div>
+</section>
+
+<section class="section page-section">
+	<div class="container">
+		<div class="section-grid" style="--section-columns:1">
+<article class="section-item" style="--item-index:0;">
+<!-- sync:gallery-featured:begin -->
+<section class="gallery-section gallery-section-featured" aria-label="Featured gallery photos">
+	<div class="gallery-container" data-gallery-variant="featured">
+		<div class="gallery-wrapper" data-gallery-carousel>
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-001.webp" alt="Gallery 001">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-002.webp" alt="Gallery 002">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-003.webp" alt="Gallery 003">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-004.webp" alt="Gallery 004">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-005.webp" alt="Gallery 005">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-006.webp" alt="Gallery 006">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-007.webp" alt="Gallery 007">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-008.webp" alt="Gallery 008">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-009.webp" alt="Gallery 009">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-010.webp" alt="Gallery 010">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-011.webp" alt="Gallery 011">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-012.webp" alt="Gallery 012">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-013.webp" alt="Gallery 013">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-014.webp" alt="Gallery 014">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-015.webp" alt="Gallery 015">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-016.webp" alt="Gallery 016">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-017.webp" alt="Gallery 017">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-018.webp" alt="Gallery 018">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-019.webp" alt="Gallery 019">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-020.webp" alt="Gallery 020">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-021.webp" alt="Gallery 021">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-022.webp" alt="Gallery 022">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-023.webp" alt="Gallery 023">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-024.webp" alt="Gallery 024">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-025.webp" alt="Gallery 025">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-026.webp" alt="Gallery 026">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-027.webp" alt="Gallery 027">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-028.webp" alt="Gallery 028">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-029.webp" alt="Gallery 029">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-030.webp" alt="Gallery 030">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-031.webp" alt="Gallery 031">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-032.webp" alt="Gallery 032">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-033.webp" alt="Gallery 033">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-034.webp" alt="Gallery 034">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-035.webp" alt="Gallery 035">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-036.webp" alt="Gallery 036">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-037.webp" alt="Gallery 037">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-038.webp" alt="Gallery 038">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-039.webp" alt="Gallery 039">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-040.webp" alt="Gallery 040">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-041.webp" alt="Gallery 041">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-042.webp" alt="Gallery 042">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-043.webp" alt="Gallery 043">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-044.webp" alt="Gallery 044">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-045.webp" alt="Gallery 045">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-046.webp" alt="Gallery 046">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-047.webp" alt="Gallery 047">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-048.webp" alt="Gallery 048">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-049.webp" alt="Gallery 049">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-050.webp" alt="Gallery 050">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-051.webp" alt="Gallery 051">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-052.webp" alt="Gallery 052">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-053.webp" alt="Gallery 053">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-054.webp" alt="Gallery 054">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-055.webp" alt="Gallery 055">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-056.webp" alt="Gallery 056">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-057.webp" alt="Gallery 057">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-058.webp" alt="Gallery 058">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-059.webp" alt="Gallery 059">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-060.webp" alt="Gallery 060">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-061.webp" alt="Gallery 061">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-062.webp" alt="Gallery 062">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-063.webp" alt="Gallery 063">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-064.webp" alt="Gallery 064">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-065.webp" alt="Gallery 065">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-066.webp" alt="Gallery 066">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-067.webp" alt="Gallery 067">
+		</div>
+		<div class="gallery-controls" aria-label="Gallery controls">
+			<button class="prev" type="button" aria-label="Previous image">&#10094;</button>
+			<button class="next" type="button" aria-label="Next image">&#10095;</button>
+		</div>
+	</div>
+	<div class="gallery-dots" data-gallery-dots aria-label="Featured gallery image selection">
+		<button class="gallery-dot active" type="button" data-gallery-dot="0" aria-label="Go to image 1"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="1" aria-label="Go to image 2"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="2" aria-label="Go to image 3"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="3" aria-label="Go to image 4"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="4" aria-label="Go to image 5"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="5" aria-label="Go to image 6"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="6" aria-label="Go to image 7"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="7" aria-label="Go to image 8"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="8" aria-label="Go to image 9"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="9" aria-label="Go to image 10"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="10" aria-label="Go to image 11"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="11" aria-label="Go to image 12"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="12" aria-label="Go to image 13"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="13" aria-label="Go to image 14"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="14" aria-label="Go to image 15"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="15" aria-label="Go to image 16"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="16" aria-label="Go to image 17"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="17" aria-label="Go to image 18"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="18" aria-label="Go to image 19"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="19" aria-label="Go to image 20"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="20" aria-label="Go to image 21"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="21" aria-label="Go to image 22"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="22" aria-label="Go to image 23"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="23" aria-label="Go to image 24"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="24" aria-label="Go to image 25"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="25" aria-label="Go to image 26"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="26" aria-label="Go to image 27"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="27" aria-label="Go to image 28"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="28" aria-label="Go to image 29"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="29" aria-label="Go to image 30"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="30" aria-label="Go to image 31"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="31" aria-label="Go to image 32"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="32" aria-label="Go to image 33"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="33" aria-label="Go to image 34"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="34" aria-label="Go to image 35"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="35" aria-label="Go to image 36"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="36" aria-label="Go to image 37"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="37" aria-label="Go to image 38"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="38" aria-label="Go to image 39"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="39" aria-label="Go to image 40"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="40" aria-label="Go to image 41"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="41" aria-label="Go to image 42"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="42" aria-label="Go to image 43"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="43" aria-label="Go to image 44"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="44" aria-label="Go to image 45"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="45" aria-label="Go to image 46"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="46" aria-label="Go to image 47"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="47" aria-label="Go to image 48"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="48" aria-label="Go to image 49"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="49" aria-label="Go to image 50"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="50" aria-label="Go to image 51"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="51" aria-label="Go to image 52"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="52" aria-label="Go to image 53"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="53" aria-label="Go to image 54"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="54" aria-label="Go to image 55"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="55" aria-label="Go to image 56"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="56" aria-label="Go to image 57"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="57" aria-label="Go to image 58"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="58" aria-label="Go to image 59"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="59" aria-label="Go to image 60"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="60" aria-label="Go to image 61"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="61" aria-label="Go to image 62"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="62" aria-label="Go to image 63"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="63" aria-label="Go to image 64"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="64" aria-label="Go to image 65"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="65" aria-label="Go to image 66"></button>
+		<button class="gallery-dot" type="button" data-gallery-dot="66" aria-label="Go to image 67"></button>
+	</div>
+	<div class="gallery-featured-thumbs" data-gallery-featured-thumbs aria-label="Featured gallery thumbnails">
+		<button class="gallery-thumb active" type="button" data-gallery-thumb="0" aria-label="Open Gallery 001">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-001.webp" alt="Gallery 001" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="1" aria-label="Open Gallery 002">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-002.webp" alt="Gallery 002" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="2" aria-label="Open Gallery 003">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-003.webp" alt="Gallery 003" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="3" aria-label="Open Gallery 004">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-004.webp" alt="Gallery 004" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="4" aria-label="Open Gallery 005">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-005.webp" alt="Gallery 005" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="5" aria-label="Open Gallery 006">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-006.webp" alt="Gallery 006" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="6" aria-label="Open Gallery 007">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-007.webp" alt="Gallery 007" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="7" aria-label="Open Gallery 008">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-008.webp" alt="Gallery 008" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="8" aria-label="Open Gallery 009">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-009.webp" alt="Gallery 009" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="9" aria-label="Open Gallery 010">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-010.webp" alt="Gallery 010" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="10" aria-label="Open Gallery 011">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-011.webp" alt="Gallery 011" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="11" aria-label="Open Gallery 012">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-012.webp" alt="Gallery 012" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="12" aria-label="Open Gallery 013">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-013.webp" alt="Gallery 013" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="13" aria-label="Open Gallery 014">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-014.webp" alt="Gallery 014" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="14" aria-label="Open Gallery 015">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-015.webp" alt="Gallery 015" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="15" aria-label="Open Gallery 016">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-016.webp" alt="Gallery 016" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="16" aria-label="Open Gallery 017">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-017.webp" alt="Gallery 017" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="17" aria-label="Open Gallery 018">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-018.webp" alt="Gallery 018" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="18" aria-label="Open Gallery 019">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-019.webp" alt="Gallery 019" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="19" aria-label="Open Gallery 020">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-020.webp" alt="Gallery 020" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="20" aria-label="Open Gallery 021">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-021.webp" alt="Gallery 021" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="21" aria-label="Open Gallery 022">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-022.webp" alt="Gallery 022" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="22" aria-label="Open Gallery 023">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-023.webp" alt="Gallery 023" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="23" aria-label="Open Gallery 024">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-024.webp" alt="Gallery 024" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="24" aria-label="Open Gallery 025">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-025.webp" alt="Gallery 025" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="25" aria-label="Open Gallery 026">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-026.webp" alt="Gallery 026" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="26" aria-label="Open Gallery 027">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-027.webp" alt="Gallery 027" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="27" aria-label="Open Gallery 028">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-028.webp" alt="Gallery 028" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="28" aria-label="Open Gallery 029">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-029.webp" alt="Gallery 029" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="29" aria-label="Open Gallery 030">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-030.webp" alt="Gallery 030" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="30" aria-label="Open Gallery 031">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-031.webp" alt="Gallery 031" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="31" aria-label="Open Gallery 032">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-032.webp" alt="Gallery 032" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="32" aria-label="Open Gallery 033">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-033.webp" alt="Gallery 033" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="33" aria-label="Open Gallery 034">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-034.webp" alt="Gallery 034" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="34" aria-label="Open Gallery 035">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-035.webp" alt="Gallery 035" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="35" aria-label="Open Gallery 036">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-036.webp" alt="Gallery 036" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="36" aria-label="Open Gallery 037">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-037.webp" alt="Gallery 037" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="37" aria-label="Open Gallery 038">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-038.webp" alt="Gallery 038" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="38" aria-label="Open Gallery 039">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-039.webp" alt="Gallery 039" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="39" aria-label="Open Gallery 040">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-040.webp" alt="Gallery 040" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="40" aria-label="Open Gallery 041">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-041.webp" alt="Gallery 041" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="41" aria-label="Open Gallery 042">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-042.webp" alt="Gallery 042" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="42" aria-label="Open Gallery 043">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-043.webp" alt="Gallery 043" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="43" aria-label="Open Gallery 044">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-044.webp" alt="Gallery 044" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="44" aria-label="Open Gallery 045">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-045.webp" alt="Gallery 045" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="45" aria-label="Open Gallery 046">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-046.webp" alt="Gallery 046" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="46" aria-label="Open Gallery 047">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-047.webp" alt="Gallery 047" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="47" aria-label="Open Gallery 048">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-048.webp" alt="Gallery 048" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="48" aria-label="Open Gallery 049">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-049.webp" alt="Gallery 049" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="49" aria-label="Open Gallery 050">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-050.webp" alt="Gallery 050" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="50" aria-label="Open Gallery 051">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-051.webp" alt="Gallery 051" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="51" aria-label="Open Gallery 052">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-052.webp" alt="Gallery 052" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="52" aria-label="Open Gallery 053">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-053.webp" alt="Gallery 053" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="53" aria-label="Open Gallery 054">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-054.webp" alt="Gallery 054" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="54" aria-label="Open Gallery 055">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-055.webp" alt="Gallery 055" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="55" aria-label="Open Gallery 056">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-056.webp" alt="Gallery 056" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="56" aria-label="Open Gallery 057">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-057.webp" alt="Gallery 057" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="57" aria-label="Open Gallery 058">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-058.webp" alt="Gallery 058" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="58" aria-label="Open Gallery 059">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-059.webp" alt="Gallery 059" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="59" aria-label="Open Gallery 060">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-060.webp" alt="Gallery 060" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="60" aria-label="Open Gallery 061">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-061.webp" alt="Gallery 061" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="61" aria-label="Open Gallery 062">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-062.webp" alt="Gallery 062" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="62" aria-label="Open Gallery 063">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-063.webp" alt="Gallery 063" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="63" aria-label="Open Gallery 064">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-064.webp" alt="Gallery 064" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="64" aria-label="Open Gallery 065">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-065.webp" alt="Gallery 065" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="65" aria-label="Open Gallery 066">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-066.webp" alt="Gallery 066" loading="lazy" decoding="async">
+		</button>
+		<button class="gallery-thumb" type="button" data-gallery-thumb="66" aria-label="Open Gallery 067">
+			<img src="https://cdn.madisonchinesedance.org/gallery/gallery-067.webp" alt="Gallery 067" loading="lazy" decoding="async">
+		</button>
+	</div>
+</section>
+<!-- sync:gallery-featured:end -->
+</article>
+		</div>
+	</div>
+</section>
+
+<section class="section page-section">
+	<div class="container">
+		<div class="section-grid" style="--section-columns:1">
+<article class="section-item" style="--item-index:0;">
+<!-- sync:gallery-archive:begin -->
+<section class="gallery-section gallery-section-archive" aria-label="Splendid China gallery photos">
+
+	<div class="gallery-year-tabs" role="tablist" aria-label="Filter gallery by year">
+		<button class="gallery-year-tab active" type="button" role="tab" data-gallery-year-tab="0" aria-selected="true" tabindex="0">
+			<span class="gallery-year-tab-label">2026</span>
+			<span class="gallery-year-tab-count" aria-hidden="true">1</span>
+		</button>
+		<button class="gallery-year-tab" type="button" role="tab" data-gallery-year-tab="1" aria-selected="false" tabindex="-1">
+			<span class="gallery-year-tab-label">2025</span>
+			<span class="gallery-year-tab-count" aria-hidden="true">14</span>
+		</button>
+		<button class="gallery-year-tab" type="button" role="tab" data-gallery-year-tab="2" aria-selected="false" tabindex="-1">
+			<span class="gallery-year-tab-label">2024</span>
+			<span class="gallery-year-tab-count" aria-hidden="true">26</span>
+		</button>
+		<button class="gallery-year-tab" type="button" role="tab" data-gallery-year-tab="3" aria-selected="false" tabindex="-1">
+			<span class="gallery-year-tab-label">2023</span>
+			<span class="gallery-year-tab-count" aria-hidden="true">17</span>
+		</button>
+		<button class="gallery-year-tab" type="button" role="tab" data-gallery-year-tab="4" aria-selected="false" tabindex="-1">
+			<span class="gallery-year-tab-label">2022</span>
+			<span class="gallery-year-tab-count" aria-hidden="true">16</span>
+		</button>
+		<button class="gallery-year-tab" type="button" role="tab" data-gallery-year-tab="5" aria-selected="false" tabindex="-1">
+			<span class="gallery-year-tab-label">2019</span>
+			<span class="gallery-year-tab-count" aria-hidden="true">14</span>
+		</button>
+		<button class="gallery-year-tab" type="button" role="tab" data-gallery-year-tab="6" aria-selected="false" tabindex="-1">
+			<span class="gallery-year-tab-label">2018</span>
+			<span class="gallery-year-tab-count" aria-hidden="true">16</span>
+		</button>
+		<button class="gallery-year-tab" type="button" role="tab" data-gallery-year-tab="7" aria-selected="false" tabindex="-1">
+			<span class="gallery-year-tab-label">2017</span>
+			<span class="gallery-year-tab-count" aria-hidden="true">1</span>
+		</button>
+		<button class="gallery-year-tab" type="button" role="tab" data-gallery-year-tab="8" aria-selected="false" tabindex="-1">
+			<span class="gallery-year-tab-label">2016</span>
+			<span class="gallery-year-tab-count" aria-hidden="true">1</span>
+		</button>
+		<button class="gallery-year-tab" type="button" role="tab" data-gallery-year-tab="9" aria-selected="false" tabindex="-1">
+			<span class="gallery-year-tab-label">2015</span>
+			<span class="gallery-year-tab-count" aria-hidden="true">1</span>
+		</button>
+		<button class="gallery-year-tab" type="button" role="tab" data-gallery-year-tab="10" aria-selected="false" tabindex="-1">
+			<span class="gallery-year-tab-label">2014</span>
+			<span class="gallery-year-tab-count" aria-hidden="true">2</span>
+		</button>
+		<button class="gallery-year-tab" type="button" role="tab" data-gallery-year-tab="11" aria-selected="false" tabindex="-1">
+			<span class="gallery-year-tab-label">2013</span>
+			<span class="gallery-year-tab-count" aria-hidden="true">3</span>
+		</button>
+		<button class="gallery-year-tab" type="button" role="tab" data-gallery-year-tab="12" aria-selected="false" tabindex="-1">
+			<span class="gallery-year-tab-label">2012</span>
+			<span class="gallery-year-tab-count" aria-hidden="true">2</span>
+		</button>
+		<button class="gallery-year-tab" type="button" role="tab" data-gallery-year-tab="13" aria-selected="false" tabindex="-1">
+			<span class="gallery-year-tab-label">2011</span>
+			<span class="gallery-year-tab-count" aria-hidden="true">4</span>
+		</button>
+		<button class="gallery-year-tab" type="button" role="tab" data-gallery-year-tab="14" aria-selected="false" tabindex="-1">
+			<span class="gallery-year-tab-label">2010</span>
+			<span class="gallery-year-tab-count" aria-hidden="true">1</span>
+		</button>
+		<button class="gallery-year-tab" type="button" role="tab" data-gallery-year-tab="15" aria-selected="false" tabindex="-1">
+			<span class="gallery-year-tab-label">2009</span>
+			<span class="gallery-year-tab-count" aria-hidden="true">1</span>
+		</button>
+		<button class="gallery-year-tab" type="button" role="tab" data-gallery-year-tab="16" aria-selected="false" tabindex="-1">
+			<span class="gallery-year-tab-label">2008</span>
+			<span class="gallery-year-tab-count" aria-hidden="true">2</span>
+		</button>
+	</div>
+
+	<div class="gallery-year-panel active" data-gallery-year-panel="0">
+		<div class="gallery-container" data-gallery-variant="archive">
+			<div class="gallery-wrapper" data-gallery-carousel>
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2026/splendid-china-2026-001.webp" alt="Splendid China 2026 001">
+			</div>
+			<div class="gallery-controls" aria-label="Gallery controls">
+				<button class="prev" type="button" aria-label="Previous image">&#10094;</button>
+				<button class="next" type="button" aria-label="Next image">&#10095;</button>
+			</div>
+		</div>
+		<div class="gallery-grid" data-gallery-grid aria-label="Gallery image thumbnails">
+			<section class="gallery-event" aria-label="Splendid China">
+				<h3>Splendid China</h3>
+				<div class="gallery-event-grid">
+					<button class="gallery-thumb" type="button" data-gallery-thumb="0" aria-label="Open Splendid China 2026 001">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2026/splendid-china-2026-001.webp" alt="Splendid China 2026 001" loading="lazy" decoding="async">
+					</button>
+				</div>
+			</section>
+		</div>
+	</div>
+
+	<div class="gallery-year-panel" data-gallery-year-panel="1" hidden>
+		<div class="gallery-container" data-gallery-variant="archive">
+			<div class="gallery-wrapper" data-gallery-carousel>
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2025/splendid-china-2025-001.webp" alt="Splendid China 2025 001">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2025/splendid-china-2025-002.webp" alt="Splendid China 2025 002">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2025/splendid-china-2025-003.webp" alt="Splendid China 2025 003">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2025/splendid-china-2025-004.webp" alt="Splendid China 2025 004">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2025/splendid-china-2025-005.webp" alt="Splendid China 2025 005">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2025/splendid-china-2025-006.webp" alt="Splendid China 2025 006">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2025/splendid-china-2025-007.webp" alt="Splendid China 2025 007">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2025/splendid-china-2025-008.webp" alt="Splendid China 2025 008">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2025/splendid-china-2025-009.webp" alt="Splendid China 2025 009">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2025/splendid-china-2025-010.webp" alt="Splendid China 2025 010">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2025/splendid-china-2025-011.webp" alt="Splendid China 2025 011">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2025/splendid-china-2025-012.webp" alt="Splendid China 2025 012">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2025/splendid-china-2025-013.webp" alt="Splendid China 2025 013">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2025/splendid-china-2025-014.webp" alt="Splendid China 2025 014">
+			</div>
+			<div class="gallery-controls" aria-label="Gallery controls">
+				<button class="prev" type="button" aria-label="Previous image">&#10094;</button>
+				<button class="next" type="button" aria-label="Next image">&#10095;</button>
+			</div>
+		</div>
+		<div class="gallery-grid" data-gallery-grid aria-label="Gallery image thumbnails">
+			<section class="gallery-event" aria-label="Splendid China">
+				<h3>Splendid China</h3>
+				<div class="gallery-event-grid">
+					<button class="gallery-thumb" type="button" data-gallery-thumb="0" aria-label="Open Splendid China 2025 001">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2025/splendid-china-2025-001.webp" alt="Splendid China 2025 001" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="1" aria-label="Open Splendid China 2025 002">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2025/splendid-china-2025-002.webp" alt="Splendid China 2025 002" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="2" aria-label="Open Splendid China 2025 003">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2025/splendid-china-2025-003.webp" alt="Splendid China 2025 003" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="3" aria-label="Open Splendid China 2025 004">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2025/splendid-china-2025-004.webp" alt="Splendid China 2025 004" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="4" aria-label="Open Splendid China 2025 005">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2025/splendid-china-2025-005.webp" alt="Splendid China 2025 005" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="5" aria-label="Open Splendid China 2025 006">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2025/splendid-china-2025-006.webp" alt="Splendid China 2025 006" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="6" aria-label="Open Splendid China 2025 007">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2025/splendid-china-2025-007.webp" alt="Splendid China 2025 007" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="7" aria-label="Open Splendid China 2025 008">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2025/splendid-china-2025-008.webp" alt="Splendid China 2025 008" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="8" aria-label="Open Splendid China 2025 009">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2025/splendid-china-2025-009.webp" alt="Splendid China 2025 009" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="9" aria-label="Open Splendid China 2025 010">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2025/splendid-china-2025-010.webp" alt="Splendid China 2025 010" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="10" aria-label="Open Splendid China 2025 011">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2025/splendid-china-2025-011.webp" alt="Splendid China 2025 011" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="11" aria-label="Open Splendid China 2025 012">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2025/splendid-china-2025-012.webp" alt="Splendid China 2025 012" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="12" aria-label="Open Splendid China 2025 013">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2025/splendid-china-2025-013.webp" alt="Splendid China 2025 013" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="13" aria-label="Open Splendid China 2025 014">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2025/splendid-china-2025-014.webp" alt="Splendid China 2025 014" loading="lazy" decoding="async">
+					</button>
+				</div>
+			</section>
+		</div>
+	</div>
+
+	<div class="gallery-year-panel" data-gallery-year-panel="2" hidden>
+		<div class="gallery-container" data-gallery-variant="archive">
+			<div class="gallery-wrapper" data-gallery-carousel>
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-001.webp" alt="Splendid China 2024 001">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-002.webp" alt="Splendid China 2024 002">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-003.webp" alt="Splendid China 2024 003">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-004.webp" alt="Splendid China 2024 004">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-005.webp" alt="Splendid China 2024 005">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-006.webp" alt="Splendid China 2024 006">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-007.webp" alt="Splendid China 2024 007">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-008.webp" alt="Splendid China 2024 008">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-009.webp" alt="Splendid China 2024 009">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-010.webp" alt="Splendid China 2024 010">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-011.webp" alt="Splendid China 2024 011">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-012.webp" alt="Splendid China 2024 012">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-013.webp" alt="Splendid China 2024 013">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-014.webp" alt="Splendid China 2024 014">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-015.webp" alt="Splendid China 2024 015">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-016.webp" alt="Splendid China 2024 016">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-017.webp" alt="Splendid China 2024 017">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-018.webp" alt="Splendid China 2024 018">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-019.webp" alt="Splendid China 2024 019">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-020.webp" alt="Splendid China 2024 020">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-021.webp" alt="Splendid China 2024 021">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-022.webp" alt="Splendid China 2024 022">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-023.webp" alt="Splendid China 2024 023">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-024.webp" alt="Splendid China 2024 024">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-025.webp" alt="Splendid China 2024 025">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-026.webp" alt="Splendid China 2024 026">
+			</div>
+			<div class="gallery-controls" aria-label="Gallery controls">
+				<button class="prev" type="button" aria-label="Previous image">&#10094;</button>
+				<button class="next" type="button" aria-label="Next image">&#10095;</button>
+			</div>
+		</div>
+		<div class="gallery-grid" data-gallery-grid aria-label="Gallery image thumbnails">
+			<section class="gallery-event" aria-label="Splendid China">
+				<h3>Splendid China</h3>
+				<div class="gallery-event-grid">
+					<button class="gallery-thumb" type="button" data-gallery-thumb="0" aria-label="Open Splendid China 2024 001">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-001.webp" alt="Splendid China 2024 001" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="1" aria-label="Open Splendid China 2024 002">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-002.webp" alt="Splendid China 2024 002" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="2" aria-label="Open Splendid China 2024 003">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-003.webp" alt="Splendid China 2024 003" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="3" aria-label="Open Splendid China 2024 004">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-004.webp" alt="Splendid China 2024 004" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="4" aria-label="Open Splendid China 2024 005">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-005.webp" alt="Splendid China 2024 005" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="5" aria-label="Open Splendid China 2024 006">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-006.webp" alt="Splendid China 2024 006" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="6" aria-label="Open Splendid China 2024 007">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-007.webp" alt="Splendid China 2024 007" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="7" aria-label="Open Splendid China 2024 008">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-008.webp" alt="Splendid China 2024 008" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="8" aria-label="Open Splendid China 2024 009">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-009.webp" alt="Splendid China 2024 009" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="9" aria-label="Open Splendid China 2024 010">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-010.webp" alt="Splendid China 2024 010" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="10" aria-label="Open Splendid China 2024 011">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-011.webp" alt="Splendid China 2024 011" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="11" aria-label="Open Splendid China 2024 012">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-012.webp" alt="Splendid China 2024 012" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="12" aria-label="Open Splendid China 2024 013">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-013.webp" alt="Splendid China 2024 013" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="13" aria-label="Open Splendid China 2024 014">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-014.webp" alt="Splendid China 2024 014" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="14" aria-label="Open Splendid China 2024 015">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-015.webp" alt="Splendid China 2024 015" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="15" aria-label="Open Splendid China 2024 016">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-016.webp" alt="Splendid China 2024 016" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="16" aria-label="Open Splendid China 2024 017">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-017.webp" alt="Splendid China 2024 017" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="17" aria-label="Open Splendid China 2024 018">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-018.webp" alt="Splendid China 2024 018" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="18" aria-label="Open Splendid China 2024 019">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-019.webp" alt="Splendid China 2024 019" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="19" aria-label="Open Splendid China 2024 020">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-020.webp" alt="Splendid China 2024 020" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="20" aria-label="Open Splendid China 2024 021">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-021.webp" alt="Splendid China 2024 021" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="21" aria-label="Open Splendid China 2024 022">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-022.webp" alt="Splendid China 2024 022" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="22" aria-label="Open Splendid China 2024 023">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-023.webp" alt="Splendid China 2024 023" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="23" aria-label="Open Splendid China 2024 024">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-024.webp" alt="Splendid China 2024 024" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="24" aria-label="Open Splendid China 2024 025">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-025.webp" alt="Splendid China 2024 025" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="25" aria-label="Open Splendid China 2024 026">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2024/splendid-china-2024-026.webp" alt="Splendid China 2024 026" loading="lazy" decoding="async">
+					</button>
+				</div>
+			</section>
+		</div>
+	</div>
+
+	<div class="gallery-year-panel" data-gallery-year-panel="3" hidden>
+		<div class="gallery-container" data-gallery-variant="archive">
+			<div class="gallery-wrapper" data-gallery-carousel>
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2023/splendid-china-2023-001.webp" alt="Splendid China 2023 001">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2023/splendid-china-2023-002.webp" alt="Splendid China 2023 002">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2023/splendid-china-2023-003.webp" alt="Splendid China 2023 003">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2023/splendid-china-2023-004.webp" alt="Splendid China 2023 004">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2023/splendid-china-2023-005.webp" alt="Splendid China 2023 005">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2023/splendid-china-2023-006.webp" alt="Splendid China 2023 006">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2023/splendid-china-2023-007.webp" alt="Splendid China 2023 007">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2023/splendid-china-2023-008.webp" alt="Splendid China 2023 008">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2023/splendid-china-2023-009.webp" alt="Splendid China 2023 009">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2023/splendid-china-2023-010.webp" alt="Splendid China 2023 010">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2023/splendid-china-2023-011.webp" alt="Splendid China 2023 011">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2023/splendid-china-2023-012.webp" alt="Splendid China 2023 012">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2023/splendid-china-2023-013.webp" alt="Splendid China 2023 013">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2023/splendid-china-2023-014.webp" alt="Splendid China 2023 014">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2023/splendid-china-2023-015.webp" alt="Splendid China 2023 015">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2023/splendid-china-2023-016.webp" alt="Splendid China 2023 016">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2023/splendid-china-2023-017.webp" alt="Splendid China 2023 017">
+			</div>
+			<div class="gallery-controls" aria-label="Gallery controls">
+				<button class="prev" type="button" aria-label="Previous image">&#10094;</button>
+				<button class="next" type="button" aria-label="Next image">&#10095;</button>
+			</div>
+		</div>
+		<div class="gallery-grid" data-gallery-grid aria-label="Gallery image thumbnails">
+			<section class="gallery-event" aria-label="Splendid China">
+				<h3>Splendid China</h3>
+				<div class="gallery-event-grid">
+					<button class="gallery-thumb" type="button" data-gallery-thumb="0" aria-label="Open Splendid China 2023 001">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2023/splendid-china-2023-001.webp" alt="Splendid China 2023 001" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="1" aria-label="Open Splendid China 2023 002">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2023/splendid-china-2023-002.webp" alt="Splendid China 2023 002" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="2" aria-label="Open Splendid China 2023 003">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2023/splendid-china-2023-003.webp" alt="Splendid China 2023 003" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="3" aria-label="Open Splendid China 2023 004">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2023/splendid-china-2023-004.webp" alt="Splendid China 2023 004" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="4" aria-label="Open Splendid China 2023 005">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2023/splendid-china-2023-005.webp" alt="Splendid China 2023 005" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="5" aria-label="Open Splendid China 2023 006">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2023/splendid-china-2023-006.webp" alt="Splendid China 2023 006" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="6" aria-label="Open Splendid China 2023 007">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2023/splendid-china-2023-007.webp" alt="Splendid China 2023 007" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="7" aria-label="Open Splendid China 2023 008">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2023/splendid-china-2023-008.webp" alt="Splendid China 2023 008" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="8" aria-label="Open Splendid China 2023 009">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2023/splendid-china-2023-009.webp" alt="Splendid China 2023 009" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="9" aria-label="Open Splendid China 2023 010">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2023/splendid-china-2023-010.webp" alt="Splendid China 2023 010" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="10" aria-label="Open Splendid China 2023 011">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2023/splendid-china-2023-011.webp" alt="Splendid China 2023 011" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="11" aria-label="Open Splendid China 2023 012">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2023/splendid-china-2023-012.webp" alt="Splendid China 2023 012" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="12" aria-label="Open Splendid China 2023 013">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2023/splendid-china-2023-013.webp" alt="Splendid China 2023 013" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="13" aria-label="Open Splendid China 2023 014">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2023/splendid-china-2023-014.webp" alt="Splendid China 2023 014" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="14" aria-label="Open Splendid China 2023 015">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2023/splendid-china-2023-015.webp" alt="Splendid China 2023 015" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="15" aria-label="Open Splendid China 2023 016">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2023/splendid-china-2023-016.webp" alt="Splendid China 2023 016" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="16" aria-label="Open Splendid China 2023 017">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2023/splendid-china-2023-017.webp" alt="Splendid China 2023 017" loading="lazy" decoding="async">
+					</button>
+				</div>
+			</section>
+		</div>
+	</div>
+
+	<div class="gallery-year-panel" data-gallery-year-panel="4" hidden>
+		<div class="gallery-container" data-gallery-variant="archive">
+			<div class="gallery-wrapper" data-gallery-carousel>
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2022/splendid-china-2022-001.webp" alt="Splendid China 2022 001">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2022/splendid-china-2022-002.webp" alt="Splendid China 2022 002">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2022/splendid-china-2022-003.webp" alt="Splendid China 2022 003">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2022/splendid-china-2022-004.webp" alt="Splendid China 2022 004">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2022/splendid-china-2022-005.webp" alt="Splendid China 2022 005">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2022/splendid-china-2022-006.webp" alt="Splendid China 2022 006">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2022/splendid-china-2022-007.webp" alt="Splendid China 2022 007">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2022/splendid-china-2022-008.webp" alt="Splendid China 2022 008">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2022/splendid-china-2022-009.webp" alt="Splendid China 2022 009">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2022/splendid-china-2022-010.webp" alt="Splendid China 2022 010">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2022/splendid-china-2022-011.webp" alt="Splendid China 2022 011">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2022/splendid-china-2022-012.webp" alt="Splendid China 2022 012">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2022/splendid-china-2022-013.webp" alt="Splendid China 2022 013">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2022/splendid-china-2022-014.webp" alt="Splendid China 2022 014">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2022/splendid-china-2022-015.webp" alt="Splendid China 2022 015">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2022/splendid-china-2022-016.webp" alt="Splendid China 2022 016">
+			</div>
+			<div class="gallery-controls" aria-label="Gallery controls">
+				<button class="prev" type="button" aria-label="Previous image">&#10094;</button>
+				<button class="next" type="button" aria-label="Next image">&#10095;</button>
+			</div>
+		</div>
+		<div class="gallery-grid" data-gallery-grid aria-label="Gallery image thumbnails">
+			<section class="gallery-event" aria-label="Splendid China">
+				<h3>Splendid China</h3>
+				<div class="gallery-event-grid">
+					<button class="gallery-thumb" type="button" data-gallery-thumb="0" aria-label="Open Splendid China 2022 001">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2022/splendid-china-2022-001.webp" alt="Splendid China 2022 001" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="1" aria-label="Open Splendid China 2022 002">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2022/splendid-china-2022-002.webp" alt="Splendid China 2022 002" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="2" aria-label="Open Splendid China 2022 003">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2022/splendid-china-2022-003.webp" alt="Splendid China 2022 003" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="3" aria-label="Open Splendid China 2022 004">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2022/splendid-china-2022-004.webp" alt="Splendid China 2022 004" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="4" aria-label="Open Splendid China 2022 005">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2022/splendid-china-2022-005.webp" alt="Splendid China 2022 005" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="5" aria-label="Open Splendid China 2022 006">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2022/splendid-china-2022-006.webp" alt="Splendid China 2022 006" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="6" aria-label="Open Splendid China 2022 007">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2022/splendid-china-2022-007.webp" alt="Splendid China 2022 007" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="7" aria-label="Open Splendid China 2022 008">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2022/splendid-china-2022-008.webp" alt="Splendid China 2022 008" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="8" aria-label="Open Splendid China 2022 009">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2022/splendid-china-2022-009.webp" alt="Splendid China 2022 009" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="9" aria-label="Open Splendid China 2022 010">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2022/splendid-china-2022-010.webp" alt="Splendid China 2022 010" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="10" aria-label="Open Splendid China 2022 011">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2022/splendid-china-2022-011.webp" alt="Splendid China 2022 011" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="11" aria-label="Open Splendid China 2022 012">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2022/splendid-china-2022-012.webp" alt="Splendid China 2022 012" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="12" aria-label="Open Splendid China 2022 013">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2022/splendid-china-2022-013.webp" alt="Splendid China 2022 013" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="13" aria-label="Open Splendid China 2022 014">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2022/splendid-china-2022-014.webp" alt="Splendid China 2022 014" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="14" aria-label="Open Splendid China 2022 015">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2022/splendid-china-2022-015.webp" alt="Splendid China 2022 015" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="15" aria-label="Open Splendid China 2022 016">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2022/splendid-china-2022-016.webp" alt="Splendid China 2022 016" loading="lazy" decoding="async">
+					</button>
+				</div>
+			</section>
+		</div>
+	</div>
+
+	<div class="gallery-year-panel" data-gallery-year-panel="5" hidden>
+		<div class="gallery-container" data-gallery-variant="archive">
+			<div class="gallery-wrapper" data-gallery-carousel>
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2019/splendid-china-2019-001.webp" alt="Splendid China 2019 001">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2019/splendid-china-2019-002.webp" alt="Splendid China 2019 002">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2019/splendid-china-2019-003.webp" alt="Splendid China 2019 003">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2019/splendid-china-2019-004.webp" alt="Splendid China 2019 004">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2019/splendid-china-2019-005.webp" alt="Splendid China 2019 005">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2019/splendid-china-2019-006.webp" alt="Splendid China 2019 006">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2019/splendid-china-2019-007.webp" alt="Splendid China 2019 007">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2019/splendid-china-2019-008.webp" alt="Splendid China 2019 008">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2019/splendid-china-2019-009.webp" alt="Splendid China 2019 009">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2019/splendid-china-2019-010.webp" alt="Splendid China 2019 010">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2019/splendid-china-2019-011.webp" alt="Splendid China 2019 011">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2019/splendid-china-2019-012.webp" alt="Splendid China 2019 012">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2019/splendid-china-2019-013.webp" alt="Splendid China 2019 013">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2019/splendid-china-2019-014.webp" alt="Splendid China 2019 014">
+			</div>
+			<div class="gallery-controls" aria-label="Gallery controls">
+				<button class="prev" type="button" aria-label="Previous image">&#10094;</button>
+				<button class="next" type="button" aria-label="Next image">&#10095;</button>
+			</div>
+		</div>
+		<div class="gallery-grid" data-gallery-grid aria-label="Gallery image thumbnails">
+			<section class="gallery-event" aria-label="Splendid China">
+				<h3>Splendid China</h3>
+				<div class="gallery-event-grid">
+					<button class="gallery-thumb" type="button" data-gallery-thumb="0" aria-label="Open Splendid China 2019 001">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2019/splendid-china-2019-001.webp" alt="Splendid China 2019 001" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="1" aria-label="Open Splendid China 2019 002">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2019/splendid-china-2019-002.webp" alt="Splendid China 2019 002" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="2" aria-label="Open Splendid China 2019 003">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2019/splendid-china-2019-003.webp" alt="Splendid China 2019 003" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="3" aria-label="Open Splendid China 2019 004">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2019/splendid-china-2019-004.webp" alt="Splendid China 2019 004" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="4" aria-label="Open Splendid China 2019 005">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2019/splendid-china-2019-005.webp" alt="Splendid China 2019 005" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="5" aria-label="Open Splendid China 2019 006">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2019/splendid-china-2019-006.webp" alt="Splendid China 2019 006" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="6" aria-label="Open Splendid China 2019 007">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2019/splendid-china-2019-007.webp" alt="Splendid China 2019 007" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="7" aria-label="Open Splendid China 2019 008">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2019/splendid-china-2019-008.webp" alt="Splendid China 2019 008" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="8" aria-label="Open Splendid China 2019 009">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2019/splendid-china-2019-009.webp" alt="Splendid China 2019 009" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="9" aria-label="Open Splendid China 2019 010">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2019/splendid-china-2019-010.webp" alt="Splendid China 2019 010" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="10" aria-label="Open Splendid China 2019 011">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2019/splendid-china-2019-011.webp" alt="Splendid China 2019 011" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="11" aria-label="Open Splendid China 2019 012">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2019/splendid-china-2019-012.webp" alt="Splendid China 2019 012" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="12" aria-label="Open Splendid China 2019 013">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2019/splendid-china-2019-013.webp" alt="Splendid China 2019 013" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="13" aria-label="Open Splendid China 2019 014">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2019/splendid-china-2019-014.webp" alt="Splendid China 2019 014" loading="lazy" decoding="async">
+					</button>
+				</div>
+			</section>
+		</div>
+	</div>
+
+	<div class="gallery-year-panel" data-gallery-year-panel="6" hidden>
+		<div class="gallery-container" data-gallery-variant="archive">
+			<div class="gallery-wrapper" data-gallery-carousel>
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2018/splendid-china-2018-001.webp" alt="Splendid China 2018 001">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2018/splendid-china-2018-002.webp" alt="Splendid China 2018 002">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2018/splendid-china-2018-003.webp" alt="Splendid China 2018 003">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2018/splendid-china-2018-004.webp" alt="Splendid China 2018 004">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2018/splendid-china-2018-005.webp" alt="Splendid China 2018 005">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2018/splendid-china-2018-006.webp" alt="Splendid China 2018 006">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2018/splendid-china-2018-007.webp" alt="Splendid China 2018 007">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2018/splendid-china-2018-008.webp" alt="Splendid China 2018 008">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2018/splendid-china-2018-09.webp" alt="Splendid China 2018 09">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2018/splendid-china-2018-010.webp" alt="Splendid China 2018 010">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2018/splendid-china-2018-011.webp" alt="Splendid China 2018 011">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2018/splendid-china-2018-012.webp" alt="Splendid China 2018 012">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2018/splendid-china-2018-013.webp" alt="Splendid China 2018 013">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2018/splendid-china-2018-014.webp" alt="Splendid China 2018 014">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2018/splendid-china-2018-015.webp" alt="Splendid China 2018 015">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2018/splendid-china-2018-016.webp" alt="Splendid China 2018 016">
+			</div>
+			<div class="gallery-controls" aria-label="Gallery controls">
+				<button class="prev" type="button" aria-label="Previous image">&#10094;</button>
+				<button class="next" type="button" aria-label="Next image">&#10095;</button>
+			</div>
+		</div>
+		<div class="gallery-grid" data-gallery-grid aria-label="Gallery image thumbnails">
+			<section class="gallery-event" aria-label="Splendid China">
+				<h3>Splendid China</h3>
+				<div class="gallery-event-grid">
+					<button class="gallery-thumb" type="button" data-gallery-thumb="0" aria-label="Open Splendid China 2018 001">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2018/splendid-china-2018-001.webp" alt="Splendid China 2018 001" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="1" aria-label="Open Splendid China 2018 002">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2018/splendid-china-2018-002.webp" alt="Splendid China 2018 002" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="2" aria-label="Open Splendid China 2018 003">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2018/splendid-china-2018-003.webp" alt="Splendid China 2018 003" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="3" aria-label="Open Splendid China 2018 004">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2018/splendid-china-2018-004.webp" alt="Splendid China 2018 004" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="4" aria-label="Open Splendid China 2018 005">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2018/splendid-china-2018-005.webp" alt="Splendid China 2018 005" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="5" aria-label="Open Splendid China 2018 006">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2018/splendid-china-2018-006.webp" alt="Splendid China 2018 006" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="6" aria-label="Open Splendid China 2018 007">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2018/splendid-china-2018-007.webp" alt="Splendid China 2018 007" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="7" aria-label="Open Splendid China 2018 008">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2018/splendid-china-2018-008.webp" alt="Splendid China 2018 008" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="8" aria-label="Open Splendid China 2018 09">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2018/splendid-china-2018-09.webp" alt="Splendid China 2018 09" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="9" aria-label="Open Splendid China 2018 010">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2018/splendid-china-2018-010.webp" alt="Splendid China 2018 010" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="10" aria-label="Open Splendid China 2018 011">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2018/splendid-china-2018-011.webp" alt="Splendid China 2018 011" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="11" aria-label="Open Splendid China 2018 012">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2018/splendid-china-2018-012.webp" alt="Splendid China 2018 012" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="12" aria-label="Open Splendid China 2018 013">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2018/splendid-china-2018-013.webp" alt="Splendid China 2018 013" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="13" aria-label="Open Splendid China 2018 014">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2018/splendid-china-2018-014.webp" alt="Splendid China 2018 014" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="14" aria-label="Open Splendid China 2018 015">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2018/splendid-china-2018-015.webp" alt="Splendid China 2018 015" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="15" aria-label="Open Splendid China 2018 016">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2018/splendid-china-2018-016.webp" alt="Splendid China 2018 016" loading="lazy" decoding="async">
+					</button>
+				</div>
+			</section>
+		</div>
+	</div>
+
+	<div class="gallery-year-panel" data-gallery-year-panel="7" hidden>
+		<div class="gallery-container" data-gallery-variant="archive">
+			<div class="gallery-wrapper" data-gallery-carousel>
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2017/splendid-china-2017-001.webp" alt="Splendid China 2017 001">
+			</div>
+			<div class="gallery-controls" aria-label="Gallery controls">
+				<button class="prev" type="button" aria-label="Previous image">&#10094;</button>
+				<button class="next" type="button" aria-label="Next image">&#10095;</button>
+			</div>
+		</div>
+		<div class="gallery-grid" data-gallery-grid aria-label="Gallery image thumbnails">
+			<section class="gallery-event" aria-label="Splendid China">
+				<h3>Splendid China</h3>
+				<div class="gallery-event-grid">
+					<button class="gallery-thumb" type="button" data-gallery-thumb="0" aria-label="Open Splendid China 2017 001">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2017/splendid-china-2017-001.webp" alt="Splendid China 2017 001" loading="lazy" decoding="async">
+					</button>
+				</div>
+			</section>
+		</div>
+	</div>
+
+	<div class="gallery-year-panel" data-gallery-year-panel="8" hidden>
+		<div class="gallery-container" data-gallery-variant="archive">
+			<div class="gallery-wrapper" data-gallery-carousel>
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2016/splendid-china-2016-001.webp" alt="Splendid China 2016 001">
+			</div>
+			<div class="gallery-controls" aria-label="Gallery controls">
+				<button class="prev" type="button" aria-label="Previous image">&#10094;</button>
+				<button class="next" type="button" aria-label="Next image">&#10095;</button>
+			</div>
+		</div>
+		<div class="gallery-grid" data-gallery-grid aria-label="Gallery image thumbnails">
+			<section class="gallery-event" aria-label="Splendid China">
+				<h3>Splendid China</h3>
+				<div class="gallery-event-grid">
+					<button class="gallery-thumb" type="button" data-gallery-thumb="0" aria-label="Open Splendid China 2016 001">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2016/splendid-china-2016-001.webp" alt="Splendid China 2016 001" loading="lazy" decoding="async">
+					</button>
+				</div>
+			</section>
+		</div>
+	</div>
+
+	<div class="gallery-year-panel" data-gallery-year-panel="9" hidden>
+		<div class="gallery-container" data-gallery-variant="archive">
+			<div class="gallery-wrapper" data-gallery-carousel>
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2015/splendid-china-2015-001.webp" alt="Splendid China 2015 001">
+			</div>
+			<div class="gallery-controls" aria-label="Gallery controls">
+				<button class="prev" type="button" aria-label="Previous image">&#10094;</button>
+				<button class="next" type="button" aria-label="Next image">&#10095;</button>
+			</div>
+		</div>
+		<div class="gallery-grid" data-gallery-grid aria-label="Gallery image thumbnails">
+			<section class="gallery-event" aria-label="Splendid China">
+				<h3>Splendid China</h3>
+				<div class="gallery-event-grid">
+					<button class="gallery-thumb" type="button" data-gallery-thumb="0" aria-label="Open Splendid China 2015 001">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2015/splendid-china-2015-001.webp" alt="Splendid China 2015 001" loading="lazy" decoding="async">
+					</button>
+				</div>
+			</section>
+		</div>
+	</div>
+
+	<div class="gallery-year-panel" data-gallery-year-panel="10" hidden>
+		<div class="gallery-container" data-gallery-variant="archive">
+			<div class="gallery-wrapper" data-gallery-carousel>
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2014/splendid-china-2014-001.webp" alt="Splendid China 2014 001">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2014/splendid-china-2014-002.webp" alt="Splendid China 2014 002">
+			</div>
+			<div class="gallery-controls" aria-label="Gallery controls">
+				<button class="prev" type="button" aria-label="Previous image">&#10094;</button>
+				<button class="next" type="button" aria-label="Next image">&#10095;</button>
+			</div>
+		</div>
+		<div class="gallery-grid" data-gallery-grid aria-label="Gallery image thumbnails">
+			<section class="gallery-event" aria-label="Splendid China">
+				<h3>Splendid China</h3>
+				<div class="gallery-event-grid">
+					<button class="gallery-thumb" type="button" data-gallery-thumb="0" aria-label="Open Splendid China 2014 001">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2014/splendid-china-2014-001.webp" alt="Splendid China 2014 001" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="1" aria-label="Open Splendid China 2014 002">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2014/splendid-china-2014-002.webp" alt="Splendid China 2014 002" loading="lazy" decoding="async">
+					</button>
+				</div>
+			</section>
+		</div>
+	</div>
+
+	<div class="gallery-year-panel" data-gallery-year-panel="11" hidden>
+		<div class="gallery-container" data-gallery-variant="archive">
+			<div class="gallery-wrapper" data-gallery-carousel>
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2013/splendid-china-2013-001.webp" alt="Splendid China 2013 001">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2013/splendid-china-2013-002.webp" alt="Splendid China 2013 002">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2013/splendid-china-2013-003.webp" alt="Splendid China 2013 003">
+			</div>
+			<div class="gallery-controls" aria-label="Gallery controls">
+				<button class="prev" type="button" aria-label="Previous image">&#10094;</button>
+				<button class="next" type="button" aria-label="Next image">&#10095;</button>
+			</div>
+		</div>
+		<div class="gallery-grid" data-gallery-grid aria-label="Gallery image thumbnails">
+			<section class="gallery-event" aria-label="Splendid China">
+				<h3>Splendid China</h3>
+				<div class="gallery-event-grid">
+					<button class="gallery-thumb" type="button" data-gallery-thumb="0" aria-label="Open Splendid China 2013 001">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2013/splendid-china-2013-001.webp" alt="Splendid China 2013 001" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="1" aria-label="Open Splendid China 2013 002">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2013/splendid-china-2013-002.webp" alt="Splendid China 2013 002" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="2" aria-label="Open Splendid China 2013 003">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2013/splendid-china-2013-003.webp" alt="Splendid China 2013 003" loading="lazy" decoding="async">
+					</button>
+				</div>
+			</section>
+		</div>
+	</div>
+
+	<div class="gallery-year-panel" data-gallery-year-panel="12" hidden>
+		<div class="gallery-container" data-gallery-variant="archive">
+			<div class="gallery-wrapper" data-gallery-carousel>
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2012/splendid-china-2012-001.webp" alt="Splendid China 2012 001">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2012/splendid-china-2012-002.webp" alt="Splendid China 2012 002">
+			</div>
+			<div class="gallery-controls" aria-label="Gallery controls">
+				<button class="prev" type="button" aria-label="Previous image">&#10094;</button>
+				<button class="next" type="button" aria-label="Next image">&#10095;</button>
+			</div>
+		</div>
+		<div class="gallery-grid" data-gallery-grid aria-label="Gallery image thumbnails">
+			<section class="gallery-event" aria-label="Splendid China">
+				<h3>Splendid China</h3>
+				<div class="gallery-event-grid">
+					<button class="gallery-thumb" type="button" data-gallery-thumb="0" aria-label="Open Splendid China 2012 001">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2012/splendid-china-2012-001.webp" alt="Splendid China 2012 001" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="1" aria-label="Open Splendid China 2012 002">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2012/splendid-china-2012-002.webp" alt="Splendid China 2012 002" loading="lazy" decoding="async">
+					</button>
+				</div>
+			</section>
+		</div>
+	</div>
+
+	<div class="gallery-year-panel" data-gallery-year-panel="13" hidden>
+		<div class="gallery-container" data-gallery-variant="archive">
+			<div class="gallery-wrapper" data-gallery-carousel>
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2011/splendid-china-2011-001.webp" alt="Splendid China 2011 001">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2011/splendid-china-2011-002.webp" alt="Splendid China 2011 002">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2011/splendid-china-2011-003.webp" alt="Splendid China 2011 003">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2011/splendid-china-2011-004.webp" alt="Splendid China 2011 004">
+			</div>
+			<div class="gallery-controls" aria-label="Gallery controls">
+				<button class="prev" type="button" aria-label="Previous image">&#10094;</button>
+				<button class="next" type="button" aria-label="Next image">&#10095;</button>
+			</div>
+		</div>
+		<div class="gallery-grid" data-gallery-grid aria-label="Gallery image thumbnails">
+			<section class="gallery-event" aria-label="Splendid China">
+				<h3>Splendid China</h3>
+				<div class="gallery-event-grid">
+					<button class="gallery-thumb" type="button" data-gallery-thumb="0" aria-label="Open Splendid China 2011 001">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2011/splendid-china-2011-001.webp" alt="Splendid China 2011 001" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="1" aria-label="Open Splendid China 2011 002">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2011/splendid-china-2011-002.webp" alt="Splendid China 2011 002" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="2" aria-label="Open Splendid China 2011 003">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2011/splendid-china-2011-003.webp" alt="Splendid China 2011 003" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="3" aria-label="Open Splendid China 2011 004">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2011/splendid-china-2011-004.webp" alt="Splendid China 2011 004" loading="lazy" decoding="async">
+					</button>
+				</div>
+			</section>
+		</div>
+	</div>
+
+	<div class="gallery-year-panel" data-gallery-year-panel="14" hidden>
+		<div class="gallery-container" data-gallery-variant="archive">
+			<div class="gallery-wrapper" data-gallery-carousel>
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2010/splendid-china-2010-001.webp" alt="Splendid China 2010 001">
+			</div>
+			<div class="gallery-controls" aria-label="Gallery controls">
+				<button class="prev" type="button" aria-label="Previous image">&#10094;</button>
+				<button class="next" type="button" aria-label="Next image">&#10095;</button>
+			</div>
+		</div>
+		<div class="gallery-grid" data-gallery-grid aria-label="Gallery image thumbnails">
+			<section class="gallery-event" aria-label="Splendid China">
+				<h3>Splendid China</h3>
+				<div class="gallery-event-grid">
+					<button class="gallery-thumb" type="button" data-gallery-thumb="0" aria-label="Open Splendid China 2010 001">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2010/splendid-china-2010-001.webp" alt="Splendid China 2010 001" loading="lazy" decoding="async">
+					</button>
+				</div>
+			</section>
+		</div>
+	</div>
+
+	<div class="gallery-year-panel" data-gallery-year-panel="15" hidden>
+		<div class="gallery-container" data-gallery-variant="archive">
+			<div class="gallery-wrapper" data-gallery-carousel>
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2009/splendid-china-2009-001.webp" alt="Splendid China 2009 001">
+			</div>
+			<div class="gallery-controls" aria-label="Gallery controls">
+				<button class="prev" type="button" aria-label="Previous image">&#10094;</button>
+				<button class="next" type="button" aria-label="Next image">&#10095;</button>
+			</div>
+		</div>
+		<div class="gallery-grid" data-gallery-grid aria-label="Gallery image thumbnails">
+			<section class="gallery-event" aria-label="Splendid China">
+				<h3>Splendid China</h3>
+				<div class="gallery-event-grid">
+					<button class="gallery-thumb" type="button" data-gallery-thumb="0" aria-label="Open Splendid China 2009 001">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2009/splendid-china-2009-001.webp" alt="Splendid China 2009 001" loading="lazy" decoding="async">
+					</button>
+				</div>
+			</section>
+		</div>
+	</div>
+
+	<div class="gallery-year-panel" data-gallery-year-panel="16" hidden>
+		<div class="gallery-container" data-gallery-variant="archive">
+			<div class="gallery-wrapper" data-gallery-carousel>
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2008/splendid-china-2008-001.webp" alt="Splendid China 2008 001">
+				<img src="https://cdn.madisonchinesedance.org/splendid-china-2008/splendid-china-2008-002.webp" alt="Splendid China 2008 002">
+			</div>
+			<div class="gallery-controls" aria-label="Gallery controls">
+				<button class="prev" type="button" aria-label="Previous image">&#10094;</button>
+				<button class="next" type="button" aria-label="Next image">&#10095;</button>
+			</div>
+		</div>
+		<div class="gallery-grid" data-gallery-grid aria-label="Gallery image thumbnails">
+			<section class="gallery-event" aria-label="Splendid China">
+				<h3>Splendid China</h3>
+				<div class="gallery-event-grid">
+					<button class="gallery-thumb" type="button" data-gallery-thumb="0" aria-label="Open Splendid China 2008 001">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2008/splendid-china-2008-001.webp" alt="Splendid China 2008 001" loading="lazy" decoding="async">
+					</button>
+					<button class="gallery-thumb" type="button" data-gallery-thumb="1" aria-label="Open Splendid China 2008 002">
+						<img src="https://cdn.madisonchinesedance.org/splendid-china-2008/splendid-china-2008-002.webp" alt="Splendid China 2008 002" loading="lazy" decoding="async">
+					</button>
+				</div>
+			</section>
+		</div>
+	</div>
+
+</section>
+<!-- sync:gallery-archive:end -->
+</article>
+		</div>
+	</div>
+</section>
+	</main>
+
+	<div class="gallery-lightbox" data-gallery-lightbox hidden>
+	<div class="gallery-lightbox-window" role="dialog" aria-modal="true" aria-label="Gallery image preview">
+		<button class="gallery-lightbox-close" type="button" aria-label="Close gallery image preview">&times;</button>
+		<img src="" alt="" data-gallery-lightbox-image>
+	</div>
+</div>
+
+	<footer class="site-footer" role="contentinfo">
+	<div class="container footer-inner">
+		<section class="footer-brand" aria-label="Madison Chinese Dance Academy">
+			<a href="/index.html" class="footer-logo" aria-label="Madison Chinese Dance Academy home">
+				<span class="footer-logo-icon" aria-hidden="true">
+					<svg width="40" height="40" viewBox="0 0 32 32" fill="none">
+										<circle cx="16" cy="16" r="14.5" stroke="currentColor" stroke-width="1.5"/>
+										<text x="16" y="14" text-anchor="middle" fill="currentColor" font-size="9" font-weight="800" font-family="inherit" letter-spacing="0.5">MC</text>
+										<text x="16" y="24" text-anchor="middle" fill="currentColor" font-size="9" font-weight="800" font-family="inherit" letter-spacing="0.5">DA</text>
+									</svg>
+				</span>
+			</a>
+			<p class="footer-brand-name">Madison Chinese Dance Academy</p>
+			<p class="footer-mission">Madison Chinese Dance Academy teaches Chinese dance and ballet while cultivating appreciation for Eastern and Western arts. We welcome students and families into performances, classes, and community programs that celebrate culture through movement.</p>
+			<div class="footer-operations"><a href="mailto:contact@madisonchinesedance.org">contact@madisonchinesedance.org</a><br><a href="tel:13012991562">(301)-299-1562</a><br><span>PO Box 10067 Rockville, MD 20849</span></div>
+		</section>
+		<nav class="footer-directory" aria-label="Footer navigation">
+			<section class="footer-column" aria-label="Explore">
+				<h2>Explore</h2>
+				<ul><li><a href="/index.html">Home</a></li><li><a href="/pages/gallery.html">Gallery</a></li><li><a href="/pages/programs.html">Programs</a></li><li><a href="/pages/tickets.html">Purchase Tickets</a></li><li><a href="/pages/donate.html">Donate</a></li></ul>
+			</section>
+			<section class="footer-column" aria-label="Classes">
+				<h2>Classes</h2>
+				<ul><li><a href="/pages/classes/advanced-dancers.html">Advanced Dancers</a></li><li><a href="/pages/classes/beginner-dancers.html">Beginner Dancers</a></li><li><a href="/pages/classes/intermediate-dancers.html">Intermediate Dancers</a></li></ul>
+			</section>
+			<section class="footer-column" aria-label="Events">
+				<h2>Events</h2>
+				<ul><li><a href="/pages/events/events.html">Events</a></li><li><a href="/pages/events/services.html">Services</a></li></ul>
+			</section>
+			<section class="footer-column" aria-label="Get Involved">
+				<h2>Get Involved</h2>
+				<ul><li><a href="/pages/get-involved/book-a-performance.html">Book a Performance</a></li><li><a href="/pages/get-involved/dance-with-us.html">Dance with Us</a></li><li><a href="/pages/get-involved/see-a-performance.html">See A Performance</a></li><li><a href="/pages/get-involved/support-our-cause.html">Support Our Cause</a></li></ul>
+			</section>
+			<section class="footer-column" aria-label="Splendid China">
+				<h2>Splendid China</h2>
+				<ul><li><a href="/pages/splendid-china/splendid-china-2026.html">Splendid China 2026</a></li><li><a href="/pages/splendid-china/splendid-china-2025.html">Splendid China 2025</a></li><li><a href="/pages/splendid-china/splendid-china-2024.html">Splendid China 2024</a></li><li><a href="/pages/splendid-china/splendid-china-2023.html">Splendid China 2023</a></li><li><a href="/pages/splendid-china/splendid-china-2022.html">Splendid China 2022</a></li><li><a href="/pages/splendid-china/splendid-china-2019.html">Splendid China 2019</a></li></ul>
+			</section>
+		</nav>
+	</div>
+	<div class="container footer-bottom">
+		<p class="footer-copy">© 2026 Madison Chinese Dance Academy. All rights reserved.</p>
+	</div>
+</footer>
 </body>
 </html>

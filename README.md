@@ -4,55 +4,57 @@ Static site for [madisonchinesedance.org](https://madisonchinesedance.org), serv
 
 ## Editing content
 
-Content lives in JSON files under `docs/content/`. Edit them either way:
+Every page is a complete, hardcoded HTML file — content, header, footer, and gallery images all live in the page's markup. Edit the HTML directly:
 
 - **On GitHub** — open the file at github.com, click the pencil icon, edit, and commit
 - **Locally** — clone the repo, edit, and push to `main`
 
 Changes go live on the next GitHub Pages deploy (usually within a minute). No npm or build step required.
 
-**Performance photos** are not edited by hand — they are synced from Cloudflare R2 via `python scripts/scan-images.py sync`.
+**Shared layout:** the header, footer, navigation, and lightbox are duplicated in every page. If you rename a menu label or change footer info, update it in every HTML file (a find-and-replace across `docs/` works well).
 
-**Navigation:** menu labels live in `docs/content/header.json`. Do not delete or reorder menu items.
+**Performance photos** are not edited by hand — they are synced from Cloudflare R2 via `python scripts/scan-images.py sync` (see below).
 
 ## How the site works
 
-- **HTML shells** in `docs/pages/` and `docs/index.html`
-- **Content** in `docs/content/*.json`
-- **`docs/app.js`** loads JSON and renders the page in the browser
-- **No build step** — push to `main` and GitHub Pages serves `docs/` directly
+- **Complete HTML pages** in `docs/index.html` and `docs/pages/**` (one per route)
+- **`docs/app.js`** adds runtime behavior only: mobile nav, dropdown menus, gallery carousels and lightbox, year tabs, the Zeffy embed script, the star field, and the chatbot — it does not load any content
+- **No build step, no JSON, no CMS** — push to `main` and GitHub Pages serves `docs/` directly
 
-### Page content JSON shape
+### Gallery sync regions
 
-Each page JSON file uses a flat `content[]` array of typed blocks:
+Gallery image lists are hardcoded in the HTML between marker comments, e.g.:
 
-| Block type | Purpose |
+```html
+<!-- sync:homepage-runner:begin -->
+...carousel markup with <img> tags...
+<!-- sync:homepage-runner:end -->
+```
+
+`scripts/scan-images.py sync` regenerates everything between the markers from R2; everything outside them is hand-edited content. Region ids:
+
+| Region | File |
 |---|---|
-| `hero` | Page title area (`heading`, `body`, optional `buttons`) |
-| `text` | Subsection paragraph |
-| `grid` | Multi-column cards (`columns`, `cards[]`) |
-| `gallery` | Photo carousel placeholder (managed by `scan-images.py`) |
-| `zeffy` | Embedded ticketing/donation form |
+| `homepage-runner`, `homepage-runner-tall`, `homepage-runner-wide` | `docs/index.html` |
+| `gallery-featured`, `gallery-archive` | `docs/pages/gallery.html` |
+| `splendid-china-<year>` | `docs/pages/splendid-china/splendid-china-<year>.html` |
 
-Page-level image keys (`galleryImages`, `homepageRunnerImages*`, etc.) stay at the JSON root and are updated by `scan-images.py` — do not edit them by hand.
+Adding a new Splendid China year requires a new HTML page (copy an existing year) with its own `splendid-china-<year>` sync region, plus links in the navigation menus.
 
 ## Project structure
 
 ```
 docs/
-  app.js, style.css, index.html
-  pages/              # HTML shells (one per route)
-  content/            # JSON content (edit directly)
-    header.json       # Navigation
-    footer.json
-    announcements.json
-    index.json        # Homepage (content[] blocks)
-    gallery.json
+  index.html               # Homepage (complete page)
+  app.js                   # Runtime behaviors (nav, galleries, chatbot)
+  style.css
+  pages/                   # One complete HTML file per route
     classes/, events/, get-involved/, splendid-china/
 scripts/
-  migrate-json-schema.py   # One-time sections → content[] migration
-  generate-ai-context.py
+  gallery_markup.py        # Builds gallery HTML between the sync markers
+  generate-ai-context.py   # Extracts text from the HTML into ai-context.md
   scan-images.py           # Sync performance photos from Cloudflare R2
+ai-context.md              # Chatbot context (generated)
 ```
 
 ## Deployment
@@ -81,10 +83,7 @@ python scripts/generate-ai-context.py
 
 Then deploy the worker with the updated `ai-context.md` if needed.
 
-## Route registry
+## History
 
-`docs/content/site.json` maps route IDs to pages. Adding a new page requires a new HTML shell, JSON file, and route entry.
-
-## Legacy Eleventy migration
-
-An experimental Eleventy + GitHub Actions setup was tried and reverted. It remains on branch `feature/pages-cms-11ty` in git history if you ever want to revisit pre-rendered HTML.
+- The site previously rendered pages client-side from JSON files (`docs/content/`) configured for Pages CMS. That setup was removed in favor of hardcoded HTML; the JSON-driven architecture remains in git history if you ever need it.
+- An experimental Eleventy + GitHub Actions setup was also tried and reverted; it remains on branch `feature/pages-cms-11ty`.

@@ -20,11 +20,6 @@ Madison Chinese Dance Academy teaches Chinese dance and ballet while cultivating
 - PO Box 10067 Rockville, MD 20849
 ---
 
-## Current Announcements
-
-- **Upcoming Event**: Splendid China 2026 is coming up on June 20th! Join us for an evening of culture presented by community performers. Experience the beauty of China through music and dance. Don't miss out on this unforgettable event!
----
-
 ## Madison Chinese Dance Academy
 
 Madison Chinese Dance Academy - community classes, performances, and outreach. Purchase tickets or support our community.
@@ -33,7 +28,6 @@ Madison Chinese Dance Academy - community classes, performances, and outreach. P
 # Madison Chinese Dance Academy
 
 We dance to integrate Eastern and Western arts and cultures for a more harmonious world.
-
 
 
 #### 1987
@@ -55,22 +49,19 @@ Classes for beginner dancers through advanced students and beyond. Programs grow
 
 Beginner through advanced dance instruction for students of all ages.
 
-- **Start with beginner dancers** (pages/classes/beginner-dancers.html)
+- **Sign Up** (/pages/classes/beginner-dancers.html)
 
+#### Attend an Event
 
-#### Splendid China
+Join us for our upcoming events and experience the joy of Chinese dance.
 
-Our annual concert brings traditional and contemporary Chinese dance to the stage.
-
-- **See Splendid China 2026** (pages/splendid-china/splendid-china-2026.html)
-
+- **Events** (/pages/events/events.html)
 
 #### Gallery
 
 Browse moments from performances, community programs, and academy events.
 
-- **Open gallery** (pages/gallery.html)
-
+- **Open gallery** (/pages/gallery.html)
 
 #### Our Story
 
@@ -92,27 +83,23 @@ The Academy welcomes individuals and groups of all racial and cultural backgroun
 我們參與文化藝術活動外，更以中國人「老吾老以及人之老，幼吾幼以及人之幼」的精神，把中華舞蹈文化帶給老人院及育幼院。希望有更多朋友不論老少, 族裔, 或文化背景, 踴躍參加我們的行列，一起為融匯東西方藝術文化締造更和諧歡樂的社會而努力。
 
 
+#### Try A Class
 
-#### Attend a performance
+Experience the joy of Chinese dance with our beginner-friendly classes.
 
-Get details for Splendid China 2026 and purchase tickets online.
-
-- **Purchase tickets** (pages/tickets.html)
-
+- **Sign Up** (/pages/classes/beginner-dancers.html)
 
 #### Support the academy
 
 Help fund classes, costumes, rehearsal space, and community outreach.
 
-- **Donate** (pages/donate.html)
-
+- **Donate** (/pages/donate.html)
 
 #### Get in touch
 
 Ask about classes, performances, donations, or community programs.
 
 - **Contact us** (mailto:contact@madisonchinesedance.org)
-
 ---
 
 ## Advanced Dancers
@@ -161,10 +148,9 @@ Madison Chinese Dance Academy relies on community support to keep classes afford
 
 We welcome one-time donations and recurring gifts. Donations are processed securely through Zeffy. For questions about giving or gifts of stock or in-kind support, please email us at contact@madisonchinesedance.org.
 
-**Zeffy donations are optional, please select 'other' if you wish to skip.**
+Zeffy donations are optional, please select 'other' if you wish to skip.
 
 - **Open in Zeffy** (https://www.zeffy.com/en-US/donation-form/donate-to-madison-chinese-dance-academy)
-
 - Embedded form: /embed/donation-form/donate-to-madison-chinese-dance-academy
 
 ---
@@ -198,7 +184,9 @@ Image gallery of the Madison Chinese Dance Academy.
 
 # Gallery
 
+- Gallery with 134 images
 
+- Gallery with 244 images
 
 ---
 
@@ -241,9 +229,9 @@ We recommend reaching out at least 4-6 weeks in advance for the best chance of s
 
 #### Frequently Asked Questions
 
-**How long is a typical performance?** Performances can be tailored from a few minutes to a full one-hour+ show, depending on your event.
+Performances can be tailored from a few minutes to a full one-hour+ show, depending on your event. How long is a typical performance?
 
-**What are the space requirements?** We need a clear performance area, access to electricity for sound, and a changing area for our dancers. The space should be large enough to accommodate the dancers and their equipment.
+We need a clear performance area, access to electricity for sound, and a changing area for our dancers. The space should be large enough to accommodate the dancers and their equipment. What are the space requirements?
 
 
 #### Request a Performance
@@ -251,8 +239,7 @@ We recommend reaching out at least 4-6 weeks in advance for the best chance of s
 Ready to bring Chinese dance to your event? Send us the details and we will get back to you with availability and options.
 
 - **Contact Us** (mailto:contact@madisonchinesedance.org)
-- **See Upcoming Events** (pages/events/events.html)
-
+- **See Upcoming Events** (/pages/events/events.html)
 ---
 
 ## Dance with Us
@@ -274,30 +261,26 @@ We offer classes for students of all ages and experience levels. Whether you are
 
 Our beginner dancers program is designed for students who have no prior dance experience. It focuses on building a strong foundation in dance technique, rhythm, and coordination. Students will learn basic dance steps, patterns, and movements while developing confidence and a love for dance.
 
-- **Start with beginner dancers** (pages/classes/beginner-dancers.html)
-
+- **Start with beginner dancers** (/pages/classes/beginner-dancers.html)
 
 #### Intermediate Dancers
 
 Our intermediate dancers program is designed for students who have some prior dance experience. It builds on the foundation learned in beginner classes, adding more complex patterns, rhythms, and movements. Students will develop greater technical skills and confidence in their dance performance.
 
-- **Start with intermediate dancers** (pages/classes/intermediate-dancers.html)
-
+- **Start with intermediate dancers** (/pages/classes/intermediate-dancers.html)
 
 #### Advanced Dancers
 
 Our advanced dancers program is designed for students who have a strong foundation in dance technique and are ready to take their performance skills to the next level. It focuses on refining technical skills, building confidence, and preparing for more advanced choreography and performances.
 
-- **Start with advanced dancers** (pages/classes/advanced-dancers.html)
-
+- **Start with advanced dancers** (/pages/classes/advanced-dancers.html)
 
 #### Contact Us to Join
 
 Email us at contact@madisonchinesedance.org or call (301)-299-1562 to learn more about joining. We are happy to answer questions about classes, schedules, and what to expect in your first session.
 
 - **Contact Us** (mailto:contact@madisonchinesedance.org)
-- **View Beginner Programs** (pages/classes/beginner-dancers.html)
-
+- **View Beginner Programs** (/pages/classes/beginner-dancers.html)
 ---
 
 ## See A Performance
@@ -319,15 +302,13 @@ Our dancers perform throughout the year at a variety of venues and events. Check
 
 Our annual signature production featuring traditional and contemporary Chinese dance, music, and storytelling. A celebration of Chinese culture not to be missed.
 
-- **Learn about Splendid China** (pages/splendid-china/splendid-china-2026.html)
-
+- **Learn about Splendid China** (/pages/splendid-china/splendid-china-2026.html)
 
 #### Community Events
 
 Throughout the year, our dancers perform at cultural festivals, parades, and community gatherings across the region.
 
-- **View community events** (pages/events/events.html)
-
+- **View community events** (/pages/events/events.html)
 
 #### Tickets & Admission
 
@@ -335,16 +316,14 @@ Tickets for our major productions, including Splendid China, can be purchased on
 
 For ticketed events, early purchase is recommended both for discounted tickets and to secure your seat. Group discounts are available for schools, community organizations, and other groups.
 
-- **Purchase Tickets** (pages/tickets.html)
-- **View All Events** (pages/events/events.html)
-
+- **Purchase Tickets** (/pages/tickets.html)
+- **View All Events** (/pages/events/events.html)
 
 #### Bring a Performance to Your Event
 
 Would you like our dancers to perform at your school, festival, or private event? We offer a range of performance options that can be tailored to your audience and occasion.
 
-- **Request a Performance** (pages/get-involved/book-a-performance.html)
-
+- **Request a Performance** (/pages/get-involved/book-a-performance.html)
 ---
 
 ## Support Our Cause
@@ -366,8 +345,7 @@ Every contribution, whether big or small, helps us fulfill our mission of promot
 
 Your donations help fund classes, scholarships, costumes, and our annual Splendid China production.
 
-- **Donate** (pages/donate.html)
-
+- **Donate** (/pages/donate.html)
 
 #### Become a Sponsor
 
@@ -375,13 +353,11 @@ Corporate and individual sponsorships support our performances, outreach program
 
 - **Contact us** (mailto:contact@madisonchinesedance.org)
 
-
 #### Volunteer
 
 Volunteers are essential to our productions and events. Help with costumes, backstage, ushering, and more.
 
 - **Contact us** (mailto:contact@madisonchinesedance.org)
-
 
 #### Your Impact
 
@@ -394,9 +370,8 @@ We are deeply grateful to our donors, sponsors, and volunteers who make our work
 
 Join us in preserving and sharing the art of Chinese dance. Your generosity helps us inspire the next generation of dancers and bring the joy of Chinese culture to our community.
 
-- **Donate** (pages/donate.html)
+- **Donate** (/pages/donate.html)
 - **Get in Touch** (mailto:contact@madisonchinesedance.org)
-
 ---
 
 ## Programs
@@ -449,7 +424,6 @@ Splendid China 2008 performance archive by Madison Chinese Dance Academy.
 
 Performance archive details, photos, and program notes will be added here.
 
-
 ---
 
 ## Splendid China 2009
@@ -460,7 +434,6 @@ Splendid China 2009 performance archive by Madison Chinese Dance Academy.
 # Splendid China 2009
 
 Performance archive details, photos, and program notes will be added here.
-
 
 ---
 
@@ -473,7 +446,6 @@ Splendid China 2010 performance archive by Madison Chinese Dance Academy.
 
 Performance archive details, photos, and program notes will be added here.
 
-
 ---
 
 ## Splendid China 2011
@@ -484,7 +456,6 @@ Splendid China 2011 performance archive by Madison Chinese Dance Academy.
 # Splendid China 2011
 
 Performance archive details, photos, and program notes will be added here.
-
 
 ---
 
@@ -497,7 +468,6 @@ Splendid China 2012 performance archive by Madison Chinese Dance Academy.
 
 Performance archive details, photos, and program notes will be added here.
 
-
 ---
 
 ## Splendid China 2013
@@ -508,7 +478,6 @@ Splendid China 2013 performance archive by Madison Chinese Dance Academy.
 # Splendid China 2013
 
 Performance archive details, photos, and program notes will be added here.
-
 
 ---
 
@@ -521,7 +490,6 @@ Splendid China 2014 performance archive by Madison Chinese Dance Academy.
 
 Performance archive details, photos, and program notes will be added here.
 
-
 ---
 
 ## Splendid China 2015
@@ -532,7 +500,6 @@ Splendid China 2015 performance archive by Madison Chinese Dance Academy.
 # Splendid China 2015
 
 Performance archive details, photos, and program notes will be added here.
-
 
 ---
 
@@ -545,7 +512,6 @@ Splendid China 2016 performance archive by Madison Chinese Dance Academy.
 
 Performance archive details, photos, and program notes will be added here.
 
-
 ---
 
 ## Splendid China 2017
@@ -556,7 +522,6 @@ Splendid China 2017 performance archive by Madison Chinese Dance Academy.
 # Splendid China 2017
 
 Performance archive details, photos, and program notes will be added here.
-
 
 ---
 
@@ -569,7 +534,6 @@ Splendid China 2018 performance archive by Madison Chinese Dance Academy.
 
 Performance archive details, photos, and program notes will be added here.
 
-
 ---
 
 ## Splendid China 2019
@@ -580,7 +544,6 @@ Splendid China 2019 performance archive by Madison Chinese Dance Academy.
 # Splendid China 2019
 
 Performance archive details, photos, and program notes will be added here.
-
 
 ---
 
@@ -593,7 +556,6 @@ Splendid China 2022 performance archive by Madison Chinese Dance Academy.
 
 Performance archive details, photos, and program notes will be added here.
 
-
 ---
 
 ## Splendid China 2023
@@ -604,7 +566,6 @@ Splendid China 2023 performance archive by Madison Chinese Dance Academy.
 # Splendid China 2023
 
 Performance archive details, photos, and program notes will be added here.
-
 
 ---
 
@@ -617,7 +578,6 @@ Splendid China 2024 performance archive by Madison Chinese Dance Academy.
 
 Performance archive details, photos, and program notes will be added here.
 
-
 ---
 
 ## Splendid China 2025
@@ -628,7 +588,6 @@ Splendid China 2025 performance archive by Madison Chinese Dance Academy.
 # Splendid China 2025
 
 Performance archive details, photos, and program notes will be added here.
-
 
 ---
 
@@ -643,12 +602,7 @@ A Concert of Chinese Dance and Ballet
 
 Saturday, June 20, 2026 at 8:00pm
 
-Robert E. Parilla Performing Arts Center
-Montgomery College
-51 Mannakee Street, Rockville, MD
-
-- **Purchase Tickets** (pages/tickets.html)
-
+Robert E. Parilla Performing Arts Center Montgomery College 51 Mannakee Street, Rockville, MD
 
 ---
 
@@ -659,32 +613,35 @@ Purchase tickets for Madison Chinese Dance Academy performances.
 
 # Splendid China - 2026 Tickets
 
-Join us for Splendid China 2026 - an evening of traditional and contemporary Chinese dance presented by community performers. Tickets support production costs, venue rental, and scholarships for student participants.
+Ticket sales are closed for Splendid China 2026, but there are still many ways to get involved and support the Madison Chinese Dance Academy.
 
-Seats are limited. Please purchase tickets in advance by June 19th through our secure ticketing partner.
 
-Tickets also available at the door.
+#### Upcoming Events
 
-If you have accessibility needs or questions about group sales, email us at contact@madisonchinesedance.org.
+Check out our dashboard for upcoming events, including Splendid China 2027!
 
-**Ticket prices are all-inclusive - no extra fees will be added at checkout. Zeffy donations are optional, please select 'other' if you wish to skip.**
+- **View Events** (/pages/events/events.html)
 
-- **Open in Zeffy** (https://www.zeffy.com/en-US/ticketing/splendid-china--2026)
+#### Make A Donation
 
-- Embedded form: /embed/ticketing/splendid-china--2026
+Support our mission by making a donation to the Madison Chinese Dance Academy.
+
+- **Donate Now** (/pages/donate.html)
+
+#### Volunteer
+
+Join our team of volunteers and help make a difference in the lives of our students.
 
 
 ---
 
 ## Website Navigation
 
-- Home
-- Gallery
-- Programs
 ### Classes
-- Advanced Dancers
+- Dance with Us
 - Beginner Dancers
 - Intermediate Dancers
+- Advanced Dancers
 
 ### Events
 - Events
@@ -692,7 +649,6 @@ If you have accessibility needs or questions about group sales, email us at cont
 
 ### Get Involved
 - Book a Performance
-- Dance with Us
 - See A Performance
 - Support Our Cause
 

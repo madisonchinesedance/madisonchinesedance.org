@@ -1,209 +1,214 @@
 #!/usr/bin/env python3
 """
-Generate ai-context.md from content JSON files.
+Generate ai-context.md from the static HTML pages.
 
-Reads all JSON files referenced in content/site.json and compiles
-their text content into a single markdown file for AI chatbot context.
+Walks docs/index.html and docs/pages/**/*.html, extracts the text content
+(headings, paragraphs, buttons, gallery counts, embedded forms), and compiles
+it into a single markdown file used as context for the AI chatbot.
 
 Usage:
     python scripts/generate-ai-context.py
 """
 
-import json
-import os
 import re
+from html.parser import HTMLParser
 from pathlib import Path
 
-# Project root is one level up from scripts/
 ROOT = Path(__file__).resolve().parent.parent
-CONTENT_DIR = ROOT / "docs" / "content"
+DOCS = ROOT / "docs"
 OUTPUT_FILE = ROOT / "ai-context.md"
 
-
-def load_json(path):
-    """Load and return a JSON file as a dict."""
-    with open(path, "r", encoding="utf-8") as f:
-        return json.load(f)
+VOID_TAGS = {"meta", "link", "img", "br", "input", "hr", "source"}
 
 
-def strip_html(text):
-    """Remove HTML tags but keep the text content. Convert <b>/<strong> to **bold**."""
-    if not text:
-        return ""
-    # Bold tags -> markdown bold
-    text = re.sub(r"<(?:b|strong)>(.*?)</(?:b|strong)>", r"**\1**", text, flags=re.IGNORECASE)
-    # Italic tags -> markdown italic
-    text = re.sub(r"<(?:i|em)>(.*?)</(?:i|em)>", r"*\1*", text, flags=re.IGNORECASE)
-    # Remove all remaining HTML tags
-    text = re.sub(r"<[^>]+>", "", text)
-    return text.strip()
+class Node:
+    __slots__ = ("tag", "attrs", "children", "text")
+
+    def __init__(self, tag, attrs):
+        self.tag = tag
+        self.attrs = {k: (v if v is not None else "") for k, v in attrs}
+        self.children = []
+        self.text = ""
 
 
-def extract_actions(actions, routes):
-    """Extract action links as markdown list items."""
-    lines = []
-    for action in actions:
-        label = action.get("label", "")
-        href = action.get("href", "")
-        route = action.get("route", "")
-        if route and route in routes:
-            href = routes[route].get("href", href)
-        if label:
-            lines.append(f"- **{label}**" + (f" ({href})" if href else ""))
-    return lines
+class Parser(HTMLParser):
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.root = Node("#root", [])
+        self.stack = [self.root]
+
+    def handle_starttag(self, tag, attrs):
+        node = Node(tag, attrs)
+        self.stack[-1].children.append(node)
+        if tag not in VOID_TAGS:
+            self.stack.append(node)
+
+    def handle_startendtag(self, tag, attrs):
+        self.stack[-1].children.append(Node(tag, attrs))
+
+    def handle_endtag(self, tag):
+        for i in range(len(self.stack) - 1, 0, -1):
+            if self.stack[i].tag == tag:
+                del self.stack[i:]
+                return
+
+    def handle_data(self, data):
+        if data.strip():
+            self.stack[-1].text += " " + data.strip()
 
 
-def resolve_heading_level(block):
-    """Derive markdown heading depth from fontSize token."""
-    token = str(block.get("fontSize") or block.get("headingSize") or "").strip()
-    match = re.fullmatch(r"heading-([1-6])", token)
-    if match:
-        return int(match.group(1))
-    if block.get("level"):
-        return max(1, min(int(block["level"]), 6))
-    return 2
+def parse_file(path: Path) -> Node:
+    parser = Parser()
+    parser.feed(path.read_text(encoding="utf-8"))
+    return parser.root
 
 
-def extract_block_lines(block, routes):
-    """Extract text content from a single content block."""
-    lines = []
-    block_type = block.get("type", "")
-
-    if block_type == "heading":
-        level = resolve_heading_level(block)
-        text = block.get("text", "")
-        if text:
-            lines.append("")
-            lines.append(f"{'#' * level} {text}")
-            lines.append("")
-    elif block_type == "body":
-        lines.extend(extract_body_lines(block, routes))
-    elif block_type == "gallery":
-        lines.extend(extract_gallery_lines(block))
-    elif block_type == "zeffyEmbed":
-        form_url = block.get("formUrl", "")
-        if form_url:
-            lines.append(f"- Embedded form: {form_url}")
-            lines.append("")
-
-    return lines
+def classes(node: Node) -> set:
+    return set(node.attrs.get("class", "").split())
 
 
-def extract_legacy_item_lines(item, routes):
-    """Extract text content from legacy keyed item objects."""
-    lines = []
-    for key, value in item.items():
-        base_key = re.sub(r"_\d+$", "", key)
-        if not isinstance(value, dict):
-            continue
-
-        if base_key.startswith("heading") and base_key[-1:].isdigit():
-            block = {"type": "heading", "fontSize": f"heading-{base_key[-1]}", **value}
-            lines.extend(extract_block_lines(block, routes))
-        elif re.fullmatch(r"statistic\d+", base_key):
-            block = {"type": "heading", "fontSize": "heading-4", **value}
-            lines.extend(extract_block_lines(block, routes))
-        elif base_key == "body":
-            lines.extend(extract_block_lines({**value, "type": "body"}, routes))
-        elif base_key == "gallery":
-            lines.extend(extract_block_lines({**value, "type": "gallery"}, routes))
-        elif base_key == "zeffyEmbed":
-            lines.extend(extract_block_lines({**value, "type": "zeffyEmbed"}, routes))
-
-    return lines
+def text_content(node: Node) -> str:
+    parts = [node.text.strip()]
+    for child in node.children:
+        parts.append(text_content(child))
+    return " ".join(p for p in parts if p).strip()
 
 
-def extract_text_from_content(page_content, routes):
-    """Extract text content from simplified content[] blocks."""
-    lines = []
-    for block in page_content or []:
-        block_type = block.get("type", "")
-
-        if block_type in ("hero", "text"):
-            heading = block.get("heading", "")
-            if heading:
-                level = 1 if block_type == "hero" else 4
-                lines.append("")
-                lines.append(f"{'#' * level} {heading}")
-                lines.append("")
-            lines.extend(extract_body_lines({"text": block.get("body", ""), "actions": block.get("buttons", [])}, routes))
-
-        elif block_type == "grid":
-            for card in block.get("cards", []):
-                if card.get("type") == "gallery":
-                    continue
-                heading = card.get("heading", "")
-                if heading:
-                    lines.append("")
-                    lines.append(f"#### {heading}")
-                    lines.append("")
-                lines.extend(extract_body_lines({"text": card.get("body", ""), "actions": card.get("buttons", [])}, routes))
-
-        elif block_type == "gallery":
-            lines.extend(extract_gallery_lines(block))
-
-        elif block_type == "zeffy":
-            form_url = block.get("formUrl", "")
-            if form_url:
-                lines.append(f"- Embedded form: {form_url}")
-                lines.append("")
-
-    return lines
+def find_all(node: Node, pred, results=None):
+    if results is None:
+        results = []
+    if node.tag != "#root" and pred(node):
+        results.append(node)
+    for child in node.children:
+        find_all(child, pred, results)
+    return results
 
 
-def extract_text_from_sections(sections, routes):
-    """Extract text content from section/item page JSON."""
-    lines = []
-    for section in sections or []:
-        items = section.get("items", [])
-        for item in items:
-            blocks = item.get("blocks")
-            if isinstance(blocks, list):
-                for block in blocks:
-                    if isinstance(block, dict):
-                        lines.extend(extract_block_lines(block, routes))
-            else:
-                lines.extend(extract_legacy_item_lines(item, routes))
-    return lines
+def strip_tags(text: str) -> str:
+    return re.sub(r"<[^>]+>", "", text)
 
 
-def extract_body_lines(block, routes):
-    """Extract paragraph text and actions from a body object."""
-    lines = []
-    text = block.get("text", "") or block.get("body", "")
-    text = strip_html(text)
-    if text:
-        for para in text.split("\n\n"):
-            para = para.strip()
-            if para:
-                for line in para.split("\n"):
-                    lines.append(line.strip())
-                lines.append("")
+# ---------------------------------------------------------------------------
+# Page extraction
+# ---------------------------------------------------------------------------
 
-    actions = block.get("actions", [])
-    if actions:
-        lines.extend(extract_actions(actions, routes))
+
+def extract_page_section(path: Path) -> tuple[str, list[str]] | None:
+    root = parse_file(path)
+    title_node = next(iter(find_all(root, lambda n: n.tag == "title")), None)
+    if title_node is None:
+        return None
+    title = text_content(title_node).strip()
+    display_title = title.split("|")[0].strip() if "|" in title else title
+
+    meta = next(
+        iter(
+            find_all(
+                root,
+                lambda n: n.tag == "meta" and n.attrs.get("name") == "description",
+            )
+        ),
+        None,
+    )
+    description = meta.attrs.get("content", "") if meta else ""
+
+    main = next(iter(find_all(root, lambda n: n.tag == "main")), None)
+    if main is None:
+        return None
+
+    lines: list[str] = []
+    if description:
+        lines.append(description)
         lines.append("")
 
-    return lines
+    skip_within = {"gallery-wrapper", "gallery-featured-thumbs", "gallery-event-grid"}
+
+    def walk(node: Node, in_skip: bool = False):
+        cls = classes(node)
+        skipped = in_skip or bool(cls & skip_within)
+        if not skipped:
+            if node.tag == "h1":
+                lines.append("")
+                lines.append(f"# {text_content(node)}")
+                lines.append("")
+            elif node.tag in ("h2", "h3", "h4", "h5", "h6"):
+                lines.append("")
+                lines.append(f"#### {text_content(node)}")
+                lines.append("")
+            elif node.tag == "p":
+                para = text_content(node)
+                if para:
+                    lines.append(para)
+                    lines.append("")
+            elif node.tag == "a" and "btn" in cls:
+                href = node.attrs.get("href", "")
+                label = text_content(node)
+                if label:
+                    lines.append(f"- **{label}**" + (f" ({href})" if href else ""))
+            elif node.tag == "div" and "data-form-url" in node.attrs:
+                form_url = node.attrs.get("data-form-url", "")
+                if form_url:
+                    lines.append(f"- Embedded form: {form_url}")
+                    lines.append("")
+
+        if "gallery-section" in cls:
+            images = find_all(node, lambda n: n.tag == "img")
+            if images:
+                lines.append(f"- Gallery with {len(images)} images")
+                lines.append("")
+            return
+
+        for child in node.children:
+            walk(child, skipped)
+
+    walk(main)
+
+    if not any(line.strip() for line in lines):
+        return None
+    return display_title, lines
 
 
-def extract_gallery_lines(block):
-    """Extract summary text from gallery data."""
+def extract_footer_info(homepage: Node):
+    """Mission statement and contact lines from the shared footer."""
+    mission_node = next(iter(find_all(homepage, lambda n: "footer-mission" in classes(n))), None)
+    mission = text_content(mission_node).strip() if mission_node else ""
+
+    operations_node = next(
+        iter(find_all(homepage, lambda n: "footer-operations" in classes(n))), None
+    )
+    contacts = []
+    if operations_node is not None:
+        for child in operations_node.children:
+            label = text_content(child).strip()
+            if label:
+                contacts.append(f"- {label}")
+    return mission, contacts
+
+
+def extract_navigation(homepage: Node) -> list[str]:
+    """Navigation summary from the shared header."""
     lines = []
-    groups = block.get("groups", [])
-    images = block.get("images", [])
-    if groups:
-        for group in groups:
-            year = group.get("year", "")
-            events = group.get("events", [])
-            for event in events:
-                event_name = event.get("event", "")
-                event_images = event.get("images", [])
-                lines.append(f"- {year} - {event_name}: {len(event_images)} images")
-    elif images:
-        lines.append(f"- Gallery with {len(images)} images")
-    lines.append("")
+    nav = next(iter(find_all(homepage, lambda n: "primary-nav" in classes(n))), None)
+    if nav is None:
+        return lines
+    for item in find_all(nav, lambda n: "nav-item-dropdown" in classes(n)):
+        toggle = next(
+            (c for c in item.children if c.tag == "button" and "nav-menu-toggle" in classes(c)),
+            None,
+        )
+        dropdown = next(
+            (c for c in item.children if "nav-dropdown" in classes(c)),
+            None,
+        )
+        if toggle is None or dropdown is None:
+            continue
+        heading = text_content(toggle).strip()
+        lines.append(f"### {heading}")
+        for link in find_all(dropdown, lambda n: n.tag == "a" and "nav-link" in classes(n)):
+            label = text_content(link).strip()
+            if label:
+                lines.append(f"- {label}")
+        lines.append("")
     return lines
 
 
@@ -222,104 +227,7 @@ def clean_lines(lines):
     return result
 
 
-def get_section_title(route_id):
-    """Generate a human-readable section title from a route ID."""
-    return route_id.replace("-", " ").title()
-
-
-def build_context():
-    """Build the full AI context markdown from all content files."""
-    site = load_json(CONTENT_DIR / "site.json")
-    routes = site.get("routes", {})
-
-    # Load supplementary content
-    try:
-        header_config = load_json(CONTENT_DIR / "header.json")
-    except Exception:
-        header_config = {}
-
-    try:
-        footer_config = load_json(CONTENT_DIR / "footer.json")
-    except Exception:
-        footer_config = {}
-
-    try:
-        announcements_config = load_json(CONTENT_DIR / "announcements.json")
-    except Exception:
-        announcements_config = {}
-
-    sections = []
-
-    # ---- Header info ----
-    mission = footer_config.get("brand", {}).get("mission", "")
-    if mission:
-        sections.append(("About the Academy", [mission, ""]))
-
-    # ---- Contact info from footer ----
-    operations = footer_config.get("operations", [])
-    if operations:
-        contact_lines = ["**Contact:**"]
-        for op in operations:
-            label = op.get("label", "")
-            if label:
-                contact_lines.append(f"- {label}")
-        sections.append(("Contact", contact_lines))
-
-    # ---- Announcements ----
-    announcements = announcements_config.get("announcements", [])
-    active_announcements = [a for a in announcements if a.get("enabled", True)]
-    if active_announcements:
-        ann_lines = []
-        for ann in active_announcements:
-            label = ann.get("label", "")
-            body = ann.get("body", "")
-            if label or body:
-                ann_lines.append(f"- **{label}**: {body}" if label else f"- {body}")
-        sections.append(("Current Announcements", ann_lines))
-
-    # ---- Process each route's content ----
-    for route_id, route_info in routes.items():
-        content_path = route_info.get("content", "")
-        if not content_path:
-            continue
-
-        full_path = CONTENT_DIR / content_path
-        if not full_path.exists():
-            continue
-
-        try:
-            content = load_json(full_path)
-        except Exception as e:
-            print(f"  Warning: Could not load {content_path}: {e}")
-            continue
-
-        title = content.get("pageTitle", get_section_title(route_id))
-        meta = content.get("metaDescription", "")
-        page_content = content.get("content", [])
-        content_sections = content.get("sections", [])
-
-        section_lines = []
-
-        # Add meta description if available
-        if meta:
-            section_lines.append(meta)
-            section_lines.append("")
-
-        if page_content:
-            section_lines.extend(extract_text_from_content(page_content, routes))
-        elif content_sections:
-            section_lines.extend(extract_text_from_sections(content_sections, routes))
-
-        if section_lines:
-            # Use a clean section title
-            display_title = title.split("|")[0].strip() if "|" in title else title
-            sections.append((display_title, section_lines))
-
-    return sections
-
-
 def generate_markdown(sections):
-    """Generate the final markdown output."""
     lines = []
 
     lines.append("# Madison Chinese Dance Academy - Website Content")
@@ -331,7 +239,6 @@ def generate_markdown(sections):
 
     seen_titles = {}
     for title, content_lines in sections:
-        # Deduplicate titles
         if title in seen_titles:
             seen_titles[title] += 1
             unique_title = f"{title} ({seen_titles[title]})"
@@ -347,33 +254,49 @@ def generate_markdown(sections):
         for line in content_lines:
             lines.append(line)
 
-    # Navigation summary at the end
     lines.append("")
     lines.append("---")
     lines.append("")
     lines.append("## Website Navigation")
     lines.append("")
 
-    try:
-        site = load_json(CONTENT_DIR / "site.json")
-        header_config = load_json(CONTENT_DIR / "header.json")
-        nav = header_config.get("nav", [])
+    return lines
 
-        for entry in nav:
-            label = entry.get("label", "")
-            items = entry.get("items", [])
-            if items:
-                lines.append(f"### {label}")
-                for item in items:
-                    item_label = item.get("label", item.get("route", ""))
-                    lines.append(f"- {item_label}")
-                lines.append("")
-            elif entry.get("route"):
-                lines.append(f"- {label}")
-    except Exception:
-        pass
 
-    # Quick actions
+def main():
+    print("Generating ai-context.md from static HTML pages...")
+    print(f"  Pages root: {DOCS}")
+    print(f"  Output file: {OUTPUT_FILE}")
+    print()
+
+    homepage_path = DOCS / "index.html"
+    homepage = parse_file(homepage_path)
+
+    sections = []
+
+    mission, contacts = extract_footer_info(homepage)
+    if mission:
+        sections.append(("About the Academy", [mission, ""]))
+    if contacts:
+        sections.append(("Contact", ["**Contact:**", *contacts]))
+
+    page_paths = [homepage_path] + sorted(
+        p for p in DOCS.joinpath("pages").rglob("*.html")
+    )
+    for path in page_paths:
+        result = extract_page_section(path)
+        if result:
+            sections.append(result)
+
+    print(f"  Found {len(sections)} content sections")
+    for title, _ in sections:
+        print(f"    - {title}")
+    print()
+
+    lines = generate_markdown(sections)
+
+    lines.extend(extract_navigation(homepage))
+
     lines.append("### Quick Actions")
     lines.append("- Purchase Tickets: https://www.zeffy.com/en-US/ticketing/splendid-china--2026")
     lines.append("- Donate: https://www.zeffy.com/en-US/donation-form/donate-to-madison-chinese-dance-academy")
@@ -382,23 +305,7 @@ def generate_markdown(sections):
     lines.append("")
     lines.append("(c) 2026 Madison Chinese Dance Academy. All rights reserved.")
 
-    return "\n".join(lines)
-
-
-def main():
-    print("Generating ai-context.md from content JSON files...")
-    print(f"  Content directory: {CONTENT_DIR}")
-    print(f"  Output file: {OUTPUT_FILE}")
-    print()
-
-    sections = build_context()
-
-    print(f"  Found {len(sections)} content sections")
-    for title, _ in sections:
-        print(f"    - {title}")
-    print()
-
-    markdown = generate_markdown(sections)
+    markdown = "\n".join(clean_lines(lines))
 
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         f.write(markdown)

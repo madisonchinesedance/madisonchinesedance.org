@@ -1,7 +1,11 @@
-"""Update gallery JSON files from images in Cloudflare R2 bucket.
+"""Sync performance photos from Cloudflare R2 into the static HTML pages.
+
+Gallery images live directly in the HTML files between <!-- sync:... -->
+marker comments (see scripts/gallery_markup.py). This script scans R2 and
+regenerates those regions.
 
 Subcommands:
-    sync        Scan R2 and update gallery / per-year / homepage JSON (default)
+    sync        Scan R2 and update the gallery regions in the HTML pages (default)
     categorize  Sort local homepage-runner images into tall/wide/standard folders
 
 Usage:
@@ -26,31 +30,23 @@ import shutil
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import gallery_markup as gm
+
 IMAGE_EXTENSIONS = {".avif", ".gif", ".jpeg", ".jpg", ".png", ".webp"}
 
 BUCKET_STANDARD = "homepage-runner"
 BUCKET_TALL = "homepage-runner-tall"
 BUCKET_WIDE = "homepage-runner-wide"
 
-DEFAULT_CONTENT = {
-    "pageTitle": "Gallery | Madison Chinese Dance Academy",
-    "metaDescription": "Image gallery of the Madison Chinese Dance Academy.",
-    "heading": "Gallery",
-    "galleryGroups": [],
-    "galleryImages": [],
+HOMEPAGE_RUNNER_KEYS = {
+    "homepageRunnerImages": ("homepage-runner", BUCKET_STANDARD),
+    "homepageRunnerTallImages": ("homepage-runner-tall", BUCKET_TALL),
+    "homepageRunnerWideImages": ("homepage-runner-wide", BUCKET_WIDE),
 }
 
 YEAR_FOLDER_PATTERN = re.compile(r"^splendid-china-(\d{4})$")
 GALLERY_PREFIX = "gallery/"
-HOMEPAGE_RUNNER_PREFIX = "homepage-runner/"
-HOMEPAGE_RUNNER_TALL_PREFIX = "homepage-runner-tall/"
-HOMEPAGE_RUNNER_WIDE_PREFIX = "homepage-runner-wide/"
-
-HOMEPAGE_RUNNER_KEYS = {
-    "homepageRunnerImages": HOMEPAGE_RUNNER_PREFIX,
-    "homepageRunnerTallImages": HOMEPAGE_RUNNER_TALL_PREFIX,
-    "homepageRunnerWideImages": HOMEPAGE_RUNNER_WIDE_PREFIX,
-}
 
 RCLONE_REMINDER = (
     "\nNext: upload to R2 with:\n"
@@ -282,29 +278,6 @@ def title_from_filename(filename: str) -> str:
     return words.title()
 
 
-def read_existing_content(path: Path) -> dict:
-    if not path.exists():
-        return {}
-
-    try:
-        data = json.loads(path.read_text(encoding="utf-8"))
-    except json.JSONDecodeError as error:
-        raise SystemExit(f"Could not parse {path}: {error}") from error
-
-    if not isinstance(data, dict):
-        raise SystemExit(f"{path} must contain a JSON object.")
-
-    return data
-
-
-def write_json(path: Path, data: dict) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(
-        json.dumps(data, indent=2, ensure_ascii=False) + "\n",
-        encoding="utf-8",
-    )
-
-
 def list_bucket_prefixes(s3_client, bucket: str, prefix: str, delimiter: str = "/") -> list[dict]:
     response = s3_client.list_objects_v2(
         Bucket=bucket,
@@ -372,7 +345,7 @@ def dedupe_homepage_runners(
 def scan_homepage_runners(s3_client, bucket: str, public_url: str) -> tuple[dict[str, list[dict[str, str]]], int]:
     runners = {
         key: scan_year_images(s3_client, bucket, public_url, prefix)
-        for key, prefix in HOMEPAGE_RUNNER_KEYS.items()
+        for key, (_, prefix) in HOMEPAGE_RUNNER_KEYS.items()
     }
     return dedupe_homepage_runners(runners)
 
@@ -418,66 +391,56 @@ def build_gallery_groups(years: list[dict]) -> list[dict]:
     return groups
 
 
-def update_main_gallery(
-    content_path: Path,
-    existing: dict,
-    years: list[dict],
-    featured_images: list[dict[str, str]],
-) -> tuple[int, int]:
-    gallery_groups = build_gallery_groups(years)
-    # Start with existing content to preserve non-managed fields
-    # (e.g., the "content" layout array with hero/gallery/archive blocks)
-    content = dict(existing)
-    # Update only the fields this script manages
-    content["pageTitle"] = (
-        existing.get("pageTitle")
-        or existing.get("galleryPageTitle")
-        or DEFAULT_CONTENT["pageTitle"]
-    )
-    content["metaDescription"] = (
-        existing.get("metaDescription")
-        or existing.get("galleryMetaDescription")
-        or DEFAULT_CONTENT["metaDescription"]
-    )
-    # Preserve heading only if it was explicitly set in the existing file;
-    # remove it otherwise — the actual page heading lives in the content[] blocks.
-    if "heading" in existing:
-        content["heading"] = existing["heading"]
-    else:
-        content.pop("heading", None)
-    content["galleryGroups"] = gallery_groups
-    content["galleryImages"] = featured_images
-    # Remove any legacy keys that shouldn't persist
-    content.pop("galleryPageTitle", None)
-    content.pop("galleryMetaDescription", None)
-    content.pop("galleryHeroHeading", None)
-    write_json(content_path, content)
-    return len(gallery_groups), len(featured_images)
+# ---------------------------------------------------------------------------
+# HTML region updates
+# ---------------------------------------------------------------------------
 
 
-def update_per_year_json(content_path: Path, year_info: dict) -> int:
-    existing = read_existing_content(content_path)
-    existing["galleryImages"] = year_info["images"]
-    write_json(content_path, existing)
-    return len(year_info["images"])
-
-
-def update_homepage_json(
-    content_path: Path,
-    runner_images: dict[str, list[dict[str, str]]],
-) -> dict[str, int]:
-    existing = read_existing_content(content_path)
-    counts = {}
+def update_homepage(homepage_path: Path, runner_images: dict[str, list[dict]]) -> dict[str, int]:
+    counts: dict[str, int] = {}
     for key, images in runner_images.items():
-        existing[key] = images
-        counts[key] = len(images)
-    write_json(content_path, existing)
+        sync_id, variant = HOMEPAGE_RUNNER_KEYS[key]
+        if not images:
+            print(f"  WARNING: {sync_id} image list is empty; leaving the region untouched.")
+            counts[key] = 0
+            continue
+        if gm.update_file(homepage_path, sync_id, gm.build_runner_block(variant, images)):
+            counts[key] = len(images)
+        else:
+            print(f"  WARNING: sync region '{sync_id}' not found in {homepage_path.name}.")
+            counts[key] = 0
     return counts
+
+
+def update_gallery_page(
+    gallery_page_path: Path,
+    groups: list[dict],
+    featured_images: list[dict],
+) -> None:
+    if not gm.update_file(
+        gallery_page_path, "gallery-archive", gm.build_archive_region(groups)
+    ):
+        print(f"  WARNING: sync region 'gallery-archive' not found in {gallery_page_path.name}.")
+    if featured_images:
+        if not gm.update_file(
+            gallery_page_path, "gallery-featured", gm.build_featured_region(featured_images)
+        ):
+            print(f"  WARNING: sync region 'gallery-featured' not found in {gallery_page_path.name}.")
+    else:
+        print("  WARNING: featured gallery image list is empty; leaving the region untouched.")
+
+
+def update_per_year_page(page_path: Path, route_id: str, images: list[dict]) -> bool:
+    if not images:
+        print(f"  WARNING: {route_id} image list is empty; leaving the region untouched.")
+        return False
+    return gm.update_file(page_path, route_id, gm.build_runner_block("runner", images))
 
 
 def cmd_sync(args: argparse.Namespace) -> int:
     root = repo_root()
-    content_path = args.content.resolve()
+    homepage_path = args.homepage.resolve()
+    gallery_page_path = args.gallery_page.resolve()
     per_year_dir = args.per_year_dir.resolve()
 
     s3_client, bucket, public_url = _create_s3_client()
@@ -496,13 +459,12 @@ def cmd_sync(args: argparse.Namespace) -> int:
         return 0
 
     image_count = sum(len(year["images"]) for year in years)
-    homepage_path = root / "docs" / "content" / "index.json"
-    homepage_counts = update_homepage_json(homepage_path, homepage_runners)
+
+    homepage_counts = update_homepage(homepage_path, homepage_runners)
     for key, count in homepage_counts.items():
         noun = "image" if count == 1 else "images"
         print(
-            f"Updated {homepage_path.relative_to(root)} with "
-            f"{count} {key} {noun}."
+            f"Updated {homepage_path.relative_to(root)} region {key}: {count} {noun}."
         )
     if excluded_homepage_dupes:
         noun = "duplicate" if excluded_homepage_dupes == 1 else "duplicates"
@@ -512,38 +474,36 @@ def cmd_sync(args: argparse.Namespace) -> int:
         )
 
     if not args.skip_main:
-        existing = read_existing_content(content_path)
-        group_count, featured_count = update_main_gallery(
-            content_path, existing, years, featured_images
+        update_gallery_page(
+            gallery_page_path, build_gallery_groups(years), featured_images
         )
+        group_count = len(build_gallery_groups(years))
         group_noun = "group" if group_count == 1 else "groups"
         archive_noun = "image" if image_count == 1 else "images"
-        featured_noun = "image" if featured_count == 1 else "images"
+        featured_noun = "image" if len(featured_images) == 1 else "images"
         print(
-            f"Updated {content_path.relative_to(root)} with {group_count} {group_noun} "
-            f"({image_count} archive {archive_noun}) and {featured_count} featured "
-            f"{featured_noun}."
+            f"Updated {gallery_page_path.relative_to(root)}: {group_count} archive {group_noun} "
+            f"({image_count} {archive_noun}) and {len(featured_images)} featured {featured_noun}."
         )
 
     updated_per_year = 0
     for year_info in years:
-        per_year_path = per_year_dir / f"splendid-china-{year_info['year']}.json"
-        if not per_year_path.exists():
-            print(f"Skipping {per_year_path.relative_to(root)}: file not found")
+        page_path = per_year_dir / f"splendid-china-{year_info['year']}.html"
+        if not page_path.exists():
+            print(f"Skipping {page_path.relative_to(root)}: file not found")
             continue
-        image_noun = "image" if len(year_info["images"]) == 1 else "images"
-        update_per_year_json(per_year_path, year_info)
-        updated_per_year += 1
-        print(
-            f"Updated {per_year_path.relative_to(root)} with "
-            f"{len(year_info['images'])} {image_noun}."
-        )
+        if update_per_year_page(page_path, f"splendid-china-{year_info['year']}", year_info["images"]):
+            updated_per_year += 1
+            image_noun = "image" if len(year_info["images"]) == 1 else "images"
+            print(
+                f"Updated {page_path.relative_to(root)} with "
+                f"{len(year_info['images'])} {image_noun}."
+            )
 
     standard_count = homepage_counts.get("homepageRunnerImages", 0)
     tall_count = homepage_counts.get("homepageRunnerTallImages", 0)
     wide_count = homepage_counts.get("homepageRunnerWideImages", 0)
     homepage_total = standard_count + tall_count + wide_count
-    featured_count = len(featured_images) if not args.skip_main else 0
 
     print(
         f"\nDone. Homepage runners: {standard_count} standard, "
@@ -551,11 +511,11 @@ def cmd_sync(args: argparse.Namespace) -> int:
     )
     print(
         f"Splendid China archive: {image_count} image(s) across "
-        f"{updated_per_year} per-year JSON file(s)."
+        f"{updated_per_year} per-year page(s)."
     )
     if not args.skip_main:
-        featured_noun = "image" if featured_count == 1 else "images"
-        print(f"Featured gallery: {featured_count} {featured_noun}.")
+        featured_noun = "image" if len(featured_images) == 1 else "images"
+        print(f"Featured gallery: {len(featured_images)} {featured_noun}.")
 
     return 0
 
@@ -569,24 +529,30 @@ def build_parser() -> argparse.ArgumentParser:
 
     sync_parser = subparsers.add_parser(
         "sync",
-        help="Scan R2 and update gallery JSON files (default)",
+        help="Scan R2 and update gallery regions in the HTML pages (default)",
     )
     sync_parser.add_argument(
-        "--content",
-        default=root / "docs" / "content" / "gallery.json",
+        "--homepage",
+        default=root / "docs" / "index.html",
         type=Path,
-        help="Path to the main gallery JSON file to update.",
+        help="Homepage HTML file with the homepage-runner sync regions.",
+    )
+    sync_parser.add_argument(
+        "--gallery-page",
+        default=root / "docs" / "pages" / "gallery.html",
+        type=Path,
+        help="Gallery page HTML file with the featured/archive sync regions.",
     )
     sync_parser.add_argument(
         "--per-year-dir",
-        default=root / "docs" / "content" / "splendid-china",
+        default=root / "docs" / "pages" / "splendid-china",
         type=Path,
-        help="Directory containing the per-year JSON files to update.",
+        help="Directory containing the per-year Splendid China HTML pages.",
     )
     sync_parser.add_argument(
         "--skip-main",
         action="store_true",
-        help="Skip updating the main gallery.json (only update per-year JSONs).",
+        help="Skip updating the main gallery page (only update per-year pages).",
     )
     sync_parser.set_defaults(func=cmd_sync)
 
