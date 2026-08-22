@@ -1,0 +1,45 @@
+/* zeffy.css — Zeffy ticket/donation embed and fallback frame */
+
+.ticket-embed{
+	background:var(--zeffy-embed-bg);
+	border-radius:14px;
+	padding:clamp(18px, 3vw, 32px);
+	box-shadow:var(--card-shadow);
+	border:1px solid var(--card-border-color);
+	overflow:hidden;
+	position:relative;
+	width:100%;
+	margin:18px auto 0;
+}
+
+.ticket-embed div[data-zeffy-embed],
+.ticket-embed [data-zeffy-embed-fallback]{
+	width:100%;
+	max-width:760px;
+	margin:0 auto;
+	display:block;
+}
+.ticket-embed [data-zeffy-embed-fallback]{
+	display:none;
+}
+
+.zeffy-fallback-frame{
+	position:relative;
+	overflow:hidden;
+	width:100%;
+	min-height:820px;
+	padding:0;
+}
+.ticket-embed iframe{
+	display:block;
+	width:100% !important;
+	max-width:none !important;
+	min-height:820px;
+	border:0;
+	border-radius:14px;
+	background:transparent;
+}
+
+.ticket-embed div[data-zeffy-embed]{
+	min-height:820px;
+}

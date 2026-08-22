@@ -1,0 +1,252 @@
+/* home.css — Homepage-specific layout (everything scoped under .home-page) */
+
+.home-page .page-star-field{
+	opacity:1;
+}
+/* Homepage layout — inferred from blocks via :has() (no section variant in JSON) */
+.home-page .section > .container{
+	max-width:var(--content-width);
+	background:transparent;
+	border:0;
+	border-radius:0;
+	box-shadow:none;
+	padding:0;
+}
+.home-page .section > .container:hover,
+.home-page .section > .container:focus-within{
+	background:transparent;
+	border-color:transparent;
+	box-shadow:none;
+}
+
+/* Hero */
+.home-page .section:has(#home-heading){
+	margin-top:0;
+	padding-top:var(--content-top-padding);
+	padding-bottom:12px;
+	border-radius:var(--section-border-radius-top-left) var(--section-border-radius-top-right) var(--section-border-radius-bottom-right) var(--section-border-radius-bottom-left);
+}
+.home-page .section:has(#home-heading) > .container{
+	background:linear-gradient(180deg, color-mix(in srgb, var(--section-bg-top) calc(var(--section-transparency) * 100%), transparent), color-mix(in srgb, var(--section-bg-bottom) calc(var(--section-transparency) * 100%), transparent));
+	border:1px solid color-mix(in srgb, var(--section-border) calc(var(--section-transparency) * 100%), transparent);
+	border-radius:var(--section-radius);
+	box-shadow:var(--section-shadow);
+	padding:clamp(18px, 3vw, 40px) var(--section-padding-x);
+}
+.home-page .section:has(#home-heading) .section-grid{
+	max-width:var(--content-width);
+	margin:0 auto;
+}
+.home-page .section:has(#home-heading) .section-item{
+	width:100%;
+}
+.home-page .section:has(#home-heading) h1{
+	margin:0 0 18px;
+	padding-bottom:0;
+	text-wrap:balance;
+	text-shadow:0 10px 32px color-mix(in srgb, var(--color-deep-navy) 72%, transparent);
+	border-bottom:none;
+}
+.home-page .section:has(#home-heading) h1::after{
+	content:"";
+	display:block;
+	width:100%;
+	padding-bottom:18px;
+	border-bottom:1px solid color-mix(in srgb, var(--light-text-color) 22%, transparent);
+}
+.home-page .section:has(#home-heading) .component-body{
+	max-width:none;
+}
+.home-page .section:has(#home-heading) .component-body p{
+	font-size:clamp(1rem, 1.25vw, 1.25rem);
+}
+
+/* Gallery runner sections */
+.home-page .section:has(> .container > .section-grid > .section-item:only-child [data-gallery-variant="runner"]),
+.home-page .section:has(> .container > .section-grid > .section-item:only-child [data-gallery-variant="runner-wide"]){
+	padding-top:8px;
+	padding-bottom:clamp(20px, 3vw, 36px);
+}
+.home-page .section:has([data-gallery-variant="runner"]) .gallery-dots,
+.home-page .section:has([data-gallery-variant="runner-tall"]) .gallery-dots,
+.home-page .section:has([data-gallery-variant="runner-wide"]) .gallery-dots{
+	padding-top:14px;
+}
+.home-page .section:has(> .container > .section-grid > .section-item:only-child [data-gallery-variant="runner"]) .gallery-container{
+	aspect-ratio:16 / 9;
+	max-height:800px;
+	border-radius:14px;
+}
+.home-page .section:has(> .container > .section-grid > .section-item:only-child [data-gallery-variant="runner-wide"]) .gallery-container{
+	aspect-ratio:21 / 9;
+	max-height:520px;
+	border-radius:14px;
+}
+
+/* Highlights grid (stats + sidebar gallery) */
+.home-page .section:has([data-gallery-variant="runner-tall"]){
+	margin-top:0;
+	padding-top:8px;
+	padding-bottom:clamp(34px, 5vw, 64px);
+}
+.home-page .section:has([data-gallery-variant="runner-tall"]) .section-grid{
+	grid-template-columns:minmax(0, 1.2fr) minmax(260px, 0.85fr);
+	align-items:start;
+	gap:clamp(20px, 3vw, 40px);
+	padding-top:28px;
+	border-top:1px solid color-mix(in srgb, var(--light-text-color) 18%, transparent);
+}
+.home-page .section:has([data-gallery-variant="runner-tall"]) .section-item:nth-child(1),
+.home-page .section:has([data-gallery-variant="runner-tall"]) .section-item:nth-child(2),
+.home-page .section:has([data-gallery-variant="runner-tall"]) .section-item:nth-child(3){
+	grid-column:1;
+	min-height:auto;
+	padding:clamp(20px, 2.5vw, 28px);
+}
+.home-page .section:has([data-gallery-variant="runner-tall"]) .section-item:nth-child(4){
+	grid-column:2;
+	grid-row:1 / span 3;
+	align-self:start;
+	min-height:auto;
+	padding:0;
+}
+.home-page .section:has([data-gallery-variant="runner-tall"]) .section-item:nth-child(-n+3) .component-body{
+	flex:1;
+	margin-top:0;
+}
+.home-page .section:has([data-gallery-variant="runner-tall"]) .section-item:nth-child(-n+3) .component-body p{
+	font-size:clamp(1.12rem, 1.4vw, 1.3rem);
+	line-height:1.65;
+}
+.home-page .section:has([data-gallery-variant="runner-tall"]) .section-item:nth-child(-n+3) :is(h1, h2, h3, h4, h5, h6){
+	margin:0;
+	letter-spacing:0;
+}
+.home-page .section-item:has([data-gallery-variant="runner-tall"]) .gallery-container{
+	aspect-ratio:4 / 5;
+	max-height:min(72vh, 640px);
+	border-radius:14px;
+}
+
+/* Academy link cards */
+.home-page .section:has(a[href*="beginner-dancers"]){
+	padding-top:8px;
+	padding-bottom:48px;
+	background:transparent;
+}
+.home-page .section:has(a[href*="beginner-dancers"]) .section-item{
+	min-height:0;
+}
+
+/* Story columns */
+.home-page .section:has(.section-grid[style*="--section-columns:2"]):not(:has([data-gallery-variant])){
+	padding-top:20px;
+	padding-bottom:44px;
+	background:transparent;
+}
+
+/* Get-involved link cards */
+.home-page .section:has(a[href*="donate"]){
+	padding-top:8px;
+	background:transparent;
+}
+.home-page .section:has(a[href*="donate"]) .section-item{
+	min-height:0;
+}
+/* Homepage */
+.home-page .hero{
+	position:relative;
+	overflow:hidden;
+	padding-bottom:24px;
+	background:linear-gradient(180deg, var(--hero-bg-top) 0%, var(--hero-bg-middle) 52%, var(--hero-bg-bottom) 100%);
+}
+.home-page .hero-inner{
+	position:relative;
+	z-index:1;
+	overflow:hidden;
+	background:transparent;
+	border-color:transparent;
+	box-shadow:none;
+	opacity:1;
+	--entrance-end-opacity: 1;
+	backdrop-filter:none;
+}
+.home-page .hero-title,
+.home-page .hero-tagline,
+.home-page .hero-ctas{
+	animation:home-rise var(--entrance-duration) ease both;
+}
+.home-page .hero-tagline{ animation-delay:80ms; }
+.home-page .hero-ctas{ animation-delay:160ms; }
+.home-page .hero-ctas{
+	justify-content:flex-start;
+	margin-top:26px;
+}
+.home-page .section:not(:has(#home-heading)) .section-item :is(h1, h2, h3, h4, h5, h6){
+	margin:0;
+	color:var(--light-text-color);
+}
+.home-page .section:not(:has(#home-heading)) .component-body p{
+	margin:0;
+	color:var(--body-font-color);
+	font-size:var(--body-font-size);
+	line-height:var(--body-line-height);
+}
+.home-page .section:not(:has(#home-heading)) .component-body{
+	max-width:920px;
+	margin:0;
+}
+
+/* Responsive (max-width:992px) */
+@media (max-width:992px){
+	.home-page .section:has(a[href*="beginner-dancers"]) .section-item,
+	.home-page .section:has(a[href*="donate"]) .section-item{
+		min-height:0;
+	}
+	.home-page .section:has(#home-heading) > .container{
+		padding:clamp(18px, 3vw, 40px) var(--section-padding-x);
+	}
+	.home-page .section:not(:has(#home-heading)) > .container{
+		padding:0;
+	}
+}
+
+/* Responsive (max-width:768px) */
+@media (max-width:768px){
+	.home-page .section:has([data-gallery-variant="runner-tall"]) .section-grid{
+		grid-template-columns:minmax(0, 1fr);
+	}
+	.home-page .section:has([data-gallery-variant="runner-tall"]) .section-item:nth-child(1),
+	.home-page .section:has([data-gallery-variant="runner-tall"]) .section-item:nth-child(2),
+	.home-page .section:has([data-gallery-variant="runner-tall"]) .section-item:nth-child(3),
+	.home-page .section:has([data-gallery-variant="runner-tall"]) .section-item:nth-child(4){
+		grid-column:1;
+		grid-row:auto;
+	}
+	.home-page .section-item:has([data-gallery-variant="runner-tall"]) .gallery-container{
+		max-height:min(60vh, 520px);
+	}
+}
+
+/* Responsive (max-width:640px) */
+@media (max-width:640px){
+	.home-page .hero-ctas{
+		display:grid;
+		grid-template-columns:1fr;
+	}
+	.home-page .section:has(#home-heading){
+		padding-top:var(--content-top-padding);
+		border-radius:24px 24px 0 0;
+	}
+}
+
+
+/* Accessibility: disable motion for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce){
+	.home-page .hero-title,
+	.home-page .hero-tagline,
+	.home-page .hero-ctas {
+		transition:none;
+		animation:none;
+	}
+}

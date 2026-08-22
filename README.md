@@ -20,6 +20,7 @@ Changes go live on the next GitHub Pages deploy (usually within a minute). No np
 - **Pages** — one folder per route, each with a complete `index.html` (`/gallery/index.html` → `/gallery/`)
 - **`nav.js`** — injects the shared header (with correct active-menu state) and footer into placeholders on every page
 - **`app.js`** — runtime behaviors only: mobile nav, dropdowns, gallery carousels and lightbox, year tabs, the Zeffy embed, the star field, and the chatbot
+- **Styles** — `css/main.css` is the single `<link>`; it `@import`s one file per component (variables, base, buttons, header, sections, home, gallery, zeffy, footer, chatbot). To change where a style lives or add a part, update `css/main.css`. Each part file owns its own responsive media queries.
 - **No build step, no JSON, no CMS** — push to `main` and GitHub Pages serves the repo root
 
 ### Adding a new page
@@ -53,7 +54,12 @@ Adding a new Splendid China year requires a new `splendid-china/<year>/index.htm
 index.html                 # Homepage (/)
 nav.js                     # Shared header/footer data + injection
 app.js                     # Runtime behaviors (nav, galleries, chatbot)
-style.css
+css/
+  main.css                 # Entry point — @imports the parts below
+  variables.css            # Design tokens (:root)
+  base.css                 # Reset, typography, container, skip link
+  buttons.css, header.css, sections.css, home.css, gallery.css,
+  zeffy.css, footer.css, chatbot.css
 gallery/, programs/, classes/, donate/, events/, services/,
 tickets/, get-involved/, splendid-china/     # One folder per page
 scripts/

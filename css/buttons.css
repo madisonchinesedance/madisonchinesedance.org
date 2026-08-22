@@ -1,0 +1,58 @@
+/* buttons.css — Shared .btn styles and CTA variants */
+
+/* CTA buttons */
+.hero-ctas{ display:inline-flex; gap:14px; flex-wrap:wrap; justify-content:center; margin-top:12px; }
+.btn{
+	display:inline-flex;
+	align-items:center;
+	justify-content:center;
+	gap:10px;
+	text-decoration:none;
+	cursor:pointer;
+	user-select:none;
+	font-weight:var(--heading-1-font-weight);
+	padding:var(--primary-button-padding);
+	border-radius:var(--primary-button-radius);
+	transition: var(--primary-button-transition);
+	border:0;
+	color:var(--primary-button-text);
+	font-size:var(--primary-button-font-size);
+}
+.btn:focus-visible{ outline:var(--primary-button-focus-outline); outline-offset:var(--primary-button-focus-offset); }
+
+/* Primary (ticket) */
+.btn-primary{
+	background:var(--primary-button-bg);
+	transition: var(--primary-button-transition);
+}
+.btn-primary:hover{
+	transform:translateY(var(--primary-button-hover-translate));
+	filter:var(--primary-button-hover-filter);
+}
+
+
+.btn.header-cta{
+	padding:var(--nav-button-padding);
+	font-size: var(--nav-button-font-size);
+	font-weight: var(--nav-button-font-weight);
+	border-radius:var(--nav-button-radius);
+	white-space:nowrap;
+	transition: var(--nav-button-transition);
+}
+.btn.header-cta[aria-current="page"]{
+	box-shadow:var(--nav-button-active-shadow);
+}
+
+.btn.header-cta:hover{
+	transform:translateY(var(--nav-button-hover-translate));
+	filter:var(--nav-button-hover-filter);
+}
+
+
+/* Accessibility: disable motion for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce){
+	.btn {
+		transition:none;
+		animation:none;
+	}
+}

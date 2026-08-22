@@ -995,38 +995,3 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	}
 });
-
-/* -------------------------------------------------
-   CSS for typing indicator (injected via JS to keep
-   all chatbot styles together)
-   ------------------------------------------------- */
-const chatbotStyles = `
-<style>
-.chatbot-typing .chatbot-message-content {
-	background: linear-gradient(180deg, var(--color-violet), var(--color-deep-navy));
-	border: 1px solid var(--edge-contrast);
-	border-radius: 16px;
-	border-bottom-left-radius: 4px;
-	padding: 12px 16px;
-}
-.chatbot-typing-dots {
-	display: flex;
-	gap: 4px;
-}
-.chatbot-typing-dots span {
-	width: 8px;
-	height: 8px;
-	border-radius: 50%;
-	background: var(--light-text-color);
-	opacity: 0.5;
-	animation: chatbot-typing-bounce 1.4s ease-in-out infinite both;
-}
-.chatbot-typing-dots span:nth-child(1) { animation-delay: -0.32s; }
-.chatbot-typing-dots span:nth-child(2) { animation-delay: -0.16s; }
-@keyframes chatbot-typing-bounce {
-	0%, 80%, 100% { transform: scale(0); opacity: 0.5; }
-	40% { transform: scale(1); opacity: 1; }
-}
-</style>
-`;
-document.head.insertAdjacentHTML('beforeend', chatbotStyles);
