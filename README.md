@@ -1,20 +1,19 @@
 # Madison Chinese Dance Academy Website
 
-Static site for [madisonchinesedance.org](https://madisonchinesedance.org), served from the `docs/` folder on GitHub Pages and editable through [Pages CMS](https://pagescms.org).
+Static site for [madisonchinesedance.org](https://madisonchinesedance.org), served from the `docs/` folder on GitHub Pages.
 
-## Editing content (volunteers)
+## Editing content
 
-1. Go to [pagescms.org](https://pagescms.org) and sign in with GitHub
-2. Open the `madisonchinesedance/madisonchinesedance.github.io` repository
-3. Edit pages, announcements, footer, or event details under **Site**, **Pages**, or **Archive**
-4. Save — changes go live on the next GitHub Pages deploy (usually within a minute)
+Content lives in JSON files under `docs/content/`. Edit them either way:
 
-No command line, npm, or JSON file editing required.
+- **On GitHub** — open the file at github.com, click the pencil icon, edit, and commit
+- **Locally** — clone the repo, edit, and push to `main`
 
-**Not edited in Pages CMS** (repo only):
-- **Performance photos** — synced from Cloudflare R2 via `python scripts/scan-images.py sync`
+Changes go live on the next GitHub Pages deploy (usually within a minute). No npm or build step required.
 
-**Navigation:** volunteers can rename menu labels under **Site → Navigation**. Do not delete or reorder menu items.
+**Performance photos** are not edited by hand — they are synced from Cloudflare R2 via `python scripts/scan-images.py sync`.
+
+**Navigation:** menu labels live in `docs/content/header.json`. Do not delete or reorder menu items.
 
 ## How the site works
 
@@ -35,7 +34,7 @@ Each page JSON file uses a flat `content[]` array of typed blocks:
 | `gallery` | Photo carousel placeholder (managed by `scan-images.py`) |
 | `zeffy` | Embedded ticketing/donation form |
 
-Page-level image keys (`galleryImages`, `homepageRunnerImages*`, etc.) stay at the JSON root and are updated by `scan-images.py`, not Pages CMS.
+Page-level image keys (`galleryImages`, `homepageRunnerImages*`, etc.) stay at the JSON root and are updated by `scan-images.py` — do not edit them by hand.
 
 ## Project structure
 
@@ -43,7 +42,7 @@ Page-level image keys (`galleryImages`, `homepageRunnerImages*`, etc.) stay at t
 docs/
   app.js, style.css, index.html
   pages/              # HTML shells (one per route)
-  content/            # JSON content (edited via Pages CMS)
+  content/            # JSON content (edit directly)
     header.json       # Navigation
     footer.json
     announcements.json
@@ -54,7 +53,6 @@ scripts/
   migrate-json-schema.py   # One-time sections → content[] migration
   generate-ai-context.py
   scan-images.py           # Sync performance photos from Cloudflare R2
-.pages.yml                 # Pages CMS field definitions
 ```
 
 ## Deployment
@@ -85,7 +83,7 @@ Then deploy the worker with the updated `ai-context.md` if needed.
 
 ## Route registry
 
-`docs/content/site.json` maps route IDs to pages. **Do not edit via Pages CMS** — it is maintained in the repo only. Adding a new page requires a new HTML shell, JSON file, and route entry.
+`docs/content/site.json` maps route IDs to pages. Adding a new page requires a new HTML shell, JSON file, and route entry.
 
 ## Legacy Eleventy migration
 
