@@ -175,14 +175,14 @@ def unescape_js_string(value: str) -> str:
 
 
 def read_nav_js() -> str:
-    nav_path = ROOT / "nav.js"
+    nav_path = ROOT / "js" / "navigation.js"
     if not nav_path.exists():
         return ""
     return nav_path.read_text(encoding="utf-8")
 
 
 def extract_footer_info(nav_source: str):
-    """Mission statement and contact lines from the FOOTER data in nav.js."""
+    """Mission statement and contact lines from the FOOTER data in js/navigation.js."""
     mission = ""
     mission_match = re.search(r"mission:\s*'((?:\\.|[^'\\])*)'", nav_source)
     if mission_match:
@@ -197,20 +197,21 @@ def extract_footer_info(nav_source: str):
 
 
 def extract_navigation(nav_source: str) -> list[str]:
-    """Navigation summary from the NAV_ITEMS data in nav.js.
+    """Navigation summary from the NAV_ITEMS data in js/navigation.js.
 
     NAV_ITEMS uses a controlled format: top-level entries are indented one
-    level deeper than the array, dropdown children one level deeper again.
+    tab from the array (which closes at column 0), dropdown children one
+    level deeper again.
     """
     lines = []
     start = nav_source.find("const NAV_ITEMS = [")
     if start == -1:
         return lines
-    end = nav_source.find("\n\t];", start)
+    end = nav_source.find("\n];", start)
     block = nav_source[start:end]
 
-    top_pattern = re.compile(r"^\t\t\{", re.M)
-    child_label_pattern = re.compile(r"^\t\t\t\t\{[^}]*?label:\s*'([^']+)'", re.M)
+    top_pattern = re.compile(r"^\t\{", re.M)
+    child_label_pattern = re.compile(r"^\t\t\t\{[^}]*?label:\s*'([^']+)'", re.M)
 
     matches = list(top_pattern.finditer(block))
     for index, match in enumerate(matches):

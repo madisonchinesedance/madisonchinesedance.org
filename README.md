@@ -11,22 +11,26 @@ Every page is complete, hardcoded HTML. Edit it directly:
 
 Changes go live on the next GitHub Pages deploy (usually within a minute). No npm or build step required.
 
-**Header and footer** are injected at load time by `nav.js` — to rename a menu label, add a page, or change footer info, edit the data at the top of `nav.js` once and it applies site-wide.
+**Header and footer** are injected at load time by `js/navigation.js` — to rename a menu label, add a page, or change footer info, edit the data at the top of `js/navigation.js` once and it applies site-wide.
 
 **Performance photos** are not edited by hand — they are synced from Cloudflare R2 via `python scripts/scan-images.py sync` (see below).
 
 ## How the site works
 
 - **Pages** — one folder per route, each with a complete `index.html` (`/gallery/index.html` → `/gallery/`)
-- **`nav.js`** — injects the shared header (with correct active-menu state) and footer into placeholders on every page
-- **`app.js`** — runtime behaviors only: mobile nav, dropdowns, gallery carousels and lightbox, year tabs, the Zeffy embed, the star field, and the chatbot
+- **JavaScript** — one `<script type="module" src="/js/main.js">` per page; `js/main.js` imports and initializes one module per feature:
+  - `navigation.js` — injects the shared header (with correct active-menu state) and footer, plus mobile nav toggle, dropdowns, and nav collapse
+  - `announcement.js`, `starfield.js`, `zeffy.js` — announcement bar, decorative star field, Zeffy embed lazy-loading
+  - `gallery.js` — gallery carousels, dots, year tabs, thumbnails, and lightbox
+  - `chatbot.js` — MCDA Assistant chatbot
+  - `utils.js` — shared helpers (selectors, HTML/markdown escaping, shuffle)
 - **Styles** — `css/main.css` is the single `<link>`; it `@import`s one file per component (variables, base, buttons, header, sections, home, gallery, zeffy, footer, chatbot). To change where a style lives or add a part, update `css/main.css`. Each part file owns its own responsive media queries.
 - **No build step, no JSON, no CMS** — push to `main` and GitHub Pages serves the repo root
 
 ### Adding a new page
 
 1. Create `your-page/index.html` (copy an existing page for the shell: placeholders, lightbox, script tags)
-2. Add an entry to `NAV_ITEMS` (and/or a footer column) in `nav.js`
+2. Add an entry to `NAV_ITEMS` (and/or a footer column) in `js/navigation.js`
 
 ### Gallery sync regions
 
@@ -46,14 +50,21 @@ Gallery image lists are hardcoded in the HTML between marker comments, e.g.:
 | `gallery-featured`, `gallery-archive` | `gallery/index.html` |
 | `splendid-china-<year>` | `splendid-china/<year>/index.html` |
 
-Adding a new Splendid China year requires a new `splendid-china/<year>/index.html` page (copy an existing year) with its own `splendid-china-<year>` sync region, plus a `nav.js` menu entry.
+Adding a new Splendid China year requires a new `splendid-china/<year>/index.html` page (copy an existing year) with its own `splendid-china-<year>` sync region, plus a `js/navigation.js` menu entry.
 
 ## Project structure
 
 ```
 index.html                 # Homepage (/)
-nav.js                     # Shared header/footer data + injection
-app.js                     # Runtime behaviors (nav, galleries, chatbot)
+js/
+  main.js                  # Entry point — imported by every page's single <script> tag
+  navigation.js            # Shared header/footer data + injection, nav interactivity
+  announcement.js          # Announcement dismiss + scrolling text
+  starfield.js             # Decorative star field
+  zeffy.js                 # Zeffy embed lazy-loading
+  gallery.js               # Carousels, year tabs, lightbox
+  chatbot.js               # MCDA Assistant chatbot
+  utils.js                 # Shared helpers
 css/
   main.css                 # Entry point — @imports the parts below
   variables.css            # Design tokens (:root)

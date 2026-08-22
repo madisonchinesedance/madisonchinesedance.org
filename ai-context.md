@@ -637,8 +637,43 @@ Join our team of volunteers and help make a difference in the lives of our stude
 
 ## Website Navigation
 
-- Purchase Tickets
-- Donate
+- Home
+- Gallery
+- Programs
+### Classes
+- Beginner Dancers
+- Intermediate Dancers
+- Advanced Dancers
+
+### Events
+- Events
+- Services
+
+### Get Involved
+- Dance with Us
+- Book a Performance
+- See A Performance
+- Support Our Cause
+
+### Splendid China
+- Splendid China 2026
+- Splendid China 2025
+- Splendid China 2024
+- Splendid China 2023
+- Splendid China 2022
+- Splendid China 2019
+- Splendid China 2018
+- Splendid China 2017
+- Splendid China 2016
+- Splendid China 2015
+- Splendid China 2014
+- Splendid China 2013
+- Splendid China 2012
+- Splendid China 2011
+- Splendid China 2010
+- Splendid China 2009
+- Splendid China 2008
+
 ### Quick Actions
 - Purchase Tickets: https://www.zeffy.com/en-US/ticketing/splendid-china--2026
 - Donate: https://www.zeffy.com/en-US/donation-form/donate-to-madison-chinese-dance-academy
