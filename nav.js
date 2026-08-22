@@ -14,56 +14,68 @@
 	// ---------------------------------------------------------------------------
 
 	const NAV_ITEMS = [
-		{ label: 'Home', href: '/' },
-		{ label: 'Gallery', href: '/gallery/' },
-		{ label: 'Programs', href: '/programs/' },
-		{
-			label: 'Classes',
-			items: [
-				{ label: 'Dance with Us', href: '/get-involved/dance-with-us/' },
-				{ label: 'Beginner Dancers', href: '/classes/beginner-dancers/' },
-				{ label: 'Intermediate Dancers', href: '/classes/intermediate-dancers/' },
-				{ label: 'Advanced Dancers', href: '/classes/advanced-dancers/' }
-			]
-		},
-		{
-			label: 'Events',
-			items: [
-				{ label: 'Events', href: '/events/' },
-				{ label: 'Services', href: '/services/' }
-			]
-		},
-		{
-			label: 'Get Involved',
-			items: [
-				{ label: 'Book a Performance', href: '/get-involved/book-a-performance/' },
-				{ label: 'See A Performance', href: '/get-involved/see-a-performance/' },
-				{ label: 'Support Our Cause', href: '/get-involved/support-our-cause/' }
-			]
-		},
-		{
-			label: 'Splendid China',
-			items: [
-				{ label: 'Splendid China 2026', href: '/splendid-china/2026/' },
-				{ label: 'Splendid China 2025', href: '/splendid-china/2025/' },
-				{ label: 'Splendid China 2024', href: '/splendid-china/2024/' },
-				{ label: 'Splendid China 2023', href: '/splendid-china/2023/' },
-				{ label: 'Splendid China 2022', href: '/splendid-china/2022/' },
-				{ label: 'Splendid China 2019', href: '/splendid-china/2019/' },
-				{ label: 'Splendid China 2018', href: '/splendid-china/2018/' },
-				{ label: 'Splendid China 2017', href: '/splendid-china/2017/' },
-				{ label: 'Splendid China 2016', href: '/splendid-china/2016/' },
-				{ label: 'Splendid China 2015', href: '/splendid-china/2015/' },
-				{ label: 'Splendid China 2014', href: '/splendid-china/2014/' },
-				{ label: 'Splendid China 2013', href: '/splendid-china/2013/' },
-				{ label: 'Splendid China 2012', href: '/splendid-china/2012/' },
-				{ label: 'Splendid China 2011', href: '/splendid-china/2011/' },
-				{ label: 'Splendid China 2010', href: '/splendid-china/2010/' },
-				{ label: 'Splendid China 2009', href: '/splendid-china/2009/' },
-				{ label: 'Splendid China 2008', href: '/splendid-china/2008/' }
-			]
-		}
-	];
+    { label: "Home", href: "/" },
+    { label: "Gallery", href: "/gallery/" },
+    { label: "Programs", href: "/programs/" },
+    {
+      label: "Classes",
+      items: [
+        { label: "Beginner Dancers", href: "/classes/beginner-dancers/" },
+        {
+          label: "Intermediate Dancers",
+          href: "/classes/intermediate-dancers/",
+        },
+        { label: "Advanced Dancers", href: "/classes/advanced-dancers/" },
+      ],
+    },
+    {
+      label: "Events",
+      items: [
+        { label: "Events", href: "/events/" },
+        { label: "Services", href: "/services/" },
+      ],
+    },
+    {
+      label: "Get Involved",
+      items: [
+        { label: "Dance with Us", href: "/get-involved/dance-with-us/" },
+        {
+          label: "Book a Performance",
+          href: "/get-involved/book-a-performance/",
+        },
+        {
+          label: "See A Performance",
+          href: "/get-involved/see-a-performance/",
+        },
+        {
+          label: "Support Our Cause",
+          href: "/get-involved/support-our-cause/",
+        },
+      ],
+    },
+    {
+      label: "Splendid China",
+      items: [
+        { label: "Splendid China 2026", href: "/splendid-china/2026/" },
+        { label: "Splendid China 2025", href: "/splendid-china/2025/" },
+        { label: "Splendid China 2024", href: "/splendid-china/2024/" },
+        { label: "Splendid China 2023", href: "/splendid-china/2023/" },
+        { label: "Splendid China 2022", href: "/splendid-china/2022/" },
+        { label: "Splendid China 2019", href: "/splendid-china/2019/" },
+        { label: "Splendid China 2018", href: "/splendid-china/2018/" },
+        { label: "Splendid China 2017", href: "/splendid-china/2017/" },
+        { label: "Splendid China 2016", href: "/splendid-china/2016/" },
+        { label: "Splendid China 2015", href: "/splendid-china/2015/" },
+        { label: "Splendid China 2014", href: "/splendid-china/2014/" },
+        { label: "Splendid China 2013", href: "/splendid-china/2013/" },
+        { label: "Splendid China 2012", href: "/splendid-china/2012/" },
+        { label: "Splendid China 2011", href: "/splendid-china/2011/" },
+        { label: "Splendid China 2010", href: "/splendid-china/2010/" },
+        { label: "Splendid China 2009", href: "/splendid-china/2009/" },
+        { label: "Splendid China 2008", href: "/splendid-china/2008/" },
+      ],
+    },
+  ];
 
 	const NAV_ACTIONS = [
 		{ label: 'Purchase Tickets', href: '/tickets/', ariaLabel: 'Purchase Tickets' },
