@@ -1,0 +1,217 @@
+/* variables.css — Design tokens: color palette, typography, spacing, shadows (:root) */
+
+/* ---------------------------
+	 CSS variables (theme & scale)
+	 --------------------------- */
+:root{
+	/* Naming: --color-* = raw palette; component prefixes = semantic theme tokens */
+
+	/* ── Core colors ── */
+	--color-alpha-deep-navy: #101b4fcb;
+	--color-alpha-navy-shadow: transparent;
+	--color-black: #000000;
+	--color-blue-grey: #FFFFFF14;
+	--color-deep-navy: #101A4F;
+	--color-green: #1E7E34;
+	--color-navy-shadow: #030c38;
+	--color-peach: #FFE2CF;
+	--color-purple: #3a1e8d;
+	--color-sunrise: #D85D4B;
+	--color-violet: #2A2361;
+	--color-white: #FFFFFF;
+	--green-glow: #28A745;
+	--color-green-glow: var(--green-glow);
+
+	/* ── Brand / background colors ── */
+	--bg-color: var(--color-deep-navy);
+	--footer-bg: var(--color-deep-navy);
+	--hero-bg-bottom: var(--color-sunrise);
+	--hero-bg-middle: var(--color-violet);
+	--hero-bg-top: var(--color-deep-navy);
+	--light-text-color: var(--color-white);
+
+	/* ── UI colors ── */
+	--button-hover-bg: var(--color-blue-grey);
+	--edge-contrast: var(--color-blue-grey);
+
+	/* ── Layout sizing ── */
+	--content-width: 1600px;
+	--header-bar-height: 65px;
+	--header-content-width: 1700px;
+	--section-max-width: 1600px;
+	--section-radius: 40px;
+
+	/* ── Spacing (key tokens) ── */
+	--spacing-sm: 12px;
+	--spacing-md: 16px;
+	--spacing-xl: 24px;
+
+	/* ── Opacity (key tokens) ── */
+	--opacity-hover: 0.7;
+	--opacity-full: 1.0;
+
+	/* ── Section ── */
+	--section-bg-top: #3d0597;
+	--section-bg-bottom: #2860da;
+	--section-border: var(--edge-contrast);
+	--section-border-radius-bottom-left: 0px;
+	--section-border-radius-bottom-right: 0px;
+	--section-border-radius-top-left: 36px;
+	--section-border-radius-top-right: 36px;
+	--section-gap: 18px;
+	--content-top-padding: 64px;
+	--section-heading-color: var(--light-text-color);
+	--section-padding-x: clamp(18px, 3vw, 40px);
+	--section-shadow: 0 18px 50px var(--color-navy-shadow);
+	--section-shadow-hover: 0 22px 56px var(--color-navy-shadow);
+	--section-text-color: var(--light-text-color);
+	--section-transparency: 0.5;
+	--section-transparency-hover: 0.5;
+
+	/* ── Cards ── */
+	--card-bg-top: var(--section-bg-top);
+	--card-bg-bottom: var(--section-bg-bottom);
+	--card-border-color: var(--edge-contrast);
+	--card-border-hover: transparent;
+	--card-border-radius: 20px;
+	--card-radius: var(--card-border-radius);
+	--card-gap: 18px;
+	--card-grid-columns: 3;
+	--card-heading-color: var(--light-text-color);
+	--card-link-after-content: " ->";
+	--card-link-font-weight: 800;
+	--card-min-height: 260px;
+	--card-padding: 24px;
+	--card-padding-sm: 22px;
+	--card-padding-xs: 16px;
+	--card-shadow: 0 14px 34px var(--color-navy-shadow);
+	--card-shadow-hover: 0 22px 42px var(--color-navy-shadow);
+	--card-text-color: var(--light-text-color);
+	--card-transparency: 0.5;
+	--card-transparency-hover: 0.5;
+
+	/* ── Header ── */
+	--header-bg: var(--color-deep-navy);
+	--header-current-shadow: 0 0 0 3px var(--color-blue-grey);
+	--header-shadow: 0 8px 28px var(--color-navy-shadow);
+
+	/* ── Footer ── */
+	--footer-logo-shadow: 0 12px 26px var(--color-navy-shadow);
+	--footer-shadow: 0 -6px 20px var(--color-navy-shadow);
+
+	/* ── Gallery ── */
+	--gallery-arrows-bg: var(--color-black);
+	--gallery-bg: var(--color-blue-grey);
+	--gallery-close-bg: var(--color-deep-navy);
+	--gallery-close-hover-bg: var(--color-navy-shadow);
+	--gallery-lightbox-shadow: 0 24px 70px var(--color-navy-shadow);
+	--gallery-overlay-bg: var(--color-alpha-deep-navy);
+	--gallery-thumb-bg: var(--color-white);
+	--gallery-thumb-shadow: 0 5px 12px var(--color-navy-shadow);
+	--gallery-thumb-shadow-hover: 0 8px 18px var(--color-navy-shadow);
+	--gallery-window-bg: var(--color-white);
+
+	/* ── Gradients ── */
+	--zeffy-embed-bg: linear-gradient(180deg, var(--color-deep-navy), var(--color-sunrise));
+
+	/* ── Motion & transitions ── */
+	--entrance-delay-card: 90ms;
+	--entrance-delay-card-group: 120ms;
+	--entrance-delay-footer: 300ms;
+	--entrance-delay-hero: 0ms;
+	--entrance-delay-section: 90ms;
+	--entrance-duration: 1000ms;
+	--entrance-translate: 50px;
+	--pulse-duration: 2s;
+	--transition-fast: 180ms;
+	--transition-medium: 260ms;
+	--translate-button-hover: -2px;
+	--translate-card-hover: -5px;
+	--translate-dropdown-hidden: -6px;
+
+	/* ── Navigation & Dropdown ── */
+	--boxshadow-nav: var(--color-black);
+	--dropdown-bg: var(--color-deep-navy);
+	--dropdown-shadow: 0 18px 42px var(--color-navy-shadow);
+
+	/* ── Nav CTA Buttons ── */
+	--nav-button-active-shadow: var(--header-current-shadow);
+	--nav-button-font-size: var(--nav-link-font-size);
+	--nav-button-font-weight: var(--nav-link-font-weight);
+	--nav-button-hover-filter: brightness(1.08);
+	--nav-button-hover-translate: var(--translate-button-hover);
+	--nav-button-padding: 8px 12px;
+	--nav-button-radius: 999px;
+	--nav-button-transition: transform var(--transition-fast), filter var(--transition-fast), opacity var(--transition-fast);
+
+	/* ── Primary Button ── */
+	--primary-button-bg: var(--color-purple);
+	--primary-button-focus-offset: 3px;
+	--primary-button-focus-outline: 4px solid var(--button-hover-bg);
+	--primary-button-font-size: 1rem;
+	--primary-button-hover-filter: brightness(1.1) saturate(1.05);
+	--primary-button-hover-translate: var(--translate-button-hover);
+	--primary-button-padding: 14px 20px;
+	--primary-button-radius: var(--section-radius);
+	--primary-button-text: var(--light-text-color);
+	--primary-button-transition: transform var(--transition-fast), filter var(--transition-fast), opacity var(--transition-fast);
+
+	/* ── Skip Link ── */
+	--skiplink-bg: var(--color-peach);
+	--skiplink-fg: var(--color-deep-navy);
+
+	/* ── Typography — heading presets (heading-1 … heading-6), body, small-body ── */
+	--base-font-size: 14px;
+	--base-line-height: 1.45;
+	--body-font-color: var(--light-text-color);
+	--body-font-size: 1.22rem;
+	--body-font-weight: 400;
+	--body-line-height: 1.65;
+	--font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+	--heading-1-font-size: clamp(2.8rem, 5.5vw, 5rem);
+	--heading-1-font-weight: 700;
+	--heading-1-line-height: 1.08;
+	--heading-2-font-size: clamp(2.2rem, 4vw, 4.25rem);
+	--heading-2-font-weight: 700;
+	--heading-2-line-height: 1.12;
+	--heading-3-font-size: clamp(2rem, 3vw, 3.2rem);
+	--heading-4-font-size: clamp(1.65rem, 2.5vw, 2.4rem);
+	--heading-5-font-size: clamp(1.4rem, 2vw, 1.85rem);
+	--heading-6-font-size: clamp(1.25rem, 1.4vw, 1.65rem);
+	--logo-font-size: 1.4rem;
+	--nav-link-font-size: 1.05rem;
+	--nav-link-font-weight: 600;
+	--small-body-font-size: 0.95rem;
+
+	/* ── Announcement ── */
+	--peach-highlight: #FFD9C2F2;
+	--announcement-bg: var(--color-alpha-navy-shadow);
+	--announcement-border: var(--peach-highlight);
+	--announcement-border-top: rgba(255, 255, 255, 0.4);
+	--announcement-text-color: var(--light-text-color);
+	--announcement-shadow: 0 8px 18px var(--color-navy-shadow);
+	--announcement-button-bg: var(--primary-button-bg);
+	--announcement-button-border-color: var(--edge-contrast);
+	--announcement-button-border-hover: transparent;
+	--announcement-button-font-size: var(--small-body-font-size);
+	--announcement-button-font-weight: 600;
+	--announcement-button-hover-filter: brightness(1.12) saturate(1.05);
+	--announcement-button-hover-opacity: 1;
+	--announcement-button-hover-translate: -1px;
+	--announcement-button-min-height: 34px;
+	--announcement-button-opacity: 0.9;
+	--announcement-button-padding: 6px 14px;
+	--announcement-button-radius: 999px;
+	--announcement-button-shadow-hover: var(--card-shadow-hover);
+	--announcement-button-transition: transform var(--transition-fast), filter var(--transition-fast), box-shadow var(--transition-fast), opacity var(--transition-fast), border-color var(--transition-fast);
+
+	/* ── Announcement highlight (ring / glow) ── */
+	--blue-glow: #4A90E2;
+	--blue-ring: #4A90E2;
+	--gold-glow: #FFC440;
+	--gold-ring: #FFC440;
+	--green-ring: #28A745;
+	--highlight-shadow: 0 0 0 2px var(--highlight-ring), 0 0 18px var(--highlight-glow);
+	--peach-glow: #FFB37A;
+	--peach-ring: #FFB37A;
+}

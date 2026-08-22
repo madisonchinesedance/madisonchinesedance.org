@@ -1,0 +1,14 @@
+/* main.css — single entry point for all stylesheets.
+   Pages link only this file; it imports the component parts in cascade order.
+   Add new part files here (imports must stay at the top of this file). */
+
+@import url("variables.css");
+@import url("base.css");
+@import url("buttons.css");
+@import url("header.css");
+@import url("sections.css");
+@import url("home.css");
+@import url("gallery.css");
+@import url("zeffy.css");
+@import url("footer.css");
+@import url("chatbot.css");

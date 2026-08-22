@@ -1,0 +1,546 @@
+/* sections.css — Hero/page sections, section grids and items, cards, entrance animations, star field */
+
+/* ---------------------------
+	 Hero
+	 --------------------------- */
+.hero,
+.page-hero{
+	position:relative;
+	z-index:1;
+	padding:64px 0 40px;
+	text-align:left;
+}
+.hero-inner,
+.page-hero .container,
+.hero-inner{
+	max-width:var(--content-width);
+	margin:0 auto;
+}
+.hero-inner,
+.page-hero .page-block-container,
+.page-hero .container,
+.section .container{
+	background:linear-gradient(180deg, color-mix(in srgb, var(--section-bg-top) calc(var(--section-transparency) * 100%), transparent), color-mix(in srgb, var(--section-bg-bottom) calc(var(--section-transparency) * 100%), transparent));
+	border:1px solid color-mix(in srgb, var(--section-border) calc(var(--section-transparency) * 100%), transparent);
+	border-radius:var(--section-radius);
+	box-shadow:var(--section-shadow);
+	padding:clamp(18px, 3vw, 40px) var(--section-padding-x);
+	color:var(--light-text-color);
+	transition:background var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+/* Only section containers that contain interactive elements (links, buttons) and do not contain cards
+   should change their shadow/background on hover. Static sections remain unchanged.
+   Sections containing cards should not have a section-level hover effect. */
+.page-hero:has(a, button):not(:has(.component-card)):not(:has(.gallery-container)):hover .container,
+.page-hero:has(a, button):not(:has(.component-card)):not(:has(.gallery-container)):focus-within .container,
+.section:has(a, button):not(:has(.component-card)):not(:has(.gallery-container)):hover .container,
+.section:has(a, button):not(:has(.component-card)):not(:has(.gallery-container)):focus-within .container{
+	background:linear-gradient(180deg, color-mix(in srgb, var(--section-bg-top) calc(var(--section-transparency-hover) * 100%), transparent), color-mix(in srgb, var(--section-bg-bottom) calc(var(--section-transparency-hover) * 100%), transparent));
+	border-color:color-mix(in srgb, var(--section-border) calc(var(--section-transparency-hover) * 100%), transparent);
+	box-shadow:var(--section-shadow-hover);
+}
+/* Section containers that contain linked cards should not change their own
+   shadow/background on hover — the individual cards handle their own
+   hover effects. We set them explicitly to their resting state on hover/focus.
+   This prevents the section shadow from masking/fighting card shadows. */
+.section:has(a.component-card):hover .container,
+.section:has(a.component-card):focus-within .container,
+.page-hero:has(a.component-card):hover .container,
+.page-hero:has(a.component-card):focus-within .container{
+	background:linear-gradient(180deg, color-mix(in srgb, var(--section-bg-top) calc(var(--section-transparency) * 100%), transparent), color-mix(in srgb, var(--section-bg-bottom) calc(var(--section-transparency) * 100%), transparent));
+	border-color:color-mix(in srgb, var(--section-border) calc(var(--section-transparency) * 100%), transparent);
+	box-shadow:var(--section-shadow);
+}
+.page-hero .page-block-container a:not(.btn),
+.page-hero .container a:not(.btn),
+.section .container a:not(.btn){
+	color:var(--light-text-color);
+}
+.page-hero .page-block-container .component-body p,
+.page-hero .page-block-container .component-body,
+.page-hero .container .component-body p,
+.page-hero .container .component-body,
+.section .container .component-body p,
+.section .container .component-body{
+	color:var(--light-text-color);
+}
+.hero-title,
+.page-hero h1,
+.section h1{
+	margin:0 0 14px;
+	font-size:var(--heading-1-font-size);
+	font-weight:var(--heading-1-font-weight);
+	line-height:var(--heading-1-line-height);
+	color:var(--light-text-color);
+}
+/* page-hero / section containers use a dark card now; headings stay light */
+.page-hero h1,
+.section :is(h1, h2, h3, h4, h5, h6){
+	color:var(--light-text-color);
+}
+.hero-tagline,
+.page-hero p{ /* hero tagline shares page paragraph styling */
+	max-width:var(--content-width);
+	margin:0;
+	color:var(--body-font-color);
+	font-size:var(--body-font-size);
+}
+.page-hero p,
+.section p,
+.section li{
+	color:var(--section-text-color);
+}
+.page-hero p + p,
+.page-hero .btn + p{
+	margin-top:22px;
+}
+.page-hero .btn{
+	margin-top:22px;
+}
+.page-hero a:not(.btn){
+	color:var(--light-text-color);
+	font-weight:var(--heading-2-font-weight);
+}
+.hero-tagline{
+	margin:0 0 22px 0;
+	color:var(--body-font-color);
+	font-size:var(--body-font-size);
+}
+.hero-tagline p{
+	margin:0;
+	color:var(--body-font-color);
+	font-size:var(--body-font-size);
+	line-height:var(--body-line-height);
+}
+
+.page-hero{ 
+	min-height:0;
+}
+/* ---------------------------
+	 Content sections
+	 --------------------------- */
+.section{
+	padding:20px 0 36px;
+}
+body:not(.home-page) .site-main > .section:first-child{
+	padding-top:var(--content-top-padding);
+}
+.site-main{
+	position:relative;
+	flex:1 0 auto;
+	overflow:hidden;
+	padding-bottom:clamp(36px, 5vw, 76px);
+	background:
+		radial-gradient(ellipse 130% 38% at 50% 18%, color-mix(in srgb, var(--color-violet) 58%, transparent), transparent 72%),
+		linear-gradient(180deg, var(--color-deep-navy) 0%, color-mix(in srgb, var(--color-violet) 62%, var(--color-deep-navy)) 42%, var(--color-deep-navy) 72%);
+}
+.home-page .site-main{
+	padding-bottom:clamp(52px, 7vw, 96px);
+}
+
+body:has(.site-header.has-visible-announcement) .page-hero{
+	padding-top:32px;
+}
+.site-main > .page-hero,
+.site-main > .section{
+	position:relative;
+	z-index:1;
+}
+/* Entrance animation applied to every major page block.
+   Each section's container card slides up + fades in, with a
+   cascading delay so the page "unfolds" top to bottom.
+   All values use CSS variables for consistent behavior.
+   Hero section is excluded — it renders statically to avoid
+   exposing the gradient boundary. */
+.site-main > .page-hero,
+.site-main > .section:not(:has(#home-heading)),
+.site-footer,
+.site-main > .component-card-grid,
+.site-main > .component-body,
+.site-main > .ticket-embed,
+.site-main > .page-blocks,
+.site-main > [data-page-blocks],
+.site-main > .gallery-container,
+.site-main > .gallery-wrapper,
+.site-main > .gallery-grid,
+.site-main > .page-block-container,
+.site-main > .donate-section,
+.site-main > .tickets-section,
+.site-main > .faq-section,
+.site-main > .page-section:not(:has(#home-heading)){
+	animation:home-rise var(--entrance-duration) ease both;
+}
+.site-main > .page-hero{ animation-delay: var(--entrance-delay-hero); }
+.site-main > .section:not(:has(#home-heading)),
+.site-main > .page-section:not(:has(#home-heading)){ animation-delay: var(--entrance-delay-section); }
+.site-main > .component-card-grid{ animation-delay: var(--entrance-delay-card-group); }
+.site-main > .gallery-container,
+.site-main > .gallery-grid{ animation-delay: calc(var(--entrance-delay-section) + var(--entrance-delay-card)); }
+.site-main > .ticket-embed{ animation-delay: calc(var(--entrance-delay-section) + var(--entrance-delay-card) * 2); }
+.site-footer{ animation-delay: var(--entrance-delay-footer); }
+.site-main > .page-hero .container,
+.site-main > .section .container{
+	animation:home-rise var(--entrance-duration) ease both;
+}
+.site-main > .section .container{
+	animation-delay: var(--entrance-delay-section);
+}
+.site-main > .section:has(#home-heading) .container{
+	animation:none;
+}
+.page-star-field{
+	position:absolute;
+	inset:0;
+	pointer-events:none;
+	z-index:0;
+	overflow:visible;
+}
+.page-nebula-layer{
+	position:absolute;
+	inset:0;
+	pointer-events:none;
+	z-index:0;
+	overflow:visible;
+}
+.site-nebula{
+	position:absolute;
+	left:var(--nebula-x);
+	top:var(--nebula-y);
+	width:var(--nebula-w);
+	height:var(--nebula-h);
+	transform:translate(-50%, -50%);
+	border-radius:50%;
+	background:radial-gradient(ellipse at center, var(--nebula-color), transparent 68%);
+	filter:blur(38px);
+	opacity:var(--nebula-opacity);
+	mix-blend-mode:screen;
+	pointer-events:none;
+}
+.home-page .site-nebula{
+	opacity:calc(var(--nebula-opacity) * 0.85);
+}
+.section :is(h1, h2, h3, h4, h5, h6){
+	margin:0 0 12px;
+	color:var(--section-heading-color);
+}
+.section h1{
+	font-size:var(--heading-1-font-size);
+}
+.section h2{
+	font-size:var(--heading-1-font-size);
+}
+.section p{
+	margin:0 0 1rem;
+	color:var(--section-text-color);
+	font-size:var(--body-font-size);
+	line-height:var(--body-line-height);
+	max-width:var(--content-width);
+}
+.section li{
+	color:var(--section-text-color);
+	font-size:var(--body-font-size);
+	line-height:var(--body-line-height);
+}
+.section p:last-child{ margin-bottom:0; }
+.section-grid{
+	display:grid;
+	grid-template-columns:repeat(var(--section-columns, 1), minmax(0, 1fr));
+	gap:var(--section-gap);
+}
+.section-grid[style*="--section-columns:2"],
+.section-grid[style*="--section-columns:3"],
+.section-grid[style*="--section-columns:4"]{
+	align-items:stretch;
+}
+.section-item{
+	display:flex;
+	flex-direction:column;
+	gap:12px;
+	min-width:0;
+	color:var(--light-text-color);
+	text-decoration:none;
+}
+.section-grid[style*="--section-columns:2"] .section-item,
+.section-grid[style*="--section-columns:3"] .section-item,
+.section-grid[style*="--section-columns:4"] .section-item{
+	position:relative;
+	height:100%;
+	padding:var(--card-padding);
+	border-radius:var(--section-radius);
+	overflow:hidden;
+	background:linear-gradient(180deg, color-mix(in srgb, var(--section-bg-top) calc(var(--section-transparency) * 100%), transparent), color-mix(in srgb, var(--section-bg-bottom) calc(var(--section-transparency) * 100%), transparent));
+	border:1px solid color-mix(in srgb, var(--section-border) calc(var(--section-transparency) * 100%), transparent);
+	box-shadow:var(--section-shadow);
+}
+.section-grid[style*="--section-columns:2"] .section-item::before,
+.section-grid[style*="--section-columns:3"] .section-item::before,
+.section-grid[style*="--section-columns:4"] .section-item::before{
+	content:"";
+	position:absolute;
+	inset:0;
+	pointer-events:none;
+	background:linear-gradient(135deg, color-mix(in srgb, var(--light-text-color) 8%, transparent), transparent 38%);
+	opacity:0.45;
+}
+.section-grid[style*="--section-columns:2"] .section-item > *,
+.section-grid[style*="--section-columns:3"] .section-item > *,
+.section-grid[style*="--section-columns:4"] .section-item > *{
+	position:relative;
+	z-index:1;
+}
+a.section-item:hover,
+a.section-item:focus-visible{
+	transform:translateY(var(--translate-card-hover));
+	box-shadow:var(--section-shadow-hover);
+	outline:none;
+}
+.section-item .component-actions{
+	margin-top:0;
+	padding-top:0;
+}
+a.section-item .component-actions{
+	margin-top:auto;
+	padding-top:16px;
+}
+.section-columns > .container{
+	width:min(100% - 32px, 1600px);
+	background:transparent;
+	border:0;
+	box-shadow:none;
+	padding:0;
+}
+.section-columns:has(a, button):hover > .container,
+.section-columns:has(a, button):focus-within > .container{
+	background:transparent !important;
+	border-color:transparent !important;
+	box-shadow:none !important;
+}
+.section-columns .section-grid{
+	width:100%;
+	max-width:none;
+	margin:0 auto;
+}
+.json-body-text,
+.json-body-text p{
+	color:var(--body-font-color);
+	font-size:var(--body-font-size);
+	font-weight:var(--body-font-weight);
+	line-height:var(--body-line-height);
+}
+.page-hero .json-body-text,
+.page-hero .json-body-text p,
+.section .json-body-text,
+.section .json-body-text p{
+	color:var(--light-text-color);
+}
+
+.section-note{
+	margin:0;
+}
+.site-star{
+	position:absolute;
+	left:var(--star-x);
+	top:var(--star-y);
+	z-index:1;
+	width:var(--star-size);
+	height:var(--star-size);
+	border-radius:50%;
+	background:var(--star-tint, var(--color-white));
+	opacity:var(--star-opacity);
+	box-shadow:0 0 calc(var(--star-size) * 3) var(--star-tint, var(--color-white));
+	animation:
+		star-twinkle var(--star-duration) ease-in-out var(--star-delay) infinite,
+		star-drift calc(var(--star-duration) * 3) ease-in-out var(--star-delay) infinite alternate;
+}
+.component-actions{
+	display:flex;
+	align-items:center;
+	flex-wrap:wrap;
+	gap:14px;
+	margin-top:14px;
+}
+.component-card-grid{
+	display:grid;
+	grid-template-columns:repeat(var(--card-columns, var(--card-grid-columns)), minmax(0, 1fr));
+	gap:var(--card-gap);
+	width:100%;
+	max-width:var(--content-width);
+	margin:var(--spacing-xl) auto 0;
+}
+.hero-inner .component-card-grid{
+	margin-top:30px;
+	padding-top:26px;
+	border-top:1px solid var(--edge-contrast);
+}
+.site-main > .component-card-grid{
+	width:min(calc(100% - 40px), var(--content-width));
+	--block-delay:120ms;
+}
+.component-card{
+	display:flex;
+	flex-direction:column;
+	min-height:max(100%, var(--card-min-height));
+	padding:var(--card-padding);
+	--card-heading-font-size: var(--heading-2-font-size);
+	--card-heading-font-weight: var(--heading-2-font-weight);
+	--card-heading-line-height: var(--heading-2-line-height);
+	color:inherit;
+	text-decoration:none;
+	border-radius:var(--card-border-radius);
+	background:linear-gradient(180deg, color-mix(in srgb, var(--card-bg-top) calc(var(--card-transparency) * 100%), transparent), color-mix(in srgb, var(--card-bg-bottom) calc(var(--card-transparency) * 100%), transparent));
+	border:1px solid color-mix(in srgb, var(--card-border-color) calc(var(--card-transparency) * 100%), transparent);
+	box-shadow:var(--card-shadow);
+	transition:transform var(--transition-medium), box-shadow var(--transition-medium), background var(--transition-fast), border-color var(--transition-fast);
+	animation:home-rise var(--entrance-duration) ease both;
+	animation-delay:calc(var(--block-delay, 0ms) + var(--item-index, 0) * 90ms);
+}
+/* Only cards that are links (<a>) get hover effects.
+   Non-linked cards (<article>) remain static. */
+a.component-card:hover,
+a.component-card:focus-visible{
+	transform:translateY(var(--translate-card-hover));
+	background:linear-gradient(180deg, color-mix(in srgb, var(--card-bg-top) calc(var(--card-transparency-hover) * 100%), transparent), color-mix(in srgb, var(--card-bg-bottom) calc(var(--card-transparency-hover) * 100%), transparent));
+	border-color:color-mix(in srgb, var(--card-border-hover) calc(var(--card-transparency-hover) * 100%), transparent);
+	box-shadow:var(--card-shadow-hover);
+	outline:none;
+}
+.component-card-heading{
+	margin:0 0 10px;
+	color:var(--card-heading-color);
+	font-size:var(--card-heading-font-size);
+	font-weight:var(--card-heading-font-weight);
+	line-height:var(--card-heading-line-height);
+}
+.component-card p{
+	margin:0;
+	color:var(--card-text-color);
+	font-size:var(--body-font-size);
+	line-height:var(--body-line-height);
+}
+.component-card-link{
+	margin-top:auto;
+	padding-top:22px;
+	color:var(--card-text-color);
+	font-weight:var(--card-link-font-weight);
+	font-size:var(--body-font-size);
+}
+.component-card-link::after{
+	content:var(--card-link-after-content);
+}
+@keyframes home-rise{
+	from{
+		opacity:0;
+		transform:translateY(var(--entrance-translate));
+	}
+	to{
+		opacity:var(--entrance-end-opacity, 1);
+		transform:translateY(0);
+	}
+}
+.donate-section .donate-actions{ display:flex; justify-content:flex-start; margin-top:22px; }
+.donate-section .donate-cta{ padding:12px 20px; font-size:var(--body-font-size); }
+
+.tickets-section .ticket-actions{ display:flex; justify-content:flex-start; margin-top:22px; }
+.tickets-section .ticket-cta{ padding:12px 20px; font-size:var(--body-font-size); }
+.payment-options{
+	display:flex;
+	align-items:center;
+	justify-content:space-between;
+	gap:18px;
+	margin-top:24px;
+	padding-top:20px;
+	border-top:1px solid var(--edge-contrast);
+}
+.classes-page .page-hero{
+	padding-bottom:28px;
+	min-height:auto;
+}
+@keyframes star-twinkle{
+	0%,
+	100%{
+		opacity:calc(var(--star-opacity) * 0.7);
+		transform:scale(0.85);
+	}
+	45%{
+		opacity:var(--star-opacity);
+		transform:scale(1.25);
+	}
+	70%{
+		opacity:calc(var(--star-opacity) * 0.85);
+		transform:scale(0.92);
+	}
+}
+@keyframes star-drift{
+	from{
+		margin-left:0;
+		margin-top:0;
+	}
+	to{
+		margin-left:var(--star-drift);
+		margin-top:calc(var(--star-drift) * -0.45);
+	}
+}
+
+/* Responsive (max-width:992px) */
+@media (max-width:992px){
+	.section-grid{
+		grid-template-columns:1fr;
+		gap:22px;
+	}
+	.component-card-grid{
+		grid-template-columns:1fr;
+	}
+	.hero,
+	.page-hero{ padding-top:28px; padding-bottom:24px; }
+	.hero-inner,
+	.page-hero .container,
+	.section .container{
+		padding:24px;
+	}
+	.section-columns > .container{
+		width:min(100% - calc(var(--spacing-md) * 2), var(--section-max-width));
+		padding:0;
+	}
+	.component-card,
+	.section-grid[style*="--section-columns:2"] .section-item,
+	.section-grid[style*="--section-columns:3"] .section-item,
+	.section-grid[style*="--section-columns:4"] .section-item{
+		padding:var(--card-padding-sm);
+	}
+	.payment-options{
+		align-items:flex-start;
+		flex-direction:column;
+	}
+}
+
+/* Responsive (max-width:640px) */
+@media (max-width:640px){
+	.component-card,
+	.section-grid[style*="--section-columns:2"] .section-item,
+	.section-grid[style*="--section-columns:3"] .section-item,
+	.section-grid[style*="--section-columns:4"] .section-item{
+		padding:var(--card-padding-xs);
+	}
+}
+
+
+/* Accessibility: disable motion for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce){
+	.site-main > .page-hero,
+	.site-main > .page-hero .container,
+	.site-main > .section,
+	.site-main > .section .container,
+	.site-main > .component-card-grid,
+	.site-main > .ticket-embed,
+	.site-main > .component-card,
+	.site-main > .page-block-container,
+	.site-main > .donate-section,
+	.site-main > .tickets-section,
+	.site-main > .faq-section,
+	.site-main > .page-section,
+	.component-card,
+	.site-star {
+		transition:none;
+		animation:none;
+	}
+}

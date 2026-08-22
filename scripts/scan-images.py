@@ -488,7 +488,7 @@ def cmd_sync(args: argparse.Namespace) -> int:
 
     updated_per_year = 0
     for year_info in years:
-        page_path = per_year_dir / f"splendid-china-{year_info['year']}.html"
+        page_path = per_year_dir / year_info["year"] / "index.html"
         if not page_path.exists():
             print(f"Skipping {page_path.relative_to(root)}: file not found")
             continue
@@ -533,21 +533,21 @@ def build_parser() -> argparse.ArgumentParser:
     )
     sync_parser.add_argument(
         "--homepage",
-        default=root / "docs" / "index.html",
+        default=root / "index.html",
         type=Path,
         help="Homepage HTML file with the homepage-runner sync regions.",
     )
     sync_parser.add_argument(
         "--gallery-page",
-        default=root / "docs" / "pages" / "gallery.html",
+        default=root / "gallery" / "index.html",
         type=Path,
         help="Gallery page HTML file with the featured/archive sync regions.",
     )
     sync_parser.add_argument(
         "--per-year-dir",
-        default=root / "docs" / "pages" / "splendid-china",
+        default=root / "splendid-china",
         type=Path,
-        help="Directory containing the per-year Splendid China HTML pages.",
+        help="Directory containing the per-year Splendid China page folders.",
     )
     sync_parser.add_argument(
         "--skip-main",

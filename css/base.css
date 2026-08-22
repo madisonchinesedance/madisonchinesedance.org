@@ -1,0 +1,59 @@
+/* base.css — Reset, base typography, page shell, .container, skip link */
+
+/* ---------------------------
+	 Base / Reset
+	 --------------------------- */
+*,
+*::before,
+*::after{box-sizing:border-box;}
+
+html{min-height:100%;}
+html{ font-size: var(--base-font-size); }
+body{
+	margin:0;
+	font-family:var(--font-family-base);
+	color:var(--light-text-color);
+	background: var(--bg-color);
+	background-attachment: fixed;
+	-webkit-font-smoothing:antialiased;
+	-moz-osx-font-smoothing:grayscale;
+	line-height:var(--base-line-height);
+	display:flex;
+	flex-direction:column;
+	min-height:100vh;
+	height:auto;
+}
+
+a{
+	color:inherit;
+	text-underline-offset:3px;
+}
+
+/* Container keeps content centered and constrained.
+   Scaled max-width: ~1600px on large screens, fluid down to mobile. */
+.container{
+	width:min(100% - calc(var(--spacing-md) * 2), var(--section-max-width));
+	margin:0 auto;
+}
+
+/* Accessible skip link (visible when focused) */
+.skip-link{
+	position:absolute;
+	left:-9999px;
+	top:auto;
+	width:1px;
+	height:1px;
+	overflow:hidden;
+}
+.skip-link:focus{
+	left:20px;
+	top:20px;
+	width:auto;
+	height:auto;
+	padding:8px 12px;
+	background:var(--skiplink-bg);
+	color:var(--skiplink-fg);
+	z-index:1000;
+	border-radius:6px;
+	text-decoration:none;
+}
