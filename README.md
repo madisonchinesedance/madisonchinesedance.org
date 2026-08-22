@@ -1,25 +1,31 @@
 # Madison Chinese Dance Academy Website
 
-Static site for [madisonchinesedance.org](https://madisonchinesedance.org), served from the `docs/` folder on GitHub Pages.
+Static site for [madisonchinesedance.org](https://madisonchinesedance.org), served by GitHub Pages from the repository root. Each page is a folder with its own `index.html` (clean URLs like `/classes/beginner-dancers/`).
 
 ## Editing content
 
-Every page is a complete, hardcoded HTML file — content, header, footer, and gallery images all live in the page's markup. Edit the HTML directly:
+Every page is complete, hardcoded HTML. Edit it directly:
 
 - **On GitHub** — open the file at github.com, click the pencil icon, edit, and commit
 - **Locally** — clone the repo, edit, and push to `main`
 
 Changes go live on the next GitHub Pages deploy (usually within a minute). No npm or build step required.
 
-**Shared layout:** the header, footer, navigation, and lightbox are duplicated in every page. If you rename a menu label or change footer info, update it in every HTML file (a find-and-replace across `docs/` works well).
+**Header and footer** are injected at load time by `nav.js` — to rename a menu label, add a page, or change footer info, edit the data at the top of `nav.js` once and it applies site-wide.
 
 **Performance photos** are not edited by hand — they are synced from Cloudflare R2 via `python scripts/scan-images.py sync` (see below).
 
 ## How the site works
 
-- **Complete HTML pages** in `docs/index.html` and `docs/pages/**` (one per route)
-- **`docs/app.js`** adds runtime behavior only: mobile nav, dropdown menus, gallery carousels and lightbox, year tabs, the Zeffy embed script, the star field, and the chatbot — it does not load any content
-- **No build step, no JSON, no CMS** — push to `main` and GitHub Pages serves `docs/` directly
+- **Pages** — one folder per route, each with a complete `index.html` (`/gallery/index.html` → `/gallery/`)
+- **`nav.js`** — injects the shared header (with correct active-menu state) and footer into placeholders on every page
+- **`app.js`** — runtime behaviors only: mobile nav, dropdowns, gallery carousels and lightbox, year tabs, the Zeffy embed, the star field, and the chatbot
+- **No build step, no JSON, no CMS** — push to `main` and GitHub Pages serves the repo root
+
+### Adding a new page
+
+1. Create `your-page/index.html` (copy an existing page for the shell: placeholders, lightbox, script tags)
+2. Add an entry to `NAV_ITEMS` (and/or a footer column) in `nav.js`
 
 ### Gallery sync regions
 
@@ -35,33 +41,33 @@ Gallery image lists are hardcoded in the HTML between marker comments, e.g.:
 
 | Region | File |
 |---|---|
-| `homepage-runner`, `homepage-runner-tall`, `homepage-runner-wide` | `docs/index.html` |
-| `gallery-featured`, `gallery-archive` | `docs/pages/gallery.html` |
-| `splendid-china-<year>` | `docs/pages/splendid-china/splendid-china-<year>.html` |
+| `homepage-runner`, `homepage-runner-tall`, `homepage-runner-wide` | `index.html` |
+| `gallery-featured`, `gallery-archive` | `gallery/index.html` |
+| `splendid-china-<year>` | `splendid-china/<year>/index.html` |
 
-Adding a new Splendid China year requires a new HTML page (copy an existing year) with its own `splendid-china-<year>` sync region, plus links in the navigation menus.
+Adding a new Splendid China year requires a new `splendid-china/<year>/index.html` page (copy an existing year) with its own `splendid-china-<year>` sync region, plus a `nav.js` menu entry.
 
 ## Project structure
 
 ```
-docs/
-  index.html               # Homepage (complete page)
-  app.js                   # Runtime behaviors (nav, galleries, chatbot)
-  style.css
-  pages/                   # One complete HTML file per route
-    classes/, events/, get-involved/, splendid-china/
+index.html                 # Homepage (/)
+nav.js                     # Shared header/footer data + injection
+app.js                     # Runtime behaviors (nav, galleries, chatbot)
+style.css
+gallery/, programs/, classes/, donate/, events/, services/,
+tickets/, get-involved/, splendid-china/     # One folder per page
 scripts/
   gallery_markup.py        # Builds gallery HTML between the sync markers
-  generate-ai-context.py   # Extracts text from the HTML into ai-context.md
+  generate-ai-context.py   # Extracts text from the pages into ai-context.md
   scan-images.py           # Sync performance photos from Cloudflare R2
 ai-context.md              # Chatbot context (generated)
 ```
 
 ## Deployment
 
-GitHub → **Settings** → **Pages** → Source: **Deploy from branch** → `main` → **`/docs`**
+GitHub → **Settings** → **Pages** → Source: **Deploy from branch** → `main` → **`/ (root)`**
 
-No GitHub Actions or npm required.
+Note: Pages serves the whole repo, so files like `README.md` and `scripts/` are publicly readable (secrets like `scripts/.env` and `r2-config.json` are gitignored and never published).
 
 ## Images (Cloudflare R2)
 

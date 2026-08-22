@@ -49,19 +49,19 @@ Classes for beginner dancers through advanced students and beyond. Programs grow
 
 Beginner through advanced dance instruction for students of all ages.
 
-- **Sign Up** (/pages/classes/beginner-dancers.html)
+- **Sign Up** (/classes/beginner-dancers/index.html)
 
 #### Attend an Event
 
 Join us for our upcoming events and experience the joy of Chinese dance.
 
-- **Events** (/pages/events/events.html)
+- **Events** (/events/index.html)
 
 #### Gallery
 
 Browse moments from performances, community programs, and academy events.
 
-- **Open gallery** (/pages/gallery.html)
+- **Open gallery** (/gallery/index.html)
 
 #### Our Story
 
@@ -87,13 +87,13 @@ The Academy welcomes individuals and groups of all racial and cultural backgroun
 
 Experience the joy of Chinese dance with our beginner-friendly classes.
 
-- **Sign Up** (/pages/classes/beginner-dancers.html)
+- **Sign Up** (/classes/beginner-dancers/index.html)
 
 #### Support the academy
 
 Help fund classes, costumes, rehearsal space, and community outreach.
 
-- **Donate** (/pages/donate.html)
+- **Donate** (/donate/index.html)
 
 #### Get in touch
 
@@ -166,17 +166,6 @@ Coming soon!
 
 ---
 
-## Services
-
-Services offered by the Madison Chinese Dance Academy.
-
-
-# Services
-
-Coming soon!
-
----
-
 ## Gallery
 
 Image gallery of the Madison Chinese Dance Academy.
@@ -239,7 +228,7 @@ We need a clear performance area, access to electricity for sound, and a changin
 Ready to bring Chinese dance to your event? Send us the details and we will get back to you with availability and options.
 
 - **Contact Us** (mailto:contact@madisonchinesedance.org)
-- **See Upcoming Events** (/pages/events/events.html)
+- **See Upcoming Events** (/events/index.html)
 ---
 
 ## Dance with Us
@@ -261,26 +250,26 @@ We offer classes for students of all ages and experience levels. Whether you are
 
 Our beginner dancers program is designed for students who have no prior dance experience. It focuses on building a strong foundation in dance technique, rhythm, and coordination. Students will learn basic dance steps, patterns, and movements while developing confidence and a love for dance.
 
-- **Start with beginner dancers** (/pages/classes/beginner-dancers.html)
+- **Start with beginner dancers** (/classes/beginner-dancers/index.html)
 
 #### Intermediate Dancers
 
 Our intermediate dancers program is designed for students who have some prior dance experience. It builds on the foundation learned in beginner classes, adding more complex patterns, rhythms, and movements. Students will develop greater technical skills and confidence in their dance performance.
 
-- **Start with intermediate dancers** (/pages/classes/intermediate-dancers.html)
+- **Start with intermediate dancers** (/classes/intermediate-dancers/index.html)
 
 #### Advanced Dancers
 
 Our advanced dancers program is designed for students who have a strong foundation in dance technique and are ready to take their performance skills to the next level. It focuses on refining technical skills, building confidence, and preparing for more advanced choreography and performances.
 
-- **Start with advanced dancers** (/pages/classes/advanced-dancers.html)
+- **Start with advanced dancers** (/classes/advanced-dancers/index.html)
 
 #### Contact Us to Join
 
 Email us at contact@madisonchinesedance.org or call (301)-299-1562 to learn more about joining. We are happy to answer questions about classes, schedules, and what to expect in your first session.
 
 - **Contact Us** (mailto:contact@madisonchinesedance.org)
-- **View Beginner Programs** (/pages/classes/beginner-dancers.html)
+- **View Beginner Programs** (/classes/beginner-dancers/index.html)
 ---
 
 ## See A Performance
@@ -302,13 +291,13 @@ Our dancers perform throughout the year at a variety of venues and events. Check
 
 Our annual signature production featuring traditional and contemporary Chinese dance, music, and storytelling. A celebration of Chinese culture not to be missed.
 
-- **Learn about Splendid China** (/pages/splendid-china/splendid-china-2026.html)
+- **Learn about Splendid China** (/splendid-china/2026/index.html)
 
 #### Community Events
 
 Throughout the year, our dancers perform at cultural festivals, parades, and community gatherings across the region.
 
-- **View community events** (/pages/events/events.html)
+- **View community events** (/events/index.html)
 
 #### Tickets & Admission
 
@@ -316,14 +305,14 @@ Tickets for our major productions, including Splendid China, can be purchased on
 
 For ticketed events, early purchase is recommended both for discounted tickets and to secure your seat. Group discounts are available for schools, community organizations, and other groups.
 
-- **Purchase Tickets** (/pages/tickets.html)
-- **View All Events** (/pages/events/events.html)
+- **Purchase Tickets** (/tickets/index.html)
+- **View All Events** (/events/index.html)
 
 #### Bring a Performance to Your Event
 
 Would you like our dancers to perform at your school, festival, or private event? We offer a range of performance options that can be tailored to your audience and occasion.
 
-- **Request a Performance** (/pages/get-involved/book-a-performance.html)
+- **Request a Performance** (/get-involved/book-a-performance/index.html)
 ---
 
 ## Support Our Cause
@@ -345,7 +334,7 @@ Every contribution, whether big or small, helps us fulfill our mission of promot
 
 Your donations help fund classes, scholarships, costumes, and our annual Splendid China production.
 
-- **Donate** (/pages/donate.html)
+- **Donate** (/donate/index.html)
 
 #### Become a Sponsor
 
@@ -370,7 +359,7 @@ We are deeply grateful to our donors, sponsors, and volunteers who make our work
 
 Join us in preserving and sharing the art of Chinese dance. Your generosity helps us inspire the next generation of dancers and bring the joy of Chinese culture to our community.
 
-- **Donate** (/pages/donate.html)
+- **Donate** (/donate/index.html)
 - **Get in Touch** (mailto:contact@madisonchinesedance.org)
 ---
 
@@ -412,6 +401,17 @@ Learn to live the time-tested traditional Chinese ways that have been validated 
 #### Speaking Engagements (Cultural Quotient, CQ, Enhancement)
 
 On useful Chinese cultural wisdom, such as Chinese ways of healthy living, self-cultivation, thinking, managing, investing, strategizing, and the differences between Chinese and Western cultures and philosophies (CQ framework).
+
+---
+
+## Services
+
+Services offered by the Madison Chinese Dance Academy.
+
+
+# Services
+
+Coming soon!
 
 ---
 
@@ -620,13 +620,13 @@ Ticket sales are closed for Splendid China 2026, but there are still many ways t
 
 Check out our dashboard for upcoming events, including Splendid China 2027!
 
-- **View Events** (/pages/events/events.html)
+- **View Events** (/events/index.html)
 
 #### Make A Donation
 
 Support our mission by making a donation to the Madison Chinese Dance Academy.
 
-- **Donate Now** (/pages/donate.html)
+- **Donate Now** (/donate/index.html)
 
 #### Volunteer
 
@@ -637,6 +637,9 @@ Join our team of volunteers and help make a difference in the lives of our stude
 
 ## Website Navigation
 
+- Home
+- Gallery
+- Programs
 ### Classes
 - Dance with Us
 - Beginner Dancers

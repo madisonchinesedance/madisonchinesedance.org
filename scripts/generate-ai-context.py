@@ -15,8 +15,10 @@ from html.parser import HTMLParser
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-DOCS = ROOT / "docs"
 OUTPUT_FILE = ROOT / "ai-context.md"
+
+# site pages live at the repo root: index.html plus one folder per page
+EXCLUDED_DIRS = {"scripts", ".git", ".vscode", "cloudflare-r2-import", "node_modules"}
 
 VOID_TAGS = {"meta", "link", "img", "br", "input", "hr", "source"}
 
@@ -168,47 +170,69 @@ def extract_page_section(path: Path) -> tuple[str, list[str]] | None:
     return display_title, lines
 
 
-def extract_footer_info(homepage: Node):
-    """Mission statement and contact lines from the shared footer."""
-    mission_node = next(iter(find_all(homepage, lambda n: "footer-mission" in classes(n))), None)
-    mission = text_content(mission_node).strip() if mission_node else ""
+def unescape_js_string(value: str) -> str:
+    return value.replace("\\'", "'").replace('\\"', '"').replace("\\n", "\n")
 
-    operations_node = next(
-        iter(find_all(homepage, lambda n: "footer-operations" in classes(n))), None
-    )
+
+def read_nav_js() -> str:
+    nav_path = ROOT / "nav.js"
+    if not nav_path.exists():
+        return ""
+    return nav_path.read_text(encoding="utf-8")
+
+
+def extract_footer_info(nav_source: str):
+    """Mission statement and contact lines from the FOOTER data in nav.js."""
+    mission = ""
+    mission_match = re.search(r"mission:\s*'((?:\\.|[^'\\])*)'", nav_source)
+    if mission_match:
+        mission = unescape_js_string(mission_match.group(1))
+
     contacts = []
-    if operations_node is not None:
-        for child in operations_node.children:
-            label = text_content(child).strip()
-            if label:
-                contacts.append(f"- {label}")
+    operations_match = re.search(r"operations:\s*\[(.*?)\]", nav_source, re.DOTALL)
+    if operations_match:
+        for label in re.findall(r"label:\s*'([^']+)'", operations_match.group(1)):
+            contacts.append(f"- {label}")
     return mission, contacts
 
 
-def extract_navigation(homepage: Node) -> list[str]:
-    """Navigation summary from the shared header."""
+def extract_navigation(nav_source: str) -> list[str]:
+    """Navigation summary from the NAV_ITEMS data in nav.js.
+
+    NAV_ITEMS uses a controlled format: top-level entries are indented one
+    level deeper than the array, dropdown children one level deeper again.
+    """
     lines = []
-    nav = next(iter(find_all(homepage, lambda n: "primary-nav" in classes(n))), None)
-    if nav is None:
+    start = nav_source.find("const NAV_ITEMS = [")
+    if start == -1:
         return lines
-    for item in find_all(nav, lambda n: "nav-item-dropdown" in classes(n)):
-        toggle = next(
-            (c for c in item.children if c.tag == "button" and "nav-menu-toggle" in classes(c)),
-            None,
-        )
-        dropdown = next(
-            (c for c in item.children if "nav-dropdown" in classes(c)),
-            None,
-        )
-        if toggle is None or dropdown is None:
+    end = nav_source.find("\n\t];", start)
+    block = nav_source[start:end]
+
+    top_pattern = re.compile(r"^\t\t\{", re.M)
+    child_label_pattern = re.compile(r"^\t\t\t\t\{[^}]*?label:\s*'([^']+)'", re.M)
+
+    matches = list(top_pattern.finditer(block))
+    for index, match in enumerate(matches):
+        item_start = match.start()
+        item_end = matches[index + 1].start() if index + 1 < len(matches) else len(block)
+        item = block[item_start:item_end]
+
+        label_match = re.search(r"label:\s*'([^']+)'", item)
+        if not label_match:
             continue
-        heading = text_content(toggle).strip()
-        lines.append(f"### {heading}")
-        for link in find_all(dropdown, lambda n: n.tag == "a" and "nav-link" in classes(n)):
-            label = text_content(link).strip()
-            if label:
-                lines.append(f"- {label}")
-        lines.append("")
+        label = label_match.group(1)
+
+        if "items:" in item:
+            lines.append(f"### {label}")
+            child_labels = child_label_pattern.findall(item)
+            if not child_labels:
+                child_labels = re.findall(r"label:\s*'([^']+)'", item)[1:]
+            for child_label in child_labels:
+                lines.append(f"- {child_label}")
+            lines.append("")
+        else:
+            lines.append(f"- {label}")
     return lines
 
 
@@ -265,23 +289,26 @@ def generate_markdown(sections):
 
 def main():
     print("Generating ai-context.md from static HTML pages...")
-    print(f"  Pages root: {DOCS}")
+    print(f"  Pages root: {ROOT}")
     print(f"  Output file: {OUTPUT_FILE}")
     print()
 
-    homepage_path = DOCS / "index.html"
-    homepage = parse_file(homepage_path)
+    homepage_path = ROOT / "index.html"
+    nav_source = read_nav_js()
 
     sections = []
 
-    mission, contacts = extract_footer_info(homepage)
+    mission, contacts = extract_footer_info(nav_source)
     if mission:
         sections.append(("About the Academy", [mission, ""]))
     if contacts:
         sections.append(("Contact", ["**Contact:**", *contacts]))
 
     page_paths = [homepage_path] + sorted(
-        p for p in DOCS.joinpath("pages").rglob("*.html")
+        p
+        for p in ROOT.rglob("index.html")
+        if p != homepage_path
+        and not any(part in EXCLUDED_DIRS for part in p.relative_to(ROOT).parts)
     )
     for path in page_paths:
         result = extract_page_section(path)
@@ -295,7 +322,7 @@ def main():
 
     lines = generate_markdown(sections)
 
-    lines.extend(extract_navigation(homepage))
+    lines.extend(extract_navigation(nav_source))
 
     lines.append("### Quick Actions")
     lines.append("- Purchase Tickets: https://www.zeffy.com/en-US/ticketing/splendid-china--2026")
