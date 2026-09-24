@@ -1,0 +1,31 @@
+/* Global reset, typography, and page shell. */
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: var(--base-font-size);
+}
+
+body {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	font-family: var(--font-family-base);
+	line-height: var(--base-line-height);
+	color: var(--light-text-color);
+	background: var(--bg-color);
+	background-attachment: fixed;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+a {
+	color: inherit;
+	text-underline-offset: 3px;
+}
