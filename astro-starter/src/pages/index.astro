@@ -2,6 +2,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Button from '../components/Button.astro';
+import ContentSection from '../components/ContentSection.astro';
 import '../styles/index.css';
 ---
 
@@ -24,12 +25,11 @@ import '../styles/index.css';
     <Header />
 
     <main id="main" tabindex="-1" class="site-main">
-      <section
+      <ContentSection
         class="section page-section"
         aria-labelledby="madison-chinese-dance-academy-heading"
       >
-        <div class="container">
-          <div class="section-grid">
+                  <div class="section-grid">
             <article class="section-item">
               <h1
                 id="madison-chinese-dance-academy-heading"
@@ -44,12 +44,10 @@ import '../styles/index.css';
               </div>
             </article>
           </div>
-        </div>
-      </section>
+      </ContentSection>
 
-      <section class="section page-section">
-        <div class="container">
-          <div class="section-grid">
+      <ContentSection class="section page-section">
+                  <div class="section-grid">
             <article class="section-item">
               <!-- sync:homepage-runner:begin -->
               <div class="gallery-container" data-gallery-variant="runner">
@@ -437,12 +435,10 @@ import '../styles/index.css';
               <!-- sync:homepage-runner:end -->
             </article>
           </div>
-        </div>
-      </section>
+      </ContentSection>
 
-      <section class="section page-section section-columns">
-        <div class="container">
-          <div class="section-grid">
+      <ContentSection class="section page-section section-columns">
+                  <div class="section-grid">
             <article class="section-item">
               <h4>1987</h4>
               <div class="component-body">
@@ -574,12 +570,10 @@ import '../styles/index.css';
               <!-- sync:homepage-runner-tall:end -->
             </article>
           </div>
-        </div>
-      </section>
+      </ContentSection>
 
-      <section class="section page-section section-columns">
-        <div class="container">
-          <div class="section-grid">
+      <ContentSection class="section page-section section-columns">
+                  <div class="section-grid">
             <article class="section-item">
               <h4>Classes</h4>
               <div class="component-body">
@@ -626,12 +620,10 @@ import '../styles/index.css';
               </div>
             </article>
           </div>
-        </div>
-      </section>
+      </ContentSection>
 
-      <section class="section page-section section-columns">
-        <div class="container">
-          <div class="section-grid">
+      <ContentSection class="section page-section section-columns">
+                  <div class="section-grid">
             <article class="section-item">
               <h4>Our Story</h4>
               <div class="component-body">
@@ -686,12 +678,10 @@ import '../styles/index.css';
               </div>
             </article>
           </div>
-        </div>
-      </section>
+      </ContentSection>
 
-      <section class="section page-section">
-        <div class="container">
-          <div class="section-grid">
+      <ContentSection class="section page-section">
+                  <div class="section-grid">
             <article class="section-item">
               <!-- sync:homepage-runner-wide:begin -->
               <div class="gallery-container" data-gallery-variant="runner-wide">
@@ -859,12 +849,10 @@ import '../styles/index.css';
               <!-- sync:homepage-runner-wide:end -->
             </article>
           </div>
-        </div>
-      </section>
+      </ContentSection>
 
-      <section class="section page-section section-columns">
-        <div class="container">
-          <div class="section-grid">
+      <ContentSection class="section page-section section-columns">
+                  <div class="section-grid">
             <article class="section-item">
               <h4>Try A Class</h4>
               <div class="component-body">
@@ -914,8 +902,7 @@ import '../styles/index.css';
               </div>
             </article>
           </div>
-        </div>
-      </section>
+      </ContentSection>
     </main>
 
     <div class="gallery-lightbox" data-gallery-lightbox hidden>

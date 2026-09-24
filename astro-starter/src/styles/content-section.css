@@ -1,0 +1,46 @@
+/* Shared rounded content container used by Astro pages. */
+
+.content-section {
+	width: min(100% - 2rem, var(--section-max-width));
+	margin: 0 auto;
+	padding: clamp(1.25rem, 4vw, 3rem) 0;
+}
+
+.content-section__inner {
+	padding: clamp(1.5rem, 4vw, 3rem);
+	color: var(--section-text-color);
+	background: linear-gradient(
+		180deg,
+		color-mix(in srgb, var(--section-bg-top) 72%, transparent),
+		color-mix(in srgb, var(--section-bg-bottom) 72%, transparent)
+	);
+	border: 1px solid var(--section-border);
+	border-radius: var(--section-radius);
+	box-shadow: var(--section-shadow);
+}
+
+.content-section__inner > h2 {
+	margin: 0 0 1.5rem;
+	color: var(--section-heading-color);
+	font-size: var(--heading-2-font-size);
+	line-height: var(--heading-2-line-height);
+}
+
+.content-section__content > :first-child {
+	margin-top: 0;
+}
+
+.content-section__content > :last-child {
+	margin-bottom: 0;
+}
+
+@media (max-width: 640px) {
+	.content-section {
+		width: min(100% - 1rem, var(--section-max-width));
+	}
+
+	.content-section__inner {
+		padding: 1.25rem;
+		border-radius: 1.5rem;
+	}
+}
