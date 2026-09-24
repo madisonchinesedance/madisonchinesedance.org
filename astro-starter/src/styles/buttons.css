@@ -1,0 +1,35 @@
+/* One shared style for every Button.astro link and button. */
+
+.button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0.75rem 1.25rem;
+	border: 0;
+	border-radius: 999px;
+	background: var(--color-purple);
+	color: var(--color-white);
+	font: inherit;
+	font-weight: 600;
+	line-height: 1.2;
+	text-decoration: none;
+	cursor: pointer;
+	transition: transform var(--transition-fast), filter var(--transition-fast);
+}
+
+.button:hover,
+.button:focus-visible {
+	transform: translateY(-2px);
+	filter: brightness(1.12);
+}
+
+.button:focus-visible {
+	outline: 3px solid var(--color-peach);
+	outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.button {
+		transition: none;
+	}
+}

@@ -1,4 +1,6 @@
 ---
+import Button from './Button.astro';
+
 type NavLink = {
 	label: string;
 	href: string;
@@ -88,10 +90,10 @@ function navigationItem(item: NavConfig): NavigationItem {
 const navigationItems = headerConfig.navigation.map(navigationItem);
 ---
 
-<header>
-	<a href="/">Madison Chinese Dance Academy</a>
+<header class="site-header">
+	<a class="site-logo" href="/">Madison Chinese Dance Academy</a>
 
-	<nav aria-label="Primary navigation">
+	<nav class="site-nav" aria-label="Primary navigation">
 		<ul>
 			{navigationItems.map((item: NavigationItem) => item.type === 'section' ? (
 				<li>
@@ -118,9 +120,9 @@ const navigationItems = headerConfig.navigation.map(navigationItem);
 		</ul>
 	</nav>
 
-	<div>
+	<div class="site-actions">
 		{headerConfig.actions.map((action) => (
-			<a href={action.href}>{action.label}</a>
+			<Button href={action.href}>{action.label}</Button>
 		))}
 	</div>
 </header>
