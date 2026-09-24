@@ -1,6 +1,6 @@
 # Madison Chinese Dance Academy Website
 
-Static site for [madisonchinesedance.org](https://madisonchinesedance.org), served by GitHub Pages from the repository root. Each page is a folder with its own `index.html` (clean URLs like `/classes/beginner-dancers/`).
+Static site for [madisonchinesedance.org](https://madisonchinesedance.org), served by Cloudflare Pages from the repository root. Each page is a folder with its own `index.html` (clean URLs like `/classes/beginner-dancers/`).
 
 ## Editing content
 
@@ -9,7 +9,7 @@ Every page is complete, hardcoded HTML. Edit it directly:
 - **On GitHub** — open the file at github.com, click the pencil icon, edit, and commit
 - **Locally** — clone the repo, edit, and push to `main`
 
-Changes go live on the next GitHub Pages deploy (usually within a minute). No npm or build step required.
+Changes go live on the next Cloudflare Pages deploy (usually within a minute). No npm or build step required.
 
 **Header and footer** are injected at load time by `js/navigation.js` — to rename a menu label, add a page, or change footer info, edit the data at the top of `js/navigation.js` once and it applies site-wide.
 
@@ -22,10 +22,10 @@ Changes go live on the next GitHub Pages deploy (usually within a minute). No np
   - `navigation.js` — injects the shared header (with correct active-menu state) and footer, plus mobile nav toggle, dropdowns, and nav collapse
   - `announcement.js`, `starfield.js`, `zeffy.js` — announcement bar, decorative star field, Zeffy embed lazy-loading
   - `gallery.js` — gallery carousels, dots, year tabs, thumbnails, and lightbox
-  - `chatbot.js` — MCDA Assistant chatbot
+  - `chatbot.js` — MCDA Assistant chatbot client
   - `utils.js` — shared helpers (selectors, HTML/markdown escaping, shuffle)
 - **Styles** — `css/main.css` is the single `<link>`; it `@import`s one file per component (variables, base, buttons, header, sections, home, gallery, zeffy, footer, chatbot). To change where a style lives or add a part, update `css/main.css`. Each part file owns its own responsive media queries.
-- **No build step, no JSON, no CMS** — push to `main` and GitHub Pages serves the repo root
+- **No build step, no JSON, no CMS** — push to `main` and Cloudflare Pages serves the repo root
 
 ### Adding a new page
 
@@ -78,13 +78,18 @@ scripts/
   generate-ai-context.py   # Extracts text from the pages into ai-context.md
   scan-images.py           # Sync performance photos from Cloudflare R2
 ai-context.md              # Chatbot context (generated)
+functions/
+  api/chat.js              # Cloudflare Pages Function for the chatbot
 ```
 
 ## Deployment
 
-GitHub → **Settings** → **Pages** → Source: **Deploy from branch** → `main` → **`/ (root)`**
+Cloudflare Pages deploys the repository and its `functions/` directory.
+The Pages project must have a Workers AI binding named `AI`.
 
-Note: Pages serves the whole repo, so files like `README.md` and `scripts/` are publicly readable (secrets like `scripts/.env` and `r2-config.json` are gitignored and never published).
+The static site is served from the repository root. Files such as `README.md`
+and `scripts/` may be publicly readable, so secrets like `scripts/.env` and
+`r2-config.json` must remain gitignored.
 
 ## Images (Cloudflare R2)
 
@@ -98,13 +103,16 @@ See `python scripts/scan-images.py --help` for homepage runner categorization.
 
 ## Chatbot
 
-The MCDA Assistant uses a Cloudflare Worker. After content changes, regenerate context:
+The MCDA Assistant uses the `/api/chat` Cloudflare Pages Function. After
+content changes, regenerate the context:
 
 ```bash
 python scripts/generate-ai-context.py
 ```
 
-Then deploy the worker with the updated `ai-context.md` if needed.
+The updated `ai-context.md` is deployed with the Pages site. The former
+standalone Worker remains in `scripts/worker-chatbot.js` temporarily for rollback
+reference.
 
 ## History
 
