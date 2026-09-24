@@ -1,0 +1,46 @@
+/* Homepage stylesheet entry point. */
+
+@import './variables.css';
+@import './base.css';
+@import './button.css';
+@import './sections.css';
+@import './gallery.css';
+@import './home.css';
+@import './header.css';
+@import './content-section.css';
+
+/* The Astro homepage keeps the legacy section classes while the structure is
+   being rebuilt. These rules give the page a clean baseline before components
+   receive their final styles. */
+.home-page main {
+	width: 100%;
+}
+
+.home-page main > section {
+	width: min(100% - 2rem, var(--content-width));
+	margin: 0 auto;
+	padding: clamp(2rem, 5vw, 5rem) 0;
+}
+
+.home-page main > section > div {
+	max-width: var(--content-width);
+	margin: 0 auto;
+}
+
+.home-page main h1,
+.home-page main h2,
+.home-page main h3,
+.home-page main h4 {
+	color: var(--light-text-color);
+}
+
+.home-page main p,
+.home-page main li {
+	color: var(--body-font-color);
+	font-size: var(--body-font-size);
+	line-height: var(--body-line-height);
+}
+
+.home-page main a {
+	color: var(--light-text-color);
+}
