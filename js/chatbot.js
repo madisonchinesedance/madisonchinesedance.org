@@ -1,14 +1,14 @@
 // chatbot.js — MCDA Assistant chatbot: renders its markup, manages the
 // panel toggle, page-specific suggested prompts, sessionStorage history,
-// and talks to the Cloudflare Worker backend.
+// and talks to the Cloudflare Pages Function backend.
 // Chatbot styles live in css/chatbot.css.
 
 import { $, escapeHtml, markdownToHtml } from './utils.js';
 
 export const CHATBOT_MESSAGES_KEY = 'mcda-chatbot-messages';
 
-// Cloudflare Worker endpoint
-const CHATBOT_API_ENDPOINT = 'https://assistant.madisonchinesedance.org';
+// Cloudflare Pages Function endpoint
+const CHATBOT_API_ENDPOINT = '/api/chat';
 
 // Page-specific suggested prompts (keyed by body[data-route])
 const SUGGESTED_PROMPTS = {
