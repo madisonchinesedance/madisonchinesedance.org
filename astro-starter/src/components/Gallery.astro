@@ -1,0 +1,91 @@
+---
+interface GalleryImage {
+	src: string;
+	alt: string;
+	thumbnail?: string;
+}
+
+interface Props {
+	images: GalleryImage[];
+	variant?: 'standard' | 'tall' | 'wide';
+	showControls?: boolean;
+	showDots?: boolean;
+	showThumbnails?: boolean;
+	lightbox?: boolean;
+	id?: string;
+	class?: string;
+}
+
+const {
+	images,
+	variant = 'standard',
+	showControls = true,
+	showDots = true,
+	showThumbnails = false,
+	lightbox = true,
+	id,
+	class: className = ''
+} = Astro.props;
+---
+
+<div
+	id={id}
+	class:list={['gallery-container', `gallery-${variant}`, className]}
+	data-gallery-variant={variant}
+	data-gallery-lightbox-enabled={lightbox || undefined}
+>
+	<div class="gallery-wrapper" data-gallery-carousel>
+		{images.map((image, index) => (
+			<img
+				src={image.src}
+				alt={image.alt}
+				data-gallery-index={index}
+				loading={index === 0 ? 'eager' : 'lazy'}
+			/>
+		))}
+	</div>
+
+	{showControls && images.length > 1 && (
+		<div class="gallery-controls" aria-label="Gallery controls">
+			<button class="prev" type="button" aria-label="Previous image">&#10094;</button>
+			<button class="next" type="button" aria-label="Next image">&#10095;</button>
+		</div>
+	)}
+
+	{showDots && images.length > 1 && (
+		<div class="gallery-dots" data-gallery-dots aria-label="Gallery image selection">
+			{images.map((_, index) => (
+				<button
+					class:list={['gallery-dot', index === 0 && 'active']}
+					type="button"
+					data-gallery-dot={index}
+					aria-label={`Go to image ${index + 1}`}
+				></button>
+			))}
+		</div>
+	)}
+
+	{showThumbnails && images.length > 1 && (
+		<div class="gallery-featured-thumbs" data-gallery-featured-thumbs aria-label="Gallery thumbnails">
+			{images.map((image, index) => (
+				<button
+					class:list={['gallery-thumb', index === 0 && 'active']}
+					type="button"
+					data-gallery-thumb={index}
+					aria-label={`View ${image.alt}`}
+				>
+					<img src={image.thumbnail || image.src} alt="" loading="lazy" />
+				</button>
+			))}
+		</div>
+	)}
+</div>
+
+{lightbox && (
+	<div class="gallery-lightbox" data-gallery-lightbox hidden>
+		<div class="gallery-lightbox-window" role="dialog" aria-modal="true" aria-label="Gallery image preview">
+			<button class="gallery-lightbox-close" type="button" aria-label="Close gallery image preview">&times;</button>
+			<img src="" alt="" data-gallery-lightbox-image />
+		</div>
+	</div>
+)}
