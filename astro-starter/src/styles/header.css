@@ -1,0 +1,142 @@
+/* Simple styles for the Astro Header component. */
+
+.site-header {
+	position: sticky;
+	top: 0;
+	z-index: 10;
+	display: flex;
+	align-items: center;
+	gap: 1.5rem;
+	padding: 0.75rem max(1rem, calc((100% - var(--header-content-width)) / 2));
+	background: var(--header-bg);
+	border-bottom: 1px solid var(--edge-contrast);
+	box-shadow: var(--header-shadow);
+}
+
+.site-logo {
+	color: var(--light-text-color);
+	font-size: var(--logo-font-size);
+	font-weight: var(--heading-1-font-weight);
+	text-decoration: none;
+	white-space: nowrap;
+}
+
+.site-nav {
+	flex: 1;
+}
+
+.site-nav > ul,
+.site-actions {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.site-nav > ul {
+	justify-content: center;
+}
+
+.site-nav li {
+	list-style: none;
+}
+
+.site-nav a,
+.site-nav summary {
+	display: block;
+	padding: 0.55rem 0.7rem;
+	border-radius: 999px;
+	color: var(--light-text-color);
+	font-size: var(--nav-link-font-size);
+	font-weight: var(--nav-link-font-weight);
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible,
+.site-nav summary:hover,
+.site-nav summary:focus-visible {
+	background: var(--button-hover-bg);
+	outline: none;
+}
+
+.site-nav details {
+	position: relative;
+}
+
+.site-nav summary {
+	list-style: none;
+}
+
+.site-nav summary::-webkit-details-marker {
+	display: none;
+}
+
+.site-nav details > ul {
+	position: absolute;
+	top: calc(100% + 0.5rem);
+	left: 0;
+	min-width: 14rem;
+	margin: 0;
+	padding: 0.5rem;
+	background: var(--dropdown-bg);
+	border: 1px solid var(--edge-contrast);
+	border-radius: 0.5rem;
+	box-shadow: var(--dropdown-shadow);
+}
+
+.site-nav details:not([open]) > ul {
+	display: none;
+}
+
+.site-actions {
+	flex-shrink: 0;
+}
+
+.site-actions .button {
+	white-space: nowrap;
+}
+
+@media (max-width: 1100px) {
+	.site-header {
+		align-items: flex-start;
+		flex-wrap: wrap;
+	}
+
+	.site-nav {
+		order: 3;
+		flex-basis: 100%;
+	}
+
+	.site-nav > ul {
+		justify-content: flex-start;
+		flex-wrap: wrap;
+	}
+}
+
+@media (max-width: 640px) {
+	.site-header {
+		display: block;
+	}
+
+	.site-logo,
+	.site-nav,
+	.site-actions {
+		display: block;
+		margin-bottom: 0.75rem;
+	}
+
+	.site-nav > ul,
+	.site-actions {
+		align-items: stretch;
+		flex-direction: column;
+	}
+
+	.site-nav details > ul {
+		position: static;
+		margin-left: 1rem;
+	}
+}
