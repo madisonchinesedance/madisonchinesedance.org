@@ -1,0 +1,295 @@
+{
+  "homepage": {
+    "standard": [
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner/homepage-runner-003.webp",
+        "alt": "Homepage Runner 003",
+        "key": "homepage-runner/homepage-runner-003.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner/homepage-runner-004.webp",
+        "alt": "Homepage Runner 004",
+        "key": "homepage-runner/homepage-runner-004.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner/homepage-runner-007.webp",
+        "alt": "Homepage Runner 007",
+        "key": "homepage-runner/homepage-runner-007.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner/homepage-runner-008.webp",
+        "alt": "Homepage Runner 008",
+        "key": "homepage-runner/homepage-runner-008.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner/homepage-runner-009.webp",
+        "alt": "Homepage Runner 009",
+        "key": "homepage-runner/homepage-runner-009.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner/homepage-runner-012.webp",
+        "alt": "Homepage Runner 012",
+        "key": "homepage-runner/homepage-runner-012.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner/homepage-runner-013.webp",
+        "alt": "Homepage Runner 013",
+        "key": "homepage-runner/homepage-runner-013.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner/homepage-runner-014.webp",
+        "alt": "Homepage Runner 014",
+        "key": "homepage-runner/homepage-runner-014.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner/homepage-runner-016.webp",
+        "alt": "Homepage Runner 016",
+        "key": "homepage-runner/homepage-runner-016.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner/homepage-runner-017.webp",
+        "alt": "Homepage Runner 017",
+        "key": "homepage-runner/homepage-runner-017.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner/homepage-runner-019.webp",
+        "alt": "Homepage Runner 019",
+        "key": "homepage-runner/homepage-runner-019.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner/homepage-runner-020.webp",
+        "alt": "Homepage Runner 020",
+        "key": "homepage-runner/homepage-runner-020.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner/homepage-runner-022.webp",
+        "alt": "Homepage Runner 022",
+        "key": "homepage-runner/homepage-runner-022.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner/homepage-runner-028.webp",
+        "alt": "Homepage Runner 028",
+        "key": "homepage-runner/homepage-runner-028.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner/homepage-runner-029.webp",
+        "alt": "Homepage Runner 029",
+        "key": "homepage-runner/homepage-runner-029.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner/homepage-runner-031.webp",
+        "alt": "Homepage Runner 031",
+        "key": "homepage-runner/homepage-runner-031.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner/homepage-runner-032.webp",
+        "alt": "Homepage Runner 032",
+        "key": "homepage-runner/homepage-runner-032.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner/homepage-runner-034.webp",
+        "alt": "Homepage Runner 034",
+        "key": "homepage-runner/homepage-runner-034.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner/homepage-runner-035.webp",
+        "alt": "Homepage Runner 035",
+        "key": "homepage-runner/homepage-runner-035.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner/homepage-runner-036.webp",
+        "alt": "Homepage Runner 036",
+        "key": "homepage-runner/homepage-runner-036.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner/homepage-runner-037.webp",
+        "alt": "Homepage Runner 037",
+        "key": "homepage-runner/homepage-runner-037.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner/homepage-runner-038.webp",
+        "alt": "Homepage Runner 038",
+        "key": "homepage-runner/homepage-runner-038.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner/homepage-runner-040.webp",
+        "alt": "Homepage Runner 040",
+        "key": "homepage-runner/homepage-runner-040.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner/homepage-runner-042.webp",
+        "alt": "Homepage Runner 042",
+        "key": "homepage-runner/homepage-runner-042.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner/homepage-runner-043.webp",
+        "alt": "Homepage Runner 043",
+        "key": "homepage-runner/homepage-runner-043.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner/homepage-runner-045.webp",
+        "alt": "Homepage Runner 045",
+        "key": "homepage-runner/homepage-runner-045.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner/homepage-runner-046.webp",
+        "alt": "Homepage Runner 046",
+        "key": "homepage-runner/homepage-runner-046.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner/homepage-runner-047.webp",
+        "alt": "Homepage Runner 047",
+        "key": "homepage-runner/homepage-runner-047.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner/homepage-runner-048.webp",
+        "alt": "Homepage Runner 048",
+        "key": "homepage-runner/homepage-runner-048.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner/homepage-runner-049.webp",
+        "alt": "Homepage Runner 049",
+        "key": "homepage-runner/homepage-runner-049.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner/homepage-runner-050.webp",
+        "alt": "Homepage Runner 050",
+        "key": "homepage-runner/homepage-runner-050.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner/homepage-runner-051.webp",
+        "alt": "Homepage Runner 051",
+        "key": "homepage-runner/homepage-runner-051.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner/homepage-runner-052.webp",
+        "alt": "Homepage Runner 052",
+        "key": "homepage-runner/homepage-runner-052.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner/homepage-runner-055.webp",
+        "alt": "Homepage Runner 055",
+        "key": "homepage-runner/homepage-runner-055.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner/homepage-runner-056.webp",
+        "alt": "Homepage Runner 056",
+        "key": "homepage-runner/homepage-runner-056.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner/homepage-runner-057.webp",
+        "alt": "Homepage Runner 057",
+        "key": "homepage-runner/homepage-runner-057.webp"
+      }
+    ],
+    "tall": [
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner-tall/homepage-runner-001.webp",
+        "alt": "Homepage Runner 001",
+        "key": "homepage-runner-tall/homepage-runner-001.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner-tall/homepage-runner-002.webp",
+        "alt": "Homepage Runner 002",
+        "key": "homepage-runner-tall/homepage-runner-002.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner-tall/homepage-runner-015.webp",
+        "alt": "Homepage Runner 015",
+        "key": "homepage-runner-tall/homepage-runner-015.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner-tall/homepage-runner-039.webp",
+        "alt": "Homepage Runner 039",
+        "key": "homepage-runner-tall/homepage-runner-039.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner-tall/homepage-runner-041.webp",
+        "alt": "Homepage Runner 041",
+        "key": "homepage-runner-tall/homepage-runner-041.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner-tall/homepage-runner-044.webp",
+        "alt": "Homepage Runner 044",
+        "key": "homepage-runner-tall/homepage-runner-044.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner-tall/homepage-runner-053.webp",
+        "alt": "Homepage Runner 053",
+        "key": "homepage-runner-tall/homepage-runner-053.webp"
+      }
+    ],
+    "wide": [
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner-wide/homepage-runner-005.webp",
+        "alt": "Homepage Runner 005",
+        "key": "homepage-runner-wide/homepage-runner-005.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner-wide/homepage-runner-006.webp",
+        "alt": "Homepage Runner 006",
+        "key": "homepage-runner-wide/homepage-runner-006.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner-wide/homepage-runner-010.webp",
+        "alt": "Homepage Runner 010",
+        "key": "homepage-runner-wide/homepage-runner-010.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner-wide/homepage-runner-011.webp",
+        "alt": "Homepage Runner 011",
+        "key": "homepage-runner-wide/homepage-runner-011.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner-wide/homepage-runner-018.webp",
+        "alt": "Homepage Runner 018",
+        "key": "homepage-runner-wide/homepage-runner-018.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner-wide/homepage-runner-021.webp",
+        "alt": "Homepage Runner 021",
+        "key": "homepage-runner-wide/homepage-runner-021.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner-wide/homepage-runner-023.webp",
+        "alt": "Homepage Runner 023",
+        "key": "homepage-runner-wide/homepage-runner-023.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner-wide/homepage-runner-024.webp",
+        "alt": "Homepage Runner 024",
+        "key": "homepage-runner-wide/homepage-runner-024.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner-wide/homepage-runner-025.webp",
+        "alt": "Homepage Runner 025",
+        "key": "homepage-runner-wide/homepage-runner-025.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner-wide/homepage-runner-026.webp",
+        "alt": "Homepage Runner 026",
+        "key": "homepage-runner-wide/homepage-runner-026.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner-wide/homepage-runner-027.webp",
+        "alt": "Homepage Runner 027",
+        "key": "homepage-runner-wide/homepage-runner-027.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner-wide/homepage-runner-030.webp",
+        "alt": "Homepage Runner 030",
+        "key": "homepage-runner-wide/homepage-runner-030.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner-wide/homepage-runner-033.webp",
+        "alt": "Homepage Runner 033",
+        "key": "homepage-runner-wide/homepage-runner-033.webp"
+      },
+      {
+        "src": "https://cdn.madisonchinesedance.org/homepage-runner-wide/homepage-runner-054.webp",
+        "alt": "Homepage Runner 054",
+        "key": "homepage-runner-wide/homepage-runner-054.webp"
+      }
+    ]
+  }
+}
