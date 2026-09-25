@@ -3,6 +3,8 @@ interface Props {
 	title?: string;
 	id?: string;
 	class?: string;
+	layout?: 'stack' | 'grid';
+	columns?: 2 | 3 | 4;
 	[key: string]: unknown;
 }
 
@@ -10,10 +12,13 @@ const {
 	title,
 	id,
 	class: className = '',
+	layout = 'stack',
+	columns = 2,
 	...attributes
 } = Astro.props;
 
 const titleId = title && id ? `${id}-title` : undefined;
+const contentLayout = layout === 'grid' ? `content-section__content--grid-${columns}` : '';
 ---
 
 <section
@@ -24,7 +29,7 @@ const titleId = title && id ? `${id}-title` : undefined;
 >
 	<div class="content-section__inner">
 		{title && <h2 id={titleId}>{title}</h2>}
-		<div class="content-section__content">
+		<div class:list={['content-section__content', contentLayout]}>
 			<slot />
 		</div>
 	</div>

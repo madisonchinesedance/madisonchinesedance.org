@@ -6,7 +6,7 @@ import ContentSection from "../components/ContentSection.astro";
 import Gallery from "../components/Gallery.astro";
 import "../styles/index.css";
 
-import galleryManifest from '../data/gallery-manifest.json';
+import galleryManifest from "../data/gallery-manifest.json";
 ---
 
 <!doctype html>
@@ -26,240 +26,172 @@ import galleryManifest from '../data/gallery-manifest.json';
     <Header />
 
     <main id="main" tabindex="-1" class="site-main">
-      <ContentSection
-        class="section page-section"
-        aria-labelledby="madison-chinese-dance-academy-heading"
-      >
-        <div class="section-grid">
-          <article class="section-item">
-            <h1 id="madison-chinese-dance-academy-heading">
-              Madison Chinese Dance Academy
-            </h1>
-            <div class="component-body">
-              <p>
-                We dance to integrate Eastern and Western arts and cultures for
-                a more harmonious world.
-              </p>
-            </div>
-          </article>
-        </div>
-      </ContentSection>
-
-      <ContentSection class="section page-section">
-        <div class="section-grid">
-          <article class="section-item">
-            <Gallery
-              variant="standard"
-              images={galleryManifest.homepage.standard}
-              showControls
-              showDots
-              lightbox={false}
-            />
-          </article>
-        </div>
-      </ContentSection>
-
-      <ContentSection class="section page-section section-columns">
-        <div class="section-grid">
-          <article class="section-item">
-            <h4>1987</h4>
-            <div class="component-body">
-              <p>
-                Founded as a nonprofit dance academy over 30 years ago.
-                Generations of students have trained, performed, and shared
-                Chinese dance with the Madison community.
-              </p>
-            </div>
-          </article>
-          <article class="section-item">
-            <h4>Splendid China</h4>
-            <div class="component-body">
-              <p>
-                Annual showcase at the Robert E. Parilla Performing Arts Center
-                — where community artistry meets the stage. Each year brings new
-                choreography, costumes, and traditions to life.
-              </p>
-            </div>
-          </article>
-          <article class="section-item">
-            <h4>Ages 3 to 18+</h4>
-            <div class="component-body">
-              <p>
-                Classes for beginner dancers through advanced students and
-                beyond. Programs grow with each student from first steps to
-                senior choreography projects.
-              </p>
-            </div>
-          </article>
-        </div>
+      <ContentSection aria-labelledby="madison-chinese-dance-academy-heading">
+        <h1 id="madison-chinese-dance-academy-heading">
+          Madison Chinese Dance Academy
+        </h1>
+        <p>
+          We dance to integrate Eastern and Western arts and cultures for a more
+          harmonious world.
+        </p>
       </ContentSection>
 
       <ContentSection>
-        <div class="section-grid">
-          <article class="section-item">
-            <Gallery
-              variant="tall"
-              images={galleryManifest.homepage.tall}
-              showControls
-              showDots
-              lightbox={false}
-            />
-          </article>
-        </div>
+        <Gallery
+          variant="standard"
+          images={galleryManifest.homepage.standard}
+          showControls
+          showDots
+          lightbox={false}
+        />
       </ContentSection>
 
-      <ContentSection class="section page-section section-columns">
-        <div class="section-grid">
-          <article class="section-item">
-            <h4>Classes</h4>
-            <div class="component-body">
-              <p>
-                Beginner through advanced dance instruction for students of all
-                ages.
-              </p>
-              <div class="component-actions">
-                <Button href="/classes/beginner-dancers/">Sign Up</Button>
-              </div>
-            </div>
-          </article>
-          <article class="section-item">
-            <h4>Attend an Event</h4>
-            <div class="component-body">
-              <p>
-                Join us for our upcoming events and experience the joy of
-                Chinese dance.
-              </p>
-              <div class="component-actions">
-                <Button href="/events/">Events</Button>
-              </div>
-            </div>
-          </article>
-          <article class="section-item">
-            <h4>Gallery</h4>
-            <div class="component-body">
-              <p>
-                Browse moments from performances, community programs, and
-                academy events.
-              </p>
-              <div class="component-actions">
-                <Button href="/gallery/">Open gallery</Button>
-              </div>
-            </div>
-          </article>
-        </div>
+      <ContentSection layout="grid" columns={3}>
+        <article>
+          <h3>1987</h3>
+          <p>
+            Founded as a nonprofit dance academy over 30 years ago. Generations
+            of students have trained, performed, and shared Chinese dance with
+            the Madison community.
+          </p>
+        </article>
+        <article>
+          <h3>Splendid China</h3>
+          <p>
+            Annual showcase at the Robert E. Parilla Performing Arts Center —
+            where community artistry meets the stage. Each year brings new
+            choreography, costumes, and traditions to life.
+          </p>
+        </article>
+        <article>
+          <h3>Ages 3 to 18+</h3>
+          <p>
+            Classes for beginner dancers through advanced students and beyond.
+            Programs grow with each student from first steps to senior
+            choreography projects.
+          </p>
+        </article>
       </ContentSection>
 
-      <ContentSection class="section page-section section-columns">
-        <div class="section-grid">
-          <article class="section-item">
-            <h4>Our Story</h4>
-            <div class="component-body">
-              <p>
-                The Madison Chinese Dance Academy was founded as a nonprofit
-                organization in 1987. It is a teaching institution that
-                emphasizes cultural enrichment through the art of Chinese dance
-                and ballet. The Academy holds weekly classes year-round for
-                students to learn traditional and modern Chinese dances, ballet,
-                and Chinese ballet. It further cultivates students&#39;
-                appreciation of Eastern and Western arts and cultures through
-                dance reviews and senior choreography projects.
-              </p>
-              <p>
-                In addition to its annual Splendid China dance concert at the
-                Robert E. Parilla Performing Arts Center, the Academy presents
-                more than twenty dance performances, workshops, and speeches at
-                various occasions yearly. It has been invited to perform across
-                the country at venues including the White House Music Festival,
-                Smithsonian museums, conventions, and universities nationwide,
-                as well as Disney Epcot Center. It is also one of the few arts
-                groups invited to perform at the World New Millennium Music and
-                Dance Festival held at the Giza Pyramids in Cairo.
-              </p>
-              <p>
-                The Academy welcomes individuals and groups of all racial and
-                cultural backgrounds to join their pursuit of a more civilized,
-                harmonious, and enjoyable world.
-              </p>
-            </div>
-          </article>
-          <article class="section-item">
-            <h4>我們的故事</h4>
-            <div class="component-body">
-              <p>
-                取名「陌地生」是希望優美的中華文化能夠在世界上任何「陌」生的「地」方，落地「生」根，發揚光大。
-              </p>
-              <p>
-                「陌地生舞蹈學院」教導學員溶匯傳統中國舞蹈及古典芭蕾的基本技巧和舞台前後的表演藝術，更以中華文化的精神做為教材的重心。學員們由學習不同地區的舞蹈而了解到中國的廣大，和漢、滿、蒙、回、藏、苗各族音樂及文化的精粹。由學習古典宮廷舞而至近代的民俗舞，領會到歷史文化的演進。盛唐雅韻的金壁輝煌，到台灣農村的樸實活潑，舞者行雲流水的彩姿描繪出時光的腳步。塞北的豪放雄風，江南的婉約細膩，也由舞者舉手投足間，反映出地大物博的浩浩中華。
-              </p>
-              <p>
-                以忠孝節義為主題的舞，學生因重演歷史而體會傳統的道德思想；以年節慶典為素材的舞，學生親歷中國的習俗及鄉土民情。學生除了本身受惠於享受習舞的樂趣外，並肩負傳播文化的責任。多年來，我們活躍於各種文化活動中，到過美國財政部，國會圖書館，華盛頓區各大學，蒙郡各中小學，圖書館。也應邀在白宮音樂會,
-                史密斯松尼恩國家博物館演出，獲得柯林頓總統頒發獎狀。更曾應邀參加在埃及金字塔前舉辦的千禧年世界音樂舞蹈大展。
-              </p>
-              <p>
-                我們參與文化藝術活動外，更以中國人「老吾老以及人之老，幼吾幼以及人之幼」的精神，把中華舞蹈文化帶給老人院及育幼院。希望有更多朋友不論老少,
-                族裔, 或文化背景,
-                踴躍參加我們的行列，一起為融匯東西方藝術文化締造更和諧歡樂的社會而努力。
-              </p>
-            </div>
-          </article>
-        </div>
+      <ContentSection>
+        <Gallery
+          variant="tall"
+          images={galleryManifest.homepage.tall}
+          showControls
+          showDots
+          lightbox={false}
+        />
       </ContentSection>
 
-      <ContentSection class="section page-section">
-        <div class="section-grid">
-          <article class="section-item">
-            <Gallery
-              variant="wide"
-              images={galleryManifest.homepage.wide}
-              showControls
-              showDots
-              lightbox={false}
-            />
-          </article>
-        </div>
+      <ContentSection layout="grid" columns={3}>
+        <article>
+          <h3>Classes</h3>
+          <p>
+            Beginner through advanced dance instruction for students of all ages.
+          </p>
+          <Button href="/classes/beginner-dancers/">Sign Up</Button>
+        </article>
+        <article>
+          <h3>Attend an Event</h3>
+          <p>
+            Join us for our upcoming events and experience the joy of Chinese
+            dance.
+          </p>
+          <Button href="/events/">Events</Button>
+        </article>
+        <article>
+          <h3>Gallery</h3>
+          <p>
+            Browse moments from performances, community programs, and academy
+            events.
+          </p>
+          <Button href="/gallery/">Open gallery</Button>
+        </article>
       </ContentSection>
 
-      <ContentSection class="section page-section section-columns">
-        <div class="section-grid">
-          <article class="section-item">
-            <h4>Try A Class</h4>
-            <div class="component-body">
-              <p>
-                Experience the joy of Chinese dance with our beginner-friendly
-                classes.
-              </p>
-              <div class="component-actions">
-                <Button href="/classes/beginner-dancers/">Sign Up</Button>
-              </div>
-            </div>
-          </article>
-          <article class="section-item">
-            <h4>Support the academy</h4>
-            <div class="component-body">
-              <p>
-                Help fund classes, costumes, rehearsal space, and community
-                outreach.
-              </p>
-              <div class="component-actions">
-                <Button href="/donate/">Donate</Button>
-              </div>
-            </div>
-          </article>
-          <article class="section-item">
-            <h4>Get in touch</h4>
-            <div class="component-body">
-              <p>
-                Ask about classes, performances, donations, or community
-                programs.
-              </p>
-              <div class="component-actions">
-                <Button href="mailto:contact@madisonchinesedance.org"
-                  >Contact us</Button
-                >
-              </div>
-            </div>
-          </article>
-        </div>
+      <ContentSection layout="grid" columns={2}>
+        <article>
+          <h3>Our Story</h3>
+        <p>
+          The Madison Chinese Dance Academy was founded as a nonprofit
+          organization in 1987. It is a teaching institution that emphasizes
+          cultural enrichment through the art of Chinese dance and ballet. The
+          Academy holds weekly classes year-round for students to learn
+          traditional and modern Chinese dances, ballet, and Chinese ballet. It
+          further cultivates students&#39; appreciation of Eastern and Western
+          arts and cultures through dance reviews and senior choreography
+          projects.
+        </p>
+        <p>
+          In addition to its annual Splendid China dance concert at the Robert
+          E. Parilla Performing Arts Center, the Academy presents more than
+          twenty dance performances, workshops, and speeches at various
+          occasions yearly. It has been invited to perform across the country at
+          venues including the White House Music Festival, Smithsonian museums,
+          conventions, and universities nationwide, as well as Disney Epcot
+          Center. It is also one of the few arts groups invited to perform at
+          the World New Millennium Music and Dance Festival held at the Giza
+          Pyramids in Cairo.
+        </p>
+        <p>
+          The Academy welcomes individuals and groups of all racial and cultural
+          backgrounds to join their pursuit of a more civilized, harmonious, and
+          enjoyable world.
+        </p>
+        </article>
+        <article lang="zh-Hant">
+          <h3>我們的故事</h3>
+        <p>
+          取名「陌地生」是希望優美的中華文化能夠在世界上任何「陌」生的「地」方，落地「生」根，發揚光大。
+        </p>
+        <p>
+          「陌地生舞蹈學院」教導學員溶匯傳統中國舞蹈及古典芭蕾的基本技巧和舞台前後的表演藝術，更以中華文化的精神做為教材的重心。學員們由學習不同地區的舞蹈而了解到中國的廣大，和漢、滿、蒙、回、藏、苗各族音樂及文化的精粹。由學習古典宮廷舞而至近代的民俗舞，領會到歷史文化的演進。盛唐雅韻的金壁輝煌，到台灣農村的樸實活潑，舞者行雲流水的彩姿描繪出時光的腳步。塞北的豪放雄風，江南的婉約細膩，也由舞者舉手投足間，反映出地大物博的浩浩中華。
+        </p>
+        <p>
+          以忠孝節義為主題的舞，學生因重演歷史而體會傳統的道德思想；以年節慶典為素材的舞，學生親歷中國的習俗及鄉土民情。學生除了本身受惠於享受習舞的樂趣外，並肩負傳播文化的責任。多年來，我們活躍於各種文化活動中，到過美國財政部，國會圖書館，華盛頓區各大學，蒙郡各中小學，圖書館。也應邀在白宮音樂會,
+          史密斯松尼恩國家博物館演出，獲得柯林頓總統頒發獎狀。更曾應邀參加在埃及金字塔前舉辦的千禧年世界音樂舞蹈大展。
+        </p>
+        <p>
+          我們參與文化藝術活動外，更以中國人「老吾老以及人之老，幼吾幼以及人之幼」的精神，把中華舞蹈文化帶給老人院及育幼院。希望有更多朋友不論老少,
+          族裔, 或文化背景,
+          踴躍參加我們的行列，一起為融匯東西方藝術文化締造更和諧歡樂的社會而努力。
+        </p>
+        </article>
+      </ContentSection>
+
+      <ContentSection>
+        <Gallery
+          variant="wide"
+          images={galleryManifest.homepage.wide}
+          showControls
+          showDots
+          lightbox={false}
+        />
+      </ContentSection>
+
+      <ContentSection layout="grid" columns={3}>
+        <article>
+          <h3>Try A Class</h3>
+          <p>
+            Experience the joy of Chinese dance with our beginner-friendly
+            classes.
+          </p>
+          <Button href="/classes/beginner-dancers/">Sign Up</Button>
+        </article>
+        <article>
+          <h3>Support the academy</h3>
+          <p>
+            Help fund classes, costumes, rehearsal space, and community outreach.
+          </p>
+          <Button href="/donate/">Donate</Button>
+        </article>
+        <article>
+          <h3>Get in touch</h3>
+          <p>
+            Ask about classes, performances, donations, or community programs.
+          </p>
+          <Button href="mailto:contact@madisonchinesedance.org">Contact us</Button>
+        </article>
       </ContentSection>
     </main>
 
