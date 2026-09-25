@@ -3,44 +3,32 @@
 @import './variables.css';
 @import './base.css';
 @import './button.css';
-@import './sections.css';
 @import './gallery.css';
-@import './home.css';
 @import './header.css';
 @import './content-section.css';
 
-/* The Astro homepage keeps the legacy section classes while the structure is
-   being rebuilt. These rules give the page a clean baseline before components
-   receive their final styles. */
-.home-page main {
-	width: 100%;
+/* Homepage layout */
+.home-page .site-main {
+	padding-bottom: clamp(3rem, 7vw, 6rem);
+	background:
+		radial-gradient(
+			ellipse 130% 38% at 50% 18%,
+			color-mix(in srgb, var(--color-violet) 58%, transparent),
+			transparent 72%
+		),
+		linear-gradient(
+			180deg,
+			var(--color-deep-navy) 0%,
+			color-mix(in srgb, var(--color-violet) 62%, var(--color-deep-navy)) 42%,
+			var(--color-deep-navy) 72%
+		);
 }
 
-.home-page main > section {
-	width: min(100% - 2rem, var(--content-width));
-	margin: 0 auto;
-	padding: clamp(2rem, 5vw, 5rem) 0;
+.home-page .content-section {
+	padding-top: 1rem;
+	padding-bottom: 2.5rem;
 }
 
-.home-page main > section > div {
-	max-width: var(--content-width);
-	margin: 0 auto;
-}
-
-.home-page main h1,
-.home-page main h2,
-.home-page main h3,
-.home-page main h4 {
-	color: var(--light-text-color);
-}
-
-.home-page main p,
-.home-page main li {
-	color: var(--body-font-color);
-	font-size: var(--body-font-size);
-	line-height: var(--body-line-height);
-}
-
-.home-page main a {
-	color: var(--light-text-color);
+.home-page .content-section:first-child {
+	padding-top: clamp(2rem, 5vw, 4rem);
 }
