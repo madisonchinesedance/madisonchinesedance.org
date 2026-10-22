@@ -23,7 +23,62 @@
 	margin: 0 0 1.5rem;
 	color: var(--section-heading-color);
 	font-size: var(--heading-2-font-size);
+	font-weight: var(--heading-2-font-weight);
 	line-height: var(--heading-2-line-height);
+}
+
+.content-section__content h1,
+.content-section__content h2,
+.content-section__content h3,
+.content-section__content h4,
+.content-section__content h5,
+.content-section__content h6,
+.content-section__inner > h1 {
+	margin: 0 0 0.75rem;
+	color: var(--section-heading-color);
+	font-weight: var(--heading-1-font-weight);
+}
+
+.content-section__inner > h1 {
+	font-size: var(--heading-1-font-size);
+	line-height: var(--heading-1-line-height);
+}
+
+.content-section__content h1 {
+	font-size: var(--heading-1-font-size);
+	line-height: var(--heading-1-line-height);
+}
+
+.content-section__content h2 {
+	font-size: var(--heading-4-font-size);
+}
+
+.content-section__content h3 {
+	font-size: var(--heading-4-font-size);
+}
+
+.content-section__content h4 {
+	font-size: var(--heading-5-font-size);
+}
+
+.content-section__content h5 {
+	font-size: var(--heading-5-font-size);
+}
+
+.content-section__content h6 {
+	font-size: var(--heading-6-font-size);
+}
+
+.content-section__content p,
+.content-section__content li,
+.content-section__inner > p {
+	color: var(--section-text-color);
+	font-size: var(--body-font-size);
+	line-height: var(--body-line-height);
+}
+
+.content-section__content p {
+	margin: 0 0 1rem;
 }
 
 .content-section__content > :first-child {

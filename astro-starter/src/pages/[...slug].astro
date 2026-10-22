@@ -1,0 +1,39 @@
+---
+import { getCollection, render } from 'astro:content';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ContentSection from '../components/ContentSection.astro';
+import '../styles/index.css';
+
+export async function getStaticPaths() {
+	const pages = await getCollection('pages');
+
+	return pages.map((page) => ({
+		params: { slug: page.id },
+		props: { page },
+	}));
+}
+
+const { page } = Astro.props;
+const { Content } = await render(page);
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>{page.data.title} | Madison Chinese Dance Academy</title>
+		<meta name="description" content={page.data.description} />
+	</head>
+	<body>
+		<Header />
+		<main id="main" class="site-main">
+			<ContentSection>
+				<h1>{page.data.title}</h1>
+				<Content />
+			</ContentSection>
+		</main>
+		<Footer />
+	</body>
+</html>

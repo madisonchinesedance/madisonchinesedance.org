@@ -70,6 +70,10 @@
 	--heading-2-font-size: clamp(2.2rem, 4vw, 4.25rem);
 	--heading-2-font-weight: 700;
 	--heading-2-line-height: 1.12;
+	--heading-3-font-size: clamp(2rem, 3vw, 3.2rem);
+	--heading-4-font-size: clamp(1.65rem, 2.5vw, 2.4rem);
+	--heading-5-font-size: clamp(1.4rem, 2vw, 1.85rem);
+	--heading-6-font-size: clamp(1.25rem, 1.4vw, 1.65rem);
 	--logo-font-size: 1.4rem;
 	--nav-link-font-size: 1.05rem;
 	--nav-link-font-weight: 600;
