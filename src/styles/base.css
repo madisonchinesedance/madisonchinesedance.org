@@ -101,7 +101,7 @@ body::after {
 }
 
 main {
-  padding: 4rem;
+  padding: clamp(1.5rem, 4vw, 4rem);
 }
 
 a {
