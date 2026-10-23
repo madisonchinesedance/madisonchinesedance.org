@@ -2,7 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
-import { marked } from "marked";
+import ContentSection from "../components/ContentSection.astro";
 
 export async function getStaticPaths() {
   const pages = await getCollection("pages");
@@ -21,8 +21,6 @@ const { page } = Astro.props;
 
 <BaseLayout title={page.data.title}>
   {page.data.sections.map((section) => (
-    <section>
-      <div set:html={marked.parse(section.content)} />
-    </section>
+    <ContentSection content={section.content} />
   ))}
 </BaseLayout>
