@@ -2,7 +2,7 @@
 title: Home
 sections:
   - content: |
-      # Home
+      # Madison Chinese Dance Academy 
       
       
       
