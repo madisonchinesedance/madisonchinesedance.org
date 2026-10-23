@@ -9,6 +9,11 @@ const pages = defineCollection({
   }),
   schema: z.object({
     title: z.string(),
+    sections: z.array(
+      z.object({
+        content: z.string(),
+      }),
+    ),
   }),
 });
 

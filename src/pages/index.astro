@@ -1,15 +1,19 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { getCollection, render } from "astro:content";
+import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
+import { marked } from "marked";
 
 const pages = await getCollection("pages");
 
 const indexPage = pages.filter((page: CollectionEntry<"pages">) => page.id == "index")[0];
 
-const { Content } = await render(indexPage);
 ---
 
 <BaseLayout title={indexPage.data.title}>
-  <Content />
+  {indexPage.data.sections.map((section) => (
+    <section>
+      <div set:html={marked.parse(section.content)} />
+    </section>
+  ))}
 </BaseLayout>

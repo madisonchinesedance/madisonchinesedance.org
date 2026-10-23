@@ -1,7 +1,10 @@
 ---
 title: Services
+sections:
+  - content: |
+      # Services
+      
+      
+      
+      Coming soon!
 ---
-
-# Services
-
-Coming soon!
