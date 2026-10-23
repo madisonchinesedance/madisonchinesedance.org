@@ -1,0 +1,42 @@
+:root {
+  /* Core palette retained from the legacy site. */
+  --color-alpha-deep-navy: #101b4fcb;
+  --color-alpha-navy-shadow: transparent;
+  --color-black: #000000;
+  --color-blue-grey: #ffffff14;
+  --color-deep-navy: #101a4f;
+  --color-green: #1e7e34;
+  --color-navy-shadow: #030c38;
+  --color-peach: #ffe2cf;
+  --color-purple: #3a1e8d;
+  --color-sunrise: #d85d4b;
+  --color-violet: #2a2361;
+  --color-white: #ffffff;
+
+  /* Brand and page shell. */
+  --bg-color: var(--color-deep-navy);
+  --light-text-color: var(--color-white);
+
+  /* Typography. */
+  --base-font-size: 14px;
+  --base-line-height: 1.45;
+  --body-font-color: var(--light-text-color);
+  --body-font-size: 1.22rem;
+  --body-font-weight: 400;
+  --body-line-height: 1.65;
+  --font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --small-body-font-size: 0.95rem;
+
+  /* Shared UI and motion tokens. */
+  --button-hover-bg: var(--color-blue-grey);
+  --edge-contrast: var(--color-blue-grey);
+  --opacity-hover: 0.7;
+  --opacity-full: 1;
+  --transition-fast: 180ms;
+  --transition-medium: 260ms;
+  --translate-button-hover: -2px;
+  --translate-card-hover: -5px;
+  --skiplink-bg: var(--color-peach);
+  --skiplink-fg: var(--color-deep-navy);
+}

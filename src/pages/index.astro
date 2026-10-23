@@ -1,0 +1,17 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import ContentSection from "../components/ContentSection.astro";
+
+const pages = await getCollection("pages");
+
+const indexPage = pages.filter((page: CollectionEntry<"pages">) => page.id == "index")[0];
+
+---
+
+<BaseLayout title={indexPage.data.title}>
+  {indexPage.data.sections.map((section) => (
+    <ContentSection content={section.content} />
+  ))}
+</BaseLayout>
