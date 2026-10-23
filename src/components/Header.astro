@@ -185,7 +185,7 @@ const isActive = (href: string) => normalizePath(href) === currentPath;
   details.is-active > summary,
   .nav-list a[aria-current="page"] {
     color: var(--color-peach);
-    background: var(--button-hover-bg);
+    background: #ffffff14;
   }
 
   summary {
@@ -200,7 +200,7 @@ const isActive = (href: string) => normalizePath(href) === currentPath;
     display: inline-block;
     margin-left: 0.35rem;
     content: "▾";
-    transition: transform var(--transition-fast);
+    transition: transform 180ms;
   }
 
   details[open] summary::after {
@@ -235,7 +235,7 @@ const isActive = (href: string) => normalizePath(href) === currentPath;
     padding: 0.5rem 0.75rem;
     border-radius: 0.5rem;
     color: var(--light-text-color);
-    background: var(--color-purple);
+    background: #3a1e8d;
     font-size: 1rem;
     text-decoration: none;
   }

@@ -16,12 +16,6 @@
   /* Brand and page shell. */
   --bg-color: var(--color-deep-navy);
   --light-text-color: var(--color-white);
-  --content-width: 1600px;
-  --section-max-width: 1600px;
-  --header-bar-height: 65px;
-  --spacing-sm: 12px;
-  --spacing-md: 16px;
-  --spacing-xl: 24px;
 
   /* Typography. */
   --base-font-size: 14px;
@@ -32,14 +26,6 @@
   --body-line-height: 1.65;
   --font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-  --heading-1-font-size: clamp(2.8rem, 5.5vw, 5rem);
-  --heading-1-font-weight: 700;
-  --heading-1-line-height: 1.08;
-  --heading-2-font-size: clamp(2.2rem, 4vw, 4.25rem);
-  --heading-3-font-size: clamp(2rem, 3vw, 3.2rem);
-  --heading-4-font-size: clamp(1.65rem, 2.5vw, 2.4rem);
-  --heading-5-font-size: clamp(1.4rem, 2vw, 1.85rem);
-  --heading-6-font-size: clamp(1.25rem, 1.4vw, 1.65rem);
   --small-body-font-size: 0.95rem;
 
   /* Shared UI and motion tokens. */
