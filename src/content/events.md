@@ -1,7 +1,10 @@
 ---
 title: Events
+sections:
+  - content: |
+      # Events
+      
+      
+      
+      Coming soon!
 ---
-
-# Events
-
-Coming soon!
