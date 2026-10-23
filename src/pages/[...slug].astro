@@ -9,7 +9,7 @@ export async function getStaticPaths() {
     .filter((page: CollectionEntry<"pages">) => page.id !== "index")
     .map((page: CollectionEntry<"pages">) => ({
       params: {
-        slug: page.id.split("/"),
+        slug: page.id,
       },
       props: { page },
     }));
