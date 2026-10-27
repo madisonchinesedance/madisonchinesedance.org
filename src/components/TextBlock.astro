@@ -1,0 +1,11 @@
+---
+import { marked } from "marked";
+
+interface Props {
+  content: string;
+}
+
+const { content } = Astro.props;
+---
+
+<div class="text-block" set:html={marked.parse(content)} />
