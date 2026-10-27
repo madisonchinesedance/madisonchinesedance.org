@@ -1,11 +1,11 @@
 ---
 interface Props {
-  variant?: "default" | "card";
+  variant?: "none" | "card";
   layout?: "1-column" | "2-columns" | "3-columns" | "4-columns";
 }
 
 const {
-  variant = "default",
+  variant = "none",
   layout = "1-column",
 } = Astro.props;
 ---
@@ -13,8 +13,8 @@ const {
 <section
   class:list={[
     "block",
-    `block--variant-${variant}`,
-    `block--layout-${layout}`,
+    `variant-${variant}`,
+    `layout-${layout}`,
   ]}
 >
   <slot />
@@ -24,49 +24,5 @@ const {
   .block {
     /* Intentionally no default spacing, background, border, or shadow. */
     width: 100%;
-  }
-
-  .block--layout-1-column,
-  .block--layout-2-columns,
-  .block--layout-3-columns,
-  .block--layout-4-columns {
-    display: grid;
-  }
-
-  .block--layout-1-column {
-    grid-template-columns: 1fr;
-  }
-
-  .block--layout-2-columns {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .block--layout-3-columns {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .block--layout-4-columns {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
-  .block--variant-card {
-    padding: 1.5rem;
-    color: var(--color-white);
-    background: rgb(61 5 151 / 50%);
-    border: 3px solid var(--edge-contrast);
-    border-radius: 1rem;
-    box-shadow: 0 18px 50px var(--color-navy-shadow);
-  }
-
-  @media (max-width: 640px) {
-    .block--layout-2-columns,
-    .block--layout-3-columns,
-    .block--layout-4-columns {
-      grid-template-columns: 1fr;
-    }
-
-    .block--variant-card {
-      padding: 1rem;
-    }
   }
 </style>

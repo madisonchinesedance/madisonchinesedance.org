@@ -91,16 +91,31 @@ body::after {
   background:
     radial-gradient(
       ellipse at 15% 20%,
-      rgb(58 30 141 / 35%),
-      transparent 38%
+      rgb(108 52 235 / 57%) 0 8%,
+      transparent 28%
     ),
     radial-gradient(
       ellipse at 82% 72%,
-      rgb(40 96 218 / 22%),
-      transparent 42%
+      rgb(40 112 238 / 46%) 0 7%,
+      transparent 30%
     ),
-    linear-gradient(180deg, transparent, rgb(3 12 56 / 28%));
-  filter: blur(18px);
+    radial-gradient(
+      ellipse at 72% 12%,
+      rgb(102 75 224 / 42%) 0 6%,
+      transparent 24%
+    ),
+    radial-gradient(
+      ellipse at 28% 82%,
+      rgb(31 137 226 / 40%) 0 7%,
+      transparent 26%
+    ),
+    radial-gradient(
+      ellipse at 52% 48%,
+      rgb(56 47 133 / 34%) 0 5%,
+      transparent 22%
+    ),
+    linear-gradient(180deg, transparent, rgb(3 12 56 / 45%));
+  filter: blur(14px);
 }
 
 main {
@@ -108,7 +123,44 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 0;
+  gap: var(--content-section-padding);
+  padding: var(--content-section-padding);
+}
+
+.layout-1-column,
+.layout-2-columns,
+.layout-3-columns,
+.layout-4-columns {
+  display: grid;
+  gap: 1rem;
+}
+
+.layout-1-column {
+  grid-template-columns: 1fr;
+}
+
+.layout-2-columns {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.layout-3-columns {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.layout-4-columns {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.variant-card {
+  padding: 1.5rem;
+  color: var(--color-white);
+  background: rgb(61 5 151 / 50%);
+  border: 3px solid var(--edge-contrast);
+  border-radius: 1rem;
+  box-shadow: 0 18px 50px var(--color-navy-shadow);
+}
+
+.variant-none {
   padding: 0;
 }
 
@@ -195,5 +247,17 @@ img {
 @media (prefers-reduced-motion: reduce) {
   body::before {
     animation: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .layout-2-columns,
+  .layout-3-columns,
+  .layout-4-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .variant-card {
+    padding: 1rem;
   }
 }

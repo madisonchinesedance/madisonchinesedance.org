@@ -1,10 +1,11 @@
 ---
 title: Beginner Dancers
 sections:
-  - blocks:
+  - variant: card
+    layout: 1-column
+    blocks:
       - text: |
           # Beginner Dancers
-
 
 
           This placeholder page will be updated with class information later. Check back soon!
