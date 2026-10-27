@@ -1,10 +1,11 @@
 ---
 title: Events
 sections:
-  - content: |
-      # Events
-      
-      
-      
-      Coming soon!
+  - blocks:
+      - text: |
+          # Events
+
+
+
+          Coming soon!
 ---

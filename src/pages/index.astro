@@ -12,6 +12,6 @@ const indexPage = pages.filter((page: CollectionEntry<"pages">) => page.id == "i
 
 <BaseLayout title={indexPage.data.title}>
   {indexPage.data.sections.map((section) => (
-    <ContentSection content={section.content} />
+    <ContentSection blocks={section.blocks} layout={section.layout} />
   ))}
 </BaseLayout>

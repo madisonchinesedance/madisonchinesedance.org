@@ -39,4 +39,6 @@
   --translate-card-hover: -5px;
   --skiplink-bg: var(--color-peach);
   --skiplink-fg: var(--color-deep-navy);
+
+  --content-section-padding: 2rem;
 }

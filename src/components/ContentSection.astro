@@ -1,33 +1,82 @@
 ---
-import { marked } from "marked";
+import ContentBlock from "./ContentBlock.astro";
+import TextBlock from "./TextBlock.astro";
 
 interface Props {
-  content: string;
+  blocks: Array<{ text: string }>;
+  layout?: "1-column" | "2-columns" | "3-columns" | "4-columns";
 }
 
-const { content } = Astro.props;
+const { blocks, layout = "1-column" } = Astro.props;
 ---
 
-<section class="content-section">
-  <div class="content-section__content" set:html={marked.parse(content)} />
+<section class:list={["content-section", `content-section--layout-${layout}`]}>
+  {
+    blocks.map((block) => (
+      <ContentBlock variant="card" layout="1-column">
+        <TextBlock content={block.text} />
+      </ContentBlock>
+    ))
+  }
 </section>
 
 <style>
   .content-section {
+    /* Provides layout spacing without adding a visual treatment. */
     width: 100%;
-    margin: 0;
-    padding: clamp(1.5rem, 4vw, 3rem) clamp(1.125rem, 3vw, 2.5rem);
-    color: var(--color-white);
-    background: rgb(61 5 151 / 50%);
-    border: 3px solid var(--edge-contrast);
-    border-radius: 1rem;
-    box-shadow: 0 18px 50px var(--color-navy-shadow);
+    display: grid;
+    gap: 1.5rem;
+      padding: 0 var(--content-section-padding);
+    }
+
+  .content-section:first-child {
+    padding-top: var(--content-section-padding);
+    padding-bottom: calc(var(--content-section-padding) / 2);
+  }
+
+  .content-section + .content-section:not(:last-of-type) {
+    padding-top: calc(var(--content-section-padding) / 2);
+    padding-bottom: calc(var(--content-section-padding) / 2);
+  }
+
+  .content-section:last-of-type {
+    padding-top: calc(var(--content-section-padding) / 2);
+    padding-bottom: var(--content-section-padding);
+  }
+
+  .content-section--layout-1-column {
+    grid-template-columns: 1fr;
+  }
+
+  .content-section--layout-2-columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .content-section--layout-3-columns {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .content-section--layout-4-columns {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   @media (max-width: 640px) {
     .content-section {
-      padding: 1rem;
-      border-radius: 1rem;
+      padding-inline: 1rem;
+    }
+
+    .content-section:first-child {
+      padding-top: 1rem;
+    }
+
+    .content-section:last-of-type {
+      padding-bottom: 1rem;
+    }
+
+    .content-section--layout-2-columns,
+    .content-section--layout-3-columns,
+    .content-section--layout-4-columns {
+      grid-template-columns: 1fr;
     }
   }
 </style>

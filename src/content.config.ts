@@ -11,7 +11,14 @@ const pages = defineCollection({
     title: z.string(),
     sections: z.array(
       z.object({
-        content: z.string(),
+        layout: z
+          .enum(["1-column", "2-columns", "3-columns", "4-columns"])
+          .optional(),
+        blocks: z.array(
+          z.object({
+            text: z.string(),
+          }),
+        ),
       }),
     ),
   }),

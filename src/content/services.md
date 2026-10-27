@@ -1,10 +1,11 @@
 ---
 title: Services
 sections:
-  - content: |
-      # Services
-      
-      
-      
-      Coming soon!
+  - blocks:
+      - text: |
+          # Services
+
+
+
+          Coming soon!
 ---

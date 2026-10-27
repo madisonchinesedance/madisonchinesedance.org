@@ -84,13 +84,15 @@ const footerGroups = [
   </div>
 
   <div class="footer-bottom">
-    <small>© {new Date().getFullYear()} Madison Chinese Dance Academy</small>
+    <span class="footer-copyright">
+      &copy; {new Date().getFullYear()} Madison Chinese Dance Academy
+    </span>
   </div>
 </footer>
 
 <style>
   .site-footer {
-    padding: 2.5rem 2rem 1rem;
+    padding: 2.5rem 2.5rem 1rem;
     border-top: 2px solid rgb(255 255 255 / 24%);
     color: var(--light-text-color);
     background: var(--color-deep-navy);
@@ -104,7 +106,7 @@ const footerGroups = [
     grid-template-columns: minmax(20rem, 2.2fr) repeat(5, minmax(8rem, 1fr));
     gap: 1.5rem;
     width: min(100%, var(--content-width));
-    margin: 0 auto;
+    margin-bottom: 1rem;
   }
 
   .footer-brand a,
@@ -183,7 +185,6 @@ const footerGroups = [
 
   .footer-bottom {
     width: min(100%, var(--content-width));
-    margin: 1.75rem auto 0;
     padding-top: 0.75rem;
     border-top: 1px solid rgb(255 255 255 / 12%);
     color: rgb(255 255 255 / 65%);
