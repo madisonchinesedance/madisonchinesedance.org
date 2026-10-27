@@ -15,36 +15,43 @@ sections:
       - text: |
           ## Ways to Support
 
-
           Every contribution, whether big or small, helps us fulfill our mission of promoting Chinese dance and cultural exchange. Here are some ways you can support our academy.
+      - variant: none
+        layout: 3-columns
+        blocks:
+          - variant: none
+            layout: 1-column
+            blocks:
+              - text: |
+                  ### Make a Donation
 
+                  Your donations help fund classes, scholarships, costumes, and our annual Splendid China production.
+              - button:
+                  label: "Donate"
+                  href: "/donate/"
+                  variant: primary
+          - variant: none
+            layout: 1-column
+            blocks:
+              - text: |
+                  ### Become a Sponsor
 
-          ### Make a Donation
+                  Corporate and individual sponsorships support our performances, outreach programs, and community events. Partner with us to make an impact.
+              - button:
+                  label: "Contact us"
+                  href: "mailto:contact@madisonchinesedance.org"
+                  variant: primary
+          - variant: none
+            layout: 1-column
+            blocks:
+              - text: |
+                  ### Volunteer
 
-
-          Your donations help fund classes, scholarships, costumes, and our annual Splendid China production.
-      - button:
-          label: "Donate"
-          href: "/donate/"
-          variant: primary
-      - text: |
-          ### Become a Sponsor
-
-
-          Corporate and individual sponsorships support our performances, outreach programs, and community events. Partner with us to make an impact.
-      - button:
-          label: "Contact us"
-          href: "mailto:contact@madisonchinesedance.org"
-          variant: primary
-      - text: |
-          ### Volunteer
-
-
-          Volunteers are essential to our productions and events. Help with costumes, backstage, ushering, and more.
-      - button:
-          label: "Contact us"
-          href: "mailto:contact@madisonchinesedance.org"
-          variant: primary
+                  Volunteers are essential to our productions and events. Help with costumes, backstage, ushering, and more.
+              - button:
+                  label: "Contact us"
+                  href: "mailto:contact@madisonchinesedance.org"
+                  variant: primary
   - variant: card
     layout: 1-column
     blocks:

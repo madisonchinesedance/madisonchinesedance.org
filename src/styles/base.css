@@ -121,10 +121,11 @@ body::after {
 main {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   gap: var(--content-section-padding);
   padding: var(--content-section-padding);
+  min-height: 100vh;
 }
 
 .layout-1-column,

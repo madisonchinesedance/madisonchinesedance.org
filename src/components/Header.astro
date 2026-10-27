@@ -112,6 +112,22 @@ const isActive = (href: string) => normalizePath(href) === currentPath;
   </div>
 </header>
 
+<script>
+  document.querySelectorAll<HTMLDetailsElement>(".nav-list details").forEach((dropdown) => {
+    dropdown.addEventListener("pointerenter", (event) => {
+      if (event.pointerType === "mouse") {
+        dropdown.open = true;
+      }
+    });
+
+    dropdown.addEventListener("pointerleave", (event) => {
+      if (event.pointerType === "mouse" && !dropdown.matches(":focus-within")) {
+        dropdown.open = false;
+      }
+    });
+  });
+</script>
+
 <style>
   .site-header {
     position: sticky;
