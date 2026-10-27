@@ -6,6 +6,12 @@ const blockLayout = z.enum(["1-column", "2-columns", "3-columns", "4-columns"]);
 const blockVariant = z.enum(["none", "card"]);
 interface BlockData {
   text?: string;
+  image?: {
+    src: string;
+    alt: string;
+    size?: "small" | "medium" | "large" | "full";
+    crop?: "landscape" | "square" | "portrait" | "natural";
+  };
   button?: {
     label: string;
     href: string;
@@ -21,6 +27,14 @@ const block: z.ZodType<BlockData> = z.lazy(() =>
   z.union([
     z.object({
       text: z.string(),
+    }),
+    z.object({
+      image: z.object({
+        src: z.string(),
+        alt: z.string(),
+        size: z.enum(["small", "medium", "large", "full"]).optional(),
+        crop: z.enum(["landscape", "square", "portrait", "natural"]).optional(),
+      }),
     }),
     z.object({
       button: z.object({

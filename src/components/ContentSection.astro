@@ -1,8 +1,14 @@
 ---
-import BlockRenderer from "./BlockRenderer.astro";
+import ContentBlock from "./ContentBlock.astro";
 
 interface BlockData {
   text?: string;
+  image?: {
+    src: string;
+    alt: string;
+    size?: "small" | "medium" | "large" | "full";
+    crop?: "landscape" | "square" | "portrait" | "natural";
+  };
   button?: {
     label: string;
     href: string;
@@ -34,7 +40,7 @@ const {
     `variant-${variant}`,
   ]}
 >
-  {blocks.map((block) => <BlockRenderer block={block} />)}
+  {blocks.map((block) => <ContentBlock block={block} />)}
 </section>
 
 <style>
