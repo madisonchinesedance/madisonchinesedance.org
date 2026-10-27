@@ -9,6 +9,11 @@ sections:
 
 
           We dance to integrate Eastern and Western arts and cultures for a more harmonious world.
+      - image:
+          src: "/images/gallery/gallery-036.webp"
+          alt: "Madison Chinese Dance Academy dancers performing"
+          size: full
+          crop: landscape
   - variant: card
     layout: 1-column
     blocks:

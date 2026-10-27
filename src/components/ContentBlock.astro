@@ -1,24 +1,64 @@
 ---
+import ButtonBlock from "./ButtonBlock.astro";
+import ImageBlock from "./ImageBlock.astro";
+import TextBlock from "./TextBlock.astro";
+
 interface Props {
-  variant?: "none" | "card";
-  layout?: "1-column" | "2-columns" | "3-columns" | "4-columns";
+  block: BlockData;
 }
 
-const {
-  variant = "none",
-  layout = "1-column",
-} = Astro.props;
+interface BlockData {
+  text?: string;
+  image?: {
+    src: string;
+    alt: string;
+    size?: "small" | "medium" | "large" | "full";
+    crop?: "landscape" | "square" | "portrait" | "natural";
+  };
+  button?: {
+    label: string;
+    href: string;
+    variant?: "primary" | "secondary" | "text";
+    external?: boolean;
+  };
+  blocks?: BlockData[];
+  layout?: "1-column" | "2-columns" | "3-columns" | "4-columns";
+  variant?: "none" | "card";
+}
+
+const { block } = Astro.props;
 ---
 
-<section
-  class:list={[
-    "block",
-    `variant-${variant}`,
-    `layout-${layout}`,
-  ]}
->
-  <slot />
-</section>
+{
+  block.blocks ? (
+    <section
+      class:list={[
+        "block",
+        `variant-${block.variant ?? "none"}`,
+        `layout-${block.layout ?? "1-column"}`,
+      ]}
+    >
+      {block.blocks.map((child) => <Astro.self block={child} />)}
+    </section>
+  ) : block.image ? (
+    <ImageBlock
+      src={block.image.src}
+      alt={block.image.alt}
+      size={block.image.size}
+      crop={block.image.crop}
+    />
+  ) : block.text !== undefined ? (
+    <TextBlock content={block.text} />
+  ) : block.button ? (
+    <ButtonBlock
+      href={block.button.href}
+      variant={block.button.variant}
+      external={block.button.external}
+    >
+      {block.button.label}
+    </ButtonBlock>
+  ) : null
+}
 
 <style>
   .block {

@@ -2,21 +2,27 @@
 interface Props {
   src: string;
   alt: string;
-  loading?: "lazy" | "eager";
+  size?: "small" | "medium" | "large" | "full";
+  crop?: "landscape" | "square" | "portrait" | "natural";
 }
 
 const {
   src,
   alt,
-  loading = "lazy",
+  size = "medium",
+  crop = "natural",
 } = Astro.props;
 ---
 
 <img
-  class="image-block"
+  class:list={[
+    "image-block",
+    `image-block--size-${size}`,
+    `image-block--crop-${crop}`,
+  ]}
   src={src}
   alt={alt}
-  loading={loading}
+  loading="lazy"
   decoding="async"
 />
 
@@ -25,5 +31,41 @@ const {
     display: block;
     max-width: 100%;
     height: auto;
+    justify-self: center;
+  }
+
+  .image-block--size-small {
+    width: min(100%, 20rem);
+  }
+
+  .image-block--size-medium {
+    width: min(100%, 40rem);
+  }
+
+  .image-block--size-large {
+    width: min(100%, 64rem);
+  }
+
+  .image-block--size-full {
+    width: 100%;
+  }
+
+  .image-block--crop-landscape,
+  .image-block--crop-square,
+  .image-block--crop-portrait {
+    height: auto;
+    object-fit: cover;
+  }
+
+  .image-block--crop-landscape {
+    aspect-ratio: 16 / 9;
+  }
+
+  .image-block--crop-square {
+    aspect-ratio: 1;
+  }
+
+  .image-block--crop-portrait {
+    aspect-ratio: 3 / 4;
   }
 </style>
