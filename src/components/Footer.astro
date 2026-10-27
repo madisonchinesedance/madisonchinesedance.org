@@ -1,0 +1,214 @@
+---
+const footerGroups = [
+  {
+    label: "Explore",
+    links: [
+      { label: "Home", href: "/" },
+      { label: "Gallery", href: "/gallery/" },
+      { label: "Programs", href: "/programs/" },
+      { label: "Purchase Tickets", href: "/tickets/" },
+      { label: "Donate", href: "/donate/" },
+    ],
+  },
+  {
+    label: "Classes",
+    links: [
+      { label: "Advanced Dancers", href: "/classes/advanced-dancers/" },
+      { label: "Beginner Dancers", href: "/classes/beginner-dancers/" },
+      { label: "Intermediate Dancers", href: "/classes/intermediate-dancers/" },
+    ],
+  },
+  {
+    label: "Events",
+    links: [
+      { label: "Events", href: "/events/" },
+      { label: "Services", href: "/services/" },
+    ],
+  },
+  {
+    label: "Get Involved",
+    links: [
+      { label: "Book a Performance", href: "/get-involved/book-a-performance/" },
+      { label: "Dance with Us", href: "/get-involved/dance-with-us/" },
+      { label: "See a Performance", href: "/get-involved/see-a-performance/" },
+      { label: "Support Our Cause", href: "/get-involved/support-our-cause/" },
+    ],
+  },
+  {
+    label: "Splendid China",
+    links: [
+      { label: "Splendid China 2026", href: "/splendid-china/2026/" },
+      { label: "Splendid China 2025", href: "/splendid-china/2025/" },
+      { label: "Splendid China 2024", href: "/splendid-china/2024/" },
+      { label: "Splendid China 2023", href: "/splendid-china/2023/" },
+      { label: "Splendid China 2022", href: "/splendid-china/2022/" },
+      { label: "Splendid China 2019", href: "/splendid-china/2019/" },
+    ],
+  },
+];
+---
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="/" aria-label="Madison Chinese Dance Academy home">
+        Madison Chinese Dance Academy
+      </a>
+      <p>
+        Madison Chinese Dance Academy teaches Chinese dance and ballet while
+        cultivating appreciation for Eastern and Western arts. We welcome
+        students and families to performances, classes, and community programs
+        that celebrate culture through movement.
+      </p>
+      <div class="footer-contact">
+        <a href="mailto:contact@madisonchinesedance.org">
+          contact@madisonchinesedance.org
+        </a>
+        <a href="tel:+13012991562">(301)-299-1562</a>
+        <span>PO Box 10067 Rockville, MD 20849</span>
+      </div>
+    </div>
+
+    {
+      footerGroups.map((group) => (
+        <nav aria-label={`${group.label} footer navigation`}>
+          <h2>{group.label}</h2>
+          <ul class="footer-links">
+            {group.links.map((link) => (
+              <li><a href={link.href}>{link.label}</a></li>
+            ))}
+          </ul>
+        </nav>
+      ))
+    }
+  </div>
+
+  <div class="footer-bottom">
+    <small>© {new Date().getFullYear()} Madison Chinese Dance Academy</small>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    padding: 2.5rem 2rem 1rem;
+    border-top: 2px solid rgb(255 255 255 / 24%);
+    color: var(--light-text-color);
+    background: var(--color-deep-navy);
+    box-shadow:
+      0 -12px 36px rgb(3 12 56 / 65%),
+      0 -1px 10px rgb(255 255 255 / 10%);
+  }
+
+  .footer-inner {
+    display: grid;
+    grid-template-columns: minmax(20rem, 2.2fr) repeat(5, minmax(8rem, 1fr));
+    gap: 1.5rem;
+    width: min(100%, var(--content-width));
+    margin: 0 auto;
+  }
+
+  .footer-brand a,
+  .footer-contact a,
+  .footer-links a {
+    color: var(--light-text-color);
+    text-decoration: none;
+  }
+
+  .footer-brand a {
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+
+  .footer-brand p {
+    max-width: 24rem;
+    margin: 0.65rem 0 0;
+    padding: 0 0 1rem;
+    color: rgb(255 255 255 / 78%);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    border-bottom: 1px solid rgb(255 255 255 / 12%);
+  }
+
+  .footer-contact {
+    margin-top: 0.8rem;
+  }
+
+  .footer-contact a {
+    display: block;
+    font-weight: 400;
+    font-size: 0.9rem;
+  }
+
+  .footer-contact span {
+    display: block;
+    margin-top: 0.2rem;
+    color: rgb(255 255 255 / 78%);
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .footer-inner nav h2 {
+    margin: 0 0 0.6rem;
+    padding: 0;
+    color: var(--color-white);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  .footer-links {
+    display: grid;
+    gap: 0.45rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .footer-links a {
+    color: rgb(255 255 255 / 78%);
+    font-size: 0.9rem;
+    line-height: 1.3;
+  }
+
+  .footer-links a:hover,
+  .footer-links a:focus-visible,
+  .footer-brand a:hover,
+  .footer-brand a:focus-visible,
+  .footer-contact a:hover,
+  .footer-contact a:focus-visible {
+    color: var(--color-peach);
+  }
+
+  .footer-bottom {
+    width: min(100%, var(--content-width));
+    margin: 1.75rem auto 0;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgb(255 255 255 / 12%);
+    color: rgb(255 255 255 / 65%);
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  @media (max-width: 1000px) {
+    .footer-inner {
+      grid-template-columns: minmax(18rem, 1.8fr) repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 760px) {
+    .site-footer {
+      padding: 2.5rem 1.25rem 1rem;
+    }
+
+    .footer-inner {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .footer-brand {
+      grid-column: 1 / -1;
+    }
+  }
+</style>
