@@ -1,23 +1,40 @@
 ---
-import ContentBlock from "./ContentBlock.astro";
-import TextBlock from "./TextBlock.astro";
+import BlockRenderer from "./BlockRenderer.astro";
 
-interface Props {
-  blocks: Array<{ text: string }>;
+interface BlockData {
+  text?: string;
+  button?: {
+    label: string;
+    href: string;
+    variant?: "primary" | "secondary" | "text";
+    external?: boolean;
+  };
+  blocks?: BlockData[];
   layout?: "1-column" | "2-columns" | "3-columns" | "4-columns";
+  variant?: "none" | "card";
 }
 
-const { blocks, layout = "1-column" } = Astro.props;
+interface Props {
+  blocks: BlockData[];
+  layout?: "1-column" | "2-columns" | "3-columns" | "4-columns";
+  variant?: "none" | "card";
+}
+
+const {
+  blocks,
+  layout = "1-column",
+  variant = "none",
+} = Astro.props;
 ---
 
-<section class:list={["content-section", `content-section--layout-${layout}`]}>
-  {
-    blocks.map((block) => (
-      <ContentBlock variant="card" layout="1-column">
-        <TextBlock content={block.text} />
-      </ContentBlock>
-    ))
-  }
+<section
+  class:list={[
+    "content-section",
+    `layout-${layout}`,
+    `variant-${variant}`,
+  ]}
+>
+  {blocks.map((block) => <BlockRenderer block={block} />)}
 </section>
 
 <style>
@@ -26,39 +43,7 @@ const { blocks, layout = "1-column" } = Astro.props;
     width: 100%;
     display: grid;
     gap: 1.5rem;
-      padding: 0 var(--content-section-padding);
     }
-
-  .content-section:first-child {
-    padding-top: var(--content-section-padding);
-    padding-bottom: calc(var(--content-section-padding) / 2);
-  }
-
-  .content-section + .content-section:not(:last-of-type) {
-    padding-top: calc(var(--content-section-padding) / 2);
-    padding-bottom: calc(var(--content-section-padding) / 2);
-  }
-
-  .content-section:last-of-type {
-    padding-top: calc(var(--content-section-padding) / 2);
-    padding-bottom: var(--content-section-padding);
-  }
-
-  .content-section--layout-1-column {
-    grid-template-columns: 1fr;
-  }
-
-  .content-section--layout-2-columns {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .content-section--layout-3-columns {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .content-section--layout-4-columns {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
 
   @media (max-width: 640px) {
     .content-section {
@@ -73,10 +58,5 @@ const { blocks, layout = "1-column" } = Astro.props;
       padding-bottom: 1rem;
     }
 
-    .content-section--layout-2-columns,
-    .content-section--layout-3-columns,
-    .content-section--layout-4-columns {
-      grid-template-columns: 1fr;
-    }
   }
 </style>

@@ -1,10 +1,11 @@
 ---
 title: Events
 sections:
-  - blocks:
+  - variant: card
+    layout: 1-column
+    blocks:
       - text: |
           # Events
-
 
 
           Coming soon!

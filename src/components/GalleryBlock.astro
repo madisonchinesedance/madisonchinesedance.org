@@ -1,0 +1,47 @@
+---
+interface GalleryImage {
+  src: string;
+  alt: string;
+}
+
+interface Props {
+  images: GalleryImage[];
+  columns?: 1 | 2 | 3 | 4;
+}
+
+const { images, columns = 3 } = Astro.props;
+---
+
+<div
+  class="gallery-block"
+  style={`--gallery-block-columns: ${columns}`}
+  aria-label="Image gallery"
+>
+  {images.map((image) => (
+    <img
+      src={image.src}
+      alt={image.alt}
+      loading="lazy"
+      decoding="async"
+    />
+  ))}
+</div>
+
+<style>
+  .gallery-block {
+    display: grid;
+    grid-template-columns: repeat(var(--gallery-block-columns, 3), minmax(0, 1fr));
+  }
+
+  .gallery-block img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  @media (max-width: 640px) {
+    .gallery-block {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>

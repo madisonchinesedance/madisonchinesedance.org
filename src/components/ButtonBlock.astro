@@ -1,0 +1,63 @@
+---
+type Variant = "primary" | "secondary" | "text";
+
+interface Props {
+  href: string;
+  variant?: Variant;
+  external?: boolean;
+}
+
+const {
+  href,
+  variant = "primary",
+  external = false,
+} = Astro.props;
+---
+
+<a
+  class:list={["button-block", `button-block--${variant}`]}
+  href={href}
+  target={external ? "_blank" : undefined}
+  rel={external ? "noreferrer" : undefined}
+>
+  <slot />
+</a>
+
+<style>
+  .button-block {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    text-decoration: none;
+  }
+
+  .button-block--primary,
+  .button-block--secondary {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--edge-contrast);
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  .button-block--primary {
+    color: var(--color-deep-navy);
+    background: var(--color-peach);
+  }
+
+  .button-block--secondary {
+    color: var(--color-white);
+    background: var(--color-purple);
+  }
+
+  .button-block--text {
+    color: var(--color-peach);
+    font-weight: 600;
+  }
+
+  .button-block:hover,
+  .button-block:focus-visible {
+    filter: brightness(1.1);
+  }
+</style>

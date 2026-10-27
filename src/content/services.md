@@ -1,10 +1,11 @@
 ---
 title: Services
 sections:
-  - blocks:
+  - variant: card
+    layout: 1-column
+    blocks:
       - text: |
           # Services
-
 
 
           Coming soon!
