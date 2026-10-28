@@ -13,7 +13,7 @@ interface BlockData {
     crop?: "landscape" | "square" | "portrait" | "natural";
   };
   gallery?: {
-    images: { src: string; alt: string }[];
+    images: string[];
     controls?: boolean;
     autoscroll?: boolean;
     interval?: number;
@@ -47,7 +47,7 @@ const block: z.ZodType<BlockData> = z.lazy(() =>
     }),
     z.object({
       gallery: z.object({
-        images: z.array(z.object({ src: z.string(), alt: z.string() })),
+        images: z.array(z.string()),
         controls: z.boolean().optional(),
         autoscroll: z.boolean().optional(),
         interval: z.number().positive().optional(),

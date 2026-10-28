@@ -1,11 +1,6 @@
 ---
-interface GalleryImage {
-  src: string;
-  alt: string;
-}
-
 interface Props {
-  images: GalleryImage[];
+  images: string[];
   controls?: boolean;
   autoscroll?: boolean;
   interval?: number;
@@ -40,8 +35,8 @@ const {
     {images.map((image, index) => (
       <img
         class:list={{ "is-active": index === 0 }}
-        src={image.src}
-        alt={image.alt}
+        src={image}
+        alt=""
         loading={index === 0 ? "eager" : "lazy"}
         decoding="async"
       />
@@ -79,7 +74,7 @@ const {
           aria-label={`Show image ${index + 1}`}
           aria-current={index === 0 ? "true" : undefined}
         >
-          <img src={image.src} alt="" loading="lazy" decoding="async" />
+          <img src={image} alt="" loading="lazy" decoding="async" />
         </button>
       ))}
     </div>

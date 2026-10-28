@@ -4,6 +4,239 @@ media:
   categories:
     - image
 
+components:
+  text_block:
+    type: object
+    fields:
+      - name: text
+        label: Text
+        type: rich-text
+
+  image_block:
+    type: object
+    fields:
+      - name: image
+        label: Image
+        type: object
+        fields:
+          - name: src
+            label: Image
+            type: image
+          - name: alt
+            label: Alt text
+            type: string
+          - name: size
+            label: Size
+            type: select
+            options:
+              values:
+                - small
+                - medium
+                - large
+                - full
+          - name: crop
+            label: Crop
+            type: select
+            options:
+              values:
+                - landscape
+                - square
+                - portrait
+                - natural
+
+  gallery_block:
+    type: object
+    fields:
+      - name: gallery
+        label: Gallery
+        type: object
+        fields:
+          - name: images
+            label: Gallery images
+            type: image
+            list: true
+          - name: controls
+            label: Show controls
+            type: boolean
+          - name: autoscroll
+            label: Autoscroll
+            type: boolean
+          - name: interval
+            label: Autoscroll interval
+            type: number
+          - name: navigation
+            label: Navigation
+            type: select
+            options:
+              values:
+                - thumbnails
+                - dots
+                - none
+          - name: size
+            label: Size
+            type: select
+            options:
+              values:
+                - small
+                - medium
+                - large
+                - full
+          - name: crop
+            label: Crop
+            type: select
+            options:
+              values:
+                - landscape
+                - square
+                - portrait
+                - natural
+
+  button_block:
+    type: object
+    fields:
+      - name: button
+        label: Button
+        type: object
+        fields:
+          - name: label
+            label: Label
+            type: string
+          - name: href
+            label: Link
+            type: string
+          - name: variant
+            label: Variant
+            type: select
+            options:
+              values:
+                - primary
+                - secondary
+                - tertiary
+                - text
+          - name: external
+            label: Open externally
+            type: boolean
+
+  content_container_level_3:
+    type: object
+    fields:
+      - name: layout
+        label: Layout
+        type: select
+        options:
+          values:
+            - 1-column
+            - 2-columns
+            - 3-columns
+            - 4-columns
+      - name: variant
+        label: Variant
+        type: select
+        options:
+          values:
+            - none
+            - card
+      - name: blocks
+        label: Blocks
+        type: block
+        list: true
+        blockKey: type
+        blocks:
+          - name: text
+            label: Text
+            component: text_block
+          - name: image
+            label: Image
+            component: image_block
+          - name: gallery
+            label: Gallery
+            component: gallery_block
+          - name: button
+            label: Button
+            component: button_block
+
+  content_container_level_2:
+    type: object
+    fields:
+      - name: layout
+        label: Layout
+        type: select
+        options:
+          values:
+            - 1-column
+            - 2-columns
+            - 3-columns
+            - 4-columns
+      - name: variant
+        label: Variant
+        type: select
+        options:
+          values:
+            - none
+            - card
+      - name: blocks
+        label: Blocks
+        type: block
+        list: true
+        blockKey: type
+        blocks:
+          - name: text
+            label: Text
+            component: text_block
+          - name: image
+            label: Image
+            component: image_block
+          - name: gallery
+            label: Gallery
+            component: gallery_block
+          - name: button
+            label: Button
+            component: button_block
+          - name: blocks
+            label: Content container
+            component: content_container_level_3
+
+  content_container_level_1:
+    type: object
+    fields:
+      - name: layout
+        label: Layout
+        type: select
+        options:
+          values:
+            - 1-column
+            - 2-columns
+            - 3-columns
+            - 4-columns
+      - name: variant
+        label: Variant
+        type: select
+        options:
+          values:
+            - none
+            - card
+      - name: blocks
+        label: Blocks
+        type: block
+        list: true
+        blockKey: type
+        blocks:
+          - name: text
+            label: Text
+            component: text_block
+          - name: image
+            label: Image
+            component: image_block
+          - name: gallery
+            label: Gallery
+            component: gallery_block
+          - name: button
+            label: Button
+            component: button_block
+          - name: blocks
+            label: Content container
+            component: content_container_level_2
+
 content:
   - name: pages
     label: Pages
@@ -52,145 +285,20 @@ content:
                 collapsed: true
                 summary: "Block {index}"
             blockKey: type
-            blocks: &primitive_blocks
+            blocks:
               - name: text
                 label: Text
-                fields:
-                  - name: text
-                    label: Text
-                    type: rich-text
+                component: text_block
               - name: image
                 label: Image
-                fields:
-                  - name: image
-                    label: Image
-                    type: object
-                    fields:
-                      - name: src
-                        label: Image
-                        type: image
-                      - name: alt
-                        label: Alt text
-                        type: string
-                      - name: size
-                        label: Size
-                        type: select
-                        options:
-                          values:
-                            - small
-                            - medium
-                            - large
-                            - full
-                      - name: crop
-                        label: Crop
-                        type: select
-                        options:
-                          values:
-                            - landscape
-                            - square
-                            - portrait
-                            - natural
+                component: image_block
               - name: gallery
                 label: Gallery
-                fields:
-                  - name: gallery
-                    label: Gallery
-                    type: object
-                    fields:
-                      - name: images
-                        label: Gallery images
-                        type: object
-                        list: true
-                        fields:
-                          - name: src
-                            label: Image
-                            type: image
-                          - name: alt
-                            label: Alt text
-                            type: string
-                      - name: controls
-                        label: Show controls
-                        type: boolean
-                      - name: autoscroll
-                        label: Autoscroll
-                        type: boolean
-                      - name: interval
-                        label: Autoscroll interval
-                        type: number
-                      - name: navigation
-                        label: Navigation
-                        type: select
-                        options:
-                          values:
-                            - thumbnails
-                            - dots
-                            - none
-                      - name: size
-                        label: Size
-                        type: select
-                        options:
-                          values:
-                            - small
-                            - medium
-                            - large
-                            - full
-                      - name: crop
-                        label: Crop
-                        type: select
-                        options:
-                          values:
-                            - landscape
-                            - square
-                            - portrait
-                            - natural
+                component: gallery_block
               - name: button
                 label: Button
-                fields:
-                  - name: button
-                    label: Button
-                    type: object
-                    fields:
-                      - name: label
-                        label: Label
-                        type: string
-                      - name: href
-                        label: Link
-                        type: string
-                      - name: variant
-                        label: Variant
-                        type: select
-                        options:
-                          values:
-                            - primary
-                            - secondary
-                            - tertiary
-                            - text
-                      - name: external
-                        label: Open externally
-                        type: boolean
+                component: button_block
 
               - name: blocks
                 label: Content container
-                fields:
-                  - name: layout
-                    label: Layout
-                    type: select
-                    options:
-                      values:
-                        - 1-column
-                        - 2-columns
-                        - 3-columns
-                        - 4-columns
-                  - name: variant
-                    label: Variant
-                    type: select
-                    options:
-                      values:
-                        - none
-                        - card
-                  - name: blocks
-                    label: Blocks
-                    type: block
-                    list: true
-                    blockKey: type
-                    blocks: *primitive_blocks
+                component: content_container_level_1
