@@ -1,6 +1,5 @@
 ---
 import ButtonBlock from "./ButtonBlock.astro";
-import ContactForm from "./ContactForm.astro";
 import GalleryBlock from "./GalleryBlock.astro";
 import ImageBlock from "./ImageBlock.astro";
 import TextBlock from "./TextBlock.astro";
@@ -26,7 +25,6 @@ interface BlockData {
     size?: "small" | "medium" | "large" | "full";
     crop?: "landscape" | "square" | "portrait" | "natural";
   };
-  form?: "contact";
   button?: {
     label: string;
     href: string;
@@ -69,8 +67,6 @@ const { block } = Astro.props;
       size={block.gallery.size}
       crop={block.gallery.crop}
     />
-  ) : block.form === "contact" ? (
-    <ContactForm />
   ) : block.text !== undefined ? (
     <TextBlock content={block.text} />
   ) : block.button ? (
