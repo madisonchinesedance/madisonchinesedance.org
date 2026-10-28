@@ -134,7 +134,7 @@ main {
 .layout-4-columns {
   display: grid;
   gap: 1rem;
-  align-items: center;
+  align-items: stretch;
 }
 
 .layout-1-column {
