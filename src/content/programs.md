@@ -14,7 +14,8 @@ sections:
   - variant: none
     layout: 3-columns
     blocks:
-      - variant: card
+      - type: blocks
+        variant: card
         layout: 1-column
         blocks:
           - type: text
@@ -25,7 +26,8 @@ sections:
               - Dance lessons for Chinese dance, ballet, lyrical, Jazz, and Hip-Hop with associated cultural backgrounds. 
               - Classes for beginner, intermediate, and advanced level dancers of ages 3 to 18+. 
               - Choreography project. Public performance opportunities.
-      - variant: card
+      - type: blocks
+        variant: card
         layout: 1-column
         blocks:
           - type: text
@@ -38,7 +40,8 @@ sections:
               - Each year, new choreography, costumes, and traditions come to life in mid-June.
 
               - Professionally produced and presented at the Montgomery College Robert E. Parilla Performing Arts Center, Rockville.
-      - variant: card
+      - type: blocks
+        variant: card
         layout: 1-column
         blocks:
           - type: text
@@ -47,7 +50,8 @@ sections:
               ## Dance and Chinese Art or Folk Art Performances and Demonstrations
 
               Performances and demonstrations for public and private events.
-      - variant: card
+      - type: blocks
+        variant: card
         layout: 1-column
         blocks:
           - type: text
@@ -58,7 +62,8 @@ sections:
               Full-spectrum Chinese cultural programs for all levels of schools, museums, libraries, senior centers, private/public organizations, and conferences. 
 
               Lion dance, dragon dance, Chinese dance, Chinese music, Yo-yo, calligraphy, lanterns, kites, arts & crafts, show and tell.
-      - variant: card
+      - type: blocks
+        variant: card
         layout: 1-column
         blocks:
           - type: text
@@ -67,7 +72,8 @@ sections:
               ## Artist-in-Residence for Chinese Dance & Chinese Ballet
 
               This program brings classical technique, expressive storytelling, and cultural heritage to a community through workshops, rehearsals, and performances. Blending elegant movement, breath-driven expression, and contemporary creativity, the residency uses an Embedded Teaching and Learning approach to offer participants a holistic body-mind-heart experience across the performing arts of the East and the West.
-      - variant: card
+      - type: blocks
+        variant: card
         layout: 1-column
         blocks:
           - type: text
@@ -80,7 +86,8 @@ sections:
               A popular year-round program for senior facilities.
 
               Learn to live the time-tested traditional Chinese ways that have been validated by scientific research for a better quality of life. The goals are to maintain or improve physical and mental health, emotional and behavioral well-being, mobility and balance, memory and cognitive abilities, as well as strength and energy (Qi).
-      - variant: card
+      - type: blocks
+        variant: card
         layout: 1-column
         blocks:
           - type: text

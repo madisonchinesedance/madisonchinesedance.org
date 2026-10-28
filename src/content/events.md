@@ -14,7 +14,8 @@ sections:
   - variant: none
     layout: 2-columns
     blocks:
-      - variant: card
+      - type: blocks
+        variant: card
         layout: 1-column
         blocks:
           - type: text
@@ -28,7 +29,8 @@ sections:
 
               - Get detailed information.
               - Schedule a trial session in a class that suits your background.
-      - variant: card
+      - type: blocks
+        variant: card
         layout: 1-column
         blocks:
           - type: text

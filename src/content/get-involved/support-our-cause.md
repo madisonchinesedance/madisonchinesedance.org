@@ -20,10 +20,12 @@ sections:
           ## Ways to Support
 
           Every contribution, whether big or small, helps us fulfill our mission of promoting Chinese dance and cultural exchange. Here are some ways you can support our academy.
-      - variant: none
+      - type: blocks
+        variant: none
         layout: 3-columns
         blocks:
-          - variant: none
+          - type: blocks
+            variant: none
             layout: 1-column
             blocks:
               - type: text
@@ -38,7 +40,8 @@ sections:
                   label: "Donate"
                   href: "/donate/"
                   variant: primary
-          - variant: none
+          - type: blocks
+            variant: none
             layout: 1-column
             blocks:
               - type: text
@@ -53,7 +56,8 @@ sections:
                   label: "Contact us"
                   href: "mailto:contact@madisonchinesedance.org"
                   variant: primary
-          - variant: none
+          - type: blocks
+            variant: none
             layout: 1-column
             blocks:
               - type: text

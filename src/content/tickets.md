@@ -14,7 +14,8 @@ sections:
   - variant: none
     layout: 3-columns
     blocks:
-      - variant: card
+      - type: blocks
+        variant: card
         layout: 1-column
         blocks:
           - type: text
@@ -29,7 +30,8 @@ sections:
               label: "View Events"
               href: "/events/"
               variant: primary
-      - variant: card
+      - type: blocks
+        variant: card
         layout: 1-column
         blocks:
           - type: text
@@ -44,7 +46,8 @@ sections:
               label: "Donate Now"
               href: "/donate/"
               variant: primary
-      - variant: card
+      - type: blocks
+        variant: card
         layout: 1-column
         blocks:
           - type: text

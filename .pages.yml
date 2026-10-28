@@ -14,7 +14,7 @@ content:
     view:
       primary: title
       search: title
-    fields: &page_fields
+    fields:
       - name: title
         label: Page title
         type: string
@@ -52,7 +52,7 @@ content:
                 collapsed: true
                 summary: "Block {index}"
             blockKey: type
-            blocks:
+            blocks: &primitive_blocks
               - name: text
                 label: Text
                 fields:
@@ -168,3 +168,29 @@ content:
                       - name: external
                         label: Open externally
                         type: boolean
+
+              - name: blocks
+                label: Content container
+                fields:
+                  - name: layout
+                    label: Layout
+                    type: select
+                    options:
+                      values:
+                        - 1-column
+                        - 2-columns
+                        - 3-columns
+                        - 4-columns
+                  - name: variant
+                    label: Variant
+                    type: select
+                    options:
+                      values:
+                        - none
+                        - card
+                  - name: blocks
+                    label: Blocks
+                    type: block
+                    list: true
+                    blockKey: type
+                    blocks: *primitive_blocks

@@ -22,7 +22,9 @@ sections:
 
           We offer a range of performance styles to fit your event, audience, and venue. Our dancers are trained in both traditional Chinese dance and ballet, allowing us to craft engaging programs for any occasion.
 
-      - variant: none
+      - type: blocks
+
+        variant: none
         layout: 4-columns
         blocks:
           - type: text

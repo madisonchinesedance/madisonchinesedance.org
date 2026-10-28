@@ -99,7 +99,8 @@ sections:
       - type: blocks
 
         blocks:
-          - variant: card
+          - type: blocks
+            variant: card
             layout: 1-column
             blocks:
               - type: text
@@ -114,7 +115,8 @@ sections:
                   label: "Sign up for classes"
                   href: "/classes/"
                   variant: primary
-          - variant: card
+          - type: blocks
+            variant: card
             layout: 1-column
             blocks:
               - type: text
@@ -129,7 +131,8 @@ sections:
                   label: "See events"
                   href: "/events/"
                   variant: secondary
-          - variant: card
+          - type: blocks
+            variant: card
             layout: 1-column
             blocks:
               - type: text
@@ -148,7 +151,8 @@ sections:
                   label: "View programs"
                   href: "/programs/"
                   variant: tertiary
-      - variant: card
+      - type: blocks
+        variant: card
         layout: 1-column
         blocks:
           - type: gallery
@@ -178,7 +182,8 @@ sections:
   - variant: none
     layout: 2-columns
     blocks:
-      - variant: card
+      - type: blocks
+        variant: card
         layout: 1-column
         blocks:
           - type: text
@@ -194,7 +199,8 @@ sections:
 
 
               The Academy welcomes individuals and groups of all racial and cultural backgrounds to join their pursuit of a more civilized, harmonious, and enjoyable world.
-      - variant: card
+      - type: blocks
+        variant: card
         layout: 1-column
         blocks:
           - type: text
