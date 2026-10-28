@@ -4,7 +4,9 @@ sections:
   - variant: card
     layout: 1-column
     blocks:
-      - text: |
+      - type: text
+
+        text: |
           # Dance with Us
 
 
@@ -12,16 +14,22 @@ sections:
   - variant: card
     layout: 1-column
     blocks:
-      - text: |
+      - type: text
+
+        text: |
           ## Contact Us to Join
 
 
           Email us at contact@madisonchinesedance.org or call (301)-299-1562 to learn more about joining. We are happy to answer questions about classes, schedules, and what to expect in your first session.
-      - button:
+      - type: button
+
+        button:
           label: "Contact us"
           href: "mailto:contact@madisonchinesedance.org"
           variant: primary
-      - button:
+      - type: button
+
+        button:
           label: "View beginner programs"
           href: "/classes/"
           variant: primary

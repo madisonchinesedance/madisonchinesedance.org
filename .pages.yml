@@ -11,10 +11,12 @@ content:
     path: src/content
     format: yaml-frontmatter
     subfolders: true
+    exclude:
+      - index.md
     view:
       primary: title
       search: title
-    fields:
+    fields: &page_fields
       - name: title
         label: Page title
         type: string
@@ -46,142 +48,22 @@ content:
                 - card
           - name: blocks
             label: Blocks
-            type: object
+            type: block
             list:
               collapsible:
                 collapsed: true
                 summary: "Block {index}"
-            fields:
+            blockKey: type
+            blocks:
               - name: text
                 label: Text
-                type: rich-text
-              - name: image
-                label: Image
-                type: object
-                fields:
-                  - name: src
-                    label: Image
-                    type: image
-                  - name: alt
-                    label: Alt text
-                    type: string
-                  - name: size
-                    label: Size
-                    type: select
-                    options:
-                      values:
-                        - small
-                        - medium
-                        - large
-                        - full
-                  - name: crop
-                    label: Crop
-                    type: select
-                    options:
-                      values:
-                        - landscape
-                        - square
-                        - portrait
-                        - natural
-              - name: gallery
-                label: Gallery
-                type: object
-                fields:
-                  - name: images
-                    label: Gallery images
-                    type: object
-                    list: true
-                    fields:
-                      - name: src
-                        label: Image
-                        type: image
-                      - name: alt
-                        label: Alt text
-                        type: string
-                  - name: controls
-                    label: Show controls
-                    type: boolean
-                  - name: autoscroll
-                    label: Autoscroll
-                    type: boolean
-                  - name: interval
-                    label: Autoscroll interval
-                    type: number
-                  - name: navigation
-                    label: Navigation
-                    type: select
-                    options:
-                      values:
-                        - thumbnails
-                        - dots
-                        - none
-                  - name: size
-                    label: Size
-                    type: select
-                    options:
-                      values:
-                        - small
-                        - medium
-                        - large
-                        - full
-                  - name: crop
-                    label: Crop
-                    type: select
-                    options:
-                      values:
-                        - landscape
-                        - square
-                        - portrait
-                        - natural
-              - name: button
-                label: Button
-                type: object
-                fields:
-                  - name: label
-                    label: Label
-                    type: string
-                  - name: href
-                    label: Link
-                    type: string
-                  - name: variant
-                    label: Variant
-                    type: select
-                    options:
-                      values:
-                        - primary
-                        - secondary
-                        - tertiary
-                        - text
-                  - name: external
-                    label: Open externally
-                    type: boolean
-              - name: layout
-                label: Nested layout
-                type: select
-                options:
-                  values:
-                    - 1-column
-                    - 2-columns
-                    - 3-columns
-                    - 4-columns
-              - name: variant
-                label: Nested variant
-                type: select
-                options:
-                  values:
-                    - none
-                    - card
-              - name: blocks
-                label: Nested blocks
-                type: object
-                list:
-                  collapsible:
-                    collapsed: true
-                    summary: "Nested block {index}"
                 fields:
                   - name: text
                     label: Text
                     type: rich-text
+              - name: image
+                label: Image
+                fields:
                   - name: image
                     label: Image
                     type: object
@@ -192,6 +74,80 @@ content:
                       - name: alt
                         label: Alt text
                         type: string
+                      - name: size
+                        label: Size
+                        type: select
+                        options:
+                          values:
+                            - small
+                            - medium
+                            - large
+                            - full
+                      - name: crop
+                        label: Crop
+                        type: select
+                        options:
+                          values:
+                            - landscape
+                            - square
+                            - portrait
+                            - natural
+              - name: gallery
+                label: Gallery
+                fields:
+                  - name: gallery
+                    label: Gallery
+                    type: object
+                    fields:
+                      - name: images
+                        label: Gallery images
+                        type: object
+                        list: true
+                        fields:
+                          - name: src
+                            label: Image
+                            type: image
+                          - name: alt
+                            label: Alt text
+                            type: string
+                      - name: controls
+                        label: Show controls
+                        type: boolean
+                      - name: autoscroll
+                        label: Autoscroll
+                        type: boolean
+                      - name: interval
+                        label: Autoscroll interval
+                        type: number
+                      - name: navigation
+                        label: Navigation
+                        type: select
+                        options:
+                          values:
+                            - thumbnails
+                            - dots
+                            - none
+                      - name: size
+                        label: Size
+                        type: select
+                        options:
+                          values:
+                            - small
+                            - medium
+                            - large
+                            - full
+                      - name: crop
+                        label: Crop
+                        type: select
+                        options:
+                          values:
+                            - landscape
+                            - square
+                            - portrait
+                            - natural
+              - name: button
+                label: Button
+                fields:
                   - name: button
                     label: Button
                     type: object
@@ -214,59 +170,9 @@ content:
                       - name: external
                         label: Open externally
                         type: boolean
-                  - name: layout
-                    label: Nested layout
-                    type: select
-                    options:
-                      values:
-                        - 1-column
-                        - 2-columns
-                        - 3-columns
-                        - 4-columns
-                  - name: variant
-                    label: Nested variant
-                    type: select
-                    options:
-                      values:
-                        - none
-                        - card
-                  - name: blocks
-                    label: Nested blocks
-                    type: object
-                    list: true
-                    fields:
-                      - name: text
-                        label: Text
-                        type: rich-text
-                      - name: image
-                        label: Image
-                        type: object
-                        fields:
-                          - name: src
-                            label: Image
-                            type: image
-                          - name: alt
-                            label: Alt text
-                            type: string
-                      - name: button
-                        label: Button
-                        type: object
-                        fields:
-                          - name: label
-                            label: Label
-                            type: string
-                          - name: href
-                            label: Link
-                            type: string
-                          - name: variant
-                            label: Variant
-                            type: select
-                            options:
-                              values:
-                                - primary
-                                - secondary
-                                - tertiary
-                                - text
-                          - name: external
-                            label: Open externally
-                            type: boolean
+  - name: home
+    label: Home
+    type: file
+    path: src/content/index.md
+    format: yaml-frontmatter
+    fields: *page_fields

@@ -4,7 +4,9 @@ sections:
   - variant: card
     layout: 1-column
     blocks:
-      - text: |
+      - type: text
+
+        text: |
           # Make a Donation
 
 
@@ -18,7 +20,9 @@ sections:
 
 
           **Zeffy donations are optional; please select “other” if you wish to skip.**
-      - button:
+      - type: button
+
+        button:
           label: "Open in Zeffy"
           href: "https://www.zeffy.com/en-US/donation-form/donate-to-madison-chinese-dance-academy"
           variant: primary

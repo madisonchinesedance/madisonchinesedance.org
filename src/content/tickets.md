@@ -4,7 +4,9 @@ sections:
   - variant: card
     layout: 1-column
     blocks:
-      - text: |
+      - type: text
+
+        text: |
           # Splendid China - 2026 Tickets
 
 
@@ -15,29 +17,39 @@ sections:
       - variant: card
         layout: 1-column
         blocks:
-          - text: |
+          - type: text
+
+            text: |
               ## Upcoming Events
 
               Check out our dashboard for upcoming events, including Splendid China 2027!
-          - button:
+          - type: button
+
+            button:
               label: "View Events"
               href: "/events/"
               variant: primary
       - variant: card
         layout: 1-column
         blocks:
-          - text: |
+          - type: text
+
+            text: |
               ## Make a Donation
 
               Support our mission by making a donation to the Madison Chinese Dance Academy.
-          - button:
+          - type: button
+
+            button:
               label: "Donate Now"
               href: "/donate/"
               variant: primary
       - variant: card
         layout: 1-column
         blocks:
-          - text: |
+          - type: text
+
+            text: |
               ## Volunteer
 
               Join our team of volunteers and help make a difference in the lives of our students.

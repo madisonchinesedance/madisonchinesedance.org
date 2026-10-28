@@ -4,7 +4,8 @@ sections:
   - variant: card
     layout: 1-column
     blocks:
-      - text: |
+      - type: text
+        text: |
           # See A Performance
 
 
@@ -12,7 +13,8 @@ sections:
   - variant: card
     layout: 1-column
     blocks:
-      - text: |
+      - type: text
+        text: |
           ## Tickets & Admission
 
 
@@ -20,27 +22,32 @@ sections:
 
 
           For ticketed events, early purchase is recommended both for discounted tickets and to secure your seat. Group discounts are available for schools, community organizations, and other groups.
-      - button:
+      - type: button
+        button:
           label: "Learn about Splendid China"
           href: "/events/"
           variant: primary
-      - button:
+      - type: button
+        button:
           label: "Purchase tickets"
           href: "/tickets/"
           variant: primary
-      - button:
+      - type: button
+        button:
           label: "View all events"
           href: "/events/"
           variant: primary
   - variant: card
     layout: 1-column
     blocks:
-      - text: |
+      - type: text
+        text: |
           ## Bring a Performance to Your Event
 
 
           Would you like our dancers to perform at your school, festival, or private event? We offer a range of performance options that can be tailored to your audience and occasion.
-      - button:
+      - type: button
+        button:
           label: "Request a performance"
           href: "/get-involved/book-a-performance/"
           variant: primary

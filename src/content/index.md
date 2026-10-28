@@ -1,15 +1,19 @@
-﻿---
+---
 title: Home
 sections:
   - variant: card
     layout: 1-column
     blocks:
-      - text: |
+      - type: text
+
+        text: |
           # Madison Chinese Dance Academy 
 
 
           We dance to weave Eastern and Western arts and wisdom for a more harmonious world.
-      - gallery:
+      - type: gallery
+
+        gallery:
           controls: true
           autoscroll: true
           interval: 5000
@@ -92,33 +96,45 @@ sections:
   - layout: 2-columns
     variant: none
     blocks:
-      - blocks:
+      - type: blocks
+
+        blocks:
           - variant: card
             layout: 1-column
             blocks:
-              - text: |
+              - type: text
+
+                text: |
                   ### Try A Class
 
                   Ages 3 to 18+, beginner through advanced level dance lessons for Chinese dance, ballet, lyrical, Jazz, and Hip-Hop with associated cultural backgrounds. Choreography project. Public performance opportunities.
-              - button:
+              - type: button
+
+                button:
                   label: "Sign up for classes"
                   href: "/classes/"
                   variant: primary
           - variant: card
             layout: 1-column
             blocks:
-              - text: |
+              - type: text
+
+                text: |
                   ### Attend an Event
 
                   Professionally produced annual mid-June Splendid China dance concert at the Montgomery College Robert E. Parilla Performing Arts Center, Rockville. It’s one of the longest-running dance shows in the area. Other performances throughout the year in the Washington, DC Metro area.
-              - button:
+              - type: button
+
+                button:
                   label: "See events"
                   href: "/events/"
                   variant: secondary
           - variant: card
             layout: 1-column
             blocks:
-              - text: |
+              - type: text
+
+                text: |
                   ### Book a Program
 
                   - Dance and Chinese Art/Folk Art Performances/Demonstrations
@@ -126,14 +142,18 @@ sections:
                   - Chinese Dance & Chinese Ballet Artist-in-Residence
                   - Holistic Tai Chi Walk
                   - Speaking Engagements, CQ-based healthy living, self-cultivation, management, leadership, strategy.
-              - button:
+              - type: button
+
+                button:
                   label: "View programs"
                   href: "/programs/"
                   variant: tertiary
       - variant: card
         layout: 1-column
         blocks:
-          - gallery:
+          - type: gallery
+
+            gallery:
               controls: true
               autoscroll: true
               interval: 5000
@@ -161,7 +181,9 @@ sections:
       - variant: card
         layout: 1-column
         blocks:
-          - text: |
+          - type: text
+
+            text: |
               ## Our Story
 
 
@@ -175,7 +197,9 @@ sections:
       - variant: card
         layout: 1-column
         blocks:
-          - text: |
+          - type: text
+
+            text: |
               ## 我們的故事
 
 
@@ -192,7 +216,9 @@ sections:
   - variant: card
     layout: 1-column
     blocks:
-      - gallery:
+      - type: gallery
+
+        gallery:
           controls: true
           autoscroll: true
           interval: 5000

@@ -4,7 +4,9 @@ sections:
   - variant: card
     layout: 1-column
     blocks:
-      - text: |
+      - type: text
+
+        text: |
           # Book a Performance
 
 
@@ -12,7 +14,9 @@ sections:
   - variant: card
     layout: 1-column
     blocks:
-      - text: |
+      - type: text
+
+        text: |
           ## Performance Options
 
 
@@ -22,26 +26,36 @@ sections:
       - variant: none
         layout: 4-columns
         blocks:
-          - text: |
+          - type: text
+
+            text: |
               ### Cultural Festivals
 
               Lunar New Year, Mid-Autumn Festival, and community cultural celebrations featuring traditional and contemporary Chinese dance.
-          - text: |
+          - type: text
+
+            text: |
               ### School & Educational Events
 
               Assemblies, classroom visits, and cultural awareness programs that introduce students to Chinese dance and traditions.
-          - text: |
+          - type: text
+
+            text: |
               ### Community & Private Events
 
               Concerts, fundraisers, corporate events, and community celebrations. Performances can be tailored to your theme.
-          - text: |
+          - type: text
+
+            text: |
               ### Senior Facilities
 
               Performances and demonstrations for fun and engaging cultural activities, events, and festivals. Our year-round Holistic Tai Chi Walk program is a journey and lifestyle focused on moving the body, mind, and heart toward whole-person wellness.
   - variant: card
     layout: 1-column
     blocks:
-      - text: |
+      - type: text
+
+        text: |
           ## How to Book
 
 
@@ -52,7 +66,9 @@ sections:
   - variant: card
     layout: 1-column
     blocks:
-      - text: |
+      - type: text
+
+        text: |
           ## Frequently Asked Questions
 
 
@@ -63,16 +79,22 @@ sections:
   - variant: card
     layout: 1-column
     blocks:
-      - text: |
+      - type: text
+
+        text: |
           ## Request a Performance
 
 
           Ready to bring Chinese dance to your event? Send us the details and we will get back to you with availability and options.
-      - button:
+      - type: button
+
+        button:
           label: "Contact us"
           href: "mailto:contact@madisonchinesedance.org"
           variant: primary
-      - button:
+      - type: button
+
+        button:
           label: "See upcoming events"
           href: "/events/"
           variant: primary

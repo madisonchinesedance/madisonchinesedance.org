@@ -4,7 +4,9 @@ sections:
   - variant: card
     layout: 1-column
     blocks:
-      - text: |
+      - type: text
+
+        text: |
           # Support Our Cause
 
 
@@ -12,7 +14,9 @@ sections:
   - variant: card
     layout: 1-column
     blocks:
-      - text: |
+      - type: text
+
+        text: |
           ## Ways to Support
 
           Every contribution, whether big or small, helps us fulfill our mission of promoting Chinese dance and cultural exchange. Here are some ways you can support our academy.
@@ -22,40 +26,54 @@ sections:
           - variant: none
             layout: 1-column
             blocks:
-              - text: |
+              - type: text
+
+                text: |
                   ### Make a Donation
 
                   Your donations help fund classes, scholarships, costumes, and our annual Splendid China production.
-              - button:
+              - type: button
+
+                button:
                   label: "Donate"
                   href: "/donate/"
                   variant: primary
           - variant: none
             layout: 1-column
             blocks:
-              - text: |
+              - type: text
+
+                text: |
                   ### Become a Sponsor
 
                   Corporate and individual sponsorships support our performances, outreach programs, and community events. Partner with us to make an impact.
-              - button:
+              - type: button
+
+                button:
                   label: "Contact us"
                   href: "mailto:contact@madisonchinesedance.org"
                   variant: primary
           - variant: none
             layout: 1-column
             blocks:
-              - text: |
+              - type: text
+
+                text: |
                   ### Volunteer
 
                   Volunteers are essential to our productions and events. Help with costumes, backstage, ushering, and more.
-              - button:
+              - type: button
+
+                button:
                   label: "Contact us"
                   href: "mailto:contact@madisonchinesedance.org"
                   variant: primary
   - variant: card
     layout: 1-column
     blocks:
-      - text: |
+      - type: text
+
+        text: |
           ## Your Impact
 
 
@@ -66,16 +84,22 @@ sections:
   - variant: card
     layout: 1-column
     blocks:
-      - text: |
+      - type: text
+
+        text: |
           ## Make a Difference Today
 
 
           Join us in preserving and sharing the art of Chinese dance. Your generosity helps us inspire the next generation of dancers and bring the joy of Chinese culture to our community.
-      - button:
+      - type: button
+
+        button:
           label: "Donate"
           href: "/donate/"
           variant: primary
-      - button:
+      - type: button
+
+        button:
           label: "Get in touch"
           href: "mailto:contact@madisonchinesedance.org"
           variant: primary

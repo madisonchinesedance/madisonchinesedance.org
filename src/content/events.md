@@ -4,7 +4,9 @@ sections:
   - variant: card
     layout: 1-column
     blocks:
-      - text: |
+      - type: text
+
+        text: |
           # Events
 
 
@@ -15,7 +17,9 @@ sections:
       - variant: card
         layout: 1-column
         blocks:
-          - text: |
+          - type: text
+
+            text: |
               ## New Dance Classes Starting
 
               Why not come dance with us?
@@ -27,7 +31,9 @@ sections:
       - variant: card
         layout: 1-column
         blocks:
-          - text: |
+          - type: text
+
+            text: |
               ## Splendid China 2027
 
               The longest-running professionally produced annual concert of Chinese Dance and Ballet in the DC Metro area.

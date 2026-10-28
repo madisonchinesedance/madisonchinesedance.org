@@ -4,12 +4,16 @@ sections:
   - variant: card
     layout: 1-column
     blocks:
-      - text: |
+      - type: text
+
+        text: |
           # Gallery
   - variant: card
     layout: 1-column
     blocks:
-      - gallery:
+      - type: gallery
+
+        gallery:
           controls: true
           autoscroll: false
           interval: 5000

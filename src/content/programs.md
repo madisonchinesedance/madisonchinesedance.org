@@ -4,7 +4,9 @@ sections:
   - variant: card
     layout: 1-column
     blocks:
-      - text: |
+      - type: text
+
+        text: |
           # Programs
 
 
@@ -15,7 +17,9 @@ sections:
       - variant: card
         layout: 1-column
         blocks:
-          - text: |
+          - type: text
+
+            text: |
               ## Dance Lessons
 
               - Dance lessons for Chinese dance, ballet, lyrical, Jazz, and Hip-Hop with associated cultural backgrounds. 
@@ -24,7 +28,9 @@ sections:
       - variant: card
         layout: 1-column
         blocks:
-          - text: |
+          - type: text
+
+            text: |
               ## Splendid China Dance Concert
 
               - The longest-running annual concert of Chinese Dance and Ballet in the DC Metro area—where community artistry meets the stage.
@@ -35,14 +41,18 @@ sections:
       - variant: card
         layout: 1-column
         blocks:
-          - text: |
+          - type: text
+
+            text: |
               ## Dance and Chinese Art or Folk Art Performances and Demonstrations
 
               Performances and demonstrations for public and private events.
       - variant: card
         layout: 1-column
         blocks:
-          - text: |
+          - type: text
+
+            text: |
               ## Lunar New Year Celebration Program and Special Events
 
               Full-spectrum Chinese cultural programs for all levels of schools, museums, libraries, senior centers, private/public organizations, and conferences. 
@@ -51,14 +61,18 @@ sections:
       - variant: card
         layout: 1-column
         blocks:
-          - text: |
+          - type: text
+
+            text: |
               ## Artist-in-Residence for Chinese Dance & Chinese Ballet
 
               This program brings classical technique, expressive storytelling, and cultural heritage to a community through workshops, rehearsals, and performances. Blending elegant movement, breath-driven expression, and contemporary creativity, the residency uses an Embedded Teaching and Learning approach to offer participants a holistic body-mind-heart experience across the performing arts of the East and the West.
       - variant: card
         layout: 1-column
         blocks:
-          - text: |
+          - type: text
+
+            text: |
               ## Holistic Tai Chi Walk
 
               A journey with body, mind, and heart for whole person wellness.
@@ -69,7 +83,9 @@ sections:
       - variant: card
         layout: 1-column
         blocks:
-          - text: |
+          - type: text
+
+            text: |
               ## Speaking Engagements
 
               ### Cultural Quotient (CQ) based Professional Skills Enhancement
