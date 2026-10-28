@@ -1,5 +1,5 @@
 ---
-title: Splendid China - 2026 Tickets
+title: Tickets
 sections:
   - variant: card
     layout: 1-column

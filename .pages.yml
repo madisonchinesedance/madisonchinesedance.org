@@ -11,8 +11,6 @@ content:
     path: src/content
     format: yaml-frontmatter
     subfolders: true
-    exclude:
-      - index.md
     view:
       primary: title
       search: title
@@ -170,9 +168,3 @@ content:
                       - name: external
                         label: Open externally
                         type: boolean
-  - name: home
-    label: Home
-    type: file
-    path: src/content/index.md
-    format: yaml-frontmatter
-    fields: *page_fields

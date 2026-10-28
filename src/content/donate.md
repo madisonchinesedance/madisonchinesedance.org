@@ -1,5 +1,5 @@
 ---
-title: Make a Donation
+title: Donate
 sections:
   - variant: card
     layout: 1-column
