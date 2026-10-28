@@ -1,5 +1,5 @@
 ---
-type Variant = "primary" | "secondary" | "text";
+type Variant = "primary" | "secondary" | "tertiary" | "text";
 
 interface Props {
   href: string;
@@ -33,7 +33,8 @@ const {
   }
 
   .button-block--primary,
-  .button-block--secondary {
+  .button-block--secondary,
+  .button-block--tertiary {
     padding: 0.5rem 0.75rem;
     border: 1px solid var(--edge-contrast);
     border-radius: 0.5rem;
@@ -42,13 +43,48 @@ const {
   }
 
   .button-block--primary {
-    color: var(--color-deep-navy);
-    background: var(--color-peach);
+    color: var(--color-white);
+    background: rgb(40 112 238 / 50%);
+    transition:
+      background-color 180ms ease,
+      box-shadow 180ms ease,
+      filter 180ms ease;
+  }
+
+  .button-block--primary:hover,
+  .button-block--primary:focus-visible {
+    background: rgb(40 112 238 / 70%);
+    box-shadow: 0 0 50px rgb(40 112 238 / 40%);
   }
 
   .button-block--secondary {
     color: var(--color-white);
-    background: var(--color-purple);
+    background: rgb(102 70 230 / 50%);
+    transition:
+      background-color 180ms ease,
+      box-shadow 180ms ease,
+      filter 180ms ease;
+  }
+
+  .button-block--secondary:hover,
+  .button-block--secondary:focus-visible {
+    background: rgb(124 94 250 / 70%);
+    box-shadow: 0 0 50px rgb(150 125 255 / 40%);
+  }
+
+  .button-block--tertiary {
+    color: var(--color-white);
+    background: rgb(235 112 158 / 50%);
+    transition:
+      background-color 180ms ease,
+      box-shadow 180ms ease,
+      filter 180ms ease;
+  }
+
+  .button-block--tertiary:hover,
+  .button-block--tertiary:focus-visible {
+    background: rgb(235 112 158 / 70%);
+    box-shadow: 0 0 50px rgb(235 112 158 / 40%);
   }
 
   .button-block--text {

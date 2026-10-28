@@ -6,9 +6,6 @@ sections:
     blocks:
       - text: |
           # Gallery
-
-
-          Browse moments from performances, community programs, and academy events.
   - variant: card
     layout: 1-column
     blocks:

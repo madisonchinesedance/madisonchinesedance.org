@@ -1,4 +1,8 @@
 ---
+import ButtonBlock from "./ButtonBlock.astro";
+
+type ButtonVariant = "primary" | "secondary" | "tertiary" | "text";
+
 const navigation = [
   { label: "Home", href: "/" },
   { label: "Programs", href: "/programs/" },
@@ -41,9 +45,9 @@ const navigation = [
   { label: "Contact Us", href: "/contact/" },
 ];
 
-const actions = [
-  { label: "Purchase Tickets", href: "/tickets/" },
-  { label: "Donate", href: "/donate/" },
+const actions: { label: string; href: string; variant: ButtonVariant }[] = [
+  { label: "Purchase Tickets", href: "/tickets/", variant: "secondary" },
+  { label: "Donate", href: "/donate/", variant: "tertiary" },
 ];
 
 const normalizePath = (path: string) =>
@@ -107,13 +111,12 @@ const isActive = (href: string) => normalizePath(href) === currentPath;
     <div class="header-actions">
       {
         actions.map((action) => (
-          <a
-            class="header-action"
+          <ButtonBlock
             href={action.href}
-            aria-current={isActive(action.href) ? "page" : undefined}
+            variant={action.variant}
           >
             {action.label}
-          </a>
+          </ButtonBlock>
         ))
       }
     </div>
@@ -259,22 +262,6 @@ const isActive = (href: string) => normalizePath(href) === currentPath;
     gap: 1rem;
   }
 
-  .header-action {
-    font-weight: 600;
-    padding: 0.5rem 0.75rem;
-    border-radius: 0.5rem;
-    color: var(--light-text-color);
-    background: #3a1e8d;
-    font-size: 1rem;
-    text-decoration: none;
-  }
-
-  .header-action:hover,
-  .header-action:focus-visible,
-  .header-action[aria-current="page"] {
-    filter: brightness(1.12);
-  }
-
   @media (max-width: 1100px) {
     .brand-name {
       display: none;
@@ -307,7 +294,7 @@ const isActive = (href: string) => normalizePath(href) === currentPath;
       margin-left: auto;
     }
 
-    .header-action {
+    .header-actions .button-block {
       padding-inline: 0.55rem;
       font-size: 0.75rem;
     }

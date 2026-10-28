@@ -114,7 +114,7 @@ sections:
             - button:
                 label: "See events"
                 href: "/events/"
-                variant: primary
+                variant: secondary
         - variant: card
           layout: 1-column
           blocks:
@@ -129,7 +129,7 @@ sections:
             - button:
                 label: "View programs"
                 href: "/programs/"
-                variant: primary
+                variant: tertiary
       - variant: card
         layout: 1-column
         blocks:

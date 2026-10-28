@@ -24,7 +24,7 @@ interface BlockData {
   button?: {
     label: string;
     href: string;
-    variant?: "primary" | "secondary" | "text";
+    variant?: "primary" | "secondary" | "tertiary" | "text";
     external?: boolean;
   };
   blocks?: BlockData[];
@@ -62,7 +62,7 @@ const block: z.ZodType<BlockData> = z.lazy(() =>
       button: z.object({
         label: z.string(),
         href: z.string(),
-        variant: z.enum(["primary", "secondary", "text"]).optional(),
+        variant: z.enum(["primary", "secondary", "tertiary", "text"]).optional(),
         external: z.boolean().optional(),
       }),
     }),
