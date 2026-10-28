@@ -9,6 +9,15 @@ interface BlockData {
     size?: "small" | "medium" | "large" | "full";
     crop?: "landscape" | "square" | "portrait" | "natural";
   };
+  gallery?: {
+    images: { src: string; alt: string }[];
+    controls?: boolean;
+    autoscroll?: boolean;
+    interval?: number;
+    navigation?: "thumbnails" | "dots" | "none";
+    size?: "small" | "medium" | "large" | "full";
+    crop?: "landscape" | "square" | "portrait" | "natural";
+  };
   button?: {
     label: string;
     href: string;

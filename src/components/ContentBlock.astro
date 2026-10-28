@@ -1,5 +1,6 @@
 ---
 import ButtonBlock from "./ButtonBlock.astro";
+import GalleryBlock from "./GalleryBlock.astro";
 import ImageBlock from "./ImageBlock.astro";
 import TextBlock from "./TextBlock.astro";
 
@@ -12,6 +13,15 @@ interface BlockData {
   image?: {
     src: string;
     alt: string;
+    size?: "small" | "medium" | "large" | "full";
+    crop?: "landscape" | "square" | "portrait" | "natural";
+  };
+  gallery?: {
+    images: { src: string; alt: string }[];
+    controls?: boolean;
+    autoscroll?: boolean;
+    interval?: number;
+    navigation?: "thumbnails" | "dots" | "none";
     size?: "small" | "medium" | "large" | "full";
     crop?: "landscape" | "square" | "portrait" | "natural";
   };
@@ -46,6 +56,16 @@ const { block } = Astro.props;
       alt={block.image.alt}
       size={block.image.size}
       crop={block.image.crop}
+    />
+  ) : block.gallery ? (
+    <GalleryBlock
+      images={block.gallery.images}
+      controls={block.gallery.controls}
+      autoscroll={block.gallery.autoscroll}
+      interval={block.gallery.interval}
+      navigation={block.gallery.navigation}
+      size={block.gallery.size}
+      crop={block.gallery.crop}
     />
   ) : block.text !== undefined ? (
     <TextBlock content={block.text} />

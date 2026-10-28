@@ -134,6 +134,7 @@ main {
 .layout-4-columns {
   display: grid;
   gap: 1rem;
+  align-items: center;
 }
 
 .layout-1-column {
@@ -150,6 +151,11 @@ main {
 
 .layout-4-columns {
   grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.button-block {
+  align-self: start;
+  justify-self: start;
 }
 
 .variant-card {

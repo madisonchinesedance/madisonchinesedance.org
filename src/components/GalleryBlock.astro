@@ -6,42 +6,328 @@ interface GalleryImage {
 
 interface Props {
   images: GalleryImage[];
-  columns?: 1 | 2 | 3 | 4;
+  controls?: boolean;
+  autoscroll?: boolean;
+  interval?: number;
+  navigation?: "thumbnails" | "dots" | "none";
+  size?: "small" | "medium" | "large" | "full";
+  crop?: "landscape" | "square" | "portrait" | "natural";
 }
 
-const { images, columns = 3 } = Astro.props;
+const {
+  images,
+  controls = true,
+  autoscroll = false,
+  interval = 5000,
+  navigation = "dots",
+  size = "medium",
+  crop = "natural",
+} = Astro.props;
 ---
 
 <div
-  class="gallery-block"
-  style={`--gallery-block-columns: ${columns}`}
+  class:list={[
+    "gallery-block",
+    `gallery-block--size-${size}`,
+    `gallery-block--crop-${crop}`,
+  ]}
+  data-gallery
+  data-autoscroll={autoscroll}
+  data-interval={interval}
   aria-label="Image gallery"
 >
-  {images.map((image) => (
-    <img
-      src={image.src}
-      alt={image.alt}
-      loading="lazy"
-      decoding="async"
-    />
-  ))}
+  <div class="gallery-viewport">
+    {images.map((image, index) => (
+      <img
+        class:list={{ "is-active": index === 0 }}
+        src={image.src}
+        alt={image.alt}
+        loading={index === 0 ? "eager" : "lazy"}
+        decoding="async"
+      />
+    ))}
+
+    {controls && images.length > 1 && (
+      <>
+        <button class="gallery-control gallery-control--previous" type="button" aria-label="Previous image">&#8249;</button>
+        <button class="gallery-control gallery-control--next" type="button" aria-label="Next image">&#8250;</button>
+      </>
+    )}
+  </div>
+
+  {navigation === "dots" && images.length > 1 && (
+    <div class="gallery-navigation gallery-navigation--dots" aria-label="Choose an image">
+      {images.map((_, index) => (
+        <button
+          class:list={{ "is-active": index === 0 }}
+          type="button"
+          data-gallery-index={index}
+          aria-label={`Show image ${index + 1}`}
+          aria-current={index === 0 ? "true" : undefined}
+        />
+      ))}
+    </div>
+  )}
+
+  {navigation === "thumbnails" && images.length > 1 && (
+    <div class="gallery-navigation gallery-navigation--thumbnails" aria-label="Choose an image">
+      {images.map((image, index) => (
+        <button
+          class:list={{ "is-active": index === 0 }}
+          type="button"
+          data-gallery-index={index}
+          aria-label={`Show image ${index + 1}`}
+          aria-current={index === 0 ? "true" : undefined}
+        >
+          <img src={image.src} alt="" loading="lazy" decoding="async" />
+        </button>
+      ))}
+    </div>
+  )}
 </div>
 
 <style>
   .gallery-block {
-    display: grid;
-    grid-template-columns: repeat(var(--gallery-block-columns, 3), minmax(0, 1fr));
+    width: 100%;
   }
 
-  .gallery-block img {
-    display: block;
+  .gallery-block--size-small {
+    width: min(100%, 20rem);
+  }
+
+  .gallery-block--size-medium {
+    width: min(100%, 40rem);
+  }
+
+  .gallery-block--size-large {
+    width: min(100%, 64rem);
+  }
+
+  .gallery-block--size-full {
+    width: 100%;
+  }
+
+  .gallery-viewport {
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    border-radius: 1rem;
+    background: rgb(3 12 56 / 55%);
+  }
+
+  .gallery-viewport > img {
+    grid-area: 1 / 1;
+    position: relative;
     width: 100%;
     height: auto;
+    object-position: center;
+    opacity: 0;
+    transform: translateX(100%);
+    transition:
+      opacity 260ms ease,
+      transform 260ms ease;
   }
 
-  @media (max-width: 640px) {
-    .gallery-block {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
+  .gallery-viewport > img.is-active {
+    z-index: 1;
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .gallery-viewport > img.is-entering-previous {
+    transform: translateX(-100%);
+  }
+
+  .gallery-viewport > img.is-active.is-entering-next,
+  .gallery-viewport > img.is-active.is-entering-previous {
+    transform: translateX(0);
+  }
+
+  .gallery-viewport > img.is-leaving-next {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+
+  .gallery-viewport > img.is-leaving-previous {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transform: translateX(100%);
+  }
+
+  .gallery-block--crop-landscape .gallery-viewport > img,
+  .gallery-block--crop-square .gallery-viewport > img,
+  .gallery-block--crop-portrait .gallery-viewport > img {
+    object-fit: contain;
+  }
+
+  .gallery-block--crop-natural .gallery-viewport > img {
+    width: auto;
+    max-width: 100%;
+    justify-self: center;
+  }
+
+  .gallery-block--size-full.gallery-block--crop-natural .gallery-viewport > img {
+    width: 100%;
+  }
+
+  .gallery-block--crop-landscape .gallery-viewport > img {
+    aspect-ratio: 16 / 9;
+  }
+
+  .gallery-block--crop-square .gallery-viewport > img {
+    aspect-ratio: 1;
+  }
+
+  .gallery-block--crop-portrait .gallery-viewport > img {
+    aspect-ratio: 3 / 4;
+  }
+
+  .gallery-control {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 0;
+    border-radius: 50%;
+    color: var(--color-white);
+    background: rgb(3 12 56 / 70%);
+    font-size: 2rem;
+    line-height: 1;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+
+  .gallery-control:hover,
+  .gallery-control:focus-visible {
+    background: rgb(3 12 56 / 90%);
+  }
+
+  .gallery-control--previous {
+    left: 1rem;
+  }
+
+  .gallery-control--next {
+    right: 1rem;
+  }
+
+  .gallery-navigation {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    padding-top: 0.75rem;
+  }
+
+  .gallery-navigation--dots button {
+    width: 0.7rem;
+    height: 0.7rem;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: var(--color-blue-grey);
+    cursor: pointer;
+  }
+
+  .gallery-navigation--dots button.is-active {
+    background: var(--color-peach);
+  }
+
+  .gallery-navigation--thumbnails {
+    justify-content: flex-start;
+    overflow-x: auto;
+  }
+
+  .gallery-navigation--thumbnails button {
+    flex: 0 0 5rem;
+    padding: 0;
+    border: 2px solid transparent;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .gallery-navigation--thumbnails button.is-active {
+    border-color: var(--color-peach);
+  }
+
+  .gallery-navigation--thumbnails img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
   }
 </style>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-gallery]").forEach((gallery) => {
+    const slides = Array.from(gallery.querySelectorAll<HTMLImageElement>(".gallery-viewport > img"));
+    const indicators = Array.from(gallery.querySelectorAll<HTMLButtonElement>("[data-gallery-index]"));
+    const previous = gallery.querySelector<HTMLButtonElement>(".gallery-control--previous");
+    const next = gallery.querySelector<HTMLButtonElement>(".gallery-control--next");
+    let currentIndex = 0;
+    let timer: number | undefined;
+
+    if (slides.length < 2) return;
+
+    const showSlide = (index: number, direction: "next" | "previous") => {
+      const nextIndex = (index + slides.length) % slides.length;
+      const currentSlide = slides[currentIndex];
+      const nextSlide = slides[nextIndex];
+      const enteringClass = direction === "next"
+        ? "is-entering-next"
+        : "is-entering-previous";
+      const leavingClass = direction === "next"
+        ? "is-leaving-next"
+        : "is-leaving-previous";
+
+      nextSlide.classList.add(enteringClass);
+      currentSlide.classList.add(leavingClass);
+      requestAnimationFrame(() => {
+        nextSlide.classList.add("is-active");
+        currentSlide.classList.remove("is-active");
+      });
+      window.setTimeout(() => {
+        nextSlide.classList.remove(enteringClass);
+        currentSlide.classList.remove(leavingClass);
+      }, 300);
+      currentIndex = nextIndex;
+
+      indicators.forEach((indicator, indicatorIndex) => {
+        const isActive = indicatorIndex === currentIndex;
+        indicator.classList.toggle("is-active", isActive);
+        indicator.setAttribute("aria-current", isActive ? "true" : "false");
+      });
+    };
+
+    const restartAutoscroll = () => {
+      if (timer !== undefined) window.clearInterval(timer);
+      if (gallery.dataset.autoscroll !== "true") return;
+      const delay = Number(gallery.dataset.interval) || 5000;
+      timer = window.setInterval(() => showSlide(currentIndex + 1, "next"), delay);
+    };
+
+    previous?.addEventListener("click", () => {
+      showSlide(currentIndex - 1, "previous");
+      restartAutoscroll();
+    });
+    next?.addEventListener("click", () => {
+      showSlide(currentIndex + 1, "next");
+      restartAutoscroll();
+    });
+    indicators.forEach((indicator) => {
+      indicator.addEventListener("click", () => {
+        const targetIndex = Number(indicator.dataset.galleryIndex);
+        showSlide(
+          targetIndex,
+          targetIndex >= currentIndex ? "next" : "previous",
+        );
+        restartAutoscroll();
+      });
+    });
+
+    restartAutoscroll();
+  });
+</script>
