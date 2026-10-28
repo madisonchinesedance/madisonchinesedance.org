@@ -8,7 +8,7 @@ sections:
           # Madison Chinese Dance Academy 
 
 
-          We dance to integrate Eastern and Western arts and cultures for a more harmonious world.
+          We dance to weave Eastern and Western arts and wisdom for a more harmonious world.
       - gallery:
           controls: true
           autoscroll: true
@@ -89,16 +89,6 @@ sections:
               alt: "Homepage runner image 056"
             - src: "/images/homepage-runner/homepage-runner-057.webp"
               alt: "Homepage runner image 057"
-  - variant: card
-    layout: 1-column
-    blocks:
-      - text: |
-          ## About the Academy
-
-
-          - **1987:** Founded as a nonprofit dance academy over 30 years ago. Generations of students have trained, performed, and shared Chinese dance with the Madison community.
-          - **Splendid China:** Our annual showcase at the Robert E. Parilla Performing Arts Center brings new choreography, costumes, and traditions to life each year.
-          - **Ages 3 to 18+:** Classes are available for beginner dancers through advanced students and beyond, from first steps to senior choreography projects.
   - layout: 2-columns
     variant: none
     blocks:
@@ -107,12 +97,12 @@ sections:
           layout: 1-column
           blocks:
             - text: |
-                ### Classes
+                ### Try A Class
 
-                Beginner through advanced dance instruction for students of all ages.
+                Ages 3 to 18+, beginner through advanced level dance lessons for Chinese dance, ballet, lyrical, Jazz, and Hip-Hop with associated cultural backgrounds. Choreography project. Public performance opportunities.
             - button:
                 label: "Sign up for classes"
-                href: "/classes/beginner-dancers/"
+                href: "/classes/"
                 variant: primary
         - variant: card
           layout: 1-column
@@ -120,7 +110,7 @@ sections:
             - text: |
                 ### Attend an Event
 
-                Join us for upcoming events and experience the joy of Chinese dance.
+                Professionally produced annual mid-June Splendid China dance concert at the Montgomery College Robert E. Parilla Performing Arts Center, Rockville. It’s one of the longest-running dance shows in the area. Other performances throughout the year in the Washington, DC Metro area.
             - button:
                 label: "See events"
                 href: "/events/"
@@ -129,12 +119,16 @@ sections:
           layout: 1-column
           blocks:
             - text: |
-                ### Gallery
+                ### Book a Program
 
-                Browse moments from performances, community programs, and academy events.
+                - Dance and Chinese Art/Folk Art Performances/Demonstrations
+                - Lunar New Year Celebration Program
+                - Chinese Dance & Chinese Ballet Artist-in-Residence
+                - Holistic Tai Chi Walk
+                - Speaking Engagements, CQ-based healthy living, self-cultivation, management, leadership, strategy.
             - button:
-                label: "Open the gallery"
-                href: "/gallery/"
+                label: "View programs"
+                href: "/programs/"
                 variant: primary
       - variant: card
         layout: 1-column
@@ -231,40 +225,4 @@ sections:
               alt: "Wide homepage runner image 033"
             - src: "/images/homepage-runner-wide/homepage-runner-054.webp"
               alt: "Wide homepage runner image 054"
-  - variant: none
-    layout: 3-columns
-    blocks:
-      - variant: card
-        layout: 1-column
-        blocks:
-          - text: |
-              ### Try a Class
-
-              Experience the joy of Chinese dance with our beginner-friendly classes.
-          - button:
-              label: "Sign up"
-              href: "/classes/beginner-dancers/"
-              variant: primary
-      - variant: card
-        layout: 1-column
-        blocks:
-          - text: |
-              ### Support the Academy
-
-              Help fund classes, costumes, rehearsal space, and community outreach.
-          - button:
-              label: "Donate"
-              href: "/donate/"
-              variant: primary
-      - variant: card
-        layout: 1-column
-        blocks:
-          - text: |
-              ### Get in Touch
-
-              Ask about classes, performances, donations, or community programs.
-          - button:
-              label: "Contact us"
-              href: "mailto:contact@madisonchinesedance.org"
-              variant: primary
 ---

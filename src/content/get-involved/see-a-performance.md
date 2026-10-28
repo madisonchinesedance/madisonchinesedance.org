@@ -13,33 +13,6 @@ sections:
     layout: 1-column
     blocks:
       - text: |
-          ## Upcoming Performances
-
-
-          Our dancers perform throughout the year at a variety of venues and events. Check back often for updated performance dates and locations.
-
-
-          ### Splendid China
-
-
-          Our annual signature production featuring traditional and contemporary Chinese dance, music, and storytelling. A celebration of Chinese culture not to be missed.
-      - button:
-          label: "Learn about Splendid China"
-          href: "/splendid-china/2026/"
-          variant: primary
-      - text: |
-          ### Community Events
-
-
-          Throughout the year, our dancers perform at cultural festivals, parades, and community gatherings across the region.
-      - button:
-          label: "View community events"
-          href: "/events/"
-          variant: primary
-  - variant: card
-    layout: 1-column
-    blocks:
-      - text: |
           ## Tickets & Admission
 
 
@@ -47,6 +20,10 @@ sections:
 
 
           For ticketed events, early purchase is recommended both for discounted tickets and to secure your seat. Group discounts are available for schools, community organizations, and other groups.
+      - button:
+          label: "Learn about Splendid China"
+          href: "/events/"
+          variant: primary
       - button:
           label: "Purchase tickets"
           href: "/tickets/"

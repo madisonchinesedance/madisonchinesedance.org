@@ -1,28 +1,17 @@
 ---
 const navigation = [
   { label: "Home", href: "/" },
-  { label: "Gallery", href: "/gallery/" },
   { label: "Programs", href: "/programs/" },
-  {
-    label: "Classes",
-    items: [
-      { label: "Beginner Dancers", href: "/classes/beginner-dancers/" },
-      { label: "Intermediate Dancers", href: "/classes/intermediate-dancers/" },
-      { label: "Advanced Dancers", href: "/classes/advanced-dancers/" },
-    ],
-  },
-  {
-    label: "Events",
-    items: [
-      { label: "Events", href: "/events/" },
-      { label: "Services", href: "/services/" },
-    ],
-  },
+  { label: "Classes", href: "/classes/" },
+  { label: "Events", href: "/events/" },
+  { label: "Gallery", href: "/gallery/" },
   {
     label: "Get Involved",
     items: [
-      { label: "Dance with Us", href: "/get-involved/dance-with-us/" },
-      { label: "Book a Performance", href: "/get-involved/book-a-performance/" },
+      {
+        label: "Book a Performance",
+        href: "/get-involved/book-a-performance/",
+      },
       { label: "See A Performance", href: "/get-involved/see-a-performance/" },
       { label: "Support Our Cause", href: "/get-involved/support-our-cause/" },
     ],
@@ -49,6 +38,7 @@ const navigation = [
       { label: "Splendid China 2008", href: "/splendid-china/2008/" },
     ],
   },
+  { label: "Contact Us", href: "/contact/" },
 ];
 
 const actions = [
@@ -75,12 +65,23 @@ const isActive = (href: string) => normalizePath(href) === currentPath;
           navigation.map((item) =>
             item.items ? (
               <li>
-                <details class:list={{ "is-active": item.items.some((child) => isActive(child.href)) }}>
+                <details
+                  class:list={{
+                    "is-active": item.items.some((child) =>
+                      isActive(child.href),
+                    ),
+                  }}
+                >
                   <summary>{item.label}</summary>
                   <ul class="nav-submenu">
                     {item.items.map((child) => (
                       <li>
-                        <a href={child.href} aria-current={isActive(child.href) ? "page" : undefined}>
+                        <a
+                          href={child.href}
+                          aria-current={
+                            isActive(child.href) ? "page" : undefined
+                          }
+                        >
                           {child.label}
                         </a>
                       </li>
@@ -90,11 +91,14 @@ const isActive = (href: string) => normalizePath(href) === currentPath;
               </li>
             ) : (
               <li>
-                <a href={item.href} aria-current={isActive(item.href) ? "page" : undefined}>
+                <a
+                  href={item.href}
+                  aria-current={isActive(item.href) ? "page" : undefined}
+                >
                   {item.label}
                 </a>
               </li>
-            )
+            ),
           )
         }
       </ul>
@@ -103,7 +107,11 @@ const isActive = (href: string) => normalizePath(href) === currentPath;
     <div class="header-actions">
       {
         actions.map((action) => (
-          <a class="header-action" href={action.href} aria-current={isActive(action.href) ? "page" : undefined}>
+          <a
+            class="header-action"
+            href={action.href}
+            aria-current={isActive(action.href) ? "page" : undefined}
+          >
             {action.label}
           </a>
         ))
@@ -113,19 +121,24 @@ const isActive = (href: string) => normalizePath(href) === currentPath;
 </header>
 
 <script>
-  document.querySelectorAll<HTMLDetailsElement>(".nav-list details").forEach((dropdown) => {
-    dropdown.addEventListener("pointerenter", (event) => {
-      if (event.pointerType === "mouse") {
-        dropdown.open = true;
-      }
-    });
+  document
+    .querySelectorAll<HTMLDetailsElement>(".nav-list details")
+    .forEach((dropdown) => {
+      dropdown.addEventListener("pointerenter", (event) => {
+        if (event.pointerType === "mouse") {
+          dropdown.open = true;
+        }
+      });
 
-    dropdown.addEventListener("pointerleave", (event) => {
-      if (event.pointerType === "mouse" && !dropdown.matches(":focus-within")) {
-        dropdown.open = false;
-      }
+      dropdown.addEventListener("pointerleave", (event) => {
+        if (
+          event.pointerType === "mouse" &&
+          !dropdown.matches(":focus-within")
+        ) {
+          dropdown.open = false;
+        }
+      });
     });
-  });
 </script>
 
 <style>

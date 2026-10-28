@@ -18,7 +18,10 @@ interface BlockData {
     autoscroll?: boolean;
     interval?: number;
     navigation?: "thumbnails" | "dots" | "none";
+    size?: "small" | "medium" | "large" | "full";
+    crop?: "landscape" | "square" | "portrait" | "natural";
   };
+  form?: "contact";
   button?: {
     label: string;
     href: string;
@@ -55,6 +58,9 @@ const block: z.ZodType<BlockData> = z.lazy(() =>
           .enum(["landscape", "square", "portrait", "natural"])
           .optional(),
       }),
+    }),
+    z.object({
+      form: z.literal("contact"),
     }),
     z.object({
       button: z.object({

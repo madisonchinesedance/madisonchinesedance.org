@@ -20,7 +20,7 @@ sections:
 
 
       - variant: none
-        layout: 3-columns
+        layout: 4-columns
         blocks:
           - text: |
               ### Cultural Festivals
@@ -34,6 +34,10 @@ sections:
               ### Community & Private Events
 
               Concerts, fundraisers, corporate events, and community celebrations. Performances can be tailored to your theme.
+          - text: |
+              ### Senior Facilities
+
+              Performances and demonstrations for fun and engaging cultural activities, events, and festivals. Our year-round Holistic Tai Chi Walk program is a journey and lifestyle focused on moving the body, mind, and heart toward whole-person wellness.
   - variant: card
     layout: 1-column
     blocks:
