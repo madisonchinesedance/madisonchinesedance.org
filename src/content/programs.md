@@ -56,7 +56,7 @@ sections:
               ## Lunar New Year Celebration Program and Special Events
 
               Full-spectrum Chinese cultural programs for all levels of schools, museums, libraries, senior centers, private/public organizations, and conferences. 
-              
+
               Lion dance, dragon dance, Chinese dance, Chinese music, Yo-yo, calligraphy, lanterns, kites, arts & crafts, show and tell.
       - variant: card
         layout: 1-column

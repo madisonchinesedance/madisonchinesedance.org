@@ -155,5 +155,4 @@ sections:
               alt: "Gallery image 066"
             - src: "/images/gallery/gallery-067.webp"
               alt: "Gallery image 067"
-
 ---

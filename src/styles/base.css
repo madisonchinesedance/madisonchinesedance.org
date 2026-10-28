@@ -19,8 +19,9 @@ body {
   overflow-x: hidden;
   color: var(--light-text-color);
   background: var(--bg-color);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, "Noto Sans", sans-serif;
   font-size: var(--body-font-size);
   font-weight: 400;
   line-height: var(--body-line-height);
@@ -41,48 +42,216 @@ body::before {
   z-index: -2;
   opacity: 0.9;
   background-image:
-    radial-gradient(circle at 8% 12%, var(--color-white) 0 0.9px, transparent 1.2px),
-    radial-gradient(circle at 18% 76%, var(--color-white) 0 1.4px, transparent 2px),
-    radial-gradient(circle at 29% 34%, var(--color-peach) 0 1.1px, transparent 2px),
-    radial-gradient(circle at 42% 88%, var(--color-white) 0 1.7px, transparent 2.3px),
-    radial-gradient(circle at 54% 18%, var(--color-white) 0 1.2px, transparent 1.7px),
-    radial-gradient(circle at 67% 61%, var(--color-peach) 0 1.7px, transparent 2.3px),
-    radial-gradient(circle at 79% 27%, var(--color-white) 0 0.8px, transparent 1.3px),
-    radial-gradient(circle at 91% 82%, var(--color-white) 0 2px, transparent 2.5px),
-    radial-gradient(circle at 96% 8%, var(--color-white) 0 1.3px, transparent 2.2px),
-    radial-gradient(circle at 12% 48%, var(--color-white) 0 1.5px, transparent 2px),
-    radial-gradient(circle at 22% 21%, var(--color-white) 0 1.1px, transparent 1.8px),
-    radial-gradient(circle at 35% 57%, var(--color-peach) 0 2px, transparent 2.6px),
-    radial-gradient(circle at 39% 11%, var(--color-white) 0 1.2px, transparent 2.1px),
-    radial-gradient(circle at 45% 68%, var(--color-white) 0 0.95px, transparent 1.5px),
-    radial-gradient(circle at 50% 52%, var(--color-white) 0 1.35px, transparent 2px),
-    radial-gradient(circle at 63% 87%, var(--color-peach) 0 1.8px, transparent 2.5px),
-    radial-gradient(circle at 71% 36%, var(--color-white) 0 1.25px, transparent 1.8px),
-    radial-gradient(circle at 84% 59%, var(--color-white) 0 1.7px, transparent 2.1px),
-    radial-gradient(circle at 87% 13%, var(--color-white) 0 1.4px, transparent 1.8px),
-    radial-gradient(circle at 27% 77%, var(--color-white) 0 0.98px, transparent 1.3px),
-    radial-gradient(circle at 58% 41%, var(--color-peach) 0 2.3px, transparent 2.9px),
-    radial-gradient(circle at 75% 68%, var(--color-white) 0 1.3px, transparent 1.9px),
-    radial-gradient(circle at 6% 23%, var(--color-white) 0 0.86px, transparent 1.2px),
-    radial-gradient(circle at 13% 37%, var(--color-white) 0 1.5px, transparent 2.2px),
-    radial-gradient(circle at 21% 67%, var(--color-peach) 0 1.9px, transparent 2.8px),
-    radial-gradient(circle at 32% 43%, var(--color-white) 0 1.2px, transparent 1.7px),
-    radial-gradient(circle at 47% 95%, var(--color-white) 0 1.5px, transparent 2.1px),
-    radial-gradient(circle at 59% 11%, var(--color-white) 0 0.75px, transparent 1.15px),
-    radial-gradient(circle at 68% 82%, var(--color-peach) 0 2px, transparent 2.6px),
-    radial-gradient(circle at 82% 33%, var(--color-white) 0 1.1px, transparent 1.7px),
-    radial-gradient(circle at 88% 53%, var(--color-white) 0 0.97px, transparent 1.4px),
-    radial-gradient(circle at 96% 91%, var(--color-white) 0 1.8px, transparent 2.6px),
-    radial-gradient(circle at 17% 84%, var(--color-white) 0 1.5px, transparent 2px),
-    radial-gradient(circle at 25% 13%, var(--color-white) 0 1.2px, transparent 1.8px),
-    radial-gradient(circle at 30% 79%, var(--color-peach) 0 2.2px, transparent 2.7px),
-    radial-gradient(circle at 44% 21%, var(--color-white) 0 1.4px, transparent 1.9px),
-    radial-gradient(circle at 61% 73%, var(--color-white) 0 1.7px, transparent 2.4px),
-    radial-gradient(circle at 69% 18%, var(--color-white) 0 1px, transparent 1.4px),
-    radial-gradient(circle at 77% 49%, var(--color-peach) 0 2.4px, transparent 3px),
-    radial-gradient(circle at 87% 36%, var(--color-white) 0 1.6px, transparent 2.2px),
-    radial-gradient(circle at 94% 70%, var(--color-white) 0 1.1px, transparent 1.6px),
-    radial-gradient(circle at 53% 34%, var(--color-white) 0 1.25px, transparent 1.8px);
+    radial-gradient(
+      circle at 8% 12%,
+      var(--color-white) 0 0.9px,
+      transparent 1.2px
+    ),
+    radial-gradient(
+      circle at 18% 76%,
+      var(--color-white) 0 1.4px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 29% 34%,
+      var(--color-peach) 0 1.1px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 42% 88%,
+      var(--color-white) 0 1.7px,
+      transparent 2.3px
+    ),
+    radial-gradient(
+      circle at 54% 18%,
+      var(--color-white) 0 1.2px,
+      transparent 1.7px
+    ),
+    radial-gradient(
+      circle at 67% 61%,
+      var(--color-peach) 0 1.7px,
+      transparent 2.3px
+    ),
+    radial-gradient(
+      circle at 79% 27%,
+      var(--color-white) 0 0.8px,
+      transparent 1.3px
+    ),
+    radial-gradient(
+      circle at 91% 82%,
+      var(--color-white) 0 2px,
+      transparent 2.5px
+    ),
+    radial-gradient(
+      circle at 96% 8%,
+      var(--color-white) 0 1.3px,
+      transparent 2.2px
+    ),
+    radial-gradient(
+      circle at 12% 48%,
+      var(--color-white) 0 1.5px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 22% 21%,
+      var(--color-white) 0 1.1px,
+      transparent 1.8px
+    ),
+    radial-gradient(
+      circle at 35% 57%,
+      var(--color-peach) 0 2px,
+      transparent 2.6px
+    ),
+    radial-gradient(
+      circle at 39% 11%,
+      var(--color-white) 0 1.2px,
+      transparent 2.1px
+    ),
+    radial-gradient(
+      circle at 45% 68%,
+      var(--color-white) 0 0.95px,
+      transparent 1.5px
+    ),
+    radial-gradient(
+      circle at 50% 52%,
+      var(--color-white) 0 1.35px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 63% 87%,
+      var(--color-peach) 0 1.8px,
+      transparent 2.5px
+    ),
+    radial-gradient(
+      circle at 71% 36%,
+      var(--color-white) 0 1.25px,
+      transparent 1.8px
+    ),
+    radial-gradient(
+      circle at 84% 59%,
+      var(--color-white) 0 1.7px,
+      transparent 2.1px
+    ),
+    radial-gradient(
+      circle at 87% 13%,
+      var(--color-white) 0 1.4px,
+      transparent 1.8px
+    ),
+    radial-gradient(
+      circle at 27% 77%,
+      var(--color-white) 0 0.98px,
+      transparent 1.3px
+    ),
+    radial-gradient(
+      circle at 58% 41%,
+      var(--color-peach) 0 2.3px,
+      transparent 2.9px
+    ),
+    radial-gradient(
+      circle at 75% 68%,
+      var(--color-white) 0 1.3px,
+      transparent 1.9px
+    ),
+    radial-gradient(
+      circle at 6% 23%,
+      var(--color-white) 0 0.86px,
+      transparent 1.2px
+    ),
+    radial-gradient(
+      circle at 13% 37%,
+      var(--color-white) 0 1.5px,
+      transparent 2.2px
+    ),
+    radial-gradient(
+      circle at 21% 67%,
+      var(--color-peach) 0 1.9px,
+      transparent 2.8px
+    ),
+    radial-gradient(
+      circle at 32% 43%,
+      var(--color-white) 0 1.2px,
+      transparent 1.7px
+    ),
+    radial-gradient(
+      circle at 47% 95%,
+      var(--color-white) 0 1.5px,
+      transparent 2.1px
+    ),
+    radial-gradient(
+      circle at 59% 11%,
+      var(--color-white) 0 0.75px,
+      transparent 1.15px
+    ),
+    radial-gradient(
+      circle at 68% 82%,
+      var(--color-peach) 0 2px,
+      transparent 2.6px
+    ),
+    radial-gradient(
+      circle at 82% 33%,
+      var(--color-white) 0 1.1px,
+      transparent 1.7px
+    ),
+    radial-gradient(
+      circle at 88% 53%,
+      var(--color-white) 0 0.97px,
+      transparent 1.4px
+    ),
+    radial-gradient(
+      circle at 96% 91%,
+      var(--color-white) 0 1.8px,
+      transparent 2.6px
+    ),
+    radial-gradient(
+      circle at 17% 84%,
+      var(--color-white) 0 1.5px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 25% 13%,
+      var(--color-white) 0 1.2px,
+      transparent 1.8px
+    ),
+    radial-gradient(
+      circle at 30% 79%,
+      var(--color-peach) 0 2.2px,
+      transparent 2.7px
+    ),
+    radial-gradient(
+      circle at 44% 21%,
+      var(--color-white) 0 1.4px,
+      transparent 1.9px
+    ),
+    radial-gradient(
+      circle at 61% 73%,
+      var(--color-white) 0 1.7px,
+      transparent 2.4px
+    ),
+    radial-gradient(
+      circle at 69% 18%,
+      var(--color-white) 0 1px,
+      transparent 1.4px
+    ),
+    radial-gradient(
+      circle at 77% 49%,
+      var(--color-peach) 0 2.4px,
+      transparent 3px
+    ),
+    radial-gradient(
+      circle at 87% 36%,
+      var(--color-white) 0 1.6px,
+      transparent 2.2px
+    ),
+    radial-gradient(
+      circle at 94% 70%,
+      var(--color-white) 0 1.1px,
+      transparent 1.6px
+    ),
+    radial-gradient(
+      circle at 53% 34%,
+      var(--color-white) 0 1.25px,
+      transparent 1.8px
+    );
   animation: star-twinkle 7s ease-in-out infinite alternate;
 }
 

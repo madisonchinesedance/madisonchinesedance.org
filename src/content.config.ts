@@ -53,16 +53,16 @@ const block: z.ZodType<BlockData> = z.lazy(() =>
         interval: z.number().positive().optional(),
         navigation: z.enum(["thumbnails", "dots", "none"]).optional(),
         size: z.enum(["small", "medium", "large", "full"]).optional(),
-        crop: z
-          .enum(["landscape", "square", "portrait", "natural"])
-          .optional(),
+        crop: z.enum(["landscape", "square", "portrait", "natural"]).optional(),
       }),
     }),
     z.object({
       button: z.object({
         label: z.string(),
         href: z.string(),
-        variant: z.enum(["primary", "secondary", "tertiary", "text"]).optional(),
+        variant: z
+          .enum(["primary", "secondary", "tertiary", "text"])
+          .optional(),
         external: z.boolean().optional(),
       }),
     }),
