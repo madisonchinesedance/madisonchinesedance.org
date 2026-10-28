@@ -9,11 +9,86 @@ sections:
 
 
           We dance to integrate Eastern and Western arts and cultures for a more harmonious world.
-      - image:
-          src: "/images/gallery/gallery-036.webp"
-          alt: "Madison Chinese Dance Academy dancers performing"
+      - gallery:
+          controls: true
+          autoscroll: true
+          interval: 5000
+          navigation: dots
           size: full
-          crop: landscape
+          crop: natural
+          images:
+            - src: "/images/homepage-runner/homepage-runner-003.webp"
+              alt: "Homepage runner image 003"
+            - src: "/images/homepage-runner/homepage-runner-004.webp"
+              alt: "Homepage runner image 004"
+            - src: "/images/homepage-runner/homepage-runner-007.webp"
+              alt: "Homepage runner image 007"
+            - src: "/images/homepage-runner/homepage-runner-008.webp"
+              alt: "Homepage runner image 008"
+            - src: "/images/homepage-runner/homepage-runner-009.webp"
+              alt: "Homepage runner image 009"
+            - src: "/images/homepage-runner/homepage-runner-012.webp"
+              alt: "Homepage runner image 012"
+            - src: "/images/homepage-runner/homepage-runner-013.webp"
+              alt: "Homepage runner image 013"
+            - src: "/images/homepage-runner/homepage-runner-014.webp"
+              alt: "Homepage runner image 014"
+            - src: "/images/homepage-runner/homepage-runner-016.webp"
+              alt: "Homepage runner image 016"
+            - src: "/images/homepage-runner/homepage-runner-017.webp"
+              alt: "Homepage runner image 017"
+            - src: "/images/homepage-runner/homepage-runner-019.webp"
+              alt: "Homepage runner image 019"
+            - src: "/images/homepage-runner/homepage-runner-020.webp"
+              alt: "Homepage runner image 020"
+            - src: "/images/homepage-runner/homepage-runner-022.webp"
+              alt: "Homepage runner image 022"
+            - src: "/images/homepage-runner/homepage-runner-028.webp"
+              alt: "Homepage runner image 028"
+            - src: "/images/homepage-runner/homepage-runner-029.webp"
+              alt: "Homepage runner image 029"
+            - src: "/images/homepage-runner/homepage-runner-031.webp"
+              alt: "Homepage runner image 031"
+            - src: "/images/homepage-runner/homepage-runner-032.webp"
+              alt: "Homepage runner image 032"
+            - src: "/images/homepage-runner/homepage-runner-034.webp"
+              alt: "Homepage runner image 034"
+            - src: "/images/homepage-runner/homepage-runner-035.webp"
+              alt: "Homepage runner image 035"
+            - src: "/images/homepage-runner/homepage-runner-036.webp"
+              alt: "Homepage runner image 036"
+            - src: "/images/homepage-runner/homepage-runner-037.webp"
+              alt: "Homepage runner image 037"
+            - src: "/images/homepage-runner/homepage-runner-038.webp"
+              alt: "Homepage runner image 038"
+            - src: "/images/homepage-runner/homepage-runner-040.webp"
+              alt: "Homepage runner image 040"
+            - src: "/images/homepage-runner/homepage-runner-042.webp"
+              alt: "Homepage runner image 042"
+            - src: "/images/homepage-runner/homepage-runner-043.webp"
+              alt: "Homepage runner image 043"
+            - src: "/images/homepage-runner/homepage-runner-045.webp"
+              alt: "Homepage runner image 045"
+            - src: "/images/homepage-runner/homepage-runner-046.webp"
+              alt: "Homepage runner image 046"
+            - src: "/images/homepage-runner/homepage-runner-047.webp"
+              alt: "Homepage runner image 047"
+            - src: "/images/homepage-runner/homepage-runner-048.webp"
+              alt: "Homepage runner image 048"
+            - src: "/images/homepage-runner/homepage-runner-049.webp"
+              alt: "Homepage runner image 049"
+            - src: "/images/homepage-runner/homepage-runner-050.webp"
+              alt: "Homepage runner image 050"
+            - src: "/images/homepage-runner/homepage-runner-051.webp"
+              alt: "Homepage runner image 051"
+            - src: "/images/homepage-runner/homepage-runner-052.webp"
+              alt: "Homepage runner image 052"
+            - src: "/images/homepage-runner/homepage-runner-055.webp"
+              alt: "Homepage runner image 055"
+            - src: "/images/homepage-runner/homepage-runner-056.webp"
+              alt: "Homepage runner image 056"
+            - src: "/images/homepage-runner/homepage-runner-057.webp"
+              alt: "Homepage runner image 057"
   - variant: card
     layout: 1-column
     blocks:
@@ -24,42 +99,68 @@ sections:
           - **1987:** Founded as a nonprofit dance academy over 30 years ago. Generations of students have trained, performed, and shared Chinese dance with the Madison community.
           - **Splendid China:** Our annual showcase at the Robert E. Parilla Performing Arts Center brings new choreography, costumes, and traditions to life each year.
           - **Ages 3 to 18+:** Classes are available for beginner dancers through advanced students and beyond, from first steps to senior choreography projects.
-  - layout: 3-columns
+  - layout: 2-columns
     variant: none
     blocks:
+      - blocks:
+        - variant: card
+          layout: 1-column
+          blocks:
+            - text: |
+                ### Classes
+
+                Beginner through advanced dance instruction for students of all ages.
+            - button:
+                label: "Sign up for classes"
+                href: "/classes/beginner-dancers/"
+                variant: primary
+        - variant: card
+          layout: 1-column
+          blocks:
+            - text: |
+                ### Attend an Event
+
+                Join us for upcoming events and experience the joy of Chinese dance.
+            - button:
+                label: "See events"
+                href: "/events/"
+                variant: primary
+        - variant: card
+          layout: 1-column
+          blocks:
+            - text: |
+                ### Gallery
+
+                Browse moments from performances, community programs, and academy events.
+            - button:
+                label: "Open the gallery"
+                href: "/gallery/"
+                variant: primary
       - variant: card
         layout: 1-column
         blocks:
-          - text: |
-              ### Classes
-
-              Beginner through advanced dance instruction for students of all ages.
-          - button:
-              label: "Sign up for classes"
-              href: "/classes/beginner-dancers/"
-              variant: primary
-      - variant: card
-        layout: 1-column
-        blocks:
-          - text: |
-              ### Attend an Event
-
-              Join us for upcoming events and experience the joy of Chinese dance.
-          - button:
-              label: "See events"
-              href: "/events/"
-              variant: primary
-      - variant: card
-        layout: 1-column
-        blocks:
-          - text: |
-              ### Gallery
-
-              Browse moments from performances, community programs, and academy events.
-          - button:
-              label: "Open the gallery"
-              href: "/gallery/"
-              variant: primary
+        - gallery:
+            controls: true
+            autoscroll: true
+            interval: 5000
+            navigation: dots
+            size: full
+            crop: portrait
+            images:
+              - src: "/images/homepage-runner-tall/homepage-runner-001.webp"
+                alt: "Tall homepage runner image 001"
+              - src: "/images/homepage-runner-tall/homepage-runner-002.webp"
+                alt: "Tall homepage runner image 002"
+              - src: "/images/homepage-runner-tall/homepage-runner-015.webp"
+                alt: "Tall homepage runner image 015"
+              - src: "/images/homepage-runner-tall/homepage-runner-039.webp"
+                alt: "Tall homepage runner image 039"
+              - src: "/images/homepage-runner-tall/homepage-runner-041.webp"
+                alt: "Tall homepage runner image 041"
+              - src: "/images/homepage-runner-tall/homepage-runner-044.webp"
+                alt: "Tall homepage runner image 044"
+              - src: "/images/homepage-runner-tall/homepage-runner-053.webp"
+                alt: "Tall homepage runner image 053"
   - variant: card
     layout: 1-column
     blocks:
@@ -91,6 +192,45 @@ sections:
 
 
           我們參與文化藝術活動外，更以中國人「老吾老以及人之老，幼吾幼以及人之幼」的精神，把中華舞蹈文化帶給老人院及育幼院。希望有更多朋友不論老少、族裔或文化背景，踴躍參加我們的行列，一起為融匯東西方藝術文化締造更和諧歡樂的社會而努力。
+  - variant: card
+    layout: 1-column
+    blocks:
+      - gallery:
+          controls: true
+          autoscroll: true
+          interval: 5000
+          navigation: dots
+          size: full
+          crop: landscape
+          images:
+            - src: "/images/homepage-runner-wide/homepage-runner-005.webp"
+              alt: "Wide homepage runner image 005"
+            - src: "/images/homepage-runner-wide/homepage-runner-006.webp"
+              alt: "Wide homepage runner image 006"
+            - src: "/images/homepage-runner-wide/homepage-runner-010.webp"
+              alt: "Wide homepage runner image 010"
+            - src: "/images/homepage-runner-wide/homepage-runner-011.webp"
+              alt: "Wide homepage runner image 011"
+            - src: "/images/homepage-runner-wide/homepage-runner-018.webp"
+              alt: "Wide homepage runner image 018"
+            - src: "/images/homepage-runner-wide/homepage-runner-021.webp"
+              alt: "Wide homepage runner image 021"
+            - src: "/images/homepage-runner-wide/homepage-runner-023.webp"
+              alt: "Wide homepage runner image 023"
+            - src: "/images/homepage-runner-wide/homepage-runner-024.webp"
+              alt: "Wide homepage runner image 024"
+            - src: "/images/homepage-runner-wide/homepage-runner-025.webp"
+              alt: "Wide homepage runner image 025"
+            - src: "/images/homepage-runner-wide/homepage-runner-026.webp"
+              alt: "Wide homepage runner image 026"
+            - src: "/images/homepage-runner-wide/homepage-runner-027.webp"
+              alt: "Wide homepage runner image 027"
+            - src: "/images/homepage-runner-wide/homepage-runner-030.webp"
+              alt: "Wide homepage runner image 030"
+            - src: "/images/homepage-runner-wide/homepage-runner-033.webp"
+              alt: "Wide homepage runner image 033"
+            - src: "/images/homepage-runner-wide/homepage-runner-054.webp"
+              alt: "Wide homepage runner image 054"
   - variant: none
     layout: 3-columns
     blocks:

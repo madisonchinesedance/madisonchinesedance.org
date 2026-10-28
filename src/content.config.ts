@@ -12,6 +12,13 @@ interface BlockData {
     size?: "small" | "medium" | "large" | "full";
     crop?: "landscape" | "square" | "portrait" | "natural";
   };
+  gallery?: {
+    images: { src: string; alt: string }[];
+    controls?: boolean;
+    autoscroll?: boolean;
+    interval?: number;
+    navigation?: "thumbnails" | "dots" | "none";
+  };
   button?: {
     label: string;
     href: string;
@@ -34,6 +41,19 @@ const block: z.ZodType<BlockData> = z.lazy(() =>
         alt: z.string(),
         size: z.enum(["small", "medium", "large", "full"]).optional(),
         crop: z.enum(["landscape", "square", "portrait", "natural"]).optional(),
+      }),
+    }),
+    z.object({
+      gallery: z.object({
+        images: z.array(z.object({ src: z.string(), alt: z.string() })),
+        controls: z.boolean().optional(),
+        autoscroll: z.boolean().optional(),
+        interval: z.number().positive().optional(),
+        navigation: z.enum(["thumbnails", "dots", "none"]).optional(),
+        size: z.enum(["small", "medium", "large", "full"]).optional(),
+        crop: z
+          .enum(["landscape", "square", "portrait", "natural"])
+          .optional(),
       }),
     }),
     z.object({
